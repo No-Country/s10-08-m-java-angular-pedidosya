@@ -12,10 +12,10 @@ Depending on the Areas:
 ### It will have 1 branch with a folder each
 
 branch: dev-front
-front :ballot_box_with_check folder:
+front :open_file_folder:
 
 branch: back-front
-back :ballot_box_with_check folder:
+back :open_file_folder:
 
 ### all folders are in lowercase, unless the /fork tool requires it.
 
