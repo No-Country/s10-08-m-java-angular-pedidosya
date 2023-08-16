@@ -3,7 +3,7 @@ PedidosYa is an online platform that offers food delivery services and delivery 
 
 ## Way to work :100:
 
-###the language is _english_
+### the language is _english_
 
 Depending on the Areas:
   -Back
@@ -17,7 +17,7 @@ front :open_file_folder:
 branch: back-front
 back :open_file_folder:
 
-### all folders are in lowercase, unless the /fork tool requires it.
+### all folders are in lowercase, unless the fork tool requires it.
 
 ### _Commits have the following format_
 
