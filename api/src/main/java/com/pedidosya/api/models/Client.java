@@ -21,6 +21,8 @@ public class Client {
     @Column(length = 100, nullable = false)
     private String lastName;
 
+    @Column(nullable = false)
+    private boolean active;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_user" , referencedColumnName = "idUser")

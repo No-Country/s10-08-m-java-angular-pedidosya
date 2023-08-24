@@ -31,4 +31,14 @@ public class UserDTO {
     @NotEmpty
     @Column(length = 1)
     private String role;
+
+    @Override
+    public String toString() {
+        return "UserDTO{" +
+                "idUser=" + idUser +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                '}';
+    }
 }

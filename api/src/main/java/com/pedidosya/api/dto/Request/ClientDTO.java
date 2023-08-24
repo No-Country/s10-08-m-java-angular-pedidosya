@@ -24,5 +24,19 @@ public class ClientDTO {
     @Column(length =100 )
     private String lastName;
 
+    @Column(nullable = false)
+    private boolean active;
+
     private UserDTO user;
+
+
+    @Override
+    public String toString() {
+        return "ClientDTO{" +
+                "idClient=" + idClient +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", user=" + user +
+                '}';
+    }
 }
