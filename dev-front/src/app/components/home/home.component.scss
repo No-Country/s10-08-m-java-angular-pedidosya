@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+.home {
+    background-color: #F5F5F5;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    flex-shrink: 0;
+}
+
+.title-cards {
+    display: flex;
+    width: 328px;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin: 0px 0px 0px 16px;
+}
+
+.restaurants {
+    display: flex;
+    width: 328px;
+    height: 25px;
+    align-items: flex-end;
+}
+
+h2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1 0 0;
+    align-self: stretch;
+    color: #151719;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 18px;
+}
+
+.btn-see-more {
+    color: #114260;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px;
+    background-color: none;
+    border: none;
+}
+
+.restaurants-cards {
+    display: flex;
+    width: 308px;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 0px 0px 0px 10px;
+}
+
+.burger,
+.empanada,
+.dessert {
+    width: 116px;
+    height: 100px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pizza,
+.vegan,
+.breakfast {
+    width: 184px;
+    height: 100px;
+    flex-shrink: 0;
+    background-color: #151719;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.restaurants-cards div img {
+    max-width: 72px;
+    max-height: 72px;
+}
+
+.restaurants-cards div p {
+    color: #151719;
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 18px;
+    margin: 0;
+}
+
+.restaurants-cards .burger p,
+.restaurants-cards .empanada p,
+.restaurants-cards .dessert p {
+    margin-top: 12px;
+}
+
+.burger {
+    background: rgba(255, 160, 102, 0.40);
+}
+
+.pizza {
+    background: rgba(77, 157, 255, 0.40);
+}
+
+.vegan {
+    background-color: #80FFBA66;
+}
+
+.empanada {
+    background-color: #FF685966;
+}
+
+.dessert {
+    background-color: #C159FF66;
+}
+
+.breakfast {
+    background-color: #FFCD7366;
+}
+
+.repeat-order {
+    margin: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.repeat-restaurant {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1 0 0;
+    align-self: stretch;
+}
+
+.repeat-restaurant h2 {
+    margin: 0;
+}
+
+.restaurant-cards {
+    display: flex;
+    margin: 0px 0px 0px 10px;
+    padding-left: 0px;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.based-on-orders {
+    margin: 0px 0px 0px 16px;
+}
+
+.based-on-orders section {
+    margin: 10px;
+    width: 344px;
+    overflow: scroll;
+}
+
+.section-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1 0 0;
+    align-self: stretch;
+    color: #151719;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px;
+    margin-top: 0;
+}

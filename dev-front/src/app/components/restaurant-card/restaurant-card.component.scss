@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+.restaurant-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    border: 0.8px solid #B3BFCB;
+}
+
+.restaurant-card p {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    border-top: 1px solid #B3BFCB;
+    margin: 0;
+}
+
+.restaurant-card img {
+    width: 98px;
+    height: 98px;
+    object-fit: cover;
+    border-radius: 8px 8px 0px 0px;
+}

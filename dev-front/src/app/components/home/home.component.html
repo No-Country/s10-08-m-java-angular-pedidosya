@@ -1,0 +1,61 @@
+<div class="home">
+    <div class="title-cards">
+        <section class="restaurants">
+            <h2>Restaurantes</h2>
+            <button class="btn-see-more">Ver más</button>
+        </section>
+        <section class="restaurants-cards">
+            <div class="burger">
+                <p>Hamburguesas</p>
+                <img src="../../assets/images/burger.png" alt="Hamburguesa">
+            </div>
+            <div class="pizza">
+                <p>Pizzas</p>
+                <img src="../../assets/images/pizza.png" alt="Pizza">
+            </div>
+            <div class="vegan">
+                <p>Vegano</p>
+                <img src="../../assets/images/vegan.png" alt="Pizza">
+            </div>
+            <div class="empanada">
+                <p>Empanadas</p>
+                <img src="../../assets/images/empanada.png" alt="Pizza">
+            </div>
+            <div class="dessert">
+                <p>Postres</p>
+                <img src="../../assets/images/dessert.png" alt="Pizza">
+            </div>
+            <div class="breakfast">
+                <p>Desayuno</p>
+                <img src="../../assets/images/pizza.png" alt="Pizza">
+            </div>
+        </section>
+    </div>
+    <div class="repeat-order">
+        <section class="repeat-restaurant">
+            <h2>Volvé a disfrutarlos</h2>
+        </section>
+        <div class="restaurant-cards">
+            <!--Aca iria listado como nos lo pase el back
+        pero ahora va hardcodeado-->
+            <app-restaurant-card image="../../assets/images/mcdonalds.png" price="0"></app-restaurant-card>
+            <app-restaurant-card image="../../assets/images/pizza-restaurant.jpg" price="469"></app-restaurant-card>
+        </div>
+    </div>
+    <div class="based-on-orders">
+        <h2 class="section-title">Relacionados con tus pedidos</h2>
+        <section><app-carousel-restaurants></app-carousel-restaurants></section>
+    </div>
+    <div class="based-on-orders">
+        <h2 class="section-title">Los mas pedidos esta semana</h2>
+        <section><app-carousel-restaurants></app-carousel-restaurants></section>
+    </div>
+    <div class="based-on-orders">
+        <h2 class="section-title">Los mejores de tu zona</h2>
+        <section><app-carousel-restaurants></app-carousel-restaurants></section>
+    </div>
+    <div class="based-on-orders">
+        <h2 class="section-title">Descubrí opciones nuevas</h2>
+        <section><app-carousel-restaurants></app-carousel-restaurants></section>
+    </div>
+</div>
