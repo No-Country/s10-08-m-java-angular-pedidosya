@@ -16,3 +16,11 @@ ng g c components/layout
 # No  yet created
 ng g m components/users --routing
 
+ng g m auth/auth --routing
+
+ng add @ngrx/store
+npm i @ngrx/effects
+
+ng g s auth/services/login
+
+
