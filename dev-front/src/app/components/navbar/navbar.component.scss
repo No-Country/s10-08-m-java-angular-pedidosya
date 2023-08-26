@@ -1,0 +1,21 @@
+.container-navbar {
+    bottom: 0;
+    justify-content: space-between;
+    width: 100%;
+    height: 72px;
+    background: var(--fondo-fondo-secundario, #EFF2F5);
+    position: fixed;
+    // display:flex;
+    // align-items: center;
+    // justify-content: center;
+}
+.item-navbar {
+    width: 55px;
+    height: 72px;
+    border: none;
+    font-size: 10px;
+    text-align: center;
+    p {
+        margin: 0px 0px;
+    }
+}

@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { RestaurantCardComponent } from './components/restaurant-card/restaurant-card.component';
 import { CarouselRestaurantsComponent } from './components/carousel-restaurants/carousel-restaurants.component';
 import { RestaurantCardForCarouselComponent } from './components/restaurant-card-for-carousel/restaurant-card-for-carousel.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 // import { LoginComponent } from './auth/components/login/login.component';
 // import { RegisterComponent } from './auth/components/register/register.component';
 import { StoreModule } from '@ngrx/store';
@@ -21,7 +22,8 @@ import { StoreModule } from '@ngrx/store';
     HomeComponent,
     RestaurantCardComponent,
     CarouselRestaurantsComponent,
-    RestaurantCardForCarouselComponent
+    RestaurantCardForCarouselComponent,
+    NavbarComponent
     // LoginComponent,
     // RegisterComponent
   ],
