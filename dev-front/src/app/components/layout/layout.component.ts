@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent {
+  
+  mostrarMenu: boolean = false;
+
+  toggleDireccionMenu() {
+    console.log(this.mostrarMenu);
+    this.mostrarMenu = !this.mostrarMenu;
+    console.log(this.mostrarMenu);
+  }
 
 }

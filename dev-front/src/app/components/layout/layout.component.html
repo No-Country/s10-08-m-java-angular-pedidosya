@@ -1,1 +1,137 @@
+<div style="background-color: F5F5F5; width: 360; height: 750">
+
+
+  <div class="container-direccion">
+    <p>Avenida siempre viva 742</p>
+    <svg (click)="toggleDireccionMenu()" [ngClass]="{ active: mostrarMenu }" xmlns="http://www.w3.org/2000/svg"
+      style="padding: 0px 80px 0px 0px" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <mask id="mask0_141_1307" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+        <rect width="24" height="24" fill="#D9D9D9" />
+      </mask>
+      <g mask="url(#mask0_141_1307)">
+        <path d="M12 15.375L6 9.37498L7.4 7.97498L12 12.575L16.6 7.97498L18 9.37498L12 15.375Z" fill="#151719" />
+      </g>
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+      <mask id="mask0_141_1310" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32">
+        <rect width="32" height="32" fill="#D9D9D9" />
+      </mask>
+      <g mask="url(#mask0_141_1310)">
+        <path
+          d="M5.3335 25.3334V22.6667H8.00016V13.3334C8.00016 11.4889 8.55572 9.85002 9.66683 8.41669C10.7779 6.98335 12.2224 6.04446 14.0002 5.60002V4.66669C14.0002 4.11113 14.1946 3.63891 14.5835 3.25002C14.9724 2.86113 15.4446 2.66669 16.0002 2.66669C16.5557 2.66669 17.0279 2.86113 17.4168 3.25002C17.8057 3.63891 18.0002 4.11113 18.0002 4.66669V5.60002C19.7779 6.04446 21.2224 6.98335 22.3335 8.41669C23.4446 9.85002 24.0002 11.4889 24.0002 13.3334V22.6667H26.6668V25.3334H5.3335ZM16.0002 29.3334C15.2668 29.3334 14.6391 29.0722 14.1168 28.55C13.5946 28.0278 13.3335 27.4 13.3335 26.6667H18.6668C18.6668 27.4 18.4057 28.0278 17.8835 28.55C17.3613 29.0722 16.7335 29.3334 16.0002 29.3334ZM10.6668 22.6667H21.3335V13.3334C21.3335 11.8667 20.8113 10.6111 19.7668 9.56669C18.7224 8.52224 17.4668 8.00002 16.0002 8.00002C14.5335 8.00002 13.2779 8.52224 12.2335 9.56669C11.1891 10.6111 10.6668 11.8667 10.6668 13.3334V22.6667Z"
+          fill="#151719" />
+      </g>
+    </svg>
+  </div>
+
+  <div class="overlay" [ngClass]="{overlay: !mostrarMenu }" (click)="toggleDireccionMenu()">
+    <div class="select-direccion" [ngClass]="{'active': mostrarMenu}">
+
+      <svg style="stroke-width: 4px; stroke: var(--lineas-stroke-lineas, #B3BFCB);" xmlns="http://www.w3.org/2000/svg" width="54" height="4" viewBox="0 0 54 4" fill="none">
+        <path d="M2 2H52" stroke="#B3BFCB" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+
+      <h6 class="titulo-select-direccion">Selecciona la dirección de entrega</h6>
+      <!--*ngIf="mostrarMenu"-->
+  
+      <button class="direccion direccion-nueva">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <mask id="mask0_141_2022" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+            height="24">
+            <rect width="24" height="24" fill="#D9D9D9" />
+          </mask>
+          <g mask="url(#mask0_141_2022)">
+            <path d="M11 13H5V11H11V5H13V11H19V13H13V19H11V13Z" fill="#151719" />
+          </g>
+        </svg>
+        <p>Nueva dirección</p>
+      </button>
+  
+      <button class="direccion direccion-elegida">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <mask id="mask0_141_2027" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+            height="24">
+            <rect width="24" height="24" fill="#D9D9D9" />
+          </mask>
+          <g mask="url(#mask0_141_2027)">
+            <path
+              d="M12 12C12.55 12 13.0208 11.8042 13.4125 11.4125C13.8042 11.0208 14 10.55 14 10C14 9.45 13.8042 8.97917 13.4125 8.5875C13.0208 8.19583 12.55 8 12 8C11.45 8 10.9792 8.19583 10.5875 8.5875C10.1958 8.97917 10 9.45 10 10C10 10.55 10.1958 11.0208 10.5875 11.4125C10.9792 11.8042 11.45 12 12 12ZM12 19.35C14.0333 17.4833 15.5417 15.7875 16.525 14.2625C17.5083 12.7375 18 11.3833 18 10.2C18 8.38333 17.4208 6.89583 16.2625 5.7375C15.1042 4.57917 13.6833 4 12 4C10.3167 4 8.89583 4.57917 7.7375 5.7375C6.57917 6.89583 6 8.38333 6 10.2C6 11.3833 6.49167 12.7375 7.475 14.2625C8.45833 15.7875 9.96667 17.4833 12 19.35ZM12 22C9.31667 19.7167 7.3125 17.5958 5.9875 15.6375C4.6625 13.6792 4 11.8667 4 10.2C4 7.7 4.80417 5.70833 6.4125 4.225C8.02083 2.74167 9.88333 2 12 2C14.1167 2 15.9792 2.74167 17.5875 4.225C19.1958 5.70833 20 7.7 20 10.2C20 11.8667 19.3375 13.6792 18.0125 15.6375C16.6875 17.5958 14.6833 19.7167 12 22Z"
+              fill="#151719" />
+          </g>
+        </svg>
+        <p>Avenida siempre viva 742</p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <mask id="mask0_141_2031" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+            height="24">
+            <rect width="24" height="24" fill="#D9D9D9" />
+          </mask>
+          <g mask="url(#mask0_141_2031)">
+            <path d="M9.55059 18L3.85059 12.3L5.27559 10.875L9.55059 15.15L18.7256 5.97501L20.1506 7.40001L9.55059 18Z"
+              fill="#151719" />
+          </g>
+        </svg>
+      </button>
+      <button class="direccion">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <mask id="mask0_141_2027" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+            height="24">
+            <rect width="24" height="24" fill="#D9D9D9" />
+          </mask>
+          <g mask="url(#mask0_141_2027)">
+            <path
+              d="M12 12C12.55 12 13.0208 11.8042 13.4125 11.4125C13.8042 11.0208 14 10.55 14 10C14 9.45 13.8042 8.97917 13.4125 8.5875C13.0208 8.19583 12.55 8 12 8C11.45 8 10.9792 8.19583 10.5875 8.5875C10.1958 8.97917 10 9.45 10 10C10 10.55 10.1958 11.0208 10.5875 11.4125C10.9792 11.8042 11.45 12 12 12ZM12 19.35C14.0333 17.4833 15.5417 15.7875 16.525 14.2625C17.5083 12.7375 18 11.3833 18 10.2C18 8.38333 17.4208 6.89583 16.2625 5.7375C15.1042 4.57917 13.6833 4 12 4C10.3167 4 8.89583 4.57917 7.7375 5.7375C6.57917 6.89583 6 8.38333 6 10.2C6 11.3833 6.49167 12.7375 7.475 14.2625C8.45833 15.7875 9.96667 17.4833 12 19.35ZM12 22C9.31667 19.7167 7.3125 17.5958 5.9875 15.6375C4.6625 13.6792 4 11.8667 4 10.2C4 7.7 4.80417 5.70833 6.4125 4.225C8.02083 2.74167 9.88333 2 12 2C14.1167 2 15.9792 2.74167 17.5875 4.225C19.1958 5.70833 20 7.7 20 10.2C20 11.8667 19.3375 13.6792 18.0125 15.6375C16.6875 17.5958 14.6833 19.7167 12 22Z"
+              fill="#151719" />
+          </g>
+        </svg>
+        <p>Av. Olivos 4109</p>
+      </button>
+      <button class="direccion">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <mask id="mask0_141_2027" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+            height="24">
+            <rect width="24" height="24" fill="#D9D9D9" />
+          </mask>
+          <g mask="url(#mask0_141_2027)">
+            <path
+              d="M12 12C12.55 12 13.0208 11.8042 13.4125 11.4125C13.8042 11.0208 14 10.55 14 10C14 9.45 13.8042 8.97917 13.4125 8.5875C13.0208 8.19583 12.55 8 12 8C11.45 8 10.9792 8.19583 10.5875 8.5875C10.1958 8.97917 10 9.45 10 10C10 10.55 10.1958 11.0208 10.5875 11.4125C10.9792 11.8042 11.45 12 12 12ZM12 19.35C14.0333 17.4833 15.5417 15.7875 16.525 14.2625C17.5083 12.7375 18 11.3833 18 10.2C18 8.38333 17.4208 6.89583 16.2625 5.7375C15.1042 4.57917 13.6833 4 12 4C10.3167 4 8.89583 4.57917 7.7375 5.7375C6.57917 6.89583 6 8.38333 6 10.2C6 11.3833 6.49167 12.7375 7.475 14.2625C8.45833 15.7875 9.96667 17.4833 12 19.35ZM12 22C9.31667 19.7167 7.3125 17.5958 5.9875 15.6375C4.6625 13.6792 4 11.8667 4 10.2C4 7.7 4.80417 5.70833 6.4125 4.225C8.02083 2.74167 9.88333 2 12 2C14.1167 2 15.9792 2.74167 17.5875 4.225C19.1958 5.70833 20 7.7 20 10.2C20 11.8667 19.3375 13.6792 18.0125 15.6375C16.6875 17.5958 14.6833 19.7167 12 22Z"
+              fill="#151719" />
+          </g>
+        </svg>
+        <p>Pte. Roca 4145</p>
+      </button>
+      <button class="direccion">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <mask id="mask0_141_2027" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+            height="24">
+            <rect width="24" height="24" fill="#D9D9D9" />
+          </mask>
+          <g mask="url(#mask0_141_2027)">
+            <path
+              d="M12 12C12.55 12 13.0208 11.8042 13.4125 11.4125C13.8042 11.0208 14 10.55 14 10C14 9.45 13.8042 8.97917 13.4125 8.5875C13.0208 8.19583 12.55 8 12 8C11.45 8 10.9792 8.19583 10.5875 8.5875C10.1958 8.97917 10 9.45 10 10C10 10.55 10.1958 11.0208 10.5875 11.4125C10.9792 11.8042 11.45 12 12 12ZM12 19.35C14.0333 17.4833 15.5417 15.7875 16.525 14.2625C17.5083 12.7375 18 11.3833 18 10.2C18 8.38333 17.4208 6.89583 16.2625 5.7375C15.1042 4.57917 13.6833 4 12 4C10.3167 4 8.89583 4.57917 7.7375 5.7375C6.57917 6.89583 6 8.38333 6 10.2C6 11.3833 6.49167 12.7375 7.475 14.2625C8.45833 15.7875 9.96667 17.4833 12 19.35ZM12 22C9.31667 19.7167 7.3125 17.5958 5.9875 15.6375C4.6625 13.6792 4 11.8667 4 10.2C4 7.7 4.80417 5.70833 6.4125 4.225C8.02083 2.74167 9.88333 2 12 2C14.1167 2 15.9792 2.74167 17.5875 4.225C19.1958 5.70833 20 7.7 20 10.2C20 11.8667 19.3375 13.6792 18.0125 15.6375C16.6875 17.5958 14.6833 19.7167 12 22Z"
+              fill="#151719" />
+          </g>
+        </svg>
+        <p>Navarro 2375</p>
+      </button>
+    </div>
+  </div>
+
+
+
+  <form class="buscador">
+    <input class="input-buscador" id="search" name="search" placeholder="¿Qué se te antoja hoy?" />
+    <button class="button-buscador" type="submit">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path
+          d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
+          stroke="#F5F5F5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M20.9999 21L16.6499 16.65" stroke="#F5F5F5" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </svg>
+    </button>
+  </form>
+
+  <app-navbar></app-navbar>
+</div>
+
 <app-home></app-home>
