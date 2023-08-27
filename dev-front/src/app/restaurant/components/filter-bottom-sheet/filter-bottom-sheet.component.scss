@@ -1,0 +1,61 @@
+.filter-sheet-container {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 16px;
+  background: #F5F5F5;
+
+  .line-container {
+    padding: 20px 10px;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+
+.filter-group-container {
+  max-height: 75vh;
+  overflow: auto;
+
+  .filter-button-group-content {
+    display: flex;
+    padding-left: 0px;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 8px;
+    flex-wrap: wrap;
+    border:none ;
+    box-shadow:none;
+
+    .btn-filter {
+      color: #151719;
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 0.1px;
+      border-radius: 4px;
+      border: 1px solid #B3BFCB;
+      box-shadow: none;
+
+      mat-icon {
+        font-size: 16px;
+        color: #151719;
+      }
+    }
+  }
+}
+
+
+
+footer {
+  padding: 15px 10px;
+  background: #F5F5F5;
+  text-align: center;
+
+  button {
+    width: 90%;
+  }
+}
+
+
+

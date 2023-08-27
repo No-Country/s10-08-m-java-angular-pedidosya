@@ -1,0 +1,33 @@
+<section [formGroup]="benefits" class="my-2">
+  <h3 class="my-2">Beneficios</h3>
+
+  <mat-checkbox formControlName="discounts">Descuentos</mat-checkbox>
+  <hr class="my-2"/>
+  <mat-checkbox formControlName="coupons">Acepta cupones</mat-checkbox>
+  <hr class="my-2"/>
+  <mat-checkbox formControlName="freeShipping">Envio gratis</mat-checkbox>
+  <hr class="my-2"/>
+  <mat-checkbox formControlName="fasterShipping">Más rapidos</mat-checkbox>
+
+</section>
+
+
+<section [formGroup]="payment" class="my-2">
+  <h3 class="my-2">Pago</h3>
+  <mat-checkbox formControlName="card">Tarjeta</mat-checkbox>
+  <hr class="my-2"/>
+  <mat-checkbox formControlName="cash">Efectivo</mat-checkbox>
+</section>
+
+
+<section [formGroup]="other" class="my-2">
+  <h3 class="my-2">Otros</h3>
+  <mat-checkbox formControlName="favorite">Favorito</mat-checkbox>
+  <hr class="my-2"/>
+  <mat-checkbox formControlName="new">Nuevos en DeliveryYa</mat-checkbox>
+  <hr class="my-2"/>
+  <mat-checkbox formControlName="lowCost">Menor costo de envío</mat-checkbox>
+  <hr class="my-2"/>
+  <mat-checkbox formControlName="takeAway">Retiro en el local</mat-checkbox>
+</section>
+

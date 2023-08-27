@@ -1,0 +1,19 @@
+<header class="shadow-container sticky-top">
+  <div class="nav-search-container">
+    <a href="#" mat-button>
+      <mat-icon fontIcon="arrow_back"></mat-icon>
+    </a>
+    <app-search-input [label]="'Buscar restaurantes'" [placeholder]="'Buscar...'"/>
+  </div>
+
+  <div class="filters-container">
+    <div class="filters-scroll">
+      <app-filter-button/>
+      <button mat-raised-button>Envío gratis</button>
+      <button mat-raised-button>Descuentos</button>
+      <button mat-raised-button>Retiro en local</button>
+    </div>
+  </div>
+
+
+</header>

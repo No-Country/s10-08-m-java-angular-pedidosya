@@ -1,0 +1,42 @@
+.card {
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  border-bottom: .5px solid #B3BFCB;
+  margin: 16px 0;
+}
+
+.card-content {
+  display: flex;
+  margin: 16px 0 0 0;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+
+}
+
+.card-title {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+  margin: 0
+
+}
+
+.card-title-rating-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  padding: 0 10px 0 0;
+}
+
+
+.card-content-description {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  flex: 1 0 0;
+  margin: 0 10px;
+}
