@@ -1,0 +1,77 @@
+
+.w-100 {
+  width: 100%;
+}
+
+.w-75 {
+  width: 75%;
+}
+
+.w-50 {
+  width: 50%;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+
+.shadow-container {
+  box-shadow: 0px 1px 3px 0px rgba(41, 45, 50, 0.25);
+}
+
+.sticky-top {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+/*Align-items-**/
+$align-items-values: center end start;
+$justify-content-values: center end start;
+
+@mixin generate-align-justify-classes($property, $values) {
+  @each $value in $values {
+    .#{$property}-#{$value} {
+      #{$property}: $value;
+    }
+  }
+}
+
+@include generate-align-justify-classes(align-items, $align-items-values);
+@include generate-align-justify-classes(justify-content, $justify-content-values);
+
+/*justify-content-* */
+$justify-content-values: start end center space-between space-around space-evenly;
+
+@mixin generate-justify-content-classes($values) {
+  @each $value in $values {
+    .justify-content-#{$value} {
+      justify-content: $value;
+    }
+  }
+}
+
+@include generate-justify-content-classes($justify-content-values);
+
+//Text alignment
+$text-align-values: (
+  left: left,
+  center: center,
+  right: right,
+  justify: justify
+);
+
+@mixin generate-text-align-classes($values) {
+  @each $class, $value in $values {
+    .text-#{$class} {
+      text-align: $value;
+    }
+  }
+}
+
+@include generate-text-align-classes($text-align-values);
+
+
+

@@ -1,0 +1,67 @@
+body, button, select, textarea, mat-label, input, h1, h2, h3, h4, p, label {
+  font-family: Poppins, sans-serif !important;
+
+}
+
+$base-font-size: 14px; // Tamaño base del cuerpo de texto
+
+$h1-font-size: 24px;
+$h2-font-size: $base-font-size * 1.5;
+$h3-font-size: $base-font-size * 1.25;
+$h4-font-size: $base-font-size * 1.1;
+$h5-font-size: $base-font-size;
+$h6-font-size: $base-font-size * 0.9;
+
+// Base para tamaño de fuentes
+body {
+  font-size: $base-font-size;
+}
+
+h1 {
+  font-size: $h1-font-size;
+}
+
+h2 {
+  font-size: $h2-font-size;
+}
+
+h3 {
+  font-size: $h3-font-size;
+}
+
+h4 {
+  font-size: $h4-font-size;
+}
+
+h5 {
+  font-size: $h5-font-size;
+}
+
+h6 {
+  font-size: $h6-font-size;
+}
+
+p {
+  font-size: $base-font-size;
+}
+
+//FontWieght fw-*
+$font-weight-values: (
+  100: 100,
+  200: 200,
+  300: 300,
+  400: 400,
+  500: 500,
+  600: 600,
+  700: 700
+);
+
+@mixin generate-font-weight-classes($values) {
+  @each $value, $weight in $values {
+    .fw-#{$value} {
+      font-weight: $weight;
+    }
+  }
+}
+
+@include generate-font-weight-classes($font-weight-values);

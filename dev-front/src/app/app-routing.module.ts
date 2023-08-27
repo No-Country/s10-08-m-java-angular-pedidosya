@@ -1,13 +1,19 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {HomeComponent} from "@root/components/home/home.component";
 
 const routes: Routes = [
   // {path: 'inicio', component: InicioComponent, canActivate: [SesionGuard]},
+  {path: 'home', component: HomeComponent},
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then((modulo) => modulo.AuthModule)
   },
-  // {path: '', redirectTo: 'inicio', pathMatch: 'full'},
+  {
+    path: 'restaurant',
+    loadChildren: () => import('./restaurant/restaurant.module').then(mod => mod.RestaurantModule)
+  },
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
   // {path: '**', component: NoEncontradoComponent }
 ];
 
@@ -15,4 +21,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

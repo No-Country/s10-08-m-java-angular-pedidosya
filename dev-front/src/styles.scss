@@ -1,4 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'styles/utils.scss';
+@import 'styles/normalized.scss';
+@import 'styles/flexbox.scss';
+@import 'styles/typography.scss';
+@import 'styles/margin.scss';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+.search-input > .mat-mdc-form-field-subscript-wrapper {
+  display: none !important;
+}
+
+.mdc-text-field--filled {
+  --mdc-filled-text-field-active-indicator-height: 0px !important;
+}
+
+.mat-bottom-sheet-container {
+  padding: 0 !important;
+  min-height: 90vh !important;
+}
+
+
+
+

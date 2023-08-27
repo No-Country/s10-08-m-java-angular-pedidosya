@@ -1,0 +1,25 @@
+// Definir variables
+$gutter: 16px;
+$columns: 12;
+$column-width: calc((100% - #{$gutter} * (#{$columns} - 1)) / #{$columns});
+
+// Mixin para las clases de columna
+@mixin column($span) {
+  flex: 0 0 calc(#{$column-width} * #{$span} + #{$gutter} * (#{$span} - 1));
+}
+
+.d-flex {
+  display: flex;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+// Generar clases de columna usando bucle
+@for $i from 1 through $columns {
+  .col-#{$i} {
+    @include column($i);
+  }
+}
