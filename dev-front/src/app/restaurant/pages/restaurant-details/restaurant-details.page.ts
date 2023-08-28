@@ -6,6 +6,8 @@ import {
   RestaurantDeliveryInfoComponent
 } from "@root/restaurant/components/restaurant-delivery-info/restaurant-delivery-info.component";
 import {SearchInputComponent} from "@root/restaurant/components/search-input/search-input.component";
+import {MatTabsModule} from "@angular/material/tabs";
+import {ProductCardComponent} from "@root/restaurant/components/product-card/product-card.component";
 
 @Component({
   selector: 'app-restaurant-details',
@@ -15,7 +17,9 @@ import {SearchInputComponent} from "@root/restaurant/components/search-input/sea
   imports: [
     RestaurantDetailsHeaderComponent,
     RestaurantDeliveryInfoComponent,
-    SearchInputComponent
+    SearchInputComponent,
+    MatTabsModule,
+    ProductCardComponent
   ]
 })
 export class RestaurantDetailsPage {

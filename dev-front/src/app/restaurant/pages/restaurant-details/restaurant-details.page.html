@@ -1,11 +1,23 @@
-<app-restaurant-details-header/>
-<!--todo detalles entrega/pedido-->
-<app-restaurant-delivery-info/>
-<!--todo input-serach-->
+<!-- Hero -->
+<app-restaurant-details-header [productImageUrl]="'assets/mocks/products_mc.png'" [logoUrl]="'assets/mocks/brand_mc.png'" [title]="'Mc Donald´s'" [isFavorite]="false" [rating]="4.8"/>
 
-<section class="mx-2 mt-4 mb-3">
-  <app-search-input [label]="'Buscar en MacDonald´s'" [placeholder]="'Buscar en McDonald´s'"/>
+<!--detalles entrega/pedido-->
+<app-restaurant-delivery-info [deliveryCost]="0" [maxTime]="30" [minTime]="15" [minToOrder]="1199"/>
+
+
+<section class="search-menu-container">
+  <!-- input-search-->
+  <div class="mx-2 mt-4 mb-3">
+    <app-search-input [label]="'Buscar en MacDonald´s'" [placeholder]="'Buscar en McDonald´s'"/>
+  </div>
+  <!-- menu-nav -->
+  <mat-tab-group>
+    <mat-tab label="First">
+      <app-product-card/>
+    </mat-tab>
+    <mat-tab label="Second"> Content 2</mat-tab>
+    <mat-tab label="Third"> Content 3</mat-tab>
+  </mat-tab-group>
 </section>
 
 
-<p>restaurant-details works!</p>

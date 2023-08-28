@@ -1,0 +1,45 @@
+/*Align-items-**/
+$align-items-values: center end start;
+$justify-content-values: center end start;
+
+@mixin generate-align-justify-classes($property, $values) {
+  @each $value in $values {
+    .#{$property}-#{$value} {
+      #{$property}: $value;
+    }
+  }
+}
+
+@include generate-align-justify-classes(align-items, $align-items-values);
+@include generate-align-justify-classes(justify-content, $justify-content-values);
+
+/*justify-content-* */
+$justify-content-values: start end center space-between space-around space-evenly;
+
+@mixin generate-justify-content-classes($values) {
+  @each $value in $values {
+    .justify-content-#{$value} {
+      justify-content: $value;
+    }
+  }
+}
+
+@include generate-justify-content-classes($justify-content-values);
+
+//Text alignment
+$text-align-values: (
+  left: left,
+  center: center,
+  right: right,
+  justify: justify
+);
+
+@mixin generate-text-align-classes($values) {
+  @each $class, $value in $values {
+    .text-#{$class} {
+      text-align: $value;
+    }
+  }
+}
+
+@include generate-text-align-classes($text-align-values);
