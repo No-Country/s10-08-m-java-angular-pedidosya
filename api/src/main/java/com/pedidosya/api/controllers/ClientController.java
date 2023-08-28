@@ -9,6 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @RequestMapping(path = "/clients")
 @RequiredArgsConstructor
@@ -16,6 +19,11 @@ public class ClientController {
 
     private final ClientImpl clientImpl;
     private final IClientMapper iClientMapper;
+
+    @GetMapping
+    public ResponseEntity<List<ClientDTO>> getAll(){
+        return ResponseEntity.ok(convertToListDto(clientImpl.readAll()));
+    }
 
     @PostMapping(value = "/register", headers = "Accept=application/json")
     public ResponseEntity<ClientDTO> registerClient(@RequestBody ClientDTO newClient){
@@ -93,6 +101,20 @@ public class ClientController {
 
     private Client convertToEntity(ClientDTO clientDTO){
         return iClientMapper.toClient(clientDTO);
+    }
+
+    private List<ClientDTO> convertToListDto(List<Client> clients){
+
+        if ( clients == null ) {
+            return null;
+        }
+
+        List<ClientDTO> list = new ArrayList<>();
+        for ( Client c : clients ) {
+            list.add( convertToDto( c ) );
+        }
+
+        return list;
     }
 
 }
