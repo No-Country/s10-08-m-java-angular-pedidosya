@@ -1,7 +1,5 @@
 import {isDevMode, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -13,10 +11,6 @@ import {
   RestaurantCardForCarouselComponent
 } from './components/restaurant-card-for-carousel/restaurant-card-for-carousel.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
-// import { LoginComponent } from './auth/components/login/login.component';
-// import { RegisterComponent } from './auth/components/register/register.component';
-// import { LoginComponent } from './auth/components/login/login.component';
-// import { RegisterComponent } from './auth/components/register/register.component';
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
@@ -24,6 +18,7 @@ import {restaurantsReducer} from "@root/restaurant/store/reducers/restaurants.re
 import {RestaurantEffects} from "@root/restaurant/store/effects/restaurant.effects";
 import { LoginUserComponent } from './login-user/login-user.component';
 import { UbiUserComponent } from './ubi-user/ubi-user.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -33,9 +28,7 @@ import { UbiUserComponent } from './ubi-user/ubi-user.component';
     RestaurantCardComponent,
     CarouselRestaurantsComponent,
     RestaurantCardForCarouselComponent,
-    NavbarComponent,
-    LoginUserComponent,
-    UbiUserComponent
+    NavbarComponent
     // LoginComponent,
     // RegisterComponent
   ],
@@ -43,6 +36,7 @@ import { UbiUserComponent } from './ubi-user/ubi-user.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     StoreModule.forRoot({
       restaurants: restaurantsReducer,
     }, {}),

@@ -7,12 +7,10 @@ import { Component } from '@angular/core';
 })
 export class LayoutComponent {
   
-  mostrarMenu: boolean = false;
+  mostrarMenu: boolean = true;
 
   toggleDireccionMenu() {
-    console.log(this.mostrarMenu);
     this.mostrarMenu = !this.mostrarMenu;
-    console.log(this.mostrarMenu);
   }
 
 }

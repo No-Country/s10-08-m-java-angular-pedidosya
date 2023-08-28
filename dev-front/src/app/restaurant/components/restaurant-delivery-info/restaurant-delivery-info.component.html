@@ -1,15 +1,16 @@
-<div class="row mx-4 justify-content-space-between  delivery-details-container text-center">
+<section class=" mx-4 py-1 px-2  border rounded  shadow">
+  <div class="row justify-content-space-between text-center">
     <div class="col-4">
-        <p>Llega en</p>
-        <p class="fw-500">15 -30 min</p>
+      <p>Llega en</p>
+      <p class="fw-500">{{minTime}}-{{maxTime}} min</p>
     </div>
     <div class="col-4">
-        <p>Envio</p>
-        <p class="fw-500">gratis</p>
+      <p>Envío</p>
+      <p class="fw-500">{{costDisplay(deliveryCost)}}</p>
     </div>
     <div class="col-4">
-        <p>Minimo</p>
-        <p class="fw-500">$1199</p>
+      <p>Mínimo</p>
+      <p class="fw-500">{{costDisplay(minToOrder)}}</p>
     </div>
-
-</div>
+  </div>
+</section>
