@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from "@root/components/home/home.component";
+import { LoginUserComponent } from './login-user/login-user.component';
 
 const routes: Routes = [
   // {path: 'inicio', component: InicioComponent, canActivate: [SesionGuard]},
@@ -13,8 +14,9 @@ const routes: Routes = [
     path: 'restaurant',
     loadChildren: () => import('./restaurant/restaurant.module').then(mod => mod.RestaurantModule)
   },
+  {path: 'onboarding' , component: LoginUserComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'},
-  // {path: '**', component: NoEncontradoComponent }
+  // {path: '**', component: NoEncontradoComponent },
 ];
 
 @NgModule({

@@ -22,6 +22,8 @@ import {EffectsModule} from '@ngrx/effects';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {restaurantsReducer} from "@root/restaurant/store/reducers/restaurants.reducer";
 import {RestaurantEffects} from "@root/restaurant/store/effects/restaurant.effects";
+import { LoginUserComponent } from './login-user/login-user.component';
+import { UbiUserComponent } from './ubi-user/ubi-user.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import {RestaurantEffects} from "@root/restaurant/store/effects/restaurant.effec
     RestaurantCardComponent,
     CarouselRestaurantsComponent,
     RestaurantCardForCarouselComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoginUserComponent,
+    UbiUserComponent
     // LoginComponent,
     // RegisterComponent
   ],
