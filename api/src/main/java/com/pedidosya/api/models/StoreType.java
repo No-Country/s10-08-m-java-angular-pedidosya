@@ -17,4 +17,7 @@ public class StoreType {
 
     @Column(length = 30, nullable = false)
     private String title;
+
+    @Column(length = 300, nullable = false)
+    private String imagePath;
 }
