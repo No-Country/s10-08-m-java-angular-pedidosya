@@ -22,7 +22,7 @@ public class Client {
     private String lastName;
 
     @Column(nullable = false)
-    private boolean active;
+    private boolean active = true;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_user" , referencedColumnName = "idUser")

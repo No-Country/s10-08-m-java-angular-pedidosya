@@ -25,7 +25,7 @@ public class ClientDTO {
     private String lastName;
 
     @Column(nullable = false)
-    private boolean active;
+    private boolean active = true;
 
     private UserDTO user;
 
