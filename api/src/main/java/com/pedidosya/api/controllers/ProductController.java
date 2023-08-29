@@ -26,7 +26,7 @@ public class ProductController {
     public ResponseEntity<List<ProductDTO>>getAll(){
         return ResponseEntity.ok(convertToListDto(productImpl.readAll()));
     }
-
+/*
     @PostMapping(value = "/register", headers = "Accept=application/json")
     public ResponseEntity<ProductDTO> registerProduct(@RequestBody ProductDTO newProduct){
         return ResponseEntity.ok(
@@ -76,7 +76,7 @@ public class ProductController {
         }
     }
 
-
+*/
 
     private ProductDTO convertToDto(Product product){return iProductMapper.toProductDto(product);}
     private Product converToEntity(ProductDTO productDTO){return iProductMapper.toProduct(productDTO);}
