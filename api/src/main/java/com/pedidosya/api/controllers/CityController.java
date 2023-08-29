@@ -30,7 +30,7 @@ public class CityController {
     public ResponseEntity<List<CityDTO>>getAll(){
         return ResponseEntity.ok(convertToListDto(cityImpl.readAll()));
     }
-
+/*
     @PostMapping(value = "/register", headers = "Accept=application/json")
     public ResponseEntity<CityDTO> registerCity(@RequestBody CityDTO newCity){
         return ResponseEntity.ok(
@@ -67,7 +67,7 @@ public class CityController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-
+*/
 
     private CityDTO convertToDto(City city){return iCityMapper.toCityDto(city);}
     private City converToEntity(CityDTO cityDTO){return iCityMapper.toCity(cityDTO);}

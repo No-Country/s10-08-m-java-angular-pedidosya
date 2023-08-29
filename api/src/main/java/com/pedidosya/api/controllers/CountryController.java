@@ -24,7 +24,7 @@ public class CountryController {
     public ResponseEntity<List<CountryDTO>>getAll(){
         return ResponseEntity.ok(convertToListDto(countryImpl.readAll()));
     }
-
+/*
     @PostMapping(value = "/register", headers = "Accept=application/json")
     public ResponseEntity<CountryDTO>registerCountry(@RequestBody CountryDTO newCountry){
         return ResponseEntity.ok(convertToDto((countryImpl.save(converToEntity(newCountry)))));
@@ -59,7 +59,7 @@ public class CountryController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-
+*/
     private CountryDTO convertToDto(Country country){return iCountryMapper.toCountryDto(country);}
     private Country converToEntity(CountryDTO countryDTO){return iCountryMapper.toCountry(countryDTO);}
 
