@@ -14,7 +14,9 @@ public class StoreType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idStoreType;
-
     @Column(length = 30, nullable = false)
     private String title;
+
+    @Column(length = 300, nullable = false)
+    private String imagePath;
 }

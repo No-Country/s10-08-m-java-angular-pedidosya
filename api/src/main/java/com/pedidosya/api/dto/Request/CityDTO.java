@@ -1,6 +1,5 @@
 package com.pedidosya.api.dto.Request;
 
-import com.pedidosya.api.models.Country;
 import com.pedidosya.api.models.Province;
 import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;

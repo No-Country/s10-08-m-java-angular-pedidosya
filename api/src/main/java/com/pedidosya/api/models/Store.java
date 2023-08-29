@@ -45,4 +45,19 @@ public class Store {
     @JoinColumn(name = "id_user" , referencedColumnName = "idUser")
     private User user;
 
+    @Column(columnDefinition = "decimal(18,4)" , nullable = true)
+    private double shippingCost;
+
+    @Column(nullable = true)
+    private Integer minPurchase;
+
+    //int en minutos
+    @Column(nullable = true)
+    private Integer timeFrom;
+
+    //int en minutos
+    @Column(nullable = true)
+    private Integer timeTo;
+
+
 }
