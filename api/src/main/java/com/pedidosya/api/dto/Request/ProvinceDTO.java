@@ -1,6 +1,6 @@
 package com.pedidosya.api.dto.Request;
 
-import com.pedidosya.api.models.Province;
+import com.pedidosya.api.models.Country;
 import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,21 +11,21 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CityDTO {
+public class ProvinceDTO {
 
-    private Integer idCity;
+    private Integer idProvince;
 
     @Column(length = 50, nullable = false)
     private String title;
 
-    private Province province;
+    private Country country;
 
     @Override
     public String toString() {
-        return "CityDTO{" +
-                "idCity=" + idCity +
+        return "ProvinceDTO{" +
+                "idProvince=" + idProvince +
                 ", title='" + title + '\'' +
-                ", province=" + province +
+                ", country=" + country +
                 '}';
     }
 }
