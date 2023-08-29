@@ -24,15 +24,16 @@ public class Product {
 
     @Column(columnDefinition = "decimal(18,4)" , nullable = false)
     private double price;
+
     @Column(length = 300, nullable = false)
     private String imagePath;
+
+    @Column(nullable = false)
+    private boolean active = true;
 
     @ManyToOne
     @JoinColumn(name = "id_product_type", nullable = false, foreignKey = @ForeignKey(name= "FK_Product_Product_Type"))
     private ProductType productType;
-
-    @Column(nullable = false)
-    private boolean active;
 
     @ManyToOne
     @JoinColumn(name = "id_menu", nullable = false, foreignKey = @ForeignKey(name= "FK_Product_Menu"))
