@@ -19,6 +19,9 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   formulario!: FormGroup;
   suscripcion!: Subscription;
+
+  loginForm!: FormGroup;
+  loading!: boolean;
   
   constructor(
     private loginService: LoginService,
@@ -29,8 +32,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.formulario = new FormGroup({
       email: new FormControl(),
-      password: new FormControl(),
-      isAdmin: new FormControl(false)
+      password: new FormControl()
     });
   }
 
@@ -40,13 +42,14 @@ export class LoginComponent implements OnInit, OnDestroy {
   
   login(){
     let user: UserModel = {
-      email: this.formulario.value.usuario,
+      email: this.formulario.value.email,
       password: this.formulario.value.password,
-      isAdmin: this.formulario.value.isAdmin,
+      isAdmin: false,
       id: 0,
       firstname: '',
       lastname: ''
     }
+    this.loading = true;
     this.suscripcion = this.loginService.login(user).subscribe((sesion: Sesion) => {
       this.authStore.dispatch(cargarSesion({ sesion: sesion }));
       this.router.navigate(['inicio']);

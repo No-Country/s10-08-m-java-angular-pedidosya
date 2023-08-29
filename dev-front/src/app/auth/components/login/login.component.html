@@ -1,24 +1,40 @@
-<h1>Iniciar Sesión</h1>
+<div class="container login-container" fxLayout="row" fxLayoutAlign="center center">
+    <form [formGroup]="loginForm" class="auth-form" fxFlex.sm="50%" fxFlex.xs="90%">
+        <mat-card class="box">
+            <mat-card-title class="auth-title">Bienvenido</mat-card-title>
+            <mat-card-subtitle class="auth-subtitle">Iniciar sesión</mat-card-subtitle>
+            <mat-card-content>
+                <!-- <label class="auth-label">
+                    Correo electrónico
+                    <input class="auth-input" type="text" placeholder="Ingresá tu correo" />
+                </label> -->
+                <!-- <label class="auth-label">
+                    Contraseña
+                    <input class="auth-input" type="text" placeholder="Ingresá tú contraseña" />
+                </label> -->
+                <mat-label  class="auth-label">Correo electrónico</mat-label>
+                <mat-form-field appearance="outline">
+                    <input matInput placeholder="Ingresá tu correo"
+                    formControlName="email" type="email">
+                </mat-form-field>
+                
+                <mat-label  class="auth-label">Contraseña</mat-label> 
+                <mat-form-field appearance="outline">
+                    <input matInput placeholder="Ingresá tú contraseña"
+                    formControlName="password" type="email">
+                </mat-form-field>                       
+    
+            </mat-card-content>     
+  
+            <div class="auth-buttons">
+                <button type="submit" mat-stroked-button color="primary" class="btn-block">Iniciar sesion</button>
+                <button mat-stroked-button class="btn-block">Continuar con Google</button>
+        
+            </div>            
+            
+        </mat-card>
 
-<form [formGroup]="formulario" (ngSubmit)="login()">
-    <div class="row">
-        <div class="col-md-4">
-            <mat-form-field appearance="outline" class="fill">
-                <mat-label>Email</mat-label>
-                <input matInput type="text" formControlName="email">
-            </mat-form-field>
-        </div>
-        <div class="col-md-4">
-            <mat-form-field appearance="outline" class="fill">
-                <mat-label>Password</mat-label>
-                <input matInput type="text" formControlName="password">
-            </mat-form-field>
-        </div>
-        <div class="col-md-2">
-            <mat-slide-toggle formControlName="isAdmin">Es admin?</mat-slide-toggle>
-        </div>
-        <div class="col-md-2">
-            <button type="submit" mat-raised-button color="primary">Login</button>
-        </div>
-    </div>
-</form>
+
+      </form>    
+  
+  </div>
