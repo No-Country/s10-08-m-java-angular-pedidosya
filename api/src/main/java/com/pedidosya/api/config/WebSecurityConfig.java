@@ -41,8 +41,7 @@ public class WebSecurityConfig {
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(requests ->
                         requests
-                                .requestMatchers("/auth/**", "/clients/register", "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
-                                .requestMatchers("/api/**").authenticated()
+                                .requestMatchers("/auth/**", "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
 
                                 .anyRequest().authenticated()
 
