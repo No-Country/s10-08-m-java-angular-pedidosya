@@ -1,13 +1,8 @@
 package com.pedidosya.api.controllers;
 
 import com.pedidosya.api.dto.Request.AuthUserDto;
-import com.pedidosya.api.dto.Request.ClientDTO;
 import com.pedidosya.api.dto.Response.JwtResponseDto;
-import com.pedidosya.api.models.Client;
-import com.pedidosya.api.repositories.IAuthUserRepo;
 import com.pedidosya.api.services.IAuthService;
-import com.pedidosya.api.services.Impl.ClientImpl;
-import com.pedidosya.api.utils.mappers.IClientMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(path = "/auth")
+@CrossOrigin(origins = "*")
 public class AuthController {
 
     private final IAuthService iAuthService;

@@ -5,14 +5,16 @@ import com.pedidosya.api.dto.Request.UserDTO;
 import com.pedidosya.api.dto.Response.JwtResponseDto;
 import com.pedidosya.api.exception.PasswordIncorrectException;
 import com.pedidosya.api.exception.UserNotExistException;
+import com.pedidosya.api.models.User;
 import com.pedidosya.api.repositories.IAuthUserRepo;
+import com.pedidosya.api.repositories.IGenericRepo;
+import com.pedidosya.api.repositories.IUserRepo;
 import com.pedidosya.api.security.JwtAuthenticationProvider;
 import com.pedidosya.api.services.IAuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -21,12 +23,18 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class AuthServiceImpl implements IAuthService {
+public class AuthServiceImpl extends CRUDImpl<User, Integer> implements IAuthService {
 
     private final IAuthUserRepo iAuthUserRepo;
     private final JwtAuthenticationProvider jwtAuthenticationProvider;
     private final PasswordEncoder passwordEncoder;
 
+    private final IUserRepo repo;
+
+    @Override
+    protected IGenericRepo<User, Integer> getRepo() {
+        return repo;
+    }
 
     /**
      * Devuelve un dto con el jwt del usuario dadas unas credenciales
@@ -37,7 +45,7 @@ public class AuthServiceImpl implements IAuthService {
     @Override
     public JwtResponseDto signIn(AuthUserDto authUserDto) {
 
-        Optional<UserDTO> user = iAuthUserRepo.getUserByEmail(authUserDto.getEmail());
+        Optional<User> user = iAuthUserRepo.getUserByEmail(authUserDto.getEmail());
 
         if (user.isEmpty()){
             throw new UserNotExistException();

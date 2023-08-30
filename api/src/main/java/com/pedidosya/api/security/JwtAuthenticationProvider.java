@@ -3,6 +3,7 @@ package com.pedidosya.api.security;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.pedidosya.api.dto.Request.UserDTO;
+import com.pedidosya.api.models.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.CredentialsExpiredException;
@@ -28,7 +29,7 @@ public class JwtAuthenticationProvider {
     /**
      * Lista blanca con los jwt creados
      */
-    private HashMap<String, UserDTO> listToken = new HashMap<>();
+    private HashMap<String, User> listToken = new HashMap<>();
 
     /**
      * Crea un nuevo jwt en base al cliente recibido por parametro y lo agrega a la lista blanca
@@ -36,7 +37,7 @@ public class JwtAuthenticationProvider {
      * @param userJwt Cliente a utilizar en la creacion del jwt
      * @return Jwt creado
      */
-    public String createToken(UserDTO userJwt) {
+    public String createToken(User userJwt) {
 
         Date now = new Date();
         Date validity = new Date(now.getTime() + 3600000); // 1 hora en milisegundos
@@ -69,7 +70,7 @@ public class JwtAuthenticationProvider {
         //verifica el token como su firma y expiración, lanza una excepcion si algo falla
         JWT.require(Algorithm.HMAC256(secretKey)).build().verify(token);
 
-        UserDTO exists = listToken.get(token);
+        User exists = listToken.get(token);
         if (exists == null) {
             throw new BadCredentialsException("Usuario no registrado.");
         }
