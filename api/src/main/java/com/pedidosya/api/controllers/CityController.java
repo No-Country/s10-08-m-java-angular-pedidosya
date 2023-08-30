@@ -9,6 +9,7 @@ import com.pedidosya.api.services.Impl.CityImpl;
 import com.pedidosya.api.services.Impl.ProductImpl;
 import com.pedidosya.api.utils.mappers.ICityMapper;
 import com.pedidosya.api.utils.mappers.IProductMapper;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,7 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/cities")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "jwt")
 public class CityController {
 
     private final CityImpl cityImpl;
