@@ -10,13 +10,19 @@ import {AuthStartComponent} from './components/auth-start/auth-start.component';
 
 import {StoreModule} from '@ngrx/store';
 import {authFeatureKey, authReducer} from './state/auth.reducer';
+import { LoadingAuthComponent } from './components/loading-auth/loading-auth.component';
+import { SelectUserTypeComponent } from './components/select-user-type/select-user-type.component';
+import { LocationAccessComponent } from './components/location-access/location-access.component';
 
 
 @NgModule({
   declarations: [
     RegisterComponent,
     LoginComponent,
-    AuthStartComponent
+    AuthStartComponent,
+    LoadingAuthComponent,
+    SelectUserTypeComponent,
+    LocationAccessComponent
   ],
   imports: [
     CommonModule,
