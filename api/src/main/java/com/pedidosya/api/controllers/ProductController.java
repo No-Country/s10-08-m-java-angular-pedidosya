@@ -1,16 +1,16 @@
 package com.pedidosya.api.controllers;
 
-import com.pedidosya.api.dto.Request.ClientDTO;
 import com.pedidosya.api.dto.Request.ProductDTO;
-import com.pedidosya.api.models.Client;
 import com.pedidosya.api.models.Product;
 import com.pedidosya.api.services.Impl.ProductImpl;
 import com.pedidosya.api.utils.mappers.IProductMapper;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +27,11 @@ public class ProductController {
     @GetMapping(path = "/getAll")
     public ResponseEntity<List<ProductDTO>>getAll(){
         return ResponseEntity.ok(convertToListDto(productImpl.readAll()));
+    }
+
+    @GetMapping(path = "/top/{idStore}")
+    public ResponseEntity<List<ProductDTO>>getTopProductsByRestaurant(@RequestParam("idStore") Integer idStore){
+        return ResponseEntity.ok(convertToListDto(productImpl.getTopProduct(idStore)));
     }
 /*
     @PostMapping(value = "/register", headers = "Accept=application/json")
