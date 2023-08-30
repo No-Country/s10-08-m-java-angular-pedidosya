@@ -10,10 +10,11 @@ import { cargarSesion } from '../../state/auth.actions';
 import { AuthState } from '../../state/auth.reducer';
 
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['../shared-auth-styles.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
