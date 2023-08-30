@@ -4,6 +4,7 @@ import com.pedidosya.api.dto.Request.CountryDTO;
 import com.pedidosya.api.models.Country;
 import com.pedidosya.api.services.Impl.CountryImpl;
 import com.pedidosya.api.utils.mappers.ICountryMapper;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/countries")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "jwt")
 public class CountryController {
 
     private final CountryImpl countryImpl;

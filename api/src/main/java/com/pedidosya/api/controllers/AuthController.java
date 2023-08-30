@@ -3,6 +3,7 @@ package com.pedidosya.api.controllers;
 import com.pedidosya.api.dto.Request.AuthUserDto;
 import com.pedidosya.api.dto.Response.JwtResponseDto;
 import com.pedidosya.api.services.IAuthService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(path = "/auth")
 @CrossOrigin(origins = "*")
+@SecurityRequirement(name = "jwt")
 public class AuthController {
 
     private final IAuthService iAuthService;

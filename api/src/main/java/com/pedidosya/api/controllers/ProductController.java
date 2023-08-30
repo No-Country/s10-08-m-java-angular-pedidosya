@@ -6,6 +6,7 @@ import com.pedidosya.api.models.Client;
 import com.pedidosya.api.models.Product;
 import com.pedidosya.api.services.Impl.ProductImpl;
 import com.pedidosya.api.utils.mappers.IProductMapper;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/products")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "jwt")
 public class ProductController {
 
     private final ProductImpl productImpl;

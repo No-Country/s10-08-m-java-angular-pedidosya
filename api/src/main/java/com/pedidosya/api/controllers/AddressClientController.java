@@ -6,6 +6,7 @@ import com.pedidosya.api.models.AddressClient;
 import com.pedidosya.api.models.Client;
 import com.pedidosya.api.services.Impl.AddressClientImpl;
 import com.pedidosya.api.utils.mappers.IAddressClientMapper;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path = "/addresses-client")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "jwt")
 public class AddressClientController {
 
     private final AddressClientImpl addressClientImpl;

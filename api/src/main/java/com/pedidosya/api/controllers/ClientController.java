@@ -4,6 +4,7 @@ import com.pedidosya.api.dto.Request.ClientDTO;
 import com.pedidosya.api.models.Client;
 import com.pedidosya.api.services.Impl.ClientImpl;
 import com.pedidosya.api.utils.mappers.IClientMapper;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ import java.util.List;
 @RequestMapping(path = "/clients")
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*")
+@SecurityRequirement(name = "jwt")
 public class ClientController {
 
     private final ClientImpl clientImpl;
