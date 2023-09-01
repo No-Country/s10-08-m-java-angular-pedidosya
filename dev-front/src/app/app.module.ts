@@ -17,6 +17,7 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {restaurantsReducer} from "@root/restaurant/store/reducers/restaurants.reducer";
 import {RestaurantEffects} from "@root/restaurant/store/effects/restaurant.effects";
 import {HttpClientModule} from "@angular/common/http";
+import { LayoutOfCustomerComponent } from './customer/layout-of-customer/layout-of-customer.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {HttpClientModule} from "@angular/common/http";
     CarouselRestaurantsComponent,
     RestaurantCardForCarouselComponent,
     NavbarComponent,
+    LayoutOfCustomerComponent,
 
   ],
   imports: [
