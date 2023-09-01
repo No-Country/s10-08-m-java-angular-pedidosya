@@ -1,3 +1,139 @@
+.fill {
+    width: 100%;
+}
+
+.title-auth {
+    color: #151719;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0px;
+}
+
+.subtitle-login-or-register {
+    width: 264px;
+    color: #151719;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 23px;
+    margin: 0px;
+}
+
+.label-auth {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.input-auth {
+    display: flex;
+    width: 329px;
+    height: 44px;
+
+    border-radius: 16px;
+    border: none;
+    background: var(--ffffff-white, #fff);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.09);
+}
+
+.input-auth::placeholder {
+    padding-left: 5px;
+}
+
+.green-button {
+    border-radius: 16px;
+    width: 329px;
+    height: 44px;
+    background: #048221;
+    color: var(--text-texto-invertido, #F5F5F5);
+    border: none;
+
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.google-button {
+    display: flex;
+    width: 329px;
+    height: 44px;
+    align-items: center;
+    gap: 10px;
+
+
+    border-radius: 16px;
+    border: 2px solid var(--fondo-fondo-mprimario, #048221);
+    justify-content: center;
+
+    color: var(--text-texto-primario, #151719);
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 125%;
+    /* 20px */
+}
+
+.container-form-auth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.terminos-y-condiciones {
+    width: 192px;
+    height: 19px;
+    flex-shrink: 0;
+
+    color: #000;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 8px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    opacity: 0.4;
+    text-decoration-line: underline;
+
+}
+
+//css usuario
+.container-select-option {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.option-button {
+    width: 180px;
+    height: 44px;
+    border-radius: 16px;
+    border: 1px solid var(--lineas-stroke-lineas, #B3BFCB);
+    background: var(--fondo-fondo, #F5F5F5);
+
+    color: var(--text-texto-primario, #151719);
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.option-button:active {
+    background: #D5DEE7;
+}
+
+/*
 .app-header {
     justify-content: space-between;
     position: fixed;
@@ -254,3 +390,4 @@ $font-size: 13px;
     height: 648px;
     // weight: 329;
   }
+  */
