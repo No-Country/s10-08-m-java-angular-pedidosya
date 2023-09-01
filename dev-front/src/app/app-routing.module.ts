@@ -13,7 +13,7 @@ const routes: Routes = [
     path: 'restaurant',
     loadChildren: () => import('./restaurant/restaurant.module').then(mod => mod.RestaurantModule)
   },
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: '', redirectTo: 'auth/loading', pathMatch: 'full'},
   // {path: '**', component: NoEncontradoComponent }
 ];
 
