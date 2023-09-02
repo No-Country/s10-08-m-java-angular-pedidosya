@@ -9,55 +9,105 @@ import {
 } from "@root/restaurant/components/filter-checkbox-form/filter-checkbox-form.component";
 import {FormBuilder, FormGroup, FormsModule} from "@angular/forms";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
-import {NgIf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
+import {Store} from "@ngrx/store";
+import {map} from "rxjs";
+import {selectFilterSelected, selectSortedBy} from "@root/restaurant/store/selectors/restaurants.selector";
+import {RestaurantFilter} from "@shared/filters/restaurant-filter.interface";
+import {RestaurantsActions} from "@root/restaurant/store/actions/restaurants.actions";
+import {RestaurantSortedBy} from "@shared/enums/restaurant-sorted-by";
 
 @Component({
   selector: 'app-filter-bottom-sheet',
   templateUrl: './filter-bottom-sheet.component.html',
   styleUrls: ['./filter-bottom-sheet.component.scss'],
   standalone: true,
-  imports: [MatListModule, MatIconModule, MatButtonModule, RestaurantModule, FilterCheckboxFormComponent, MatButtonToggleModule, FormsModule, NgIf],
+  imports: [MatListModule, MatIconModule, MatButtonModule, RestaurantModule, FilterCheckboxFormComponent, MatButtonToggleModule, FormsModule, NgIf, NgForOf],
 })
 export class FilterBottomSheetComponent implements OnInit {
 
-  sortedBy: string = 'standard';
+  buttonToggleInfo = [
+    {
+      value: RestaurantSortedBy.Recommended,
+      icon: 'filter_list',
+      label: 'Sugeridos'
+    },
+    {
+      value: RestaurantSortedBy.TopRating,
+      icon: 'hotel_class',
+      label: 'Más puntuados'
+    },
+    {
+      value: RestaurantSortedBy.FasterDelivery,
+      icon: 'schedule',
+      label: 'Más rápidos'
+    },
+    {
+      value: RestaurantSortedBy.Proximity,
+      icon: 'location_on',
+      label: 'Más cercanos'
+    }
+  ];
+  sortedBy: RestaurantSortedBy = RestaurantSortedBy.Recommended;
   filtersApplied = false;
 
   benefitsForm: FormGroup;
   paymentForm: FormGroup;
   otherForm: FormGroup;
 
-  constructor(private _bottomSheetRef: MatBottomSheetRef<FilterBottomSheetComponent>, private _formBuilder: FormBuilder) {
-    this.benefitsForm = this._formBuilder.group({
+  constructor(private _bottomSheetRef: MatBottomSheetRef<FilterBottomSheetComponent>, private _formBuilder: FormBuilder, private _store: Store) {
+    this.benefitsForm = this.createFormGroup({
       discounts: false,
-      coupons: false,
-      freeShipping: false,
-      fasterShipping: false,
+      freeDelivery: false,
+      fasterDelivery: false,
     });
 
-    this.paymentForm = this._formBuilder.group({
+    this.paymentForm = this.createFormGroup({
       card: false,
       cash: false,
     });
 
-    this.otherForm = this._formBuilder.group({
+    this.otherForm = this.createFormGroup({
       favorite: false,
-      new: false,
-      lowCost: false,
+      newRestaurants: false,
+      lowerCost: false,
       takeAway: false,
     });
   }
 
-
   handleApplyFilter() {
-    console.log("Apply Filter")
+    const benefitsFormValue = this.benefitsForm.value;
+    const paymentFormValue = this.paymentForm.value;
+    const otherFormValue = this.otherForm.value;
+
+    const filtersSelected: Partial<RestaurantFilter> = {
+      filtersCustom: {
+        benefit: {
+          hasDiscount: benefitsFormValue.discounts,
+          freeDelivery: benefitsFormValue.freeDelivery,
+          fasterDelivery: benefitsFormValue.fasterDelivery,
+        },
+        payment: {
+          cash: paymentFormValue.cash,
+          card: paymentFormValue.card,
+        },
+        others: {
+          favorite: otherFormValue.favorite,
+          lowerCost: otherFormValue.lowerCost,
+          takeAway: otherFormValue.takeAway,
+          newRestaurants: otherFormValue.newRestaurants,
+        },
+        isActivated: true,
+      },
+    };
+    this._store.dispatch(RestaurantsActions.updateRestaurantFilter({filtersSelected}));
+    this._store.dispatch(RestaurantsActions.updateRestaurantSortedBy({sortedBy: this.sortedBy}))
     this._bottomSheetRef.dismiss();
   }
 
   handleDeleteFilter() {
-    console.log("Deleter Filter")
+    this._store.dispatch(RestaurantsActions.resetRestaurantFilter())
     this._bottomSheetRef.dismiss();
-
   }
 
   openLink(event: MouseEvent): void {
@@ -66,27 +116,39 @@ export class FilterBottomSheetComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Escuchar cambios en benefitsForm
-    this.benefitsForm.valueChanges.subscribe((newValues) => {
-      console.log("Cambios en benefitsForm:", newValues);
-      // Puedes realizar acciones en respuesta a los cambios aquí
-    });
+    // Suscripción a cambios en selectFilterSelected para inicializar los formularios
+    this._store.select(selectFilterSelected).pipe(
+      map(({filtersCustom: {benefit, payment, others, isActivated}}) => {
+        this.benefitsForm.setValue({
+          discounts: benefit.hasDiscount,
+          freeDelivery: benefit.freeDelivery,
+          fasterDelivery: benefit.fasterDelivery,
+        });
 
-    // Escuchar cambios en paymentForm
-    this.paymentForm.valueChanges.subscribe((newValues) => {
-      console.log("Cambios en paymentForm:", newValues);
-      // Puedes realizar acciones en respuesta a los cambios aquí
-    });
+        this.paymentForm.setValue({
+          card: payment.card,
+          cash: payment.cash,
+        });
 
-    // Escuchar cambios en otherForm
-    this.otherForm.valueChanges.subscribe((newValues) => {
-      console.log("Cambios en otherForm:", newValues);
-      // Puedes realizar acciones en respuesta a los cambios aquí
-    });
+        this.otherForm.setValue({
+          favorite: others.favorite,
+          newRestaurants: others.newRestaurants,
+          lowerCost: others.lowerCost,
+          takeAway: others.takeAway,
+        });
 
+        this.filtersApplied = isActivated;
+      })
+    ).subscribe();
+
+    this._store.select(selectSortedBy).pipe(
+      map((sortedBy) => {
+        this.sortedBy = sortedBy;
+      })
+    ).subscribe();
   }
 
-
-
-
+  private createFormGroup(initialValues: { [key: string]: any }): FormGroup {
+    return this._formBuilder.group(initialValues);
+  }
 }

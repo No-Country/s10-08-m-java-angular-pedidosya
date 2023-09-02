@@ -1,16 +1,23 @@
-import {RestaurantModel} from "@models/restaurant.model";
+import {Restaurant} from "@models/restaurant.model";
+import {INITIAL_FILTER_STATE, RestaurantFilter} from "@shared/filters/restaurant-filter.interface";
+import {RestaurantSortedBy} from "@shared/enums/restaurant-sorted-by";
 
 //DATOS DEL STORE
 export interface RestaurantState {
-  restaurants: RestaurantModel[];
-  //buscarPorNombre:string;
+  restaurants: Restaurant[];
+  filtersSelected: RestaurantFilter;
+  sortedBy: RestaurantSortedBy;
   isLoading: boolean;
   error: string | null;
 }
 
-//ESTADO INICIAL
-export const initialState: RestaurantState = {
-  restaurants: [],
+
+export const INITIAL_STATE: RestaurantState = {
+  restaurants: <Restaurant[]>[],
+  filtersSelected: {...INITIAL_FILTER_STATE},
   isLoading: false,
+  sortedBy: RestaurantSortedBy.Recommended,
   error: null
 };
+
+

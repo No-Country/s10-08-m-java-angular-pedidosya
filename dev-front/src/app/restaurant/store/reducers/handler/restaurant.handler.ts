@@ -1,5 +1,5 @@
 import {RestaurantState} from "@root/restaurant/store/restaurant.store";
-import {RestaurantModel} from "@models/restaurant.model";
+import {Restaurant} from "@models/restaurant.model";
 
 /*
 * Los handler es opcional, se utilizo para tener separado estos cambios.
@@ -14,8 +14,9 @@ export const handleLoadRestaurants = (state: RestaurantState): RestaurantState =
   }
 }
 
-export const handleLoadRestaurantsSuccess = (state: RestaurantState, {restaurants}: { restaurants: RestaurantModel[] }): RestaurantState => {
+export const handleLoadRestaurantsSuccess = (state: RestaurantState, {restaurants}: { restaurants: Restaurant[] }): RestaurantState => {
   return {
+    ...state,
     restaurants: restaurants,
     isLoading: false,
     error: null
@@ -25,8 +26,11 @@ export const handleLoadRestaurantsSuccess = (state: RestaurantState, {restaurant
 
 export const handleLoadRestaurantsFailure = (state: RestaurantState, {error}: { error: string }): RestaurantState => {
   return {
+    ...state,
     restaurants: [],
     isLoading: false,
     error: error
   }
 }
+
+

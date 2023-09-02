@@ -28,6 +28,20 @@ body {
   min-height: 90vh !important;
 }
 
+//Mat toogle
+.mat-button-toggle-standalone, .mat-button-toggle-group {
+  --mat-legacy-button-toggle-height: 0px !important;
+}
+
+.mat-button-toggle-group {
+  box-shadow: none !important;
+}
+
+.mat-button-toggle-label-content {
+  padding: 5px 10px!important;
+}
+
+
 .bg-general {
   background-color: #f5f5f5;
   // background: #e2e2e2;

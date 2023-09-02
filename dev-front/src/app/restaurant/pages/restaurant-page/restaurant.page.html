@@ -1,5 +1,15 @@
 <app-restaurant-header/>
 
 
-<app-restaurant-deck [restaurants]="(restaurants$|async)" title="{{title}}"></app-restaurant-deck>
+<section class="deck-container">
+  <mat-spinner *ngIf="loading$ | async" class="m-auto"/>
+
+
+  <app-restaurant-deck
+    *ngIf="!(loading$ | async)"
+    [restaurants]="(restaurants$ | async)"
+    [title]="title"/>
+
+
+</section>
 

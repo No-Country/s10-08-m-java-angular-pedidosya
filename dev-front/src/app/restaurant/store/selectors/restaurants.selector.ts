@@ -24,3 +24,13 @@ export const selectError = createSelector(
   selectRestaurantsState,
   (state: RestaurantState) => state.error
 );
+
+export const selectFilterSelected = createSelector(
+  selectRestaurantsState,
+  (state: RestaurantState) => state.filtersSelected
+);
+
+export const selectSortedBy = createSelector(
+  selectRestaurantsState,
+  (state: RestaurantState) => state.sortedBy
+);

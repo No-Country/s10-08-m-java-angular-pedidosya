@@ -3,9 +3,7 @@
   <section [style.background-image]="'url('+productImageUrl+')'" class="hero">
 
     <div class="fixed-top">
-      <a aria-label="Go back" href="#" mat-mini-fab>
-        <mat-icon fontIcon="arrow_back"/>
-      </a>
+    <app-button-nav-back [url]="'/restaurant'"/>
     </div>
 
   </section>
@@ -16,17 +14,21 @@
     <div class="col-2">
       <img [alt]="'Logo '+title" [src]="logoUrl">
     </div>
-    <div class="col-8 ps-1">
+    <div class="col-7">
+      <div class="ps-2">
       <h1 class="my-0">{{title}}</h1>
       <div class="d-flex ">
         <app-rating [rating]="4.1"/>
         <a class="px-1" href="#">Ver opiniones</a>
       </div>
+      </div>
     </div>
-    <div class="col-2">
-      <div class="d-flex">
-        <mat-icon [fontIcon]="isFavorite?'favorite':'favorite_border'"/>
-        <mat-icon class="material-icons-outlined ms-2" fontIcon="shared"/>
+    <div class="col-3">
+      <div class="d-flex justify-content-space-between">
+        <app-button-favorite [favorite]="isFavorite"/>
+        <button color="link" mat-mini-fab class="ms-1">
+          <mat-icon class="material-icons-outlined " fontIcon="shared"/>
+        </button>
       </div>
     </div>
   </section>

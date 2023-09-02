@@ -9,13 +9,14 @@ import {RatingComponent} from "@root/restaurant/components/rating/rating.compone
 import {
   DeliveryDetailsCostTimeComponent
 } from "@root/restaurant/components/delivery-details-cost-time/delivery-details-cost-time.component";
+import {ButtonFavoriteComponent} from "@root/restaurant/components/button-favorite/button-favorite.component";
 
 @Component({
   selector: 'app-restaurant-card',
   templateUrl: './restaurant-card.component.html',
   styleUrls: ['./restaurant-card.component.scss'],
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, MatIconModule, RatingComponent, CurrencyPipe, DeliveryDetailsCostTimeComponent],
+  imports: [MatCardModule, MatButtonModule, MatIconModule, RatingComponent, CurrencyPipe, DeliveryDetailsCostTimeComponent, ButtonFavoriteComponent],
 })
 export class RestaurantCardComponent {
   @Input() restaurant!: RestaurantModel

@@ -4,27 +4,17 @@
       <path d="M2 2H52" stroke="#B3BFCB" stroke-linecap="round" stroke-width="4"/>
     </svg>
   </header>
-  <!--Grupo Botones-->
-  <main class="filter-group-container">
-    <h2>Ordenado Por</h2>
 
+  <main class="filter-group-container">
+    <!--Ordenado By-->
+    <h2>Ordenar por</h2>
     <mat-button-toggle-group [(ngModel)]="sortedBy" appearance="legacy" aria-label="Sorted by"
                              class="filter-button-group-content">
-      <mat-button-toggle class="btn-filter" value="standard">
-        <mat-icon fontIcon="filter_list"/>
-        Sugeridos
-      </mat-button-toggle>
-      <mat-button-toggle class="btn-filter" value="rating">
-        <mat-icon class="material-icons-outlined" fontIcon="hotel_class"/>
-        Más puntuados
-      </mat-button-toggle>
-      <mat-button-toggle class="btn-filter" value="faster">
-        <mat-icon fontIcon="schedule"/>
-        Más rapidos
-      </mat-button-toggle>
-      <mat-button-toggle class="btn-filter" value="nearby">
-        <mat-icon class="material-icons-outlined" fontIcon="location_on"/>
-        Más cercanos
+      <mat-button-toggle *ngFor="let buttonSort of buttonToggleInfo"
+                         [value]="buttonSort.value"
+                         class="btn-filter">
+        <mat-icon [fontIcon]="buttonSort.icon"></mat-icon>
+        {{ buttonSort.label }}
       </mat-button-toggle>
     </mat-button-toggle-group>
     <!--Filtrar Por-->
@@ -39,12 +29,11 @@
     </div>
   </main>
 
-
   <footer class="py-2 px-1">
     <button (click)="handleApplyFilter()" class="my-2" color="primary" mat-raised-button>
       Aplicar filtros
     </button>
-    <button (click)="handleDeleteFilter()" [disabled]="!filtersApplied" mat-stroked-button>
+    <button (click)="handleDeleteFilter()" *ngIf="filtersApplied" mat-stroked-button>
       Eliminar filtros
     </button>
   </footer>
