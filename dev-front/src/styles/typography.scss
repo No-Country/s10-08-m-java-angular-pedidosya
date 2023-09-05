@@ -1,7 +1,7 @@
 body, button, select, textarea, mat-label, input, h1, h2, h3, h4, p, label {
   font-family: Poppins, sans-serif !important;
-
 }
+
 
 $base-font-size: 14px; // Tamaño base del cuerpo de texto
 
@@ -45,7 +45,7 @@ p {
   font-size: $base-font-size;
 }
 
-//FontWieght fw-*
+//FontWeight fw-*
 $font-weight-values: (
   100: 100,
   200: 200,

@@ -17,7 +17,9 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {restaurantsReducer} from "@root/restaurant/store/reducers/restaurants.reducer";
 import {RestaurantEffects} from "@root/restaurant/store/effects/restaurant.effects";
 import {HttpClientModule} from "@angular/common/http";
-import { LayoutOfCustomerComponent } from './customer/layout-of-customer/layout-of-customer.component';
+import {LayoutOfCustomerComponent} from './customer/layout-of-customer/layout-of-customer.component';
+import {menuReducer} from "@root/restaurant/store/reducers/menu.reducers";
+import {MenuEffects} from "@root/restaurant/store/effects/menu.effects";
 
 @NgModule({
   declarations: [
@@ -38,8 +40,9 @@ import { LayoutOfCustomerComponent } from './customer/layout-of-customer/layout-
     HttpClientModule,
     StoreModule.forRoot({
       restaurants: restaurantsReducer,
+      menus: menuReducer
     }, {}),
-    EffectsModule.forRoot([RestaurantEffects]),
+    EffectsModule.forRoot([RestaurantEffects, MenuEffects]),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode()})
   ],
   providers: [],

@@ -13,12 +13,13 @@ export class RestaurantService {
 
   restaurantsAPI: RestaurantModel[] = [
     {
-      id: 0,
+      id: 1,
       name: "Burguer King",
       minTime: 10,
       maxTime: 15,
       rating: 4.1,
       deliveryCost: 1000,
+      minToOrder: 2999,
       brandImage: "assets/mocks/brand_bk.png",
       productImage: "assets/mocks/products_bk.png",
       favorite: true,
@@ -26,12 +27,13 @@ export class RestaurantService {
       products: []
     },
     {
-      id: 0,
+      id: 2,
       name: "McDonald´s",
       minTime: 10,
       maxTime: 30,
       rating: 4.1,
       deliveryCost: 0,
+      minToOrder: 1199,
       brandImage: "assets/mocks/brand_mc.png",
       productImage: "assets/mocks/products_mc.png",
       favorite: true,
@@ -39,12 +41,13 @@ export class RestaurantService {
       products: []
     }
     , {
-      id: 0,
+      id: 3,
       name: "Residente",
       minTime: 15,
       maxTime: 60,
       rating: 4.3,
       deliveryCost: 499,
+      minToOrder: 0,
       brandImage: "assets/mocks/brand_r.png",
       productImage: "assets/mocks/product_r.png",
       favorite: false,
@@ -52,12 +55,13 @@ export class RestaurantService {
       products: []
     },
     {
-      id: 0,
+      id: 4,
       name: "Burguer Queen",
       minTime: 10,
       maxTime: 15,
       rating: 4.1,
       deliveryCost: 600,
+      minToOrder: 0,
       brandImage: "assets/mocks/brand_bk.png",
       productImage: "assets/mocks/products_bk.png",
       favorite: false,
@@ -65,12 +69,13 @@ export class RestaurantService {
       products: []
     },
     {
-      id: 0,
+      id: 5,
       name: "Burguer Prince",
       minTime: 10,
       maxTime: 15,
       rating: 2,
       deliveryCost: 600,
+      minToOrder: 999,
       brandImage: "assets/mocks/brand_bk.png",
       productImage: "assets/mocks/products_bk.png",
       favorite: false,
@@ -92,6 +97,7 @@ export class RestaurantService {
         apiRestaurant.maxTime,
         apiRestaurant.rating,
         apiRestaurant.deliveryCost,
+        apiRestaurant.minToOrder,
         apiRestaurant.brandImage,
         apiRestaurant.productImage,
         apiRestaurant.favorite,

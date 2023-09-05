@@ -1,38 +1,33 @@
 <header>
   <!--hero-->
-  <section [style.background-image]="'url('+productImageUrl+')'" class="hero">
-
-    <div class="fixed-top">
-    <app-button-nav-back [url]="'/restaurant'"/>
-    </div>
-
-  </section>
-
+  <section [style.background-image]="'url('+restaurant.productImage+')'" class="hero"></section>
 
   <!--descripcion-->
   <section class="row mt-2 mb-3 px-2 align-items-center">
     <div class="col-2">
-      <img [alt]="'Logo '+title" [src]="logoUrl">
+      <img [alt]="'Logo '+restaurant.name" [src]="restaurant.brandImage" class="brand-img">
     </div>
     <div class="col-7">
       <div class="ps-2">
-      <h1 class="my-0">{{title}}</h1>
-      <div class="d-flex ">
-        <app-rating [rating]="4.1"/>
-        <a class="px-1" href="#">Ver opiniones</a>
-      </div>
+        <h1 class="my-0">{{restaurant.name}}</h1>
+        <div class="d-flex ">
+          <app-rating [rating]="restaurant.rating"/>
+          <a class="px-1" href="#">Ver opiniones</a>
+        </div>
       </div>
     </div>
     <div class="col-3">
       <div class="d-flex justify-content-space-between">
-        <app-button-favorite [favorite]="isFavorite"/>
-        <button color="link" mat-mini-fab class="ms-1">
+        <app-button-favorite [favorite]="restaurant.favorite"/>
+        <button class="ms-1" color="link" mat-flat-button>
           <mat-icon class="material-icons-outlined " fontIcon="shared"/>
         </button>
       </div>
     </div>
   </section>
-
+  <!--detalles entrega/pedido-->
+  <app-restaurant-delivery-info [deliveryCost]="restaurant.deliveryCost" [maxTime]="restaurant.maxTime"
+                                [minTime]="restaurant.minTime" [minToOrder]="restaurant.minToOrder"/>
 
 </header>
 

@@ -1,23 +1,23 @@
 <header class="shadow-container fixed-top">
-  <div class="nav-search-container">
+  <nav class="nav-search-container">
     <app-button-nav-back [url]="'/home'"/>
     <app-search-input (searchTermChange)="onSearchTermChange($event)" [label]="'Buscar restaurantes'"
                       [placeholder]="'Buscar...'"/>
-  </div>
-
-  <div class="filters-container">
-    <div class="filters-scroll">
-      <app-filter-button/>
-      <mat-button-toggle-group #group="matButtonToggleGroup" (change)="onSelectionChange()"
-                               [(ngModel)]="selectedNavigationFilters " appearance="legacy"
-                               multiple>
-        <mat-button-toggle class="btn-filter" value="free">Envío gratis</mat-button-toggle>
-        <mat-button-toggle class="btn-filter" value="discount">Descuentos</mat-button-toggle>
-        <mat-button-toggle class="btn-filter" value="takeAway">Retiro en local</mat-button-toggle>
-      </mat-button-toggle-group>
+  </nav>
+  <section class="filter-container ">
+    <app-filter-button/>
+    <div class="filters-nav-container">
+      <div class="filters-scroll">
+        <mat-button-toggle-group #group="matButtonToggleGroup" (change)="onSelectionChange()"
+                                 [(ngModel)]="selectedNavigationFilters " appearance="legacy"
+                                 multiple>
+          <mat-button-toggle class="btn-filter" value="free">Envío gratis</mat-button-toggle>
+          <mat-button-toggle class="btn-filter" value="discount">Descuentos</mat-button-toggle>
+          <mat-button-toggle class="btn-filter" value="takeAway">Retiro en local</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
     </div>
-  </div>
-
+  </section>
 
 
 </header>

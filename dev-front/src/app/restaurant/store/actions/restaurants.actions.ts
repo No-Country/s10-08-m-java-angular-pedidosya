@@ -13,6 +13,6 @@ export const RestaurantsActions = createActionGroup({
     'Update Restaurant Filter': props<{ filtersSelected: Partial<RestaurantFilter> }>(),
     'Update Restaurant Custom Filter': props<{ filtersCustom: Partial<RestaurantCustomFilter> }>(),
     'Update Restaurant Sorted By': props<{ sortedBy: RestaurantSortedBy }>(),
-    'Reset Restaurant Filter': emptyProps()
+    'Reset Restaurant Filter': emptyProps(),
   },
 });

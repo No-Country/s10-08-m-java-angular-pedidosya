@@ -32,7 +32,7 @@ export interface RestaurantCustomFilter {
 
 
 //ESTADO INICIAL
-export const INITIAL_FILTER_STATE: RestaurantFilter = {
+export const INITIAL_RESTAURANT_FILTER: RestaurantFilter = {
   searchTerm: '',
   navigationFilters: <string[]>[],
   filtersCustom: {

@@ -1,5 +1,5 @@
 import {createFeatureSelector, createSelector} from "@ngrx/store";
-import {RestaurantState} from "@root/restaurant/store/restaurant.store";
+import {RestaurantState} from "@root/restaurant/store/restaurant.state";
 
 
 /*
