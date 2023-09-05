@@ -1,15 +1,16 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { StoreModule } from '@ngrx/store';
+import { authFeatureKey, authReducer } from './state/auth.reducer';
 
-import {AuthRoutingModule} from './auth-routing.module';
-import {MaterialModule} from '@shared/material.module';
-import {SharedModule} from '@shared/shared.module';
-import {RegisterComponent} from './components/register/register.component';
-import {LoginComponent} from './components/login/login.component';
-import {AuthStartComponent} from './components/auth-start/auth-start.component';
+import { AuthRoutingModule } from './auth-routing.module';
+import { MaterialModule } from '@shared/material.module';
+import { SharedModule } from '@shared/shared.module';
 
-import {StoreModule} from '@ngrx/store';
-import {authFeatureKey, authReducer} from './state/auth.reducer';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthStartComponent } from './components/auth-start/auth-start.component';
+
 import { LoadingAuthComponent } from './components/loading-auth/loading-auth.component';
 import { SelectUserTypeComponent } from './components/select-user-type/select-user-type.component';
 import { LocationAccessComponent } from './components/location-access/location-access.component';

@@ -122,9 +122,20 @@
 
     <p class="subtitle-login-or-register">Elige una opción</p>
 
-    <button class="option-button">Local</button>
+    <!-- <button class="option-button">Local</button>
     <button class="option-button">Delivery</button>
-    <button class="option-button">Cliente</button>
-    <button class="green-button" routerLink="/auth/locationAccess">Continuar</button>
+    <button class="option-button">Cliente</button> -->
+
+    <ul class="heroes">
+      <li style="list-style-type: none;" *ngFor="let userType of options">
+        <button class="option-button" [class.buttomselected]="userType.key=== 'C'" 
+          type="button" (click)="onSelect(userType)">
+          <span>{{userType.value}}</span>
+        </button>
+      </li>
+    </ul>
+
+    <button class="green-button" (click)="register()" type="button">Continuar</button>
+
 
 </div>

@@ -1,24 +1,41 @@
 <div class="bg-general container-form-auth">
 
+  <form [formGroup]="myForm">
     <h2 class="title-auth">Bienvenido</h2>
     <p class="subtitle-login-or-register">Registro</p>
 
     <div>
+      <label class="label-auth" for="">Nombre</label>
+      <input class="input-auth" placeholder="Ingrese su nombre"
+          formControlName="firstName">
+  </div>
+
+  <div>
+      <label class="label-auth" for="">Apellido</label>
+      <input class="input-auth" placeholder="Ingrese su apellido"
+          formControlName="lastName">
+  </div>    
+
+    <div>
         <label class="label-auth" for="">Correo electrónico</label>
-        <input class="input-auth" placeholder="Ingresá tu correo">
+        <input class="input-auth" placeholder="Ingresá tu correo"
+            formControlName="email" type="email">
     </div>
 
     <div>
         <label class="label-auth" for="">Contraseña</label>
-        <input class="input-auth" placeholder="Ingresá tu contraseña">
+        <input class="input-auth" placeholder="Ingresá tu contraseña"
+            formControlName="password" type="email">
     </div>
 
     <div>
         <label class="label-auth" for="">Confirme contraseña</label>
-        <input class="input-auth" placeholder="Confirma tu contraseña">
+        <input class="input-auth" placeholder="Confirma tu contraseña"
+            formControlName="passwordConfirm">
     </div>
 
-    <button class="green-button" routerLink="/auth/selectUserType">Registrarse</button>
+    <!-- <button class="green-button">Registrarse</button> -->
+    <button class="green-button" mat-button id="register" (click)="register()" type="button">Registrarse</button>
 
     <button class="google-button">
         <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
@@ -37,6 +54,20 @@
         Continuar con Google
     </button>
 
+    <!-- style="margin-top: 18px; font-size: 10px; padding: 0px 20px" -->
+    <!-- <div class="text-center">
+      <span class="text-sm me-3">Al crear tu cuenta aceptas nuestro Aviso de privacidad y Términos y condiciones</span>
+    </div>        -->
+
+    <div class="text-center" style="margin-top: 18px;">
+      <span class="text-xs me-3">¿Ya tenés una cuenta?</span>
+      <a routerLink="/auth/login"><span
+          class="text-xs text-primary fw-bold"> Inicia sesión</span></a>
+    </div>
+
     <p class="terminos-y-condiciones">Al crear tu cuenta aceptas nuestro Aviso de privacidad y Términos y condiciones.</p>
+
+  </form>
+
 
 </div>

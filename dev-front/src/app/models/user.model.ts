@@ -1,8 +1,6 @@
 export interface  UserModel {
-	id: number;
-	firstname: string;
-	lastname: string;
+	idUser: number;
 	email: string;
 	password: string;
-	isAdmin: boolean;
+	rol: string;
 }
