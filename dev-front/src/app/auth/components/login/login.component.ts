@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { Sesion } from 'src/app/models/sesion';
 import { UserModel } from '@models/user.model';
-import { credencialesUsuario, respuestaAutenticacion, usuarioDTO } from '@models/seguridad';
+import { credencialesUsuario, responseAuthentication } from '@models/dtos.model';
 
 import { AuthService } from '../../services/auth.service';
 import { cargarSesion } from '../../state/auth.actions';
@@ -76,14 +76,14 @@ export class LoginComponent implements OnInit, OnDestroy {
       };
       this.authService.login(data)
       .subscribe(respuesta => {
-        // console.log('respuesta', respuesta.jwt);
+        console.log('jwt', respuesta.jwt);
         this.authService.setToken(respuesta);
         this.router.navigate(['home']);
       }, errores => console.log('LOGIN FAILED', errores.error.detail));
       // }, errores => this.errores = parsearErroresAPI(errores));
     }
 
-    // this.AuthService.createUser(data).subscribe(
+    // this.AuthService.userRegistration(data).subscribe(
 		// 	(response: any) => {
 		// 		// this.toastrService.success('Signup Success', user.firstname + ', you are welcome');
     //     		console.log('okey', 'Register  ok')

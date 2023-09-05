@@ -7,7 +7,7 @@ import { SesionService } from '@services/sesion.service';
 import { Sesion } from '@models/sesion';
 import { UserModel } from '@models/user.model';
 import { env } from 'src/environment/environment';
-import { credencialesUsuario, respuestaAutenticacion, usuarioDTO } from '@models/seguridad';
+import { credencialesUsuario, responseAuthentication } from '@models/dtos.model';
 
 
 @Injectable({
@@ -15,8 +15,7 @@ import { credencialesUsuario, respuestaAutenticacion, usuarioDTO } from '@models
 })
 export class AuthService {
 
-	apiUrl: string = env.apiURL; //'http://localhost:3000/users';
-  // apiURL = environment.apiURL;
+	apiUrl: string = env.apiURL; //'http://localhost:3000/';
   private readonly keyToken = 'jwt';
 
   constructor(
@@ -24,64 +23,39 @@ export class AuthService {
     private httpClient: HttpClient
   ) { }
 
-  // login(user: UserModel): Observable<Sesion>{
-  //   const urlLogin = `${env.authURL}/users`;
-  //   return this.http.get<UserModel[]>(urlLogin).pipe(
-  //     map((users: UserModel[]) => {
-  //       let userValidated = users.find((u: UserModel) => u.email === user.email && u.password === user.password);
-
-  //       if(userValidated){
-  //         const sesion: Sesion = {
-  //           sesionActiva: true,
-  //           usuarioActivo: userValidated
-  //         }
-
-  //         return sesion 
-  //       }else{
-  //         const sesion: Sesion = {
-  //           sesionActiva: false
-  //         }
-
-  //         return sesion
-  //       }
-  //     })
-  //   );
-  // }
-
-  // login1(data: any): Observable<Sesion>{
-  //   // const urlLogin = `${env.authURL}/users`; /
-  //   const urlLogin = `${env.apiURL}/auth/sign-in`;
-  //   //return this.http.post(urlLogin, data).pipe(catchError(this.handleError));
-  //   // return this.http.get<UserModel[]>(urlLogin).pipe(
-  //   //   map((users: UserModel[]) => {
-  //   //     let userValidated = users.find((u: UserModel) => u.email === data.email && u.password === data.password);
-
-  //   //     if(userValidated){
-  //   //       const sesion: Sesion = {
-  //   //         sesionActiva: true,
-  //   //         usuarioActivo: userValidated
-  //   //       }
-
-  //   //       return sesion 
-  //   //     }else{
-  //   //       const sesion: Sesion = {
-  //   //         sesionActiva: false
-  //   //       }
-
-  //   //       return sesion
-  //   //     }
-  //   //   })
-  //   // );
-  // }  
-  
-	createUser(data: any): Observable<any> {
+	userRegistration(data: any): Observable<any> {
     // const urlSignUp = `${env.apiURL}/auth/registerClient`;
     const urlSignUp = this.apiUrl + '/auth/registerClient';
-
-    console.log('createUser', urlSignUp);
 		return this.httpClient.post(urlSignUp, data).pipe(catchError(this.handleError));
 	}
   
+  login(credenciales: any): Observable<responseAuthentication>{
+    const urlLogin = `${env.apiURL}/auth/sign-in`;
+    return this.httpClient.post<responseAuthentication>(urlLogin, credenciales);
+  }
+
+  logout(){
+    localStorage.removeItem(this.keyToken);
+  }
+
+  isLogued(): boolean{
+    return this.getToken() ? true : false;
+
+    // const token = localStorage.getItem(this.keyToken);
+    // if (!token){
+    //   return false;
+    // }
+    // return true;
+  }  
+
+  setToken(responseAut: responseAuthentication){
+    localStorage.setItem(this.keyToken, responseAut.jwt)
+  }
+
+  getToken(){
+    return localStorage.getItem(this.keyToken);
+  }
+
 	// Handle API errors
 	handleError(error: HttpErrorResponse) {
 		if (error.error instanceof ErrorEvent) {
@@ -91,57 +65,27 @@ export class AuthService {
 		}
 		return throwError('Something bad happened; please try again later.');
 	} 
-  
-  // Felipe Gavilan  
-  login(credenciales: any): Observable<respuestaAutenticacion>{
-    const urlLogin = `${env.apiURL}/auth/sign-in`;
-    return this.httpClient.post<respuestaAutenticacion>(urlLogin, credenciales);
-  }
-  // logout(){
-  //   localStorage.removeItem(this.keyToken);
+
+  // login(user: UserModel): Observable<Sesion>{
+  //   const urlLogin = `${env.authURL}/users`;
+  //   return this.http.get<UserModel[]>(urlLogin).pipe(
+  //     map((users: UserModel[]) => {
+  //       let userValidated = users.find((u: UserModel) => u.email === user.email && u.password === user.password);
+  //       if(userValidated){
+  //         const sesion: Sesion = {
+  //           sesionActiva: true,
+  //           usuarioActivo: userValidated
+  //         }
+  //         return sesion 
+  //       }else{
+  //         const sesion: Sesion = {
+  //           sesionActiva: false
+  //         }
+  //         return sesion
+  //       }
+  //     })
+  //   );
   // }
-  // registrar(credenciales: credencialesUsuario): Observable<respuestaAutenticacion>{
-  //   return this.httpClient.post<respuestaAutenticacion>(this.apiURL + '/crear', credenciales);
-  // }
 
-  // login(credenciales: credencialesUsuario): Observable<respuestaAutenticacion>{
-  //   return this.httpClient.post<respuestaAutenticacion>(this.apiURL + '/login', credenciales);
-  // }
-
-  estaLogueado(): boolean{
-
-    // const token = localStorage.getItem(this.keyToken);
-
-    // if (!token){
-    //   return false;
-    // }
-
-    // const expiracion = localStorage.getItem(this.llaveExpiracion);
-    // const expiracionFecha = new Date(expiracion);
-
-    // if (expiracionFecha <= new Date()){
-    //   this.logout();
-    //   return false;
-    // }
-
-    return true;
-  }  
-
-
-  setToken(respuestaAutenticacion: respuestaAutenticacion){
-    localStorage.setItem(this.keyToken, respuestaAutenticacion.jwt)
-  }
-
-  getToken(){
-    return localStorage.getItem(this.keyToken);
-  }
   
-  // obtenerCampoJWT(campo: string): string{
-  //   const token = localStorage.getItem(this.keyToken);
-  //   if (!token){return '';}
-  //   var dataToken = JSON.parse(atob(token.split('.')[1]));
-  //   return dataToken[campo];
-  // }  
-  
-
 }

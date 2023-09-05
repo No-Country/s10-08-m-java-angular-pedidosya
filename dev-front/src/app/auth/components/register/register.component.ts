@@ -4,24 +4,10 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { Sesion } from 'src/app/models/sesion';
-import { UserModel } from '@models/user.model';
-import { ClientModel } from '@models/client.model';
+import { SignUpDTO } from '@models/dtos.model';
 import { AuthService } from '../../services/auth.service';
 import { cargarSesion } from '../../state/auth.actions';
 import { AuthState } from '../../state/auth.reducer';
-
-interface DTOSignUp {
-	firstName: string,
-	lastName: string,
-	active: boolean,
-	user: DTOUser
-}
-
-interface DTOUser {
-	email: string,
-	password: string,
-	role: string
-}  
 
 @Component({
   selector: 'app-register',
@@ -31,14 +17,6 @@ interface DTOUser {
 
 export class RegisterComponent {
   myForm!: FormGroup;
-	user = {
-		id: 0,
-		firstname: '',
-		lastname: '',
-		birthdate: '',
-		gender: '',
-		email: '',
-	};
 
   constructor(
 		private router: Router,
@@ -55,22 +33,17 @@ export class RegisterComponent {
 			lastName: ['', [Validators.required]]
 		});
 	}
+
   ngOnInit(): void {
 	localStorage.clear();
   }
 
   register(): void {
-    // validate password
+    // todo: validate password
     const pass = this.myForm.value.password;
     const passconf = this.myForm.value.passwordConfirm;
     
-	// const dataUser: DTOUser = {
-	// 	email: this.myForm.value.email,
-	// 	password: this.myForm.value.password,
-	// 	role: 'C'
-	//   };	
-
-	const data: DTOSignUp = {
+	const data: SignUpDTO = {
 		firstName: this.myForm.value.firstName,
 		lastName: this.myForm.value.lastName,		
       	active: true,
@@ -86,10 +59,6 @@ export class RegisterComponent {
 	localStorage.setItem('user', JSON.stringify(data))
 	this.router.navigate(['auth/selectUserType']);
 
-	}
-
-	goLogin() {
-		this.router.navigate(['/auth/login']);
 	}
 
 }

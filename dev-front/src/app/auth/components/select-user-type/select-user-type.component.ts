@@ -2,21 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { UserTypes } from '@models/AllTypes.enum';
+import { SignUpDTO } from '@models/dtos.model';
 import { ToastrService } from 'ngx-toastr';
-
-interface DTOSignUp {
-	firstName: string | null,
-	lastName: string | null,
-	active: boolean,
-	user: DTOUser
-}
-
-interface DTOUser {
-	email: string | null,
-	password: string | null,
-	role: string | null
-} 
-
 
 @Component({
   selector: 'app-select-user-type',
@@ -27,14 +14,8 @@ export class SelectUserTypeComponent {
 
  
   selectedUserType?: any;
-  options: Array<{key: string, value: string}> = [
-    {key: 'C', value: 'Client'},
-    {key: 'D', value: 'Delivery'},
-    {key: 'L', value: 'Local'}  
-  ];
 
-  keys = Object.keys(UserTypes)
-
+  options: Array<{id: string, name: string}> = [];
 
   constructor(
     private router: Router,
@@ -42,14 +23,24 @@ export class SelectUserTypeComponent {
     // private toastrService: ToastrService
   ) {
 
-    // this.keys.forEach((key, index) => {
-    //   console.log(`${key} has index ${this.keys}`)
-    // })
+        
+    this.options = Object.keys(UserTypes)
+        .filter((v) => isNaN(Number(v)))
+        .map((name) => {
+          return {
+            id: UserTypes[name as keyof typeof UserTypes],
+            name,
+          };
+        });
+        
+       console.log(this.options);          
+
   }  
 
   onSelect(userType: any): void {
-    console.log ('onSelect', userType);
     this.selectedUserType = userType;
+    console.log ('onSelect', userType);    
+    console.log ('onSelect', this.selectedUserType.id);
   }
 
   register(): void {
@@ -67,12 +58,12 @@ export class SelectUserTypeComponent {
     //   user: dataUser
     // };
 
-    let dataSignUp: DTOSignUp = JSON.parse(localStorage.getItem('user') || '');
-    dataSignUp.user.role = UserTypes.CLIENT;
+    let dataSignUp: SignUpDTO = JSON.parse(localStorage.getItem('user') || '');
+    dataSignUp.user.role = this.selectedUserType.id; //UserTypes.CLIENT;
     
     console.log ('dataSignUp', dataSignUp)
 
-		this.authService.createUser(dataSignUp).subscribe(
+		this.authService.userRegistration(dataSignUp).subscribe(
 			(response: any) => {
 				//this.toastrService.success('Usuario registrado', dataSignUp.firstName + ', vienvenido');
         	console.log('Register  ok', dataSignUp);

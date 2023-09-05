@@ -128,9 +128,9 @@
 
     <ul class="heroes">
       <li style="list-style-type: none;" *ngFor="let userType of options">
-        <button class="option-button" [class.buttomselected]="userType.key=== 'C'" 
+        <button class="option-button" [class.buttomselected]="userType.id=== 'C'" 
           type="button" (click)="onSelect(userType)">
-          <span>{{userType.value}}</span>
+          <span>{{userType.name}}</span>
         </button>
       </li>
     </ul>
