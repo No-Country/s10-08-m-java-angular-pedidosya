@@ -1,41 +1,27 @@
 <main class="container">
   <!-- Mas vendidos -->
-
-  <div class="py-3" id="topSelling">
-    <h2 class="menu-title">Mas vendidos</h2>
-    <div *ngIf="menusTopSelling && menusTopSelling.products && menusTopSelling.products.length > 0"
-         class="products-container">
-      <app-product-card *ngFor="let product of menusTopSelling.products" [product]="product"/>
-    </div>
-    <div *ngIf="!menusTopSelling || !menusTopSelling.products || menusTopSelling.products.length === 0">
-      No hay más vendidos.
-    </div>
-  </div>
+  <app-product-list #masVendidosList
+                    *ngIf="menusTopSelling"
+                    [id]="-2"
+                    [products]="menusTopSelling.products |productFilter:searchText"
+                    [title]="'Mas vendidos'"/>
 
   <!-- Descuentos -->
+  <app-product-list *ngIf="menusDiscount"
+                    [id]="-1"
+                    [isScrolling]="false"
+                    [products]="menusDiscount.products |productFilter:searchText"
+                    [title]="'Descuentos'"/>
 
-  <div class="pb-3" id="discount">
-    <h2 class="menu-title">Descuentos</h2>
-    <!-- Mas vendidos -->
-    <div *ngIf="menusDiscount && menusDiscount.products && menusDiscount.products.length > 0" class="row">
-      <app-product-card *ngFor="let product of menusDiscount.products" [product]="product" class="col-6"/>
-    </div>
-    <div *ngIf="!menusDiscount || !menusDiscount.products || menusDiscount.products.length === 0">
-      No hay descuentos.
-    </div>
-  </div>
   <!-- Mas vendidos -->
   <ng-container *ngIf="menus">
     <ng-container *ngFor="let menu of menus">
-      <div [id]="menu.id" class="pb-3">
-        <h2 class="menu-title">{{menu.name}}</h2>
-        <div class="row">
-          <app-product-card *ngFor="let product of menu.products" [product]="product" class="col-6"/>
-        </div>
-        <div *ngIf="!menu || !menu.products || menu.products.length === 0">
-          No hay productos disponibles en este menú.
-        </div>
-      </div>
+      <app-product-list
+        [id]="menu.id"
+        [isScrolling]="false"
+        [products]="menu.products|productFilter:searchText"
+        [title]="menu.name"
+      />
     </ng-container>
   </ng-container>
 </main>

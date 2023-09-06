@@ -4,7 +4,10 @@ import {INITIAL_STATE} from "@root/restaurant/store/menu.state";
 import {
   handleLoadMenus,
   handleLoadMenusFailure,
-  handleLoadMenusSuccess, handleSetSelectedRestaurant, handleUpdateSearchTerm
+  handleLoadMenusSuccess,
+  handleSetProductSelectedId,
+  handleSetSelectedRestaurant,
+  handleUpdateSearchTerm
 } from "@root/restaurant/store/reducers/handler/menu.handlers";
 
 
@@ -15,4 +18,5 @@ export const menuReducer = createReducer(
   on(MenuActions.loadMenuSuccess, handleLoadMenusSuccess),
   on(MenuActions.loadMenuError, handleLoadMenusFailure),
   on(MenuActions.updateSearchTerm, handleUpdateSearchTerm),
+  on(MenuActions.setProductSelectedId, handleSetProductSelectedId),
 );

@@ -1,7 +1,6 @@
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
-import {RatingComponent} from "@root/restaurant/components/rating/rating.component";
 import {CurrencyPipe} from "@angular/common";
 import {
   DeliveryDetailsCostTimeComponent
@@ -9,6 +8,7 @@ import {
 import {ButtonFavoriteComponent} from "@shared/components/button-favorite/button-favorite.component";
 import {RestaurantModel} from "@models/restaurant.model";
 import {Component, Input} from "@angular/core";
+import {RatingComponent} from "@shared/components/rating/rating.component";
 
 @Component({
   selector: 'app-restaurant-card',
@@ -18,7 +18,7 @@ import {Component, Input} from "@angular/core";
   imports: [MatCardModule, MatButtonModule, MatIconModule, RatingComponent, CurrencyPipe, DeliveryDetailsCostTimeComponent, ButtonFavoriteComponent],
 })
 export class RestaurantCardComponent {
-  @Input() restaurant!: RestaurantModel
+  @Input() restaurant!: RestaurantModel;
 
 
 }

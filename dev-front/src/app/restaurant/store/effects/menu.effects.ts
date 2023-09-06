@@ -20,7 +20,7 @@ export class MenuEffects {
       withLatestFrom(this.store.select(selectRestaurantSelectedId)),
       mergeMap(([actions, selectedRestaurantId]): Observable<any> => {
         if (selectedRestaurantId !== null) {
-          return this.menuService.loadMenus(selectedRestaurantId).pipe(
+          return this.menuService.getMenus(selectedRestaurantId).pipe(
             map(data => {
               const {topSelling, discounts, others} = data;
               return MenuActions.loadMenuSuccess({topSelling, discounts, others});

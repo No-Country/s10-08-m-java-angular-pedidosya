@@ -27,11 +27,11 @@
             <div class="nav-tabs px-1 py-1">
               <mat-button-toggle-group #group="matButtonToggleGroup" [(ngModel)]="selectedNavigation "
                                        appearance="legacy">
-                <mat-button-toggle class="btn-nav" value="topSelling">Mas vendidos</mat-button-toggle>
-                <mat-button-toggle class="btn-nav" value="discounts">Descuentos</mat-button-toggle>
+                <mat-button-toggle class="btn-nav" value="-2">Mas vendidos</mat-button-toggle>
+                <mat-button-toggle class="btn-nav" value="-1">Descuentos</mat-button-toggle>
                 <ng-container *ngIf="menuOthers$ | async as menuOthers;">
                   <mat-button-toggle *ngFor="let menu of menuOthers"
-                                     [value]="menu.name"
+                                     [value]="menu.id"
                                      class="btn-nav">{{menu.name}}</mat-button-toggle>
                 </ng-container>
               </mat-button-toggle-group>

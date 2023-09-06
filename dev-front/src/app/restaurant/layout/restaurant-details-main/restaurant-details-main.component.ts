@@ -8,11 +8,14 @@ import {MatIconModule} from "@angular/material/icon";
 import {MenuButtonComponent} from "@root/restaurant/components/menu-button/menu-button.component";
 import {Menu} from "@models/menu.model";
 import {ButtonNavBackComponent} from "@shared/components/button-nav-back/button-nav-back.component";
+import {ProductListComponent} from "@root/restaurant/components/product-list/product-list.component";
+import {MenuFacade} from "@root/restaurant/store/facades/menu.facade";
+import {SharedModule} from "@shared/shared.module";
 
 @Component({
   selector: 'app-restaurant-details-main',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatButtonToggleModule, MatIconModule, ProductCardComponent, FormsModule, MenuButtonComponent, ButtonNavBackComponent],
+  imports: [CommonModule, MatButtonModule, MatButtonToggleModule, MatIconModule, ProductCardComponent, FormsModule, MenuButtonComponent, ButtonNavBackComponent, ProductListComponent, SharedModule],
   templateUrl: './restaurant-details-main.component.html',
   styleUrls: ['./restaurant-details-main.component.scss']
 })
@@ -21,5 +24,18 @@ export class RestaurantDetailsMainComponent {
   @Input() menusDiscount!: Menu | null;
   @Input() menus!: Menu[] | null;
 
-  /**/
+
+  searchText: string = ''
+
+  constructor(private _facadeMenu: MenuFacade) {
+
+  }
+
+  ngOnInit(): void {
+    this._facadeMenu.searchTerm$.subscribe(searchTerm => {
+      this.searchText = searchTerm;
+    })
+  }
+
+
 }

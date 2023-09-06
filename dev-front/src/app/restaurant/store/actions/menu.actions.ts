@@ -10,5 +10,6 @@ export const MenuActions = createActionGroup({
     'Load Menu Error': props<{ error: string }>(),
     'Load Menu Success': props<{ discounts: Menu | null, topSelling: Menu | null, others: Menu[] | null }>(),
     'Update Search Term': props<{ searchTerm: string }>(),
+    'Set Product Selected Id': props<{ productSelectedId: number | null }>(),
   },
 });

@@ -38,3 +38,8 @@ export const selectSearchTerm = createSelector(
   selectMenuState,
   (state: MenuState) => state.searchTerm
 );
+
+export const selectProductSelected = createSelector(
+  selectMenuState,
+  (state: MenuState) => state.products.find(value => value.id === state.productSelectedId) ?? null
+);

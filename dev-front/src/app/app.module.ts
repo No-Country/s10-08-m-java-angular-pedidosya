@@ -20,6 +20,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {LayoutOfCustomerComponent} from './customer/layout-of-customer/layout-of-customer.component';
 import {menuReducer} from "@root/restaurant/store/reducers/menu.reducers";
 import {MenuEffects} from "@root/restaurant/store/effects/menu.effects";
+import {SharedModule} from "@shared/shared.module";
+import {cartReducer} from "@root/restaurant/store/reducers/cart.reducers";
 
 @NgModule({
   declarations: [
@@ -38,9 +40,11 @@ import {MenuEffects} from "@root/restaurant/store/effects/menu.effects";
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    SharedModule,
     StoreModule.forRoot({
       restaurants: restaurantsReducer,
-      menus: menuReducer
+      menus: menuReducer,
+      cart: cartReducer
     }, {}),
     EffectsModule.forRoot([RestaurantEffects, MenuEffects]),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode()})

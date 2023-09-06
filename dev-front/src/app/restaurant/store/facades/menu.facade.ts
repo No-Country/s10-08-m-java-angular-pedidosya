@@ -7,6 +7,7 @@ import {
   selectError,
   selectLoading,
   selectOthers,
+  selectProductSelected,
   selectRestaurantSelectedId,
   selectSearchTerm,
   selectTopSelling
@@ -14,6 +15,7 @@ import {
 import {Restaurant} from "@models/restaurant.model";
 import {MenuActions} from "@root/restaurant/store/actions/menu.actions";
 import {RestaurantFacade} from "@root/restaurant/store/facades/restaurant.facade";
+import {ProductModel} from "@models/product.model";
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +28,7 @@ export class MenuFacade {
   isLoading$: Observable<boolean>
   errorMessage$: Observable<string | null>;
   searchTerm$: Observable<string>;
+  selectedProduct$: Observable<ProductModel | null>
 
 
   constructor(private _store: Store, private _restaurantFacade: RestaurantFacade) {
@@ -37,6 +40,7 @@ export class MenuFacade {
     this.isLoading$ = _store.select(selectLoading)
     this.errorMessage$ = _store.select(selectError)
     this.searchTerm$ = _store.select(selectSearchTerm)
+    this.selectedProduct$ = _store.select(selectProductSelected)
 
   }
 
@@ -50,6 +54,10 @@ export class MenuFacade {
 
   updateSearchTerm(term: string): void {
     this._store.dispatch(MenuActions.updateSearchTerm({searchTerm: term}));
+  }
+
+  setProductId(id: number): void {
+    this._store.dispatch(MenuActions.setProductSelectedId({productSelectedId: id}));
   }
 
 
