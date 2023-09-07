@@ -4,17 +4,22 @@ import com.pedidosya.api.dto.Request.ClientDTO;
 import com.pedidosya.api.models.Client;
 import com.pedidosya.api.services.Impl.ClientImpl;
 import com.pedidosya.api.utils.mappers.IClientMapper;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping(path = "/clients")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
+@SecurityRequirement(name = "jwt")
 public class ClientController {
 
     private final ClientImpl clientImpl;
@@ -25,11 +30,21 @@ public class ClientController {
         return ResponseEntity.ok(convertToListDto(clientImpl.readAll()));
     }
 
-    @PostMapping(value = "/register", headers = "Accept=application/json")
-    public ResponseEntity<ClientDTO> registerClient(@RequestBody ClientDTO newClient){
-        return  ResponseEntity.ok(
-                convertToDto(clientImpl.save(convertToEntity(newClient))));
-    }
+//    @PostMapping(value = "/register", headers = "Accept=application/json")
+//    public ResponseEntity<ClientDTO> registerClient(@RequestBody ClientDTO newClient){
+//
+//        Client client = convertToEntity(newClient);
+//
+//        int strength = 10;
+//        BCryptPasswordEncoder bCryptPasswordEncoder =
+//                new BCryptPasswordEncoder(strength, new SecureRandom());
+//        String encodedPassword = bCryptPasswordEncoder.encode(newClient.getUser().getPassword());
+//        client.getUser().setPassword(encodedPassword);
+//
+//
+//        return  ResponseEntity.ok(
+//                convertToDto(clientImpl.save(client)));
+//    }
 
     @PutMapping(value = "/update", headers = "Accept=application/json")
     public ResponseEntity<ClientDTO> updateClient(@RequestBody ClientDTO newClient){
@@ -38,6 +53,12 @@ public class ClientController {
 
         Client client = convertToEntity(newClient);
         Client existingClient = clientImpl.readById(newClient.getIdClient());
+
+        int strength = 10;
+        BCryptPasswordEncoder bCryptPasswordEncoder =
+                new BCryptPasswordEncoder(strength, new SecureRandom());
+        String encodedPassword = bCryptPasswordEncoder.encode(newClient.getUser().getPassword());
+        client.getUser().setPassword(encodedPassword);
 
         if(existingClient==null){
             return ResponseEntity.notFound().build();
