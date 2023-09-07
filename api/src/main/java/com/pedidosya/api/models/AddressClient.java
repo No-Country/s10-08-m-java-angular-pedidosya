@@ -6,7 +6,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
 import lombok.*;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
