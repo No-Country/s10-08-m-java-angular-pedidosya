@@ -1,1 +1,14 @@
-<p>product-card works!</p>
+<mat-card class="product-card">
+  <button class="btn-add" color="link" mat-mini-fab>
+    <mat-icon fontIcon="add"/>
+  </button>
+  <img [alt]="'Imagen del producto '+ product.name" [src]="product.imageUrl" class="mx-2 my-1" mat-card-image>
+  <mat-card-content>
+    <h3 class="product-title">{{product.name}}</h3>
+    <div class="d-flex justify-content-space-between align-items-center">
+      <p class="product-price">${{product.price}}</p>
+      <app-button-favorite/>
+    </div>
+  </mat-card-content>
+</mat-card>
+

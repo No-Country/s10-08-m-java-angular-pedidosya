@@ -1,6 +1,6 @@
-import {RestaurantState} from "@root/restaurant/store/restaurant.store";
+import {RestaurantState} from "@root/restaurant/store/restaurant.state";
 import {
-  INITIAL_FILTER_STATE,
+  INITIAL_RESTAURANT_FILTER,
   RestaurantCustomFilter,
   RestaurantFilter
 } from "@shared/filters/restaurant-filter.interface";
@@ -39,7 +39,7 @@ export const handleUpdateRestaurantSortedBy = (state: RestaurantState, {sortedBy
 export const handleResetRestaurantFilter = (state: RestaurantState): RestaurantState => {
   return {
     ...state,
-    filtersSelected: {...INITIAL_FILTER_STATE},
+    filtersSelected: {...INITIAL_RESTAURANT_FILTER},
     sortedBy: RestaurantSortedBy.Recommended
   }
 }

@@ -1,9 +1,20 @@
 import {Component, Input} from '@angular/core';
-import {RatingComponent} from "@root/restaurant/components/rating/rating.component";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
-import {ButtonFavoriteComponent} from "@root/restaurant/components/button-favorite/button-favorite.component";
-import {ButtonNavBackComponent} from "@root/restaurant/components/button-nav-back/button-nav-back.component";
+import {ButtonNavBackComponent} from "@shared/components/button-nav-back/button-nav-back.component";
+import {ButtonFavoriteComponent} from "@shared/components/button-favorite/button-favorite.component";
+import {
+  RestaurantDeliveryInfoComponent
+} from "@root/restaurant/components/restaurant-delivery-info/restaurant-delivery-info.component";
+import {SearchInputComponent} from "@shared/components/search-input/search-input.component";
+import {MenuButtonComponent} from "@root/restaurant/components/menu-button/menu-button.component";
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {Restaurant} from "@models/restaurant.model";
+import {FormsModule} from "@angular/forms";
+import {RatingComponent} from "@shared/components/rating/rating.component";
+import {
+  RestaurantDetailsCardComponent
+} from "@root/restaurant/components/restaurant-details-card/restaurant-details-card.component";
 
 @Component({
   selector: 'app-restaurant-details-header',
@@ -15,14 +26,19 @@ import {ButtonNavBackComponent} from "@root/restaurant/components/button-nav-bac
     MatIconModule,
     MatButtonModule,
     ButtonFavoriteComponent,
-    ButtonNavBackComponent
+    ButtonNavBackComponent,
+    RestaurantDeliveryInfoComponent,
+    SearchInputComponent,
+    MenuButtonComponent,
+    MatButtonToggleModule,
+    FormsModule,
+    RestaurantDetailsCardComponent
   ]
 })
 export class RestaurantDetailsHeaderComponent {
-  @Input() productImageUrl!: string;
-  @Input() logoUrl!: string
-  @Input() title!: string
-  @Input() isFavorite!: boolean
-  @Input() rating!: number
+  selectedNavigation = '';
+  @Input() restaurant!: Restaurant;
+
+
 
 }

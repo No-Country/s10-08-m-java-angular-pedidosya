@@ -7,6 +7,7 @@ export interface RestaurantModel {
   maxTime: number;
   rating: number;
   deliveryCost: number;
+  minToOrder: number;
   brandImage: string;
   productImage: string;
   favorite: boolean;
@@ -22,6 +23,7 @@ export class Restaurant implements RestaurantModel {
     public maxTime: number,
     public rating: number,
     public deliveryCost: number,
+    public minToOrder: number,
     public brandImage: string,
     public productImage: string,
     public favorite: boolean,

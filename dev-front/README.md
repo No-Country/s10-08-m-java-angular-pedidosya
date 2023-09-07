@@ -7,6 +7,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 npm i json-server
 ng add @angular/material
 npm i swiper
+npm i sass-loader
+npm i ngx-toastr --save
 
 ## Default models, components, services
 ng g m shared/material --flat=true

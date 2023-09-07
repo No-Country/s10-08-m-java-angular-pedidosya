@@ -5,11 +5,16 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { Sesion } from 'src/app/models/sesion';
 import { UserModel } from '@models/user.model';
-import { LoginService } from '../../services/login.service';
+import { credencialesUsuario, responseAuthentication } from '@models/dtos.model';
+
+import { AuthService } from '../../services/auth.service';
 import { cargarSesion } from '../../state/auth.actions';
 import { AuthState } from '../../state/auth.reducer';
 
-
+interface DTOLogin {
+	email: string,
+	password: string
+}
 
 @Component({
   selector: 'app-login',
@@ -18,43 +23,76 @@ import { AuthState } from '../../state/auth.reducer';
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
-  formulario!: FormGroup;
+  // formulario!: FormGroup;
   suscripcion!: Subscription;
 
   loginForm!: FormGroup;
   loading!: boolean;
   
   constructor(
-    private loginService: LoginService,
+    private authService: AuthService,
     private router: Router,
     private authStore: Store<AuthState> 
   ){}
 
   ngOnInit(): void {
-    this.formulario = new FormGroup({
+    this.loginForm = new FormGroup({
       email: new FormControl(),
       password: new FormControl()
     });
   }
 
   ngOnDestroy(): void {
-    this.suscripcion.unsubscribe();
+    //this.suscripcion.unsubscribe();
   } 
   
-  login(){
+  login1(){
+    const data: DTOLogin = {
+      email: this.loginForm.value.email,
+      password: this.loginForm.value.password,
+    };
+
     let user: UserModel = {
-      email: this.formulario.value.email,
-      password: this.formulario.value.password,
-      isAdmin: false,
-      id: 0,
-      firstname: '',
-      lastname: ''
+      email: this.loginForm.value.email,
+      password: this.loginForm.value.password,
+      idUser: 0,
+      rol: ''
     }
+    
     this.loading = true;
-    this.suscripcion = this.loginService.login(user).subscribe((sesion: Sesion) => {
-      this.authStore.dispatch(cargarSesion({ sesion: sesion }));
-      this.router.navigate(['inicio']);
-    });
-  }  
+    // this.suscripcion = this.authService.login(data).subscribe((sesion: Sesion) => {
+    //   this.authStore.dispatch(cargarSesion({ sesion: sesion }));
+    //   console.log('LOGIN', 'Login  ok')
+    //   this.router.navigate(['auth/login']);
+    // });
+  }
+  
+    // Felipe Gavilan
+    // login(credenciales: credencialesUsuario){
+    login(){
+      const data: DTOLogin = {
+        email: this.loginForm.value.email,
+        password: this.loginForm.value.password,
+      };
+      this.authService.login(data)
+      .subscribe(respuesta => {
+        console.log('jwt', respuesta.jwt);
+        this.authService.setToken(respuesta);
+        this.router.navigate(['home']);
+      }, errores => console.log('LOGIN FAILED', errores.error.detail));
+      // }, errores => this.errores = parsearErroresAPI(errores));
+    }
+
+    // this.AuthService.userRegistration(data).subscribe(
+		// 	(response: any) => {
+		// 		// this.toastrService.success('Signup Success', user.firstname + ', you are welcome');
+    //     		console.log('okey', 'Register  ok')
+		// 		this.router.navigate(['auth/login']);
+		// 	},
+		// 	(error: any) => {
+    //     		console.log('failed', error.message);
+		// 		// this.toastrService.error('Signup Failed', error.message);
+		// 	}
+		// );  
 
 }

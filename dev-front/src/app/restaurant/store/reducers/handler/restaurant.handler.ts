@@ -1,5 +1,5 @@
-import {RestaurantState} from "@root/restaurant/store/restaurant.store";
 import {Restaurant} from "@models/restaurant.model";
+import {RestaurantState} from "@root/restaurant/store/restaurant.state";
 
 /*
 * Los handler es opcional, se utilizo para tener separado estos cambios.
@@ -32,5 +32,6 @@ export const handleLoadRestaurantsFailure = (state: RestaurantState, {error}: { 
     error: error
   }
 }
+
 
 

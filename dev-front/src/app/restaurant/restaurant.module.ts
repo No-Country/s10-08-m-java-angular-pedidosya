@@ -1,5 +1,4 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
 import {RestaurantRoutingModule} from "@root/restaurant/restaurant-routing.module";
 
 
@@ -7,7 +6,6 @@ import {RestaurantRoutingModule} from "@root/restaurant/restaurant-routing.modul
   declarations: [],
   exports: [],
   imports: [
-    CommonModule,
     RestaurantRoutingModule
   ]
 })

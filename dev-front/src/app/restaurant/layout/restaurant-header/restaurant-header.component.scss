@@ -6,9 +6,13 @@ header {
   background: #F5F5F5;
 }
 
-.filters-container {
-  max-width: calc(100% - 26px);
+.filter-container {
+  display: flex;
+  align-items: center;
   margin: 24px 10px 4px 16px;
+}
+
+.filters-nav-container {
   overflow-x: auto;
   overflow-y: hidden;
 

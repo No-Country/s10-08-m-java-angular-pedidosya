@@ -3,13 +3,15 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatIconModule} from "@angular/material/icon";
 import {MaterialModule} from "@shared/material.module";
 import {FilterButtonComponent} from "@root/restaurant/components/filter-button/filter-button.component";
-import {SearchInputComponent} from "@root/restaurant/components/search-input/search-input.component";
+
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
-import {ButtonNavBackComponent} from "@root/restaurant/components/button-nav-back/button-nav-back.component";
+
 import {RestaurantFilter} from "@shared/filters/restaurant-filter.interface";
 import {Store} from "@ngrx/store";
 import {RestaurantsActions} from "@root/restaurant/store/actions/restaurants.actions";
+import {ButtonNavBackComponent} from "@shared/components/button-nav-back/button-nav-back.component";
+import {SearchInputComponent} from "@shared/components/search-input/search-input.component";
 
 @Component({
   selector: 'app-restaurant-header',
@@ -22,9 +24,9 @@ import {RestaurantsActions} from "@root/restaurant/store/actions/restaurants.act
     MatIconModule,
     MaterialModule,
     FilterButtonComponent,
-    SearchInputComponent,
     FormsModule,
-    ButtonNavBackComponent
+    ButtonNavBackComponent,
+    SearchInputComponent
   ]
 })
 export class RestaurantHeaderComponent {

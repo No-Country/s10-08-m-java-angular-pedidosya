@@ -1,5 +1,5 @@
 import {createReducer, on} from "@ngrx/store";
-import {INITIAL_STATE} from "@root/restaurant/store/restaurant.store";
+
 import {RestaurantsActions} from "@root/restaurant/store/actions/restaurants.actions";
 import {
   handleLoadRestaurants,
@@ -10,6 +10,7 @@ import {
   handleResetRestaurantFilter, handleUpdateRestaurantCustomFilter,
   handleUpdateRestaurantFilter, handleUpdateRestaurantSortedBy
 } from "@root/restaurant/store/reducers/handler/filter-restaurant.handler";
+import {INITIAL_STATE} from "@root/restaurant/store/restaurant.state";
 
 
 /*

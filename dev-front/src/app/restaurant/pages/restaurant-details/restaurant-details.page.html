@@ -1,23 +1,64 @@
-<!-- Hero -->
-<app-restaurant-details-header [productImageUrl]="'assets/mocks/products_mc.png'" [logoUrl]="'assets/mocks/brand_mc.png'" [title]="'Mc Donald´s'" [isFavorite]="false" [rating]="4.8"/>
-
-<!--detalles entrega/pedido-->
-<app-restaurant-delivery-info [deliveryCost]="0" [maxTime]="30" [minTime]="15" [minToOrder]="1199"/>
-
-
-<section class="search-menu-container">
-  <!-- input-search-->
-  <div class="mx-2 mt-4 mb-3">
-    <app-search-input [label]="'Buscar en MacDonald´s'" [placeholder]="'Buscar en McDonald´s'"/>
+<ng-container *ngIf="(isLoading$ | async) as isLoading; else content">
+  <div class="spinner">
+    <mat-spinner></mat-spinner>
   </div>
-  <!-- menu-nav -->
-  <mat-tab-group>
-    <mat-tab label="First">
-      <app-product-card/>
-    </mat-tab>
-    <mat-tab label="Second"> Content 2</mat-tab>
-    <mat-tab label="Third"> Content 3</mat-tab>
-  </mat-tab-group>
-</section>
+</ng-container>
+
+<ng-template #content>
+  <ng-container *ngIf="restaurant$ | async as restaurant; else NoSelected">
+    <div class="page">
+      <!-- Hero -->
+      <app-restaurant-details-header [restaurant]="(restaurant)"/>
+
+      <section class="sticky-header pt-1 pb-1">
+        <div class="fixed-top">
+          <app-button-nav-back [url]="'/restaurant'"/>
+        </div>
+        <!-- input-search-->
+        <section class="mx-2 mt-4 mb-3">
+          <app-search-input (searchTermChange)="onSearchTermChange($event)" [label]="'Buscar en '+restaurant.name"
+                            [placeholder]="'Buscar...'"/>
+        </section>
+
+        <!-- Tabs -->
+        <section class="nav-tabs-container">
+          <app-menu-button/>
+          <div class="nav-tabs-scroll">
+            <div class="nav-tabs px-1 py-1">
+              <mat-button-toggle-group #group="matButtonToggleGroup" [(ngModel)]="selectedNavigation "
+                                       appearance="legacy">
+                <mat-button-toggle class="btn-nav" value="-2">Mas vendidos</mat-button-toggle>
+                <mat-button-toggle class="btn-nav" value="-1">Descuentos</mat-button-toggle>
+                <ng-container *ngIf="menuOthers$ | async as menuOthers;">
+                  <mat-button-toggle *ngFor="let menu of menuOthers"
+                                     [value]="menu.id"
+                                     class="btn-nav">{{menu.name}}</mat-button-toggle>
+                </ng-container>
+              </mat-button-toggle-group>
+            </div>
+          </div>
+        </section>
+      </section>
 
 
+      <app-restaurant-details-main
+        [menusDiscount]="(menuDiscounts$|async)"
+        [menusTopSelling]="(menuTopSelling$|async)"
+        [menus]="(menuOthers$|async)"
+      />
+
+      <footer>
+
+      </footer>
+    </div>
+  </ng-container>
+</ng-template>
+
+<ng-template #NoSelected>
+  <div class="">
+    <p>{{this.errorMessage$|async}}</p>
+    <a color="accent" extended mat-button routerLink="/restaurant">
+      <mat-icon> arrow_back</mat-icon>
+      Regresar</a>
+  </div>
+</ng-template>
