@@ -4,17 +4,13 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { Sesion } from 'src/app/models/sesion';
-import { UserModel } from '@models/user.model';
-import { credencialesUsuario, responseAuthentication } from '@models/dtos.model';
+import { userCredentials } from '@models/dtos.model';
 
 import { AuthService } from '../../services/auth.service';
 import { cargarSesion } from '../../state/auth.actions';
 import { AuthState } from '../../state/auth.reducer';
 
-interface DTOLogin {
-	email: string,
-	password: string
-}
+// import { SocialAuthService, GoogleLoginProvider, SocialUser } from '@abacritt/angularx-social-login';
 
 @Component({
   selector: 'app-login',
@@ -23,16 +19,19 @@ interface DTOLogin {
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
-  // formulario!: FormGroup;
   suscripcion!: Subscription;
 
   loginForm!: FormGroup;
   loading!: boolean;
+
+  // socialUser!: SocialUser;
+  isLoggedin?: boolean;  
   
   constructor(
     private authService: AuthService,
     private router: Router,
-    private authStore: Store<AuthState> 
+    private authStore: Store<AuthState> ,
+    // private socialAuthService: SocialAuthService
   ){}
 
   ngOnInit(): void {
@@ -40,48 +39,40 @@ export class LoginComponent implements OnInit, OnDestroy {
       email: new FormControl(),
       password: new FormControl()
     });
+
+    // this.socialAuthService.authState.subscribe((user) => {
+    //   this.socialUser = user;
+    //   this.isLoggedin = user != null;
+    //   console.log(this.socialUser);
+    // });    
   }
 
   ngOnDestroy(): void {
-    //this.suscripcion.unsubscribe();
+    this.suscripcion.unsubscribe();
   } 
   
-  login1(){
-    const data: DTOLogin = {
-      email: this.loginForm.value.email,
-      password: this.loginForm.value.password,
-    };
-
-    let user: UserModel = {
-      email: this.loginForm.value.email,
-      password: this.loginForm.value.password,
-      idUser: 0,
-      rol: ''
-    }
-    
-    this.loading = true;
-    // this.suscripcion = this.authService.login(data).subscribe((sesion: Sesion) => {
-    //   this.authStore.dispatch(cargarSesion({ sesion: sesion }));
-    //   console.log('LOGIN', 'Login  ok')
-    //   this.router.navigate(['auth/login']);
-    // });
+  loginWithGoogle(): void {
+    // this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
+
+  logOut(): void {
+    // this.socialAuthService.signOut();
+  }   
   
-    // Felipe Gavilan
     // login(credenciales: credencialesUsuario){
-    login(){
-      const data: DTOLogin = {
+  login(){
+      const data: userCredentials = {
         email: this.loginForm.value.email,
         password: this.loginForm.value.password,
       };
-      this.authService.login(data)
+      this.suscripcion = this.authService.login(data)
       .subscribe(respuesta => {
         console.log('jwt', respuesta.jwt);
         this.authService.setToken(respuesta);
         this.router.navigate(['home']);
       }, errores => console.log('LOGIN FAILED', errores.error.detail));
-      // }, errores => this.errores = parsearErroresAPI(errores));
-    }
+
+  }
 
     // this.AuthService.userRegistration(data).subscribe(
 		// 	(response: any) => {

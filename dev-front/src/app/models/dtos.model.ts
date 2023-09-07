@@ -1,4 +1,4 @@
-export interface credencialesUsuario{
+export interface userCredentials{
     email: string;
     password: string;
 }

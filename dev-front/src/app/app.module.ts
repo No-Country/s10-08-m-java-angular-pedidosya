@@ -23,6 +23,11 @@ import {MenuEffects} from "@root/restaurant/store/effects/menu.effects";
 import {SharedModule} from "@shared/shared.module";
 import {cartReducer} from "@root/restaurant/store/reducers/cart.reducers";
 
+import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
+import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
+import { NoPageFoundComponent } from './components/nopagefound/nopagefound.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +38,7 @@ import {cartReducer} from "@root/restaurant/store/reducers/cart.reducers";
     RestaurantCardForCarouselComponent,
     NavbarComponent,
     LayoutOfCustomerComponent,
+    NoPageFoundComponent,
 
   ],
   imports: [
@@ -47,9 +53,25 @@ import {cartReducer} from "@root/restaurant/store/reducers/cart.reducers";
       cart: cartReducer
     }, {}),
     EffectsModule.forRoot([RestaurantEffects, MenuEffects]),
-    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode()})
+    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode()}),
+    SocialLoginModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            // provider: new GoogleLoginProvider('Google-Client-ID-Goes-Here'),
+            provider: new GoogleLoginProvider('278396799577-fisteuqeck859nu3abh9rjr627461m7i.apps.googleusercontent.com')
+            
+          },
+        ],
+      } as SocialAuthServiceConfig,
+    },    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
