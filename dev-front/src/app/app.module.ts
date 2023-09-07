@@ -18,6 +18,8 @@ import {restaurantsReducer} from "@root/restaurant/store/reducers/restaurants.re
 import {RestaurantEffects} from "@root/restaurant/store/effects/restaurant.effects";
 import {HttpClientModule} from "@angular/common/http";
 import { LayoutOfCustomerComponent } from './customer/layout-of-customer/layout-of-customer.component';
+import { RestaurantTypesComponent } from './components/restaurant-types/restaurant-types.component';
+import { RestaurantTypesCardComponent } from './components/restaurant-types-card/restaurant-types-card.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { LayoutOfCustomerComponent } from './customer/layout-of-customer/layout-
     RestaurantCardForCarouselComponent,
     NavbarComponent,
     LayoutOfCustomerComponent,
+    RestaurantTypesComponent,
+    RestaurantTypesCardComponent,
 
   ],
   imports: [
