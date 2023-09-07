@@ -13,12 +13,19 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
-public class AddressClientImpl implements IAddressClientService {
+public class AddressClientImpl extends CRUDImpl<AddressClient, Integer> implements IAddressClientService {
 
     private final IAddressClientRepo repo;
     private final IAddressRepo repoAddress;
+
+    @Override
+    protected IGenericRepo<AddressClient, Integer> getRepo() {
+        return repo;
+    }
 
     @Transactional
     @Override
@@ -34,5 +41,21 @@ public class AddressClientImpl implements IAddressClientService {
     {
         repo.setDefault(addressClient.getClient().getIdClient(), addressClient.getAddress().getIdAddress(), addressClient.isSet());
         return null;
+    }
+
+    @Transactional
+    @Override
+    public AddressClient updateAddress(AddressClient addressClient)
+    {
+        Address adress =  repoAddress.save(addressClient.getAddress());
+        repo.updateAddressClient(addressClient.getClient().getIdClient(), adress.getIdAddress(), addressClient.isSet());
+        return addressClient;
+    }
+
+    @Override
+    public List<AddressClient> listAddressClient(Integer idClient)
+    {
+        return repo.findAllByIdClient(idClient);
+
     }
 }

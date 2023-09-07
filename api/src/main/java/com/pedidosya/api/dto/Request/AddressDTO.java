@@ -1,5 +1,6 @@
 package com.pedidosya.api.dto.Request;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.pedidosya.api.models.City;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotEmpty;
@@ -14,6 +15,7 @@ import org.locationtech.jts.geom.Point;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class AddressDTO {
     private Integer idAddress;
     @NotNull
@@ -27,5 +29,5 @@ public class AddressDTO {
 
     private Double longitude;
 
-    private CityDTO city;
+    private Integer idCity;
 }
