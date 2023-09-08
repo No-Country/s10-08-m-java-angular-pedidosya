@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from "@root/components/home/home.component";
 import { LoginUserComponent } from './login-user/login-user.component';
 import { UbiUserComponent } from './ubi-user/ubi-user.component';
+import { OnboardingStepsComponent } from './onboarding-steps/onboarding-steps.component';
 
 const routes: Routes = [
   // {path: 'inicio', component: InicioComponent, canActivate: [SesionGuard]},
@@ -15,8 +16,9 @@ const routes: Routes = [
     path: 'restaurant',
     loadChildren: () => import('./restaurant/restaurant.module').then(mod => mod.RestaurantModule)
   },
-  { path: 'onboarding', component: LoginUserComponent },
-  { path: 'onboarding-ubication', component: UbiUserComponent },
+  { path: 'choose-role', component: LoginUserComponent },
+  { path: 'activate-ubication', component: UbiUserComponent },
+  { path: 'onboarding', component: OnboardingStepsComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   // {path: '**', component: NoEncontradoComponent },
 ];

@@ -19,6 +19,7 @@ import {RestaurantEffects} from "@root/restaurant/store/effects/restaurant.effec
 import { LoginUserComponent } from './login-user/login-user.component';
 import { UbiUserComponent } from './ubi-user/ubi-user.component';
 import {HttpClientModule} from "@angular/common/http";
+import { OnboardingStepsComponent } from './onboarding-steps/onboarding-steps.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {HttpClientModule} from "@angular/common/http";
     RestaurantCardComponent,
     CarouselRestaurantsComponent,
     RestaurantCardForCarouselComponent,
-    NavbarComponent
+    NavbarComponent,
+    OnboardingStepsComponent
     // LoginComponent,
     // RegisterComponent
   ],
