@@ -12,6 +12,7 @@ import {ProductListComponent} from "@root/restaurant/components/product-list/pro
 import {MenuFacade} from "@root/restaurant/store/facades/menu.facade";
 import {SharedModule} from "@shared/shared.module";
 
+
 @Component({
   selector: 'app-restaurant-details-main',
   standalone: true,

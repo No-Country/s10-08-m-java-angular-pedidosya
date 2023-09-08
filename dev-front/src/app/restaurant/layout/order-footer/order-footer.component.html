@@ -6,7 +6,7 @@
     </div>
 
     <div class="d-flex justify-content-space-between align-items-center  py-2">
-      <app-counter (countChange)="onCountChange($event)"/>
+      <app-counter (countChange)="onCountChange($event)" [(count)]="quantity"/>
       <button (click)="onAddToCart()" [disabled]="quantity==0" color="primary" mat-flat-button> Agregar</button>
     </div>
   </section>

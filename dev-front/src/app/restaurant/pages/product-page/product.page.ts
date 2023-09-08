@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductModel} from "@models/product.model";
 import {Observable, take} from "rxjs";
 import {MenuFacade} from "@root/restaurant/store/facades/menu.facade";
@@ -7,10 +7,10 @@ import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
 import {OrderFooterComponent} from "@root/restaurant/layout/order-footer/order-footer.component";
 import {CartFacade} from "@root/restaurant/store/facades/cart.facade";
 import {Restaurant} from "@models/restaurant.model";
-import {Router} from "@angular/router";
+import {Router, RouterOutlet} from "@angular/router";
 
 @Component({
-  selector: 'app-product-page',
+  selector: 'app-product-pages',
   templateUrl: './product.page.html',
   styleUrls: ['./product.page.scss'],
   standalone: true,
@@ -19,10 +19,11 @@ import {Router} from "@angular/router";
     AsyncPipe,
     NgIf,
     NgForOf,
-    OrderFooterComponent
+    OrderFooterComponent,
+    RouterOutlet
   ]
 })
-export class ProductPage {
+export class ProductPage implements OnInit {
   product$: Observable<ProductModel | null>
   restaurant$: Observable<Restaurant | null>
   quantity: number = 0
@@ -61,13 +62,23 @@ export class ProductPage {
           take(1),
         ).subscribe((product) => {
           if (product) {
-            this._cartFacade.addToCart(restaurant, product, this.quantity);
+            this._cartFacade.addToCart(product, this.quantity);
           }
         });
       }
     });
 
     this._router.navigate(['restaurant/details'])
+  }
+
+
+  ngOnInit(): void {
+    this.product$.pipe(take(1)).subscribe((product) => {
+      if (product === null) {
+        this._router.navigate(['/restaurant'])
+      }
+
+    })
   }
 
 

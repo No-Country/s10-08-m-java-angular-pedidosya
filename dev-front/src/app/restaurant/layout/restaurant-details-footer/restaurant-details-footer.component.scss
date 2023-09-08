@@ -1,0 +1,35 @@
+footer {
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+  bottom: 0;
+  background: #F5F5F5;
+  box-shadow: 0px -1px 3px 0px rgba(41, 45, 50, 0.25);
+}
+
+.subtotal-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1 0 0;
+  align-self: stretch;
+  padding: 16px 0;
+
+  h3 {
+    margin: 0;
+    color: #151719;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  .subtotal {
+    color: #151719;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+}

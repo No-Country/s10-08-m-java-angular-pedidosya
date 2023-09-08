@@ -1,6 +1,9 @@
 <div class="d-flex align-items-center">
-  <button (click)="decrement()" mat-icon-button>
+  <button (click)="decrement()" *ngIf="!activeProductDelete || count>1" mat-icon-button>
     <mat-icon>remove</mat-icon>
+  </button>
+  <button (click)="delete()" *ngIf="activeProductDelete && count===1" mat-icon-button>
+    <mat-icon class="">delete_outlined</mat-icon>
   </button>
   <span class="counter-value">{{ count }}</span>
   <button (click)="increment()" mat-icon-button>

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
@@ -11,8 +11,14 @@ import {MatButtonModule} from "@angular/material/button";
   styleUrls: ['./counter.component.scss']
 })
 export class CounterComponent {
-  count = 0;
+  @Input() count: number = 0;
+  @Input() activeProductDelete: boolean = false;
   @Output() countChange = new EventEmitter<number>();
+  @Output() deleteChange = new EventEmitter<void>();
+
+  delete() {
+    this.deleteChange.emit();
+  }
 
   increment() {
     this.count++;
