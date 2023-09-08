@@ -14,11 +14,12 @@ import org.springframework.web.bind.annotation.*;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/clients")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "*")
 @SecurityRequirement(name = "jwt")
 public class ClientController {
 
@@ -53,13 +54,12 @@ public class ClientController {
 
         Client client = convertToEntity(newClient);
         Client existingClient = clientImpl.readById(newClient.getIdClient());
-
-        int strength = 10;
+       /* int strength = 10;
         BCryptPasswordEncoder bCryptPasswordEncoder =
                 new BCryptPasswordEncoder(strength, new SecureRandom());
         String encodedPassword = bCryptPasswordEncoder.encode(newClient.getUser().getPassword());
         client.getUser().setPassword(encodedPassword);
-
+*/
         if(existingClient==null){
             return ResponseEntity.notFound().build();
         }
@@ -71,16 +71,16 @@ public class ClientController {
 
 
         if (clientImpl.readById(client.getIdClient()) != null){
+            existingClient.setFirstName(client.getFirstName());
+            existingClient.setLastName(client.getLastName());
             return  ResponseEntity.ok(
-                    convertToDto(clientImpl.update(client)));
-
-            // return ResponseEntity.ok(convertToDto(clientImpl.save(existingClient)));
-
+                    convertToDto(clientImpl.updatePerfil(existingClient)));
         }
 
         return ResponseEntity.ok(newClient);
     }
     catch (Exception e){
+        System.out.println(e.getMessage());
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 
