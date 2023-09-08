@@ -89,7 +89,7 @@ export class RestaurantDetailsPage implements OnInit {
       }
     })
 
-    this._cartFacade.getTotal().subscribe((subtotal) => {
+    this._cartFacade.getTotalProductPrice().subscribe((subtotal) => {
       this.subtotal = subtotal
     })
 
