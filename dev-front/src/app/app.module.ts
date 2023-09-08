@@ -16,19 +16,26 @@ import {EffectsModule} from '@ngrx/effects';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {restaurantsReducer} from "@root/restaurant/store/reducers/restaurants.reducer";
 import {RestaurantEffects} from "@root/restaurant/store/effects/restaurant.effects";
-import { LoginUserComponent } from './login-user/login-user.component';
-import { UbiUserComponent } from './ubi-user/ubi-user.component';
 import {HttpClientModule} from "@angular/common/http";
+import {SharedModule} from "@shared/shared.module";
+import {GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from "@abacritt/angularx-social-login";
+import {MenuEffects} from "@root/restaurant/store/effects/menu.effects";
+import {cartReducer} from "@root/restaurant/store/reducers/cart.reducers";
+import {menuReducer} from "@root/restaurant/store/reducers/menu.reducers";
+import {NoPageFoundComponent} from "@root/components/nopagefound/nopagefound.component";
+import {LayoutOfCustomerComponent} from "@root/customer/layout-of-customer/layout-of-customer.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
+    LayoutOfCustomerComponent,
     HomeComponent,
     RestaurantCardComponent,
     CarouselRestaurantsComponent,
     RestaurantCardForCarouselComponent,
     NavbarComponent,
+    NoPageFoundComponent
 
   ],
   imports: [

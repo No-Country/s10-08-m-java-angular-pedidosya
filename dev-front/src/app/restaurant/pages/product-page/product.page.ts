@@ -8,6 +8,7 @@ import {OrderFooterComponent} from "@root/restaurant/layout/order-footer/order-f
 import {CartFacade} from "@root/restaurant/store/facades/cart.facade";
 import {Restaurant} from "@models/restaurant.model";
 import {Router, RouterOutlet} from "@angular/router";
+import {ItemModel} from "@models/item.model";
 
 @Component({
   selector: 'app-product-pages',
@@ -27,6 +28,7 @@ export class ProductPage implements OnInit {
   product$: Observable<ProductModel | null>
   restaurant$: Observable<Restaurant | null>
   quantity: number = 0
+
 
   constructor(private _menuFacade: MenuFacade, private _cartFacade: CartFacade, private _router: Router) {
     this.product$ = _menuFacade.selectedProduct$
@@ -53,18 +55,12 @@ export class ProductPage implements OnInit {
   }
 
   onAddToCart(): void {
-
-    this.restaurant$.pipe(
+    this.product$.pipe(
       take(1),
-    ).subscribe((restaurant) => {
-      if (restaurant) {
-        this.product$.pipe(
-          take(1),
-        ).subscribe((product) => {
-          if (product) {
-            this._cartFacade.addToCart(product, this.quantity);
-          }
-        });
+    ).subscribe((product) => {
+      if (product) {
+        const item: ItemModel = {product: product, quantity: this.quantity, unitPrice: product.price}
+        this._cartFacade.addItemToCart(item);
       }
     });
 
@@ -77,8 +73,18 @@ export class ProductPage implements OnInit {
       if (product === null) {
         this._router.navigate(['/restaurant'])
       }
-
     })
+
+    this.product$.pipe(
+      take(1)).subscribe((product) => {
+        if (product !== null) {
+          this._cartFacade.getQuantitySelected(product).subscribe((quantity) => {
+            this.quantity = quantity
+          })
+        }
+      }
+    )
+
   }
 
 

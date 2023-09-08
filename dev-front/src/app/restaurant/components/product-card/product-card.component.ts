@@ -15,6 +15,6 @@ import {MatIconModule} from "@angular/material/icon";
 })
 export class ProductCardComponent {
   @Input() product!: ProductModel
-  @Input() quantity: number = 0;
+  @Input() quantity!: number
 
 }

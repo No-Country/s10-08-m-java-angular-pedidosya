@@ -28,26 +28,28 @@ export class CartFacade {
     this._store.dispatch(CartActions.newCart({restaurant: restaurant}));
   }
 
-  addToCart(product: ProductModel, quantity: number) {
-    this._store.dispatch(CartActions.addOrder({product: product, quantity: quantity}));
+  addItemToCart(newItem: ItemModel) {
+    this._store.dispatch(CartActions.addItem({item: newItem}));
   }
 
-  updateItem(item: ItemModel) {
-    this._store.dispatch(CartActions.addOrder({product: item.product, quantity: item.quantity}));
+  updateItem(itemUpdated: ItemModel) {
+    this._store.dispatch(CartActions.deleteItem({item: itemUpdated}));
   }
 
   deleteItem(item: ItemModel) {
     this._store.dispatch(CartActions.deleteItem({item: item}));
   }
 
-  getQuantitySelected(product: ProductModel) {
-    let quantitySelected = 0
-    this.cart$.pipe(take(1)).subscribe((cart) => {
-      if (cart !== null) {
-        quantitySelected = cart.getQuantityBy(product);
-      }
-    })
-    return quantitySelected;
+  getQuantitySelected(product: ProductModel): Observable<number> {
+    return this.cart$.pipe(
+      take(1),
+      map((cart: Cart | null) => {
+        if (cart !== null) {
+          return cart.getQuantityBy(product);
+        }
+        return 0;
+      })
+    );
   }
 
 

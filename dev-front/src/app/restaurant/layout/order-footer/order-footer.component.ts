@@ -21,6 +21,7 @@ export class OrderFooterComponent implements OnInit {
   @Output() quantityChange = new EventEmitter<number>()
   @Output() addToCart = new EventEmitter<void>()
   @Input() product!: ProductModel
+  isProductInCart: boolean = false
   quantity: number
   cartSubtotal: number
 
@@ -46,10 +47,17 @@ export class OrderFooterComponent implements OnInit {
   }
 
   ngOnInit() {
+    this._cartFacade.getQuantitySelected(this.product).subscribe((quantity: number) => {
+      this.quantity = quantity
+    })
+
     this._cartFacade.getTotalProductPrice().subscribe(value => {
-      this.quantity = this._cartFacade.getQuantitySelected(this.product)
+
       this.cartSubtotal = value - this.quantity * this.product.price
     })
+
+    this._cartFacade.isProductInCart(this.product).subscribe((isInCart) => (this.isProductInCart = isInCart))
+
   }
 
 }

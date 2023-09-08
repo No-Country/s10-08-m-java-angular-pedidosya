@@ -24,21 +24,15 @@ export class Cart implements CartModel {
     return this.items.some(item => item.product.id === product.id);
   }
 
-  addItem(product: ProductModel, quantity: number): Cart {
-    const newItem: ItemModel = {
-      product: product,
-      quantity: quantity,
-      unitPrice: product.price
-    }
+  addItem(newItem: ItemModel): Cart {
+    const items: ItemModel[] = this.items.filter(item => item.product.id !== newItem.product.id);
+    items.push(newItem);
 
-    const newItems: ItemModel[] = this.items.filter(item => item.product !== product);
-    newItems.push(newItem);
-
-    return new Cart(this.restaurant, newItems, OrderStatus.IS_ORDERING);
+    return new Cart(this.restaurant, items, OrderStatus.IS_ORDERING);
   }
 
 
-  removeItem(product: ProductModel): Cart {
+  removeItemByProduct(product: ProductModel): Cart {
 
     const newItems: ItemModel[] = this.items.filter(item => item.product !== product);
 
