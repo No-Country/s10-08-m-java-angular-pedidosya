@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
 
@@ -12,9 +12,9 @@ import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from "@angular
 export class FilterCheckboxFormComponent {
 
 
-  @Input() benefits!:FormGroup
-  @Input() payment!:FormGroup
-  @Input() other!:FormGroup
+  @Input() benefits!: FormGroup
+  @Input() payment!: FormGroup
+  @Input() other!: FormGroup
 
 
   constructor(private _formBuilder: FormBuilder) {

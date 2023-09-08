@@ -1,0 +1,90 @@
+//Var
+$primary-bg-color: #F5F5F5;
+$primary-border-color: #B3BFCB;
+$primary-text-color: #151719;
+$secondary-bg-color: #292D32;
+$secondary-text-color: #F5F5F5;
+$button-size: 34px;
+$button-padding: 5px;
+
+//Mixins
+@mixin button-styles($bg-color, $text-color, $font-size) {
+  border-radius: 8px;
+  background: $bg-color;
+  color: $text-color;
+  text-align: center;
+  font-size: $font-size;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+@mixin absolute-position($top, $right) {
+  position: absolute;
+  top: $top;
+  right: $right;
+}
+
+@mixin button-size($max-width, $max-height, $padding) {
+  max-width: $max-width !important;
+  max-height: $max-height !important;
+  padding: $padding;
+  z-index: 1;
+  border: 1px solid $primary-border-color;
+  box-shadow: none !important;
+}
+
+.img-product {
+  border-radius: 8px;
+  box-shadow: 0px -2px 4px 0px rgba(46, 46, 46, 0.25), 0px 2px 4px 0px rgba(46, 46, 46, 0.25);
+}
+
+.product-card {
+  width: 140px;
+  box-shadow: none !important;
+  background-color: transparent !important;
+}
+
+.product-price {
+  color: $primary-text-color;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.product-title {
+  margin: 0;
+  height: 42px;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: capitalize;
+}
+
+.btn-add {
+  @include absolute-position(0%, 5%);
+  @include button-size($button-size, $button-size, $button-padding);
+  @include button-styles($primary-bg-color, $primary-text-color, 24px);
+}
+
+.btn-counter {
+  @include absolute-position(0%, 5%);
+  @include button-size($button-size, $button-size, $button-padding);
+  @include button-styles($secondary-bg-color, $secondary-text-color, 16px);
+}
+
+
+.mat-mdc-icon-button.mat-mdc-button-base {
+  --mdc-icon-button-state-layer-size: 14px !important;
+}
+
+.mat-mdc-card-content {
+  padding: 0px !important;
+}

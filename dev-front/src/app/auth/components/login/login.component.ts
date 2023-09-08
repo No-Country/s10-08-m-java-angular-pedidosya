@@ -4,12 +4,13 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { Sesion } from 'src/app/models/sesion';
-import { UserModel } from '@models/user.model';
-import { LoginService } from '../../services/login.service';
+import { userCredentials } from '@models/dtos.model';
+
+import { AuthService } from '../../services/auth.service';
 import { cargarSesion } from '../../state/auth.actions';
 import { AuthState } from '../../state/auth.reducer';
 
-
+// import { SocialAuthService, GoogleLoginProvider, SocialUser } from '@abacritt/angularx-social-login';
 
 @Component({
   selector: 'app-login',
@@ -18,43 +19,71 @@ import { AuthState } from '../../state/auth.reducer';
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
-  formulario!: FormGroup;
   suscripcion!: Subscription;
 
   loginForm!: FormGroup;
   loading!: boolean;
+
+  // socialUser!: SocialUser;
+  isLoggedin?: boolean;  
   
   constructor(
-    private loginService: LoginService,
+    private authService: AuthService,
     private router: Router,
-    private authStore: Store<AuthState> 
+    private authStore: Store<AuthState> ,
+    // private socialAuthService: SocialAuthService
   ){}
 
   ngOnInit(): void {
-    this.formulario = new FormGroup({
+    this.loginForm = new FormGroup({
       email: new FormControl(),
       password: new FormControl()
     });
+
+    // this.socialAuthService.authState.subscribe((user) => {
+    //   this.socialUser = user;
+    //   this.isLoggedin = user != null;
+    //   console.log(this.socialUser);
+    // });    
   }
 
   ngOnDestroy(): void {
     this.suscripcion.unsubscribe();
   } 
   
+  loginWithGoogle(): void {
+    // this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+
+  logOut(): void {
+    // this.socialAuthService.signOut();
+  }   
+  
+    // login(credenciales: credencialesUsuario){
   login(){
-    let user: UserModel = {
-      email: this.formulario.value.email,
-      password: this.formulario.value.password,
-      isAdmin: false,
-      id: 0,
-      firstname: '',
-      lastname: ''
-    }
-    this.loading = true;
-    this.suscripcion = this.loginService.login(user).subscribe((sesion: Sesion) => {
-      this.authStore.dispatch(cargarSesion({ sesion: sesion }));
-      this.router.navigate(['inicio']);
-    });
-  }  
+      const data: userCredentials = {
+        email: this.loginForm.value.email,
+        password: this.loginForm.value.password,
+      };
+      this.suscripcion = this.authService.login(data)
+      .subscribe(respuesta => {
+        console.log('jwt', respuesta.jwt);
+        this.authService.setToken(respuesta);
+        this.router.navigate(['home']);
+      }, errores => console.log('LOGIN FAILED', errores.error.detail));
+
+  }
+
+    // this.AuthService.userRegistration(data).subscribe(
+		// 	(response: any) => {
+		// 		// this.toastrService.success('Signup Success', user.firstname + ', you are welcome');
+    //     		console.log('okey', 'Register  ok')
+		// 		this.router.navigate(['auth/login']);
+		// 	},
+		// 	(error: any) => {
+    //     		console.log('failed', error.message);
+		// 		// this.toastrService.error('Signup Failed', error.message);
+		// 	}
+		// );  
 
 }

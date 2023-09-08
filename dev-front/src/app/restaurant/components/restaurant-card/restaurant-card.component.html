@@ -1,7 +1,11 @@
 <mat-card class="card">
-  <img [alt]="'Products image '+restaurant.name" [src]="restaurant.productImage" class="rounded" mat-card-image>
+  <app-button-favorite [favorite]="restaurant.favorite" class="btn-restaurant-favorite"/>
+  <div class="image-container">
+    <div [style.background-image]="'url(' + restaurant.productImage + ')'" class="rounded"></div>
+  </div>
+
   <mat-card-content class="card-content">
-    <img [alt]="'Brand image '+restaurant.name" [src]="restaurant.brandImage">
+    <img [alt]="'Brand image '+restaurant.name" [src]="restaurant.brandImage" class="brand-img">
     <div class="card-content-description">
       <div class="card-title-rating-container">
         <h3 class="card-title">{{restaurant.name}}</h3>

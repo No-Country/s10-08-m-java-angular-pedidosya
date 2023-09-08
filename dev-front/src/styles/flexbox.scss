@@ -5,7 +5,8 @@ $column-width: calc((100% - #{$gutter} * (#{$columns} - 1)) / #{$columns});
 
 // Mixin para las clases de columna
 @mixin column($span) {
-  flex: 0 0 calc(#{$column-width} * #{$span} + #{$gutter} * (#{$span} - 1));
+  flex: 0 0 auto;
+  width: calc(#{$column-width} * #{$span} + #{$gutter} * (#{$span} - 1));
 }
 
 .d-flex {

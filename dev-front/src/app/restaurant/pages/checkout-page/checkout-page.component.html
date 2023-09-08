@@ -1,0 +1,13 @@
+<header class="d-flex align-items-center">
+  <app-button-nav-back [url]="'/restaurant/details'"/>
+  <h1 class="ms-2">Mi pedido</h1>
+</header>
+
+<app-checkout-product-list/>
+
+<app-product-list [isScrolling]="true" [products]="products" [title]="title"/>
+
+<app-checkout-summary/>
+
+<app-checkout-footer/>
+

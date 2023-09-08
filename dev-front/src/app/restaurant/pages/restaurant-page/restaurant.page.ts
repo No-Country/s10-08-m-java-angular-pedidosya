@@ -1,33 +1,39 @@
 import {Component, OnInit} from '@angular/core';
-import {RestaurantCardComponent} from "@root/restaurant/components/restaurant-card/restaurant-card.component";
-import {RestaurantDeckComponent} from "@root/restaurant/components/restaurant-deck/restaurant-deck.component";
+import {Router} from '@angular/router';
+import {Observable} from 'rxjs';
+import {Restaurant} from "@models/restaurant.model";
+import {AsyncPipe, NgIf} from "@angular/common";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {RestaurantMainComponent} from "@root/restaurant/layout/restaurant-main/restaurant-main.component";
 import {RestaurantHeaderComponent} from "@root/restaurant/layout/restaurant-header/restaurant-header.component";
-import {Store} from "@ngrx/store";
-import {RestaurantsActions} from "@root/restaurant/store/actions/restaurants.actions";
-import {selectRestaurants} from "@root/restaurant/store/selectors/restaurants.selector";
-import {AsyncPipe} from "@angular/common";
+import {RestaurantFacade} from "@root/restaurant/store/facades/restaurant.facade";
+
 
 @Component({
-  selector: 'app-restaurant-page',
+  selector: 'app-restaurant-pages',
   templateUrl: './restaurant.page.html',
   styleUrls: ['./restaurant.page.scss'],
   standalone: true,
-  imports: [RestaurantCardComponent, RestaurantDeckComponent, RestaurantHeaderComponent, AsyncPipe]
+  imports: [
+    RestaurantHeaderComponent,
+    RestaurantMainComponent,
+    AsyncPipe,
+    MatProgressSpinnerModule,
+    NgIf,
+  ]
 })
 export class RestaurantPage implements OnInit {
+  title: string = 'Hamburguesa';
+  restaurants$: Observable<Restaurant[]>;
+  loading$: Observable<boolean>
 
-  title: string = "Hamburguesa"
-  restaurants$ = this.store.select(selectRestaurants);
-
-
-  constructor(private store: Store) {
-
+  constructor(private router: Router, private _restaurantFacade: RestaurantFacade) {
+    this.restaurants$ = _restaurantFacade.filteredAndSortedRestaurants$;
+    this.loading$ = _restaurantFacade.isLoading$;
   }
-
 
   ngOnInit(): void {
-    this.store.dispatch(RestaurantsActions.loadRestaurants())
+    this._restaurantFacade.loadRestaurants();
+    this.loading$ = this._restaurantFacade.isLoading$;
   }
-
-
 }

@@ -1,0 +1,7 @@
+<p class="m-0">
+  <mat-form-field class=" search-input ">
+    <mat-label>{{label}}</mat-label>
+    <input [(ngModel)]="searchTerm" [placeholder]="placeholder" matInput (ngModelChange)="onSearchChange()">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+</p>

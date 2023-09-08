@@ -2,15 +2,15 @@
   <div class="row justify-content-space-between text-center">
     <div class="col-4">
       <p>Llega en</p>
-      <p class="fw-500">{{minTime}}-{{maxTime}} min</p>
+      <p class="fw-500">{{restaurant.minTime}}-{{restaurant.maxTime}} min</p>
     </div>
     <div class="col-4">
       <p>Envío</p>
-      <p class="fw-500">{{costDisplay(deliveryCost)}}</p>
+      <p class="fw-500">{{costDisplay(restaurant.deliveryCost)}}</p>
     </div>
     <div class="col-4">
       <p>Mínimo</p>
-      <p class="fw-500">{{costDisplay(minToOrder)}}</p>
+      <p class="fw-500">{{costDisplay(restaurant.minToOrder)}}</p>
     </div>
   </div>
 </section>

@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {RestaurantModel} from "@models/restaurant.model";
 
 @Component({
   selector: 'app-restaurant-delivery-info',
@@ -8,10 +9,7 @@ import {Component, Input} from '@angular/core';
   imports: []
 })
 export class RestaurantDeliveryInfoComponent {
-  @Input() minTime!: number;
-  @Input() maxTime!: number;
-  @Input() deliveryCost!: number;
-  @Input() minToOrder!: number;
+  @Input() restaurant!: RestaurantModel;
 
 
   costDisplay(cost: number): string {

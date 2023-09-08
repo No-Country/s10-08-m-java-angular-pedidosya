@@ -3,6 +3,9 @@
   border-radius: 0 !important;
   border-bottom: .5px solid #B3BFCB;
   margin: 16px 0;
+  position: relative;
+  background-color: transparent !important;
+
 }
 
 .card-content {
@@ -39,4 +42,31 @@
   gap: 4px;
   flex: 1 0 0;
   margin: 0 10px;
+}
+
+.btn-restaurant-favorite {
+  top: 0%;
+  position: absolute;
+  right: 0%;
+  z-index: 1;
+}
+
+.brand-img {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+}
+
+.image-container {
+  width: 100%;
+  height: 169px;
+  overflow: hidden;
+}
+
+.image-container > div {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }

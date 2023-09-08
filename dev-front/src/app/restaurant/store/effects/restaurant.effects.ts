@@ -11,7 +11,7 @@ import {RestaurantService} from "@services/restaurant.service";
 export class RestaurantEffects {
 
   // noinspection TypeScriptValidateTypes
-  loadCart$ = createEffect(() =>
+  loadRestaurants$ = createEffect(() =>
     this.actions$.pipe(
       ofType(RestaurantsActions.loadRestaurants),
       exhaustMap(() => this.restaurantService.getAll()

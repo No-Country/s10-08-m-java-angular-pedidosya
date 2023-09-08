@@ -19,7 +19,6 @@ import {RestaurantEffects} from "@root/restaurant/store/effects/restaurant.effec
 import { LoginUserComponent } from './login-user/login-user.component';
 import { UbiUserComponent } from './ubi-user/ubi-user.component';
 import {HttpClientModule} from "@angular/common/http";
-import { OnboardingStepsComponent } from './onboarding-steps/onboarding-steps.component';
 
 @NgModule({
   declarations: [
@@ -30,22 +29,39 @@ import { OnboardingStepsComponent } from './onboarding-steps/onboarding-steps.co
     CarouselRestaurantsComponent,
     RestaurantCardForCarouselComponent,
     NavbarComponent,
-    OnboardingStepsComponent
-    // LoginComponent,
-    // RegisterComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    SharedModule,
     StoreModule.forRoot({
       restaurants: restaurantsReducer,
+      menus: menuReducer,
+      cart: cartReducer
     }, {}),
-    EffectsModule.forRoot([RestaurantEffects]),
-    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode()})
+    EffectsModule.forRoot([RestaurantEffects, MenuEffects]),
+    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode()}),
+    SocialLoginModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            // provider: new GoogleLoginProvider('Google-Client-ID-Goes-Here'),
+            provider: new GoogleLoginProvider('278396799577-fisteuqeck859nu3abh9rjr627461m7i.apps.googleusercontent.com')
+
+          },
+        ],
+      } as SocialAuthServiceConfig,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
