@@ -1,14 +1,15 @@
 package com.pedidosya.api.services.Impl;
 
-import com.pedidosya.api.dto.Request.ClientDTO;
 import com.pedidosya.api.models.Client;
 import com.pedidosya.api.repositories.IClientRepo;
 import com.pedidosya.api.repositories.IGenericRepo;
 import com.pedidosya.api.services.IClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -24,5 +25,11 @@ public class ClientImpl extends CRUDImpl<Client, Integer> implements IClientServ
     @Override
     public List<Client> readAll() {
         return repo.findAll();
+    }
+    @Transactional
+    @Override
+    public Client updatePerfil(Client client) {
+        repo.updatePerfil(client.getIdClient(), client.getFirstName(), client.getLastName());
+        return repo.findById(client.getIdClient()).orElse(client);
     }
 }
