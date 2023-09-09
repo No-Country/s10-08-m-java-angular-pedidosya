@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'choose-role', component: LoginUserComponent },
   { path: 'activate-ubication', component: UbiUserComponent },
   { path: 'onboarding', component: OnboardingStepsComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  //{ path: '', redirectTo: 'home', pathMatch: 'full' },
   // {path: '**', component: NoEncontradoComponent },
   {path: '', redirectTo: 'auth/loading', pathMatch: 'full'},
   {path: '**', component: NoPageFoundComponent}
