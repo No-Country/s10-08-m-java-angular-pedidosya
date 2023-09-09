@@ -1,5 +1,6 @@
 package com.pedidosya.api.dto.Request;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.pedidosya.api.models.Menu;
 import com.pedidosya.api.models.ProductType;
 import jakarta.persistence.*;
@@ -29,7 +30,9 @@ public class ProductDTO {
 
     @Column(nullable = false)
     private boolean active = true;
+    //@JsonBackReference
 
+    @JsonBackReference
     private Menu menu;
 
     @Override
