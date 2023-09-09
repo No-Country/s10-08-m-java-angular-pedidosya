@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CustomerRoutingModule } from './customer-routing.module';
 import { FavoritosComponent } from './favoritos/favoritos.component';
 import { OrdersComponent } from './orders/orders.component';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent } from '../account/profile/profile.component';
 import { PromotionsComponent } from './promotions/promotions.component';
 import { StartComponent } from './start/start.component';
 

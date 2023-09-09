@@ -13,4 +13,8 @@ export class ProfileComponent {
     const url = '/' + page;
     this.router.navigateByUrl(url);
   }
+
+  goDetail() {
+		this.router.navigate(['/account/detail']);
+	}
 }

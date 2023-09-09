@@ -4,7 +4,7 @@ import { LayoutOfCustomerComponent } from './layout-of-customer/layout-of-custom
 import { HomeComponent } from '@root/components/home/home.component';
 import { FavoritosComponent } from './favoritos/favoritos.component';
 import { OrdersComponent } from './orders/orders.component';
-import { ProfileComponent } from './profile/profile.component';
+// import { ProfileComponent } from '../account/profile/profile.component';
 import { PromotionsComponent } from './promotions/promotions.component';
 
 const routes: Routes = [
@@ -13,7 +13,7 @@ const routes: Routes = [
       {path: 'home', component: HomeComponent},
       {path: 'favoritos', component: FavoritosComponent},
       {path: 'pedidos', component: OrdersComponent},
-      {path: 'perfil', component: ProfileComponent},
+      // {path: 'perfil', component: ProfileComponent},
       {path: 'promos', component: PromotionsComponent},
     ]
   }

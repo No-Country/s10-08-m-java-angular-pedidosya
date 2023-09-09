@@ -25,9 +25,9 @@ import { MenuEffects } from "@root/restaurant/store/effects/menu.effects";
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from "@abacritt/angularx-social-login";
 import { cartReducer } from "@root/restaurant/store/reducers/cart.reducers";
 import { NoPageFoundComponent } from "@root/components/nopagefound/nopagefound.component";
-import { PersonalInfoComponent } from './settings-user/personal-info/personal-info.component';
+import { PersonalInfoComponent } from './account/personal-info/personal-info.component';
 import { SharedModule } from "@shared/shared.module";
-import { SetPersonalInfoComponent } from './settings-user/set-personal-info/set-personal-info.component';
+import { SetPersonalInfoComponent } from './account/set-personal-info/set-personal-info.component';
 
 @NgModule({
   declarations: [
