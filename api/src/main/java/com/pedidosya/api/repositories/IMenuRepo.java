@@ -16,7 +16,7 @@ public interface IMenuRepo extends IGenericRepo<Menu, Integer>{
 
     @Query("FROM FavouriteProduct m " +
             "WHERE m.product.idProduct = ?1 "+
-            "AND m.client.idClient = ?2"
+            "AND m.user.idUser = ?2"
     )
     FavouriteProduct findByFavourite(Integer idProduct, Integer idUser);
 }

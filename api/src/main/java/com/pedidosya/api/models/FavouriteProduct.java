@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 public class FavouriteProduct {
 
     @Id
-    private Client client;
+    private User user;
     @Id
     private Product product;
 }
