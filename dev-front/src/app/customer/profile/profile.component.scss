@@ -1,0 +1,41 @@
+.profile-settings h2 {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 23px;
+    margin-top: 16px;
+    margin-bottom: 0;
+}
+
+.profile-settings {
+    margin: 16px;
+}
+
+.settings-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.settings-list a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 23px;
+    border-bottom: 1px solid #B3BFCB;
+    padding-bottom: 14px;
+    margin-top: 8px;
+}
+
+.log-out-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 23px;
+    margin: 24px 16px 16px 16px;
+}

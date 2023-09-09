@@ -7,7 +7,7 @@ import { SesionService } from '@services/sesion.service';
 import { Sesion } from '@models/sesion';
 import { UserModel } from '@models/user.model';
 import { env } from 'src/environment/environment';
-import { credencialesUsuario, responseAuthentication } from '@models/dtos.model';
+import { responseAuthentication } from '@models/dtos.model';
 
 
 @Injectable({
