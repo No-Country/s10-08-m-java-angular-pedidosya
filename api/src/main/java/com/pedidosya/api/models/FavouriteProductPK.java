@@ -11,8 +11,8 @@ import java.io.Serializable;
 @Embeddable
 public class FavouriteProductPK implements Serializable {
     @ManyToOne
-    @JoinColumn(name = "id_client", nullable = false, foreignKey = @ForeignKey(name = "FK_FavouriteProduct_Client"))
-    private Client client;
+    @JoinColumn(name = "id_user", nullable = false, foreignKey = @ForeignKey(name = "FK_FavouriteProduct_User"))
+    private User user;
     @ManyToOne
     @JoinColumn(name = "id_product", nullable = false, foreignKey = @ForeignKey(name = "FK_FavouriteProduct_Product"))
     private Product product;

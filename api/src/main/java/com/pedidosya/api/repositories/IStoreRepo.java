@@ -16,12 +16,12 @@ public interface IStoreRepo extends IGenericRepo<Store, Integer>{
 
     @Query("FROM FavouriteStore m " +
             "WHERE m.store.idStore = ?1 "+
-            "AND m.client.idClient = ?2"
+            "AND m.user.idUser = ?2"
     )
     FavouriteStore findByFavourite(Integer idStore, Integer idUser);
 
     @Query("FROM Store m INNER JOIN FavouriteStore f ON f.store.idStore = m.idStore " +
-            "WHERE f.client.idClient = ?1 "
+            "WHERE f.user.idUser = ?1 "
     )
     List<Store> findByStoreFavourite(Integer idUser);
 
