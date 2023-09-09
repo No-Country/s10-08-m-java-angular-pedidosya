@@ -60,6 +60,21 @@ public class StoreController {
         store.setIsFavourite(resp);
         return store;
     }
+
+
+    @Operation(summary="Lista los restaurants favoritos del usuario")
+    @GetMapping("/favourites")
+    public ResponseEntity<List<StoreDTO>> findFavourites(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = (User) authentication.getPrincipal();
+        Integer userId = user.getIdUser();
+        List<StoreDTO> list = storeImpl.findByStoreFavourite(userId).stream()
+                .map(this::convertToDto)
+                .peek(m -> m.setIsFavourite(true))
+                .collect(Collectors.toList());
+
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
   private StoreDTO convertToDto(Store store){return iStoreMapper.toStoreDto(store);}
     private Store converToEntity(StoreDTO storeDTO){return iStoreMapper.toStore(storeDTO);}
 
