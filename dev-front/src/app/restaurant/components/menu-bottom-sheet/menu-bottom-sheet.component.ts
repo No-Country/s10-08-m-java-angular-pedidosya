@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 import {MatBottomSheetRef} from "@angular/material/bottom-sheet";
 import {MenuFacade} from "@root/restaurant/store/facades/menu.facade";
-import {ButtonLineComponent} from "@root/restaurant/components/button-line/button-line.component";
 import {MatIconModule} from "@angular/material/icon";
 import {Menu} from "@models/menu.model";
 import {Observable} from "rxjs";
 import {AsyncPipe, NgForOf} from "@angular/common";
+import {ButtonLineComponent} from "@shared/components/button-line/button-line.component";
 
 @Component({
   selector: 'app-menu-bottom-sheet',
@@ -16,7 +16,7 @@ import {AsyncPipe, NgForOf} from "@angular/common";
     ButtonLineComponent,
     NgForOf,
     MatIconModule,
-    AsyncPipe
+    AsyncPipe,
   ]
 })
 export class MenuBottomSheetComponent {

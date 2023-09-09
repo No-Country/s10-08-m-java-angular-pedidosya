@@ -1,14 +1,11 @@
-.btn {
+.btn-filter {
   color: #151719 !important;
   font-size: 16px;
   font-weight: 500;
-
-}
-
-.btn-filter {
   background: rgba(163, 215, 175, 0.40) !important;
   padding: 10px;
   margin-right: 8px !important;
+  box-shadow: none;
 
   .filter-icon {
     font-size: 16px;

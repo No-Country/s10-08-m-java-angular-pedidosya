@@ -1,0 +1,65 @@
+// Variables para tamaños y estilos de botones
+$btn-width-md: 180px;
+$btn-width-lg: 329px;
+$btn-border-radius: 16px;
+$btn-box-shadow: 0px 4px 4px 0px rgba(21, 23, 25, 0.25);
+
+//Padding
+$btn-padding: 10px;
+
+// Variables para colores de botones y texto
+$color-primary-bg: #048221;
+$color-secondary-bg: transparent;
+$color-tertiary-bg: #EFF2F5; // Color de botón deshabilitado
+
+$color-primary-text: #F5F5F5;
+$color-secondary-text: #048221;
+$color-tertiary-text: #6A798A;
+
+// Mixins para estilos de botones
+@mixin btn-size($width) {
+  width: $width !important;
+}
+
+@mixin btn-background-color($color) {
+  background: $color !important;
+}
+
+@mixin btn-text-color($color) {
+  color: $color !important;
+  font-size: 16px !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+  line-height: normal !important;
+}
+
+// Estilos de botones
+.btn {
+  border-radius: $btn-border-radius !important;
+  box-shadow: $btn-box-shadow !important;
+  padding: $btn-padding !important;
+
+  &-md {
+    @include btn-size($btn-width-md);
+  }
+
+  &-lg {
+    @include btn-size($btn-width-lg);
+  }
+
+  &-primary {
+    @include btn-background-color($color-primary-bg);
+    @include btn-text-color($color-primary-text);
+  }
+
+  &-secondary {
+    @include btn-background-color($color-secondary-bg);
+    @include btn-text-color($color-secondary-text);
+  }
+
+  &-tertiary {
+    @include btn-background-color($color-tertiary-bg);
+    @include btn-text-color($color-tertiary-text);
+    cursor: not-allowed; // Cambia el cursor para el botón deshabilitado
+  }
+}
