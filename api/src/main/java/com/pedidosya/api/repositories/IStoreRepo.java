@@ -19,4 +19,10 @@ public interface IStoreRepo extends IGenericRepo<Store, Integer>{
             "AND m.client.idClient = ?2"
     )
     FavouriteStore findByFavourite(Integer idStore, Integer idUser);
+
+    @Query("FROM Store m INNER JOIN FavouriteStore f ON f.store.idStore = m.idStore " +
+            "WHERE f.client.idClient = ?1 "
+    )
+    List<Store> findByStoreFavourite(Integer idUser);
+
 }
