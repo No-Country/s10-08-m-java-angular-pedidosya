@@ -20,21 +20,22 @@ export class Cart implements CartModel {
     this.status = status;
   }
 
-  /*INMUTABLE -> NEW CART*/
-  addProduct(product: ProductModel, quantity: number): Cart {
-    const newItem: ItemModel = {
-      product: product,
-      quantity: quantity,
-      unitPrice: product.price
-    }
+  isProductInCart(product: ProductModel): boolean {
+    return this.items.some(item => item.product.id === product.id);
+  }
+
+  addItem(newItem: ItemModel): Cart {
+    const items: ItemModel[] = this.items.filter(item => item.product.id !== newItem.product.id);
+    items.push(newItem);
+
+    return new Cart(this.restaurant, items, OrderStatus.IS_ORDERING);
+  }
 
 
-    const newItems: ItemModel[] = [...this.items];
+  removeItemByProduct(product: ProductModel): Cart {
 
-    console.log(newItems)
+    const newItems: ItemModel[] = this.items.filter(item => item.product !== product);
 
-    newItems.push(newItem);
-    console.log(newItems)
 
     return new Cart(this.restaurant, newItems, this.status);
   }
@@ -46,6 +47,16 @@ export class Cart implements CartModel {
 
   getTotalProductPrice(): number {
     return this.items.reduce((previousValue, product) => previousValue + product.unitPrice * product.quantity, 0);
+  }
+
+  getDeliveryCost(): number {
+    return this.restaurant.deliveryCost;
+  }
+
+  getQuantityBy(product: ProductModel): number {
+    let item = this.items.find(item => item.product === product);
+
+    return item ? item.quantity : 0;
   }
 
 }

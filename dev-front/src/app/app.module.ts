@@ -23,17 +23,15 @@ import { RestaurantTypesCardComponent } from './components/restaurant-types-card
 import {menuReducer} from "@root/restaurant/store/reducers/menu.reducers";
 import {MenuEffects} from "@root/restaurant/store/effects/menu.effects";
 import {SharedModule} from "@shared/shared.module";
+import {GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from "@abacritt/angularx-social-login";
 import {cartReducer} from "@root/restaurant/store/reducers/cart.reducers";
-
-import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
-import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
-import { NoPageFoundComponent } from './components/nopagefound/nopagefound.component';
-
+import {NoPageFoundComponent} from "@root/components/nopagefound/nopagefound.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
+    LayoutOfCustomerComponent,
     HomeComponent,
     RestaurantCardComponent,
     CarouselRestaurantsComponent,
@@ -69,11 +67,11 @@ import { NoPageFoundComponent } from './components/nopagefound/nopagefound.compo
             id: GoogleLoginProvider.PROVIDER_ID,
             // provider: new GoogleLoginProvider('Google-Client-ID-Goes-Here'),
             provider: new GoogleLoginProvider('278396799577-fisteuqeck859nu3abh9rjr627461m7i.apps.googleusercontent.com')
-            
+
           },
         ],
       } as SocialAuthServiceConfig,
-    },    
+    },
   ],
   bootstrap: [AppComponent]
 })

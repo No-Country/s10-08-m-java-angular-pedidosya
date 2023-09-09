@@ -1,0 +1,30 @@
+<div class="onboarding-container">
+    <div class="steps-container">
+        <div *ngIf="currentStep === 1">
+            <img src="assets/SVGs/onboarding-step1.svg">
+            <section class="step-info">
+                <h2 class="step-title">Todo en un solo lugar</h2>
+                <p>Dejanos tentarte y descubrí eso que estas buscando.</p>
+            </section>
+        </div>
+        <div *ngIf="currentStep === 2">
+            <img src="assets/SVGs/onboarding-step2.svg">
+            <section class="step-info">
+                <h2 class="step-title">Ofertas en miles de locales</h2>
+                <p>Aprovechá envios gratis, cupones y promociones en muchos productos.</p>
+            </section>
+        </div>
+        <div *ngIf="currentStep === 3">
+            <img src="assets/SVGs/onboarding-step3.svg">
+            <section class="step-info">
+                <h2 class="step-title">Tu tiempo vale oro</h2>
+                <p>Deja listo tu pedido y en minutos lo recibis en tu casa.</p>
+            </section>
+        </div>
+    </div>
+    <div class="interaction-btns">
+        <button (click)="prevStep()"><img src="assets/SVGs/arrow_back.svg"></button>
+        <button (click)="nextStep()"><img src="assets/SVGs/arrow_next.svg"></button>
+    </div>
+
+</div>

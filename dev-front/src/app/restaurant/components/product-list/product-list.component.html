@@ -1,10 +1,13 @@
 <ng-container *ngIf="products && products.length > 0; else noContent">
 
-  <div [id]="id" class="pb-3 ">
+  <div class="pb-3 ">
     <h2 class="menu-title ">{{title}}</h2>
     <ng-container *ngIf="!isScrolling">
       <div class="row">
-        <app-product-card (click)="toProductPage(product.id)" *ngFor="let product of products" [product]="product"
+        <app-product-card (click)="toProductPage(product.id)"
+                          *ngFor="let product of products"
+                          [product]="product"
+                          [quantity]="(getQuantityBy(product) | async) || 0"
                           class="col-6"/>
       </div>
     </ng-container>
@@ -12,14 +15,17 @@
 
     <ng-container *ngIf="isScrolling">
       <div class="products-container">
-        <app-product-card (click)="toProductPage(product.id)" *ngFor="let product of products " [product]="product"/>
+        <app-product-card (click)="toProductPage(product.id)"
+                          *ngFor="let product of products "
+                          [product]="product"
+                          [quantity]="(getQuantityBy(product) | async) || 0"/>
       </div>
     </ng-container>
 
   </div>
 </ng-container>
 <ng-template #noContent>
-  <div [id]="id" class="pb-3 ">
+  <div class="pb-3 ">
     <h2 class="menu-title ">{{title}}</h2>
     No hay productos.
   </div>

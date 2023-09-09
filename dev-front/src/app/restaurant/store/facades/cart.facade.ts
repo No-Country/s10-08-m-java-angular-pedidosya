@@ -1,13 +1,13 @@
 import {Injectable} from "@angular/core";
 import {map, Observable, take} from "rxjs";
 import {Store} from "@ngrx/store";
-import {selectError, selectLoading} from "@root/restaurant/store/selectors/menus.selector";
 import {Cart} from "@models/cart.model";
-import {selectCart} from "@root/restaurant/store/selectors/cart.selector";
+import {selectCart, selectError, selectLoading} from "@root/restaurant/store/selectors/cart.selector";
 import {CartActions} from "@root/restaurant/store/actions/cart.actions";
 import {ProductModel} from "@models/product.model";
 import {MenuFacade} from "@root/restaurant/store/facades/menu.facade";
 import {Restaurant} from "@models/restaurant.model";
+import {ItemModel} from "@models/item.model";
 
 @Injectable({
   providedIn: 'root'
@@ -24,21 +24,62 @@ export class CartFacade {
     this.errorMessage$ = _store.select(selectError)
   }
 
-  addToCart(restaurant: Restaurant, product: ProductModel, quantity: number) {
+  initCart(restaurant: Restaurant,) {
+    this._store.dispatch(CartActions.newCart({restaurant: restaurant}));
+  }
 
-    this.cart$.pipe(take(1)).subscribe((cart) => {
-      if (cart === null) {
-        this._store.dispatch(CartActions.newCart({restaurant: restaurant}));
-      }
-      this._store.dispatch(CartActions.addOrder({product: product, quantity: quantity}));
+  addItemToCart(newItem: ItemModel) {
+    this._store.dispatch(CartActions.addItem({item: newItem}));
+  }
 
-    });
+  updateItem(itemUpdated: ItemModel) {
+    this._store.dispatch(CartActions.deleteItem({item: itemUpdated}));
+  }
+
+  deleteItem(item: ItemModel) {
+    this._store.dispatch(CartActions.deleteItem({item: item}));
+  }
+
+  getQuantitySelected(product: ProductModel): Observable<number> {
+    return this.cart$.pipe(
+      take(1),
+      map((cart: Cart | null) => {
+        if (cart !== null) {
+          return cart.getQuantityBy(product);
+        }
+        return 0;
+      })
+    );
   }
 
 
-  getSubtotal(): Observable<any> {
+  getTotalProductPrice(): Observable<number> {
     return this.cart$.pipe(
       map((cart) => (cart ? cart.getTotalProductPrice() : 0))
+    );
+  }
+
+  getTotal(): Observable<number> {
+    return this.cart$.pipe(
+      map((cart) => (cart ? cart.getTotal() : 0))
+    );
+  }
+
+  getDeliveryCost(): Observable<number> {
+    return this.cart$.pipe(
+      map((cart) => (cart ? cart.getDeliveryCost() : 0))
+    );
+  }
+
+  isProductInCart(product: ProductModel): Observable<boolean> {
+    return this.cart$.pipe(
+      map((cart) => {
+        if (cart !== null) {
+          return cart.isProductInCart(product);
+        } else {
+          return false;
+        }
+      })
     );
   }
 

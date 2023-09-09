@@ -2,12 +2,6 @@ import {createFeatureSelector, createSelector} from "@ngrx/store";
 import {RestaurantState} from "@root/restaurant/store/restaurant.state";
 
 
-/*
-* Los selectores son para obtener informacion del store.
-*
-* */
-
-//Con esta constante generamos el "store" este debe ser el que se importe en x.module.ts
 export const selectRestaurantsState = createFeatureSelector<RestaurantState>('restaurants');
 
 export const selectRestaurants = createSelector(

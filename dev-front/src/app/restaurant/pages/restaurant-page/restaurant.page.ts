@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
-import {RestaurantModel} from "@models/restaurant.model";
+import {Restaurant} from "@models/restaurant.model";
 import {AsyncPipe, NgIf} from "@angular/common";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {RestaurantMainComponent} from "@root/restaurant/layout/restaurant-main/restaurant-main.component";
@@ -10,7 +10,7 @@ import {RestaurantFacade} from "@root/restaurant/store/facades/restaurant.facade
 
 
 @Component({
-  selector: 'app-restaurant-page',
+  selector: 'app-restaurant-pages',
   templateUrl: './restaurant.page.html',
   styleUrls: ['./restaurant.page.scss'],
   standalone: true,
@@ -24,7 +24,7 @@ import {RestaurantFacade} from "@root/restaurant/store/facades/restaurant.facade
 })
 export class RestaurantPage implements OnInit {
   title: string = 'Hamburguesa';
-  restaurants$: Observable<RestaurantModel[]>;
+  restaurants$: Observable<Restaurant[]>;
   loading$: Observable<boolean>
 
   constructor(private router: Router, private _restaurantFacade: RestaurantFacade) {

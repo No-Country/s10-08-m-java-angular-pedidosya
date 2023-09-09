@@ -11,9 +11,10 @@ import {MatIconModule} from "@angular/material/icon";
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.scss'],
   standalone: true,
-  imports: [CommonModule, MatCardModule, ButtonFavoriteComponent, MatButtonModule,MatIconModule],
+  imports: [CommonModule, MatCardModule, ButtonFavoriteComponent, MatButtonModule, MatIconModule],
 })
 export class ProductCardComponent {
   @Input() product!: ProductModel
+  @Input() quantity!: number
 
 }

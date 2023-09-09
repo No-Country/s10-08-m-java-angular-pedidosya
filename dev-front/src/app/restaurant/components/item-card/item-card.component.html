@@ -1,0 +1,20 @@
+<article class="item-card">
+  <section class="row">
+    <div class="col-8">
+      <h3 class="card-text">{{item.product.name}}</h3>
+      <p class="card-description">{{item.product.description}}</p>
+    </div>
+    <div class="col-4">
+      <div [style.background-image]="'url('+'/'+item.product.imageUrl+')'" class="img-product"></div>
+      <p>{{item.product.price * item.quantity}}</p>
+    </div>
+  </section>
+  <section class="d-flex justify-content-space-between align-items-center">
+    <button (click)="emitUpdateItem()" color="link" mat-flat-button> Modificar</button>
+
+    <app-counter (countChange)="emitChangeQuantity($event)"
+                 (deleteChange)="emitDeleteItem()"
+                 [(count)]="item.quantity"
+                 [activeProductDelete]="true"/>
+  </section>
+</article>
