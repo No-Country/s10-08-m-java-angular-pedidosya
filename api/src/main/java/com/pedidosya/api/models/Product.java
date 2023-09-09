@@ -39,5 +39,4 @@ public class Product {
     @JoinColumn(name = "id_menu", nullable = false, foreignKey = @ForeignKey(name= "FK_Product_Menu"))
     private Menu menu;
 
-
 }
