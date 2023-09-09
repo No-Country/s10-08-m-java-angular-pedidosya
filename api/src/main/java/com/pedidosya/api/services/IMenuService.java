@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface IMenuService extends ICRUD<Menu, Integer>{
     public List<Menu> listMenuByStore(Integer idStore);
+    public Boolean findByFavourite(Integer idProduct, Integer idUser);
+
 }

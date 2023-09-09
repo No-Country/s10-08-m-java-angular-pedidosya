@@ -1,6 +1,7 @@
 package com.pedidosya.api.repositories;
 
 import com.pedidosya.api.models.AddressClient;
+import com.pedidosya.api.models.FavouriteStore;
 import com.pedidosya.api.models.Menu;
 import org.springframework.data.jpa.repository.Query;
 
@@ -11,4 +12,10 @@ public interface IMenuRepo extends IGenericRepo<Menu, Integer>{
             "WHERE m.store.idStore = ?1 "
     )
     List<Menu> findByStore(Integer idStore);
+
+    @Query("FROM FavouriteProduct m " +
+            "WHERE m.product.idProduct = ?1 "+
+            "AND m.client.idClient = ?2"
+    )
+    FavouriteStore findByFavourite(Integer idProduct, Integer idUser);
 }
