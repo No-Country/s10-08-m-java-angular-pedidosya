@@ -24,5 +24,8 @@ public class MenuImpl extends CRUDImpl<Menu, Integer> implements IMenuService {
     public List<Menu> listMenuByStore(Integer idStore) {
         return repo.findByStore(idStore);
     }
-
+    @Override
+    public Boolean findByFavourite(Integer idProduct, Integer idUser){
+        return repo.findByFavourite(idProduct, idUser) != null;
+    }
 }

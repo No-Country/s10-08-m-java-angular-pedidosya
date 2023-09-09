@@ -35,6 +35,8 @@ public class ProductDTO {
     @JsonBackReference
     private Menu menu;
 
+    private Boolean isFavourite;
+
     @Override
     public String toString() {
         return "ProductDTO{" +

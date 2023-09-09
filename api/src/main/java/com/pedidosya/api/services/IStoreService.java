@@ -11,4 +11,6 @@ public interface IStoreService extends ICRUD<Store, Integer>{
 
     public List<Store> findByStoreType(Integer idStoreType);
 
+    public Boolean findByFavourite(Integer idStore, Integer idUser);
+
 }

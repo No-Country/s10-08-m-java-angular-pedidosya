@@ -33,4 +33,9 @@ public class StoreImpl extends CRUDImpl<Store, Integer> implements IStoreService
     public  List<Store> findByStoreType(Integer idStoreType){
         return repo.findByStoreType(idStoreType);
    }
+
+   @Override
+    public Boolean findByFavourite(Integer idStore, Integer idUser){
+       return repo.findByFavourite(idStore, idUser) != null;
+   }
 }
