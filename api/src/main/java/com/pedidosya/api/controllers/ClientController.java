@@ -86,7 +86,11 @@ public class ClientController {
 
     }
 
-
+    @GetMapping("/{id}")
+    public ResponseEntity<ClientDTO> findById(@PathVariable("id") Integer id){
+        ClientDTO dto = this.convertToDto(clientImpl.readById(id));
+        return new ResponseEntity<>(dto, HttpStatus.OK);
+    }
     @DeleteMapping(value = "/delete/{id}", headers = "Accept=application/json")
     public ResponseEntity<Void> deleteClient(@PathVariable Integer id){
 
