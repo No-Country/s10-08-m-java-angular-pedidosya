@@ -1,5 +1,6 @@
 <nav class="container-navbar">
-    <button class="item-navbar" (click)="changeButtonSelected('inicio')" (click)="redirectTo('home')">
+    <!--<button class="item-navbar" (click)="changeButtonSelected('inicio')" (click)="redirectTo('home')">-->
+    <button class="item-navbar" (click)="changeButtonSelected('inicio')" routerLink="/home">
         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
             <mask id="mask0_267_4159" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="25">
               <rect x="0.5" y="0.5" width="24" height="24" fill= "#151719"/>
@@ -11,7 +12,7 @@
         </svg>
         <p href="" [ngStyle]="{'color': buttonSelected === 'inicio'  ? '#048221':''}">inicio</p>
     </button>
-    <button class="item-navbar" (click)="changeButtonSelected('Favoritos')">
+    <button class="item-navbar" (click)="changeButtonSelected('Favoritos')" routerLink="/layoutOfCustomer/favoritos">
         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
             <mask id="mask0_300_5759" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="25">
               <rect x="0.75" y="0.5" width="24" height="24" [attr.fill]="buttonSelected == 'Favoritos'  ? '#048221' : '#D9D9D9'"/>
@@ -23,7 +24,7 @@
           </svg>
         <p href="" [ngStyle]="{'color': buttonSelected === 'Favoritos'  ? '#048221':''}">Favoritos</p>
     </button>
-    <button class="item-navbar" (click)="changeButtonSelected('Pedidos')">
+    <button class="item-navbar" (click)="changeButtonSelected('Pedidos')" routerLink="/layoutOfCustomer/pedidos">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
             <mask id="mask0_300_5764" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="25">
               <rect y="0.5" width="24" height="24" [attr.fill]="buttonSelected == 'Pedidos'  ? '#048221' : '#D9D9D9'"/>
@@ -35,7 +36,7 @@
           </svg>
         <p href="" [ngStyle]="{'color': buttonSelected === 'Pedidos'  ? '#048221':''}">Pedidos</p>
     </button>
-    <button class="item-navbar" (click)="changeButtonSelected('Promos')">
+    <button class="item-navbar" (click)="changeButtonSelected('Promos')" routerLink="/layoutOfCustomer/promos">
         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
         <mask id="mask0_300_5769" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="25">
         <rect x="0.25" y="0.5" width="24" height="24" [attr.fill]="buttonSelected == 'Promos'  ? '#048221' : '#D9D9D9'"/>
@@ -47,7 +48,10 @@
         </svg>
         <p href="" [ngStyle]="{'color': buttonSelected === 'Promos'  ? '#048221':''}">Promos</p>
     </button>
-    <button class="item-navbar" (click)="changeButtonSelected('Mi perfil')" (click)="redirectTo('profile')">
+
+    <!--<button class="item-navbar" (click)="changeButtonSelected('Mi perfil')" (click)="redirectTo('profile')">-->
+    <button class="item-navbar" (click)="changeButtonSelected('Mi perfil')" routerLink="/layoutOfCustomer/perfil">
+
         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
             <mask id="mask0_300_5774" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="25">
               <rect x="0.5" y="0.5" width="24" height="24" [attr.fill]="buttonSelected == 'Mi perfil'  ? '#048221' : '#D9D9D9'"/>

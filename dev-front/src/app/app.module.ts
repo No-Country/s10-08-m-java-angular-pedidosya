@@ -28,6 +28,8 @@ import { NoPageFoundComponent } from "@root/components/nopagefound/nopagefound.c
 import { PersonalInfoComponent } from './account/personal-info/personal-info.component';
 import { SharedModule } from "@shared/shared.module";
 import { SetPersonalInfoComponent } from './account/set-personal-info/set-personal-info.component';
+import { SeekerOfHomeComponent } from './components/seeker-of-home/seeker-of-home.component';
+import { ModaladdressesComponent } from './components/modaladdresses/modaladdresses.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { SetPersonalInfoComponent } from './account/set-personal-info/set-person
     RestaurantTypesCardComponent,
     NoPageFoundComponent,
     PersonalInfoComponent,
-    SetPersonalInfoComponent
+    SetPersonalInfoComponent,
+    SeekerOfHomeComponent,
+    ModaladdressesComponent,
   ],
   imports: [
     BrowserModule,

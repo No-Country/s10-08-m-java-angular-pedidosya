@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+.tittle-section {
+    color: var(--text-texto-primario, #151719);
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 23px;
+}
+
+.sub-tittle-section {
+    color: var(--text-texto-primario, #151719);
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 23px;
+    margin-bottom: 25px;
+}
+
+.tittle-field {
+    color: var(--texto-sec, #404547);
+    font-family: Poppins;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 23px;
+    margin: 0px;
+}
+
+.underlined {
+    color: var(--texto-sec, #404547);
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration-line: underline;
+}
+
+.green-button {
+    border-radius: 16px;
+    background: var(--fondo-fondo-mprimario, #048221);
+    box-shadow: 0px 4px 4px 0px rgba(21, 23, 25, 0.25);
+    border: none;
+    color: white;
+    height: 44px;
+    margin-bottom: 25px;
+    margin-top: 220px;
+}
+
+.back-profile {
+    margin: 0px;
+    margin-bottom: 15px;
+    padding-top: 15px;
+    ;
+    width: 328px;
+    display: inline-flex;
+    align-items: center;
+    border-bottom: 1px solid #B3BFCB;
+    ;
+
+    h1 {
+        color: var(--text-texto-primario, #151719);
+        font-family: Poppins;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 18px;
+    }
+}
+
+.form-profile {
+    position: relative;
+    width: 328px;
+    height: 44px;
+    border: 1px solid #B3BFCB;
+    width: 328px;
+    border-radius: 16px;
+    margin-bottom: 22px;
+}
+
+.input-of-form-profile {
+    margin: 0px;
+    margin-left: 7px;
+    border: none;
+    outline: none;
+
+    background-color: #F5F5F5;
+    border: none;
+    border-radius: 16px;
+    padding: 12px 0px;
+    font-size: 16px;
+    padding: auto auto;
+}
+
+.label-of-form-profile {
+    position: absolute;
+    background-color: #F5F5F5;
+    padding-right: 5px;
+    top: -10px;
+    left: 7px;
+    border-radius: 2px;
+}
+
+.form-select-item {}
+
+.preference-button {
+    height: 25px;
+    border-radius: 4px;
+    background-color: #F5F5F5;
+    border: 1.5px solid var(--lineas-stroke-lineas, #c8cfd6);
+    margin-right: 6px;
+    margin-top: 8px;
+
+    color: #000;
+    font-family: Poppins;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}

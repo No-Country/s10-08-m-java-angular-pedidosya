@@ -17,7 +17,7 @@ import { AuthState } from '../../state/auth.reducer';
   templateUrl: './login.component.html',
   styleUrls: ['../shared-auth-styles.scss']
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent implements OnInit /*,OnDestroy */{
 
   suscripcion!: Subscription;
 
