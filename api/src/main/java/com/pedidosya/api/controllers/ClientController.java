@@ -2,12 +2,15 @@ package com.pedidosya.api.controllers;
 
 import com.pedidosya.api.dto.Request.ClientDTO;
 import com.pedidosya.api.models.Client;
+import com.pedidosya.api.models.User;
 import com.pedidosya.api.services.Impl.ClientImpl;
 import com.pedidosya.api.utils.mappers.IClientMapper;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -89,6 +92,15 @@ public class ClientController {
     @GetMapping("/{id}")
     public ResponseEntity<ClientDTO> findById(@PathVariable("id") Integer id){
         ClientDTO dto = this.convertToDto(clientImpl.readById(id));
+        return new ResponseEntity<>(dto, HttpStatus.OK);
+    }
+
+    @GetMapping("/user")
+    public ResponseEntity<ClientDTO> findById(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = (User) authentication.getPrincipal();
+        Integer userId = user.getIdUser();
+        ClientDTO dto = this.convertToDto(clientImpl.readByIdUser(userId));
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
     @DeleteMapping(value = "/delete/{id}", headers = "Accept=application/json")
