@@ -33,7 +33,7 @@ export class CartFacade {
   }
 
   updateItem(itemUpdated: ItemModel) {
-    this._store.dispatch(CartActions.deleteItem({item: itemUpdated}));
+    this._store.dispatch(CartActions.addItem({item: itemUpdated}));
   }
 
   deleteItem(item: ItemModel) {

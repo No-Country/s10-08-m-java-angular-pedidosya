@@ -6,12 +6,13 @@ import {CartFacade} from "@root/restaurant/store/facades/cart.facade";
 import {ItemCardComponent} from "@root/restaurant/components/item-card/item-card.component";
 import {ItemModel} from "@models/item.model";
 import {MenuFacade} from "@root/restaurant/store/facades/menu.facade";
-import {Router} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
+import {MatButtonModule} from "@angular/material/button";
 
 @Component({
   selector: 'app-checkout-product-list',
   standalone: true,
-  imports: [CommonModule, ItemCardComponent],
+  imports: [CommonModule, ItemCardComponent, RouterLink, MatButtonModule],
   templateUrl: './checkout-product-list.component.html',
   styleUrls: ['./checkout-product-list.component.scss']
 })

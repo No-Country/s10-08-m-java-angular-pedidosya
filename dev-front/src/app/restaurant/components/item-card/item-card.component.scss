@@ -1,5 +1,35 @@
 .item-card {
   padding: 5px 24px;
+  display: flex;
+  align-items: center;
+  gap: 0 8px;
+  align-self: stretch;
+}
+
+.card-title-container {
+  display: flex;
+  padding-bottom: 0px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex: 1 0 0;
+  align-self: stretch;
+  margin: auto;
+}
+
+.card-title-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  align-self: stretch;
+}
+
+.card-img-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 }
 
 .img-product {
@@ -12,13 +42,27 @@
   box-shadow: 0px -2px 4px 0px rgba(46, 46, 46, 0.25), 0px 2px 4px 0px rgba(46, 46, 46, 0.25);
 }
 
+.btn-edit {
+  color: #114260;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: capitalize;
+  border: none;
+  background: transparent;
+
+}
+
 .card-text {
+  max-width: 140px;
   color: #151719;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   text-transform: capitalize;
+  margin: 0;
 }
 
 .card-description {
@@ -26,5 +70,16 @@
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
+  line-height: normal;
+  margin: 4px 0 0 0;
+}
+
+.subtotal {
+  margin: 0;
+  color: #151719;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
   line-height: normal;
 }

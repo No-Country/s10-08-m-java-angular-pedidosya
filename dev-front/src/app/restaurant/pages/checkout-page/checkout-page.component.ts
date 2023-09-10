@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ButtonNavBackComponent} from "@shared/components/button-nav-back/button-nav-back.component";
 
 import {CheckoutFooterComponent} from "@root/restaurant/layout/checkout-footer/checkout-footer.component";
-import {take} from "rxjs";
+import {Observable, take} from "rxjs";
 import {CartFacade} from "@root/restaurant/store/facades/cart.facade";
 import {Router} from "@angular/router";
 import {
@@ -10,8 +10,9 @@ import {
 } from "@root/restaurant/components/checkout-product-list/checkout-product-list.component";
 import {CheckoutSummaryComponent} from "@root/restaurant/components/checkout-summary/checkout-summary.component";
 import {ProductListComponent} from "@root/restaurant/components/product-list/product-list.component";
-import {ProductModel} from "@models/product.model";
 import {MenuFacade} from "@root/restaurant/store/facades/menu.facade";
+import {Menu} from "@models/menu.model";
+import {AsyncPipe} from "@angular/common";
 
 
 @Component({
@@ -24,16 +25,17 @@ import {MenuFacade} from "@root/restaurant/store/facades/menu.facade";
     CheckoutFooterComponent,
     CheckoutProductListComponent,
     CheckoutSummaryComponent,
-    ProductListComponent
+    ProductListComponent,
+    AsyncPipe
   ]
 })
 export class CheckoutPageComponent implements OnInit {
   title: string = '¿Queres agregar algo más?'
-  products: ProductModel[]
+  products$: Observable<Menu | null>
 
 
   constructor(private _router: Router, private _cartFacade: CartFacade, private _menuFacade: MenuFacade) {
-    this.products = []
+    this.products$ = _menuFacade.topSelling$
   }
 
 
