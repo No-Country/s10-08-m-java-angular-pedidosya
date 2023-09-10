@@ -34,7 +34,7 @@ const routes: Routes = [
   //{ path: '', redirectTo: 'home', pathMatch: 'full' },
   // {path: '**', component: NoEncontradoComponent },
   {path: '', redirectTo: 'auth/loading', pathMatch: 'full'},
-  {path: '**', component: NoPageFoundComponent}
+  {path: '**', component: NoPageFoundComponent},
   { path: 'profile', component: ProfileComponent },
   { path: 'personalInfo', component: PersonalInfoComponent },
   { path: 'setPersonalInfo', component: SetPersonalInfoComponent },
