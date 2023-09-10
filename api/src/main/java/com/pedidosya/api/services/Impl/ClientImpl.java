@@ -26,6 +26,12 @@ public class ClientImpl extends CRUDImpl<Client, Integer> implements IClientServ
     public List<Client> readAll() {
         return repo.findAll();
     }
+
+    @Override
+    public Client readByIdUser(Integer idUser) {
+        return repo.readByIdUser(idUser);
+    }
+
     @Transactional
     @Override
     public Client updatePerfil(Client client) {

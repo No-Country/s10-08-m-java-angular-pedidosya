@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface IClientService extends ICRUD<Client, Integer>{
 
     public Client updatePerfil(Client client);
+
+    public Client readByIdUser(Integer idUser);
     }
