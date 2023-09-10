@@ -1,15 +1,22 @@
 <ng-container *ngIf="cart$ | async as cart">
-  <main class="container">
-    <h1>{{ cart.restaurant.name }}</h1>
-
-    <ng-container *ngFor="let item of cart.items">
-      <app-item-card (changeQuantity)="onChangesQuantityItem($event)" (deleteItem)="onDeleteItem($event)"
-                     (editItem)="editItem($event)" [item]="item"></app-item-card>
-      <hr>
+  <main>
+    <div class="container">
+      <h2>{{ cart.restaurant.name }}</h2>
+    </div>
+    <ng-container *ngIf="cart.items.length >0;else noItems">
+      <ng-container *ngFor="let item of cart.items">
+        <app-item-card (changeQuantity)="onChangesQuantityItem($event)" (deleteItem)="onDeleteItem($event)"
+                       (editItem)="editItem($event)"
+                       [item]="item"></app-item-card>
+        <hr>
+      </ng-container>
     </ng-container>
-
-
-
+    <ng-template #noItems>
+      <main class="container">
+        <h2>No has seleccionado productos...</h2>
+        <a class="btn btn-secondary" mat-flat-button routerLink="/restaurant/details">Ver productos</a>
+      </main>
+    </ng-template>
   </main>
 </ng-container>
 

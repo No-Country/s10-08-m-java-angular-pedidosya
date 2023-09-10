@@ -1,13 +1,8 @@
 <section class="filter-sheet-container">
-  <header class="line-container">
-    <svg fill="none" height="4" viewBox="0 0 54 4" width="54" xmlns="http://www.w3.org/2000/svg">
-      <path d="M2 2H52" stroke="#B3BFCB" stroke-linecap="round" stroke-width="4"/>
-    </svg>
-  </header>
+  <app-button-line/>
 
-  <main class="filter-group-container">
-    <!--Ordenado By TODO: Refactorizar-->
-    <h2>Ordenar por</h2>
+  <main class="filter-group-container ">
+    <h1 class="my-2">Ordenar por</h1>
     <mat-button-toggle-group [(ngModel)]="sortedBy" appearance="legacy" aria-label="Sorted by"
                              class="filter-button-group-content">
       <mat-button-toggle *ngFor="let buttonSort of buttonToggleInfo"
@@ -29,11 +24,11 @@
     </div>
   </main>
 
-  <footer class="py-2 px-1">
-    <button (click)="handleApplyFilter()" class="my-2" color="primary" mat-raised-button>
+  <footer>
+    <button (click)="handleApplyFilter()" class="my-2 btn btn-lg btn-primary" color="primary" mat-raised-button>
       Aplicar filtros
     </button>
-    <button (click)="handleDeleteFilter()" *ngIf="filtersApplied" mat-stroked-button>
+    <button (click)="handleDeleteFilter()" *ngIf="filtersApplied" class="btn btn-lg btn-tertiary" mat-stroked-button>
       Eliminar filtros
     </button>
   </footer>

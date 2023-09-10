@@ -1,9 +1,8 @@
 <app-restaurant-header/>
 
 
-<section class="deck-container">
+<main class="deck-container">
   <mat-spinner *ngIf="loading$ | async" class="m-auto"/>
-
 
   <app-restaurant-main
     *ngIf="!(loading$ | async)"
@@ -11,5 +10,5 @@
     [title]="title"/>
 
 
-</section>
+</main>
 

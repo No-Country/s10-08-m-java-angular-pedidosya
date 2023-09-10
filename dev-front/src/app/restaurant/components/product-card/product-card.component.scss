@@ -68,8 +68,9 @@ $button-padding: 5px;
   text-transform: capitalize;
 }
 
+
 .btn-add {
-  @include absolute-position(0%, 5%);
+  @include absolute-position(0%, 3%);
   @include button-size($button-size, $button-size, $button-padding);
   @include button-styles($primary-bg-color, $primary-text-color, 24px);
 }
@@ -88,3 +89,24 @@ $button-padding: 5px;
 .mat-mdc-card-content {
   padding: 0px !important;
 }
+
+.badge-discount {
+  @include absolute-position(0%, 35%);
+  height: 25px;
+  background: #048221;
+  border-radius: 8px;
+  padding: 0 5px;
+
+
+  p {
+    color: #F5F5F5;
+    margin: 0;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+}
+
+

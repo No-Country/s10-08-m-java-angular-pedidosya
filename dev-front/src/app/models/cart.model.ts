@@ -25,8 +25,14 @@ export class Cart implements CartModel {
   }
 
   addItem(newItem: ItemModel): Cart {
-    const items: ItemModel[] = this.items.filter(item => item.product.id !== newItem.product.id);
-    items.push(newItem);
+    const items: ItemModel[] = this.items.slice(); // Create a shallow copy of the original items array
+    const index = items.findIndex(item => item.product.id === newItem.product.id);
+
+    if (index !== -1) {
+      items[index] = newItem;
+    } else {
+      items.push(newItem);
+    }
 
     return new Cart(this.restaurant, items, OrderStatus.IS_ORDERING);
   }

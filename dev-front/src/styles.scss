@@ -6,6 +6,7 @@
 @import 'styles/margin.scss';
 @import 'styles/borders.scss';
 @import 'styles/alignment.scss';
+@import 'styles/buttons.scss';
 
 
 html, body {
@@ -50,6 +51,20 @@ body {
   padding: 0px;
   height: 100%;
   width: 100%;
+  overflow-y: auto;
+}
+
+.mdc-checkbox__background {
+  border-color: #048221 !important;
+}
+
+.mdc-checkbox__native-control:enabled:checked ~ .mdc-checkbox__background {
+  background-color: #048221 !important;
+}
+
+
+.mat-accent {
+  --mat-option-selected-state-label-text-color: #048221 !important;
 }
 
 

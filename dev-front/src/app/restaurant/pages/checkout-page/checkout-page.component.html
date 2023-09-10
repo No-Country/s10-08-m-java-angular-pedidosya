@@ -3,11 +3,15 @@
   <h1 class="ms-2">Mi pedido</h1>
 </header>
 
-<app-checkout-product-list/>
 
-<app-product-list [isScrolling]="true" [products]="products" [title]="title"/>
+<main>
+  <app-checkout-product-list/>
 
-<app-checkout-summary/>
+  <section class="container">
+    <app-product-list [isScrolling]="true" [products]="(products$|async)?.products || []" [title]="title"/>
+  </section>
 
+  <app-checkout-summary/>
+</main>
 <app-checkout-footer/>
 

@@ -1,4 +1,7 @@
 <mat-card class="product-card">
+  <div *ngIf="discount>0" class="badge-discount">
+    <p>{{discount}}</p>
+  </div>
 
   <button *ngIf="quantity===0" class="btn-add" color="link" mat-mini-fab>
     <mat-icon fontIcon="add"/>

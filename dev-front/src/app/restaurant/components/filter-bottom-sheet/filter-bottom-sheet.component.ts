@@ -16,13 +16,14 @@ import {selectFilterSelected, selectSortedBy} from "@root/restaurant/store/selec
 import {RestaurantFilter} from "@shared/filters/restaurant-filter.interface";
 import {RestaurantsActions} from "@root/restaurant/store/actions/restaurants.actions";
 import {RestaurantSortedBy} from "@shared/enums/restaurant-sorted-by";
+import {ButtonLineComponent} from "@shared/components/button-line/button-line.component";
 
 @Component({
   selector: 'app-filter-bottom-sheet',
   templateUrl: './filter-bottom-sheet.component.html',
   styleUrls: ['./filter-bottom-sheet.component.scss'],
   standalone: true,
-  imports: [MatListModule, MatIconModule, MatButtonModule, RestaurantModule, FilterCheckboxFormComponent, MatButtonToggleModule, FormsModule, NgIf, NgForOf],
+  imports: [MatListModule, MatIconModule, MatButtonModule, RestaurantModule, FilterCheckboxFormComponent, MatButtonToggleModule, FormsModule, NgIf, NgForOf, ButtonLineComponent, ButtonLineComponent],
 })
 export class FilterBottomSheetComponent implements OnInit {
 

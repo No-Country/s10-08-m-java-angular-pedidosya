@@ -1,7 +1,8 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MatButtonModule} from "@angular/material/button";
 import {CounterComponent} from "@shared/components/counter/counter.component";
 import {ItemModel} from "@models/item.model";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-item-card',
@@ -10,18 +11,31 @@ import {ItemModel} from "@models/item.model";
   standalone: true,
   imports: [
     MatButtonModule,
-    CounterComponent
+    CounterComponent,
+    RouterLink
   ]
 })
-export class ItemCardComponent {
+export class ItemCardComponent implements OnInit {
   @Input() item!: ItemModel;
   @Output() changeQuantity = new EventEmitter<ItemModel>()
   @Output() deleteItem = new EventEmitter<ItemModel>()
   @Output() editItem = new EventEmitter<ItemModel>()
 
+  initialQuantity: number
+
+  constructor() {
+    this.initialQuantity = this.item?.quantity || 0
+  }
+
+
   emitChangeQuantity(quantity: number) {
-    let itemUpdated: ItemModel = {quantity: quantity, product: this.item.product, unitPrice: this.item.unitPrice}
-    this.item = itemUpdated;
+    const itemUpdated: ItemModel = {
+      product: this.item.product,
+      unitPrice: this.item.unitPrice,
+      quantity: quantity
+    };
+    this.initialQuantity = quantity
+
     this.changeQuantity.emit(itemUpdated);
   }
 
@@ -32,6 +46,10 @@ export class ItemCardComponent {
 
   emitUpdateItem() {
     this.editItem.emit(this.item);
+  }
+
+  ngOnInit(): void {
+    this.initialQuantity = this.item?.quantity || 0
   }
 
 }
