@@ -52,6 +52,23 @@ export class AuthService {
     localStorage.setItem(this.keyToken, responseAut.jwt)
   }
 
+  getClientInfo(): Observable<any>{
+    const urlClient = this.apiUrl + '/clients/user';
+    let auth_token = this.getToken();
+  
+    const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${auth_token}`
+      });
+  
+    const requestOptions = { headers: headers };
+
+    return this.httpClient
+      .get(urlClient, requestOptions)
+   
+
+  }
+
   getToken(){
     return localStorage.getItem(this.keyToken);
   }

@@ -14,21 +14,21 @@
         <path d="M7.5 9.32587C6.72335 9.32587 6.09375 8.65456 6.09375 7.82645C6.09375 6.99835 6.72335 6.32704 7.5 6.32704C8.27665 6.32704 8.90625 6.99835 8.90625 7.82645C8.90625 8.65456 8.27665 9.32587 7.5 9.32587ZM7.5 9.92563C8.58731 9.92563 9.46875 8.9858 9.46875 7.82645C9.46875 6.66711 8.58731 5.72728 7.5 5.72728C6.41269 5.72728 5.53125 6.66711 5.53125 7.82645C5.53125 8.9858 6.41269 9.92563 7.5 9.92563Z" fill="#263238"/>
         <path d="M4.6875 6.62692C4.6875 6.79254 4.56158 6.92681 4.40625 6.92681C4.25092 6.92681 4.125 6.79254 4.125 6.62692C4.125 6.4613 4.25092 6.32704 4.40625 6.32704C4.56158 6.32704 4.6875 6.4613 4.6875 6.62692Z" fill="#263238"/>
     </svg>
-    <h1>Ariana Ruiz</h1>
-    <p>arianaruiz@gmail.com</p>
+    <h1>{{this.fullname}}</h1>
+    <p>{{this.email}}</p>
 </section>
 
 <section class="container-perfil">
     <h1 class="title-sección-perfil">Perfil</h1>
-    <div class="container-p-perfil" routerLink="/layoutOfCustomer/PersonalInformation">
+    <div class="container-p-perfil" routerLink="/customer/PersonalInformation">
         <p>Información personal</p>
         <ng-container *ngTemplateOutlet="svgTemplate"></ng-container>
     </div>
-    <div class="container-p-perfil" routerLink="/layoutOfCustomer/FoodPreferences">
+    <div class="container-p-perfil" routerLink="/customer/FoodPreferences">
         <p>Preferencias de comidas</p>
         <ng-container *ngTemplateOutlet="svgTemplate"></ng-container>
     </div>
-    <div class="container-p-perfil" routerLink="/layoutOfCustomer/MyAddresses">
+    <div class="container-p-perfil" routerLink="/customer/MyAddresses">
         <p>Direcciones</p>
         <ng-container *ngTemplateOutlet="svgTemplate"></ng-container>
     </div>
@@ -40,7 +40,7 @@
 
 <section class="container-perfil">
     <h1 class="title-sección-perfil">Actividad</h1>
-    <div class="container-p-perfil" routerLink="/layoutOfCustomer/MostSeen">
+    <div class="container-p-perfil" routerLink="/customer/MostSeen">
         <p>Mas vistos</p>
         <ng-container *ngTemplateOutlet="svgTemplate"></ng-container>
     </div>
@@ -48,7 +48,7 @@
 
 <section class="container-perfil">
     <h1 class="title-sección-perfil">Configuración</h1>
-    <div class="container-p-perfil" routerLink="/layoutOfCustomer/NotificationPreferences">
+    <div class="container-p-perfil" routerLink="/customer/NotificationPreferences">
         <p>Notificaciones</p>
         <ng-container *ngTemplateOutlet="svgTemplate"></ng-container>
     </div>

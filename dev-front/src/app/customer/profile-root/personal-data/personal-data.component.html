@@ -1,6 +1,6 @@
 <div style="margin-left: 16px;">
   <div class="back-profile">
-    <svg xmlns="http://www.w3.org/2000/svg" routerLink="/layoutOfCustomer/PersonalInformation" style="margin: 5px;" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <svg xmlns="http://www.w3.org/2000/svg" routerLink="/customer/PersonalInformation" style="margin: 5px;" width="24" height="24" viewBox="0 0 24 24" fill="none">
         <mask id="mask0_722_9975" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
           <rect width="24" height="24" fill="#D9D9D9"/>
         </mask>
@@ -13,45 +13,64 @@
 
 <h1 class="tittle-section">Mis datos personales</h1>
 
-<section>
+<form [formGroup]="myForm">
 
-  <h1 class="sub-tittle-section">¿Cómo te llamas?</h1>
+  <section>
 
-  <form class="form-profile">
+    <h1 class="sub-tittle-section">¿Cómo te llamas?</h1>
+
     <label for="" class="label-of-form-profile">Nombre</label>
-    <input type="text" class="input-of-form-profile" placeholder="Ariana">
-  </form>
+    <input type="text" class="input-of-form-profile" placeholder="Ariana"
+      formControlName="firstName" >
 
-  <form class="form-profile">
     <label for="" class="label-of-form-profile">Apellido</label>
-    <input type="text" class="input-of-form-profile" placeholder="Ruiz">
-  </form>
+    <input type="text" class="input-of-form-profile" placeholder="Ruiz"
+    formControlName="lastName">
 
-</section>
 
-<section>
-
-  <h1 class="sub-tittle-section">¿Cuándo naciste?</h1>
-
-  <form class="form-profile">
+    <!-- <form class="form-profile">
+      <label for="" class="label-of-form-profile">Nombre</label>
+      <input type="text" class="input-of-form-profile" placeholder="Ariana">
+    </form>
+  
+    <form class="form-profile">
+      <label for="" class="label-of-form-profile">Apellido</label>
+      <input type="text" class="input-of-form-profile" placeholder="Ruiz">
+    </form> -->
+  
+  </section>
+  
+  <section>
+  
+    <h1 class="sub-tittle-section">¿Cuándo naciste?</h1>
     <label for="" class="label-of-form-profile">DD/MM/AAAA</label>
     <input type="text" class="input-of-form-profile" placeholder="13/02/1990">
-  </form>
 
-</section>
-
-<section>
-
-  <h1 class="sub-tittle-section">¿Cuándo naciste?</h1>
-
-  <form class="form-select-item">
+    <!-- <form class="form-profile">
+      <label for="" class="label-of-form-profile">DD/MM/AAAA</label>
+      <input type="text" class="input-of-form-profile" placeholder="13/02/1990">
+    </form> -->
+  
+  </section>
+  
+  <section>
+  
+    <h1 class="sub-tittle-section">¿Cuándo naciste?</h1>
     <button class="preference-button">Prefiero no decirlo</button>
     <button class="preference-button">No binario</button>
     <button class="preference-button">Femenino</button>
-    <button class="preference-button">Masculino</button>
-  </form>
+    <button class="preference-button">Masculino</button> 
+    <!-- <form class="form-select-item">
+      <button class="preference-button">Prefiero no decirlo</button>
+      <button class="preference-button">No binario</button>
+      <button class="preference-button">Femenino</button>
+      <button class="preference-button">Masculino</button>
+    </form> -->
+  
+  </section>
+  
+  <button class="green-button" style="width: 328px;">Guardar cambios</button>
 
-</section>
+</form>
 
-<button class="green-button" style="width: 328px;">Guardar cambios</button>
-</div>
+

@@ -16,12 +16,12 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then((modulo) => modulo.AuthModule)
   },
+  // {
+  //   path: 'account',
+  //   loadChildren: () => import('./account/account.module').then((modulo) => modulo.AccountModule)
+  // },
   {
-    path: 'account',
-    loadChildren: () => import('./account/account.module').then((modulo) => modulo.AccountModule)
-  },
-  {
-    path: 'layoutOfCustomer',
+    path: 'customer',
     loadChildren: () => import('./customer/customer.module').then((modulo) => modulo.CustomerModule)
   },
   {
@@ -31,8 +31,6 @@ const routes: Routes = [
   { path: 'choose-role', component: LoginUserComponent },
   { path: 'activate-ubication', component: UbiUserComponent },
   { path: 'onboarding', component: OnboardingStepsComponent },
-  //{ path: '', redirectTo: 'home', pathMatch: 'full' },
-  // {path: '**', component: NoEncontradoComponent },
   {path: '', redirectTo: 'auth/loading', pathMatch: 'full'},
   {path: '**', component: NoPageFoundComponent},
   { path: 'profile', component: ProfileComponent },

@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class HomeComponent {
   constructor(private router: Router){}
   redirectTo(page: String){
-    const url = '/layoutOfCustomer/'+page;
+    const url = '/customer/'+page;
     this.router.navigate([url]);
   }
 }

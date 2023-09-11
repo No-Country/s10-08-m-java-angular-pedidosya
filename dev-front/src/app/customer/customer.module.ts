@@ -17,6 +17,8 @@ import { ValidateCellNumberComponent } from './profile-root/validate-cell-number
 import { MyAddressesComponent } from './profile-root/my-addresses/my-addresses.component';
 import { AddAdressComponent } from './profile-root/add-adress/add-adress.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -33,9 +35,11 @@ import { AddAdressComponent } from './profile-root/add-adress/add-adress.compone
     ValidateMailComponent,
     ValidateCellNumberComponent,
     MyAddressesComponent,
-    AddAdressComponent
+    AddAdressComponent,
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     CustomerRoutingModule
   ]
