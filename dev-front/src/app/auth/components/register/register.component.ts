@@ -53,7 +53,6 @@ export class RegisterComponent {
 				email: this.myForm.value.email,
 				password: this.myForm.value.password,
 				role: 'C',
-				idUser: 0
 				}
 		};
 		
