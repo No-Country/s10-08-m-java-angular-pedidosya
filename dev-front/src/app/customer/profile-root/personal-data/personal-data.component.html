@@ -14,62 +14,39 @@
 <h1 class="tittle-section">Mis datos personales</h1>
 
 <form [formGroup]="myForm">
-
   <section>
+  <h1 class="sub-tittle-section">¿Cómo te llamas?</h1>
 
-    <h1 class="sub-tittle-section">¿Cómo te llamas?</h1>
+  <div class="form-profile">
+  <label for="" class="label-of-form-profile">Nombre</label>
+  <input type="text" class="input-of-form-profile" placeholder="Ariana"
+    formControlName="firstName" >
+  </div>
+</section>
 
-    <label for="" class="label-of-form-profile">Nombre</label>
-    <input type="text" class="input-of-form-profile" placeholder="Ariana"
-      formControlName="firstName" >
-
-    <label for="" class="label-of-form-profile">Apellido</label>
-    <input type="text" class="input-of-form-profile" placeholder="Ruiz"
+  <div class="form-profile">
+  <label for="" class="label-of-form-profile">Apellido</label>
+  <input type="text" class="input-of-form-profile" placeholder="Ruiz"
     formControlName="lastName">
+  </div>
 
-
-    <!-- <form class="form-profile">
-      <label for="" class="label-of-form-profile">Nombre</label>
-      <input type="text" class="input-of-form-profile" placeholder="Ariana">
-    </form>
-  
-    <form class="form-profile">
-      <label for="" class="label-of-form-profile">Apellido</label>
-      <input type="text" class="input-of-form-profile" placeholder="Ruiz">
-    </form> -->
-  
-  </section>
-  
-  <section>
-  
-    <h1 class="sub-tittle-section">¿Cuándo naciste?</h1>
+  <!-- <h1 class="sub-tittle-section">¿Cuándo naciste?</h1>
+  <div class="form-profile">
     <label for="" class="label-of-form-profile">DD/MM/AAAA</label>
     <input type="text" class="input-of-form-profile" placeholder="13/02/1990">
+  </div> 
 
-    <!-- <form class="form-profile">
-      <label for="" class="label-of-form-profile">DD/MM/AAAA</label>
-      <input type="text" class="input-of-form-profile" placeholder="13/02/1990">
-    </form> -->
-  
-  </section>
-  
-  <section>
-  
-    <h1 class="sub-tittle-section">¿Cuándo naciste?</h1>
-    <button class="preference-button">Prefiero no decirlo</button>
-    <button class="preference-button">No binario</button>
-    <button class="preference-button">Femenino</button>
-    <button class="preference-button">Masculino</button> 
-    <!-- <form class="form-select-item">
-      <button class="preference-button">Prefiero no decirlo</button>
-      <button class="preference-button">No binario</button>
-      <button class="preference-button">Femenino</button>
-      <button class="preference-button">Masculino</button>
-    </form> -->
-  
-  </section>
-  
-  <button class="green-button" style="width: 328px;">Guardar cambios</button>
+  <h1 class="sub-tittle-section">¿Cuándo naciste?</h1>
+  <div class="form-select-item">
+  <button class="preference-button">Prefiero no decirlo</button>
+  <button class="preference-button">No binario</button>
+  <button class="preference-button">Femenino</button>
+  <button class="preference-button">Masculino</button>
+</div>    -->
+ 
+  <button class="green-button" style="width: 328px;" 
+    (click)="UpdateClient()">Guardar cambios
+  </button>
 
 </form>
 

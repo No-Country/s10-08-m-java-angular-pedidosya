@@ -13,9 +13,11 @@ import { ProductFilterPipe } from "@shared/pipes/product-filter.pipe";
     ReactiveFormsModule,
     MaterialModule,
     ToastrModule.forRoot({
-      timeOut: 6000, // 6 seconds
+      timeOut: 4000, // 6 seconds
       closeButton: true,
       progressBar: true,
+      positionClass: 'toast-top-right'
+      
     }),
   ],
   declarations: [

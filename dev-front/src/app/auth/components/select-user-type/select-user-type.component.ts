@@ -20,7 +20,7 @@ export class SelectUserTypeComponent {
   constructor(
     private router: Router,
     private authService: AuthService,
-    // private toastrService: ToastrService
+    private toastrService: ToastrService
   ) {
 
         
@@ -65,7 +65,7 @@ export class SelectUserTypeComponent {
 
 		this.authService.userRegistration(dataSignUp).subscribe(
 			(response: any) => {
-				//this.toastrService.success('Usuario registrado', dataSignUp.firstName + ', vienvenido');
+				this.toastrService.success('Usuario registrado', dataSignUp.firstName + ', vienvenido');
         	console.log('Register  ok', dataSignUp);
           // localStorage.removeItem('email');
           // localStorage.removeItem('password');
@@ -75,7 +75,7 @@ export class SelectUserTypeComponent {
 			},
 			(error: any) => {
         console.log('failed', error.message);
-				//this.toastrService.error('Process fallo', error.message);
+				this.toastrService.error('Process fallo', error.message);
 			}
 		);    
 

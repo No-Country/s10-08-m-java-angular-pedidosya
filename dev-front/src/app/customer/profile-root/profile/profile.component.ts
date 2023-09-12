@@ -20,7 +20,7 @@ export class ProfileComponent {
   
       this.authService.getClientInfo()
         .subscribe((response) => {
-          (console.log('response', response));
+          console.log('response', response);
           this.fullname= response.firstName + ' ' + response.lastName
           this.email = response.email;
         }
