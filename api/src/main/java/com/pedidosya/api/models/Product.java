@@ -38,5 +38,8 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "id_menu", nullable = false, foreignKey = @ForeignKey(name= "FK_Product_Menu"))
     private Menu menu;
+    @ManyToOne
+    @JoinColumn(name = "id_product_discount", nullable = true, foreignKey = @ForeignKey(name= "FK_Product_Product_Discount"))
+    private ProductDiscount productDiscount;
 
 }

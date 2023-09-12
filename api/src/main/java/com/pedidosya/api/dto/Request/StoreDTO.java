@@ -30,8 +30,8 @@ public class StoreDTO {
     @Column(nullable = false)
     private boolean active;
 
-    @Column(nullable = true)
-    private Integer ratingStore;
+    //@Column(nullable = true)
+    //private Integer ratingStore;
 
     @Column(length = 300, nullable = false)
     private String imagePath;
@@ -58,11 +58,14 @@ public class StoreDTO {
     private Integer timeTo;
 
 
-    @JsonManagedReference
+   /* @JsonManagedReference
     @NotNull
     @OneToMany(mappedBy = "store", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<MenuDTO> menus;
+*/
 
     private Boolean isFavourite;
+
+    private Boolean takeAway;
 
 }

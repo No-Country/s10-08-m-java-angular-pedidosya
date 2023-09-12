@@ -28,8 +28,8 @@ public class Store {
     @Column(nullable = false)
     private boolean active;
 
-    @Column(nullable = true)
-    private Integer ratingStore;
+    //@Column(nullable = true)
+    //private Integer ratingStore;
 
     @Column(length = 300, nullable = false)
     private String imagePath;
@@ -58,6 +58,9 @@ public class Store {
     //int en minutos
     @Column(nullable = true)
     private Integer timeTo;
+
+    @Column(nullable = true)
+    private Boolean takeAway;
 
 
 }
