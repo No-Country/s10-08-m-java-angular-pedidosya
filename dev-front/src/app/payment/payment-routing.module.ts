@@ -2,8 +2,8 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {SettingDeliveryMainComponent} from "@root/payment/layout/setting-delivery-main/setting-delivery-main.component";
 import {SettingPaymentMainComponent} from "@root/payment/layout/setting-payment-main/setting-payment-main.component";
-import {SettingAddressMainComponent} from "@root/payment/layout/setting-address-main/setting-address-main.component";
 import {PaymentConfirmMainComponent} from "@root/payment/layout/payment-confirm-main/payment-confirm-main.component";
+import {SettingAddressMainComponent} from "@root/payment/layout/setting-address-main/setting-address-main.component";
 
 
 const routes: Routes = [
@@ -21,15 +21,15 @@ const routes: Routes = [
         component: PaymentConfirmMainComponent, // Componente para la confirmación de pago
       },
       {
-        path: 'delivery',
+        path: 'setting-address',
         component: SettingAddressMainComponent, // Componente para la configuración de la dirección de entrega
       },
       {
-        path: 'time',
+        path: 'setting-delivery',
         component: SettingDeliveryMainComponent, // Componente para la configuración de la hora de entrega
       },
       {
-        path: 'cash',
+        path: 'setting-payment',
         component: SettingPaymentMainComponent, // Componente para la configuración de pago
       }
     ]

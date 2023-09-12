@@ -27,22 +27,23 @@ export class PaymentHeaderComponent implements OnInit {
       case 'confirm':
         this.pageTitle = 'Confirmar Pedido';
         break;
-      case 'delivery':
+      case 'setting-delivery':
         this.pageTitle = 'Tiempo de Entrega';
         break;
-      case 'time':
+      case 'setting-address':
         this.pageTitle = 'Dirección de Entrega';
         break;
-      case 'cash':
+      case 'setting-payment':
         this.pageTitle = 'Pago en efectivo';
         break;
       default:
-        this.pageTitle = 'Título por defecto';
+        this.pageTitle = '';
         break;
     }
   }
 
   goBack() {
+
     // Implementa la función para volver atrás aquí
   }
 

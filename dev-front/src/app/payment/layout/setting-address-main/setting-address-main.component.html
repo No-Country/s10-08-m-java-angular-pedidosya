@@ -1,1 +1,52 @@
-<p>setting-address-main works!</p>
+<main class="container">
+  <form [formGroup]="form" class="form-address">
+    <h2>Dirección</h2>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Dirección</mat-label>
+      <input formControlName="address" matInput placeholder="Dirección de entrega">
+      <mat-error *ngIf="form.get('address')?.invalid">Debe ingresar una dirección</mat-error>
+    </mat-form-field>
+
+    <h2>Piso/Departamento</h2>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Piso/Departamento</mat-label>
+      <input formControlName="apartment" matInput placeholder="Ej: 4 C">
+    </mat-form-field>
+
+    <h2>Instrucciones de entrega</h2>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Instrucciones de entrega</mat-label>
+      <input formControlName="details" matInput placeholder="Ej: No funciona el timbre, tocar la bocina">
+    </mat-form-field>
+
+    <h2>Número de celular</h2>
+
+    <img
+      [src]="'https://flagcdn.com/w40/' + countryFlag + '.png'"
+      alt="flag"
+      class="px-1" width="40">
+    <mat-select formControlName="selectedCountry" appearance="outline" name="selectedCountry" placeholder="Seleccionar país">
+      <ng-container *ngFor="let country of countries">
+        <mat-option (click)="updateFlag(country)" [value]="country.value">
+          <img
+            [alt]="'flag ' + country.name"
+            [src]="'https://flagcdn.com/w20/' + country.abbr + '.png'"
+            width="20">
+          {{ country.value }}
+        </mat-option>
+      </ng-container>
+    </mat-select>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Teléfono</mat-label>
+      <input formControlName="phone" matInput placeholder="Número de teléfono" type="tel">
+      <mat-error *ngIf="form.get('phone')?.hasError('pattern')">El teléfono es inválido</mat-error>
+      <mat-error *ngIf="form.get('phone')?.hasError('required')">Debe ingresar un teléfono</mat-error>
+      <mat-hint>Te contactaremos solo en caso de que sea necesario</mat-hint>
+    </mat-form-field>
+
+  </form>
+</main>

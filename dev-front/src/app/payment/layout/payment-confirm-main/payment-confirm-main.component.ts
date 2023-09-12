@@ -3,6 +3,7 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatIconModule} from "@angular/material/icon";
 import {FormsModule} from "@angular/forms";
 import {OrderSummaryComponent} from "@root/payment/components/order-summary/order-summary.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-payment-confirm-main',
@@ -18,4 +19,11 @@ import {OrderSummaryComponent} from "@root/payment/components/order-summary/orde
 })
 export class PaymentConfirmMainComponent {
   propine = ''
+
+  constructor(private _router: Router) {
+  }
+
+  goTo(path: string) {
+    this._router.navigate(['payment/' + path])
+  }
 }
