@@ -1,0 +1,4 @@
+<footer class="container">
+  <button *ngIf="renderConfirm()" (click)="confirmOrder()" class="btn btn-lg btn-primary" mat-button>Realizar pedido($2000)</button>
+  <button *ngIf="!renderConfirm()" (click)="saveOptions()" class="btn btn-lg btn-primary" mat-button>Guardar</button>
+</footer>

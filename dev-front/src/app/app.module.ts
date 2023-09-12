@@ -20,7 +20,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {SharedModule} from "@shared/shared.module";
 import {GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from "@abacritt/angularx-social-login";
 import {MenuEffects} from "@root/restaurant/store/effects/menu.effects";
-import {cartReducer} from "@root/restaurant/store/reducers/cart.reducers";
+import {orderReducer} from "@root/restaurant/store/reducers/cart.reducers";
 import {menuReducer} from "@root/restaurant/store/reducers/menu.reducers";
 import {NoPageFoundComponent} from "@root/components/nopagefound/nopagefound.component";
 import {LayoutOfCustomerComponent} from "@root/customer/layout-of-customer/layout-of-customer.component";
@@ -47,7 +47,7 @@ import {LayoutOfCustomerComponent} from "@root/customer/layout-of-customer/layou
     StoreModule.forRoot({
       restaurants: restaurantsReducer,
       menus: menuReducer,
-      cart: cartReducer
+      order: orderReducer
     }, {}),
     EffectsModule.forRoot([RestaurantEffects, MenuEffects]),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode()}),

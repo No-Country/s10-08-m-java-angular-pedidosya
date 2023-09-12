@@ -1,0 +1,59 @@
+.scrolleable {
+  overflow-x: auto !important;
+}
+
+h3, p {
+  margin: 0
+}
+
+h3 {
+  color: #151719;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+p {
+  color: #6A798A;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
+
+.description-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1 0 0;
+}
+
+div.d-flex {
+  gap: 16px
+}
+
+mat-button-toggle-group {
+  padding: 10px;
+  gap: 16px;
+}
+
+mat-button-toggle {
+  border-radius: 4px;
+  padding: 5px;
+  border: 0.5px solid #B3BFCB;
+  color: #151719;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  overflow: auto;
+}
+
+h2 {
+  color: #151719;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}

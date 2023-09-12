@@ -1,23 +1,20 @@
 import {ItemModel} from "@models/item.model";
-import {OrderStatus} from "@models/AllTypes.enum";
 import {Restaurant} from "@models/restaurant.model";
 import {ProductModel} from "@models/product.model";
 
 export interface CartModel {
   items: ItemModel[]
-  status: OrderStatus;
 }
 
 export class Cart implements CartModel {
   restaurant: Restaurant;
   items: ItemModel[];
-  status: OrderStatus;
 
 
-  constructor(restaurant: Restaurant, products: ItemModel[], status: OrderStatus) {
+  constructor(restaurant: Restaurant, products: ItemModel[]) {
     this.restaurant = restaurant;
     this.items = products;
-    this.status = status;
+
   }
 
   isProductInCart(product: ProductModel): boolean {
@@ -34,7 +31,7 @@ export class Cart implements CartModel {
       items.push(newItem);
     }
 
-    return new Cart(this.restaurant, items, OrderStatus.IS_ORDERING);
+    return new Cart(this.restaurant, items);
   }
 
 
@@ -43,7 +40,7 @@ export class Cart implements CartModel {
     const newItems: ItemModel[] = this.items.filter(item => item.product !== product);
 
 
-    return new Cart(this.restaurant, newItems, this.status);
+    return new Cart(this.restaurant, newItems);
   }
 
 
@@ -63,6 +60,10 @@ export class Cart implements CartModel {
     let item = this.items.find(item => item.product === product);
 
     return item ? item.quantity : 0;
+  }
+
+  hasItems(): boolean {
+    return this.items.length > 0;
   }
 
 }

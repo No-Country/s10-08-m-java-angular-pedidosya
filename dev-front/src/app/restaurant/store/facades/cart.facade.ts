@@ -3,7 +3,7 @@ import {map, Observable, take} from "rxjs";
 import {Store} from "@ngrx/store";
 import {Cart} from "@models/cart.model";
 import {selectCart, selectError, selectLoading} from "@root/restaurant/store/selectors/cart.selector";
-import {CartActions} from "@root/restaurant/store/actions/cart.actions";
+import {OrderActions} from "@root/restaurant/store/actions/orderActions";
 import {ProductModel} from "@models/product.model";
 import {MenuFacade} from "@root/restaurant/store/facades/menu.facade";
 import {Restaurant} from "@models/restaurant.model";
@@ -25,19 +25,21 @@ export class CartFacade {
   }
 
   initCart(restaurant: Restaurant,) {
-    this._store.dispatch(CartActions.newCart({restaurant: restaurant}));
+    this._store.dispatch(OrderActions.newCart({restaurant: restaurant}));
   }
 
+
+
   addItemToCart(newItem: ItemModel) {
-    this._store.dispatch(CartActions.addItem({item: newItem}));
+    this._store.dispatch(OrderActions.addItem({item: newItem}));
   }
 
   updateItem(itemUpdated: ItemModel) {
-    this._store.dispatch(CartActions.addItem({item: itemUpdated}));
+    this._store.dispatch(OrderActions.addItem({item: itemUpdated}));
   }
 
   deleteItem(item: ItemModel) {
-    this._store.dispatch(CartActions.deleteItem({item: item}));
+    this._store.dispatch(OrderActions.deleteItem({item: item}));
   }
 
   getQuantitySelected(product: ProductModel): Observable<number> {
