@@ -2,6 +2,7 @@ package com.pedidosya.api.dto.Request;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.pedidosya.api.models.Menu;
+import com.pedidosya.api.models.ProductDiscount;
 import com.pedidosya.api.models.ProductType;
 import jakarta.persistence.*;
 import lombok.*;
@@ -30,13 +31,13 @@ public class ProductDTO {
 
     @Column(nullable = false)
     private boolean active = true;
-    //@JsonBackReference
 
-    @JsonBackReference
-    private Menu menu;
+  //  @JsonBackReference
+   // private Menu menu;
 
     private Boolean isFavourite;
 
+    private ProductDiscount productDiscount;
     @Override
     public String toString() {
         return "ProductDTO{" +
@@ -47,7 +48,7 @@ public class ProductDTO {
                 ", imagePath='" + imagePath + '\'' +
                 ", productType=" + productType +
                 ", active=" + active +
-                ", menu=" + menu +
+       //         ", menu=" + menu +
                 '}';
     }
 }

@@ -22,12 +22,18 @@ public class Sale {
     private LocalDateTime saleDate;
 
     @Column(nullable = false, length = 10)
-    private String status;
+    private Integer status;
     @Column(columnDefinition = "decimal(18,4)" , nullable = false)
     private double amount;
 
     @Column(nullable = true)
-    private Integer deliveryRating;
+    private Integer storeRating;
+    @Column(nullable = true)
+    private Boolean deliveryRating;
+
+    @Column(nullable = true)
+    private String deliveryReview;
+
 
     @ManyToOne
     @JoinColumn(name = "id_client", nullable = false, foreignKey = @ForeignKey(name= "FK_Sale_Client"))

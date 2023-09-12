@@ -38,6 +38,14 @@ public class MenuController {
         return ResponseEntity.ok(list);
     }
 
+    @Operation(summary="lista todos los menus (con productos con descuento )de un restaurant pasado como parametro")
+    @GetMapping(value="/discount-list/{id}", headers = "Accept=application/json")
+    public ResponseEntity<List<MenuDTO>> listMenuByDiscountStore(@PathVariable("id") Integer idStore)
+    {
+        List<MenuDTO> list = menuImpl.listMenuByStoreAndDiscount(idStore).stream().map(this::convertToDto).toList();
+        return ResponseEntity.ok(list);
+    }
+
     private MenuDTO convertToDto(Menu menu) {
         MenuDTO menuDTO = new MenuDTO();
         menuDTO.setIdMenu(menu.getIdMenu());

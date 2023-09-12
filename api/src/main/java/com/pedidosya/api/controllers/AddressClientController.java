@@ -31,7 +31,7 @@ public class AddressClientController {
     @PostMapping(value="/save", headers = "Accept=application/json")
     public ResponseEntity<Void> adAddressClient(@RequestBody AddressClientDTO addressClient)
     {
-        System.out.println(convertToEntity(addressClient).getAddress().getCity().getIdCity());
+       // System.out.println(convertToEntity(addressClient).getAddress().getCity().getIdCity());
         addressClientImpl.saveAddress(convertToEntity(addressClient));
         return  ResponseEntity.noContent().build();
     }

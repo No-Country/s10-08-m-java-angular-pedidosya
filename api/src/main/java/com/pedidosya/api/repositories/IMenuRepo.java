@@ -19,4 +19,12 @@ public interface IMenuRepo extends IGenericRepo<Menu, Integer>{
             "AND m.user.idUser = ?2"
     )
     FavouriteProduct findByFavourite(Integer idProduct, Integer idUser);
+
+    @Query("FROM Menu m INNER JOIN Product p ON p.menu.idMenu = m.idMenu " +
+            " WHERE m.store.idStore = ?1 " +
+            " AND p.productDiscount != null"
+    )
+    List<Menu> listMenuByStoreAndDiscount(Integer idStore);
+
+
 }
