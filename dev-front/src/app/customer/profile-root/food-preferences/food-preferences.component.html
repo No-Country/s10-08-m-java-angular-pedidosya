@@ -337,20 +337,22 @@
     </h1>
     
     <div class="container-food-preferences">
-        <button class="preference-button">Hamburguesas</button>
-        <button class="preference-button">Pizzas y empanadas</button>
-        <button class="preference-button">Pastas</button>
-        <button class="preference-button">Sushi</button>
-    
-        <button class="preference-button">Pescados y mariscos</button>
-        <button class="preference-button">Carnes y pollo</button>
-        <button class="preference-button">Comida liviana</button>
-    
-        <button class="preference-button">Comida internacional</button>
-        <button class="preference-button">Comida vegana</button>
-        <button class="preference-button">Helados</button>
-    
-        <button class="preference-button">Desayunos y meriendas</button>
+
+        <button class="preference-button"  type="button" (click)="selectFood('hamburguesas')" [class.food-selected]="buttonsState['hamburguesas']">Hamburguesas</button>
+        <button class="preference-button"  type="button" (click)="selectFood('pizzasYEmpanadas')" [class.food-selected]="buttonsState['pizzasYEmpanadas']">Pizzas y empanadas</button>
+        <button class="preference-button"  type="button" (click)="selectFood('pastas')" [class.food-selected]="buttonsState['pastas']">Pastas</button>
+        <button class="preference-button"  type="button" (click)="selectFood('sushi')" [class.food-selected]="buttonsState['sushi']">Sushi</button>
+        
+        <button class="preference-button"  type="button" (click)="selectFood('pescadosYMariscos')" [class.food-selected]="buttonsState['pescadosYMariscos']">Pescados y mariscos</button>
+        <button class="preference-button"  type="button" (click)="selectFood('carnesYPollo')" [class.food-selected]="buttonsState['carnesYPollo']">Carnes y pollo</button>
+        <button class="preference-button"  type="button" (click)="selectFood('comidaLiviana')" [class.food-selected]="buttonsState['comidaLiviana']">Comida liviana</button>
+        
+        <button class="preference-button"  type="button" (click)="selectFood('comidaInternacional')" [class.food-selected]="buttonsState['comidaInternacional']">Comida internacional</button>
+        <button class="preference-button"  type="button" (click)="selectFood('comidaVegana')" [class.food-selected]="buttonsState['comidaVegana']">Comida vegana</button>
+        <button class="preference-button"  type="button" (click)="selectFood('helados')" [class.food-selected]="buttonsState['helados']">Helados</button>
+        
+        <button class="preference-button"  type="button" (click)="selectFood('desayunosYMeriendas')" [class.food-selected]="buttonsState['desayunosYMeriendas']">Desayunos y meriendas</button>
     </div>
+      
 
 </div>

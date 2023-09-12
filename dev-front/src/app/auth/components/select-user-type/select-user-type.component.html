@@ -126,11 +126,34 @@
     <button class="option-button">Delivery</button>
     <button class="option-button">Cliente</button> -->
 
-    <ul class="heroes">
+    <!-- <ul class="heroes">
       <li style="list-style-type: none;" *ngFor="let userType of options">
         <button class="option-button" [class.buttomselected]="userType.id=== 'C'" 
           type="button" (click)="onSelect(userType)">
           <span>{{userType.name}}</span>
+        </button>
+      </li>
+    </ul> -->
+
+    <ul class="heroes">
+      <li style="list-style-type: none;">
+        <button class="option-button" [ngClass]="{'option-button-selected':selectedUserType.id=='C'}" [class.buttomselected]="selectedUserType.id== 'C'" 
+          type="button" (click)="onSelect({id:'C',name:'CLIENT'})">
+          <span>Cliente</span>
+        </button>
+      </li>
+
+      <li style="list-style-type: none;">
+        <button class="option-button" [ngClass]="{'option-button-selected':selectedUserType.id=='D'}" [class.buttomselected]="selectedUserType.id== 'D'" 
+          type="button" (click)="onSelect({id:'D',name:'DELIVERY'})">
+          <span>Delivery</span>
+        </button>
+      </li>
+
+      <li style="list-style-type: none;">
+        <button class="option-button" [ngClass]="{'option-button-selected':selectedUserType.id=='L'}"[class.buttomselected]="selectedUserType.id== 'L'" 
+          type="button" (click)="onSelect({id:'L',name:'LOCAL'})">
+          <span>Local</span>
         </button>
       </li>
     </ul>

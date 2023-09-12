@@ -51,8 +51,8 @@ export class LoginComponent implements OnInit /*,OnDestroy */{
   }
 
   ngOnDestroy(): void {
-    if (this.suscripcion)
-       this.suscripcion.unsubscribe();
+     if (this.suscripcion)
+        this.suscripcion.unsubscribe();
   } 
   
   loginWithGoogle(): void {
