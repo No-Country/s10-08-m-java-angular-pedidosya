@@ -1,12 +1,16 @@
 import {Injectable} from '@angular/core';
 import {Menu, MenuModel} from "@models/menu.model";
-import {delay, Observable, of} from "rxjs";
+import {forkJoin, map, Observable} from "rxjs";
+import {env} from "../../environment/environment";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {ProductModel} from "@models/product.model";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class MenuService {
-
+  apiUrl: string = env.apiURL;
   menusTopSelling: MenuModel = {
     id: 0,
     name: 'Mas vendidos',
@@ -191,18 +195,82 @@ export class MenuService {
       ]
     },
   ]
+  private readonly keyToken = 'jwt';
 
-
-
-
-  getMenus(idRestaurant: number | null): Observable<{ topSelling: Menu, discounts: Menu, others: Menu[] }> {
-
-    return of({
-      topSelling: new Menu(this.menusTopSelling.id, this.menusTopSelling.name, [...this.menusTopSelling.products]),
-      discounts: new Menu(this.menusDiscount.id, this.menusDiscount.name, [...this.menusDiscount.products]),
-      others: this.menus.map(menu => new Menu(menu.id, menu.name, [...menu.products]))
-    }).pipe(delay(1000));
+  constructor(private http: HttpClient) {
   }
 
 
+  getMenus(idRestaurant: number | null): Observable<{ topSelling: Menu, discounts: Menu, others: Menu[] }> {
+    const options = {headers: this.getHeader()};
+    const body = {};
+    const urlAllMenus = this.apiUrl + `/menus/store-list/${idRestaurant}`;
+    const urlTopMenu = this.apiUrl + `/products/top/${idRestaurant}`;
+    const urlDiscounts = this.apiUrl + `/menus/discount-list/${idRestaurant}`;
+
+    // Observables para las tres solicitudes HTTP
+    const topMenu$ = this.http.get<productDto[]>(urlTopMenu, options);
+    const discounts$ = this.http.get<menuDto>(urlDiscounts, options);
+    const allMenus$ = this.http.get<menuDto[]>(urlAllMenus, options);
+
+    // Combinar todas las observables usando forkJoin
+    //return forkJoin([topMenu$, discounts$, allMenus$]).pipe(
+    return forkJoin([allMenus$]).pipe(
+      map(([allMenusResponse]) => {
+        const allMenus = {
+          topSelling: new Menu(1, 'Mas vendidos', []),
+          discounts: new Menu(1, 'Descuentos', []),
+          others: allMenusResponse.map(menuDto => this.mapMenuDtoToMenu(menuDto)),
+        };
+        return allMenus;
+      }),
+    );
+  }
+
+  private getHeader() {
+    const token = localStorage.getItem(this.keyToken);
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+  }
+
+  private mapProductDtoToProduct(productDto: productDto): ProductModel {
+    return {
+      id: productDto.idProduct,
+      name: productDto.title,
+      description: productDto.description,
+      imageUrl: productDto.imagePath,
+      price: productDto.price,
+      favorite: productDto.isFavourite ?? false,
+    };
+  }
+
+  private mapMenuDtoToMenu(menuDto: menuDto): Menu {
+    const products: ProductModel[] = menuDto.products.map(productDto => this.mapProductDtoToProduct(productDto));
+    return new Menu(menuDto.idMenu, menuDto.title, products);
+  }
+
+}
+
+export interface productDto {
+  idProduct: number,
+  title: string,
+  description: string,
+  price: number,
+  imagePath: string,
+  productType: {
+    idProductType: number,
+    title: string
+  },
+  active: true,
+  isFavourite: boolean | null,
+  productDiscount: boolean | null
+}
+
+export interface menuDto {
+  idMenu: number,
+  title: string,
+  idStore: number,
+  products: productDto[]
 }

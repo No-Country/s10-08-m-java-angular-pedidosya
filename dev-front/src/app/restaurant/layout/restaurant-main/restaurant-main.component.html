@@ -1,5 +1,5 @@
 <ng-container>
-  <h1 class="deck-title">{{title}}</h1>
+  <h1 *ngIf="restaurantType !== null" class="deck-title">{{restaurantType.title}}</h1>
   <ng-container *ngIf="restaurants !== null ? restaurants.length > 0 : false; else emptyRestaurants">
     <app-restaurant-card (click)="showRestaurant(restaurant)" *ngFor="let restaurant of restaurants"
                          [restaurant]="restaurant"></app-restaurant-card>

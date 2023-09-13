@@ -1,16 +1,16 @@
 import {Injectable} from '@angular/core';
 import {Restaurant, RestaurantModel} from "@models/restaurant.model";
-import {delay, Observable, of} from "rxjs";
+import {catchError, map, Observable, of} from "rxjs";
+import {env} from "../../environment/environment";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {RestaurantTypeModel} from "@models/restaurant-type.model";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestaurantService {
-
-  /*
-  * SERVICIO A REFACTORIZAR Mockups-> LOS DATOS DEBEN VIENEN DE LA API
-  * */
-
+  apiUrl: string = env.apiURL;
   restaurantsAPI: RestaurantModel[] = [
     {
       id: 1,
@@ -24,7 +24,6 @@ export class RestaurantService {
       productImage: "assets/mocks/products_bk.png",
       favorite: true,
       takeAway: false,
-      products: []
     },
     {
       id: 2,
@@ -38,7 +37,6 @@ export class RestaurantService {
       productImage: "assets/mocks/products_mc.png",
       favorite: true,
       takeAway: false,
-      products: []
     }
     , {
       id: 3,
@@ -52,7 +50,6 @@ export class RestaurantService {
       productImage: "assets/mocks/product_r.png",
       favorite: false,
       takeAway: true,
-      products: []
     },
     {
       id: 4,
@@ -66,7 +63,6 @@ export class RestaurantService {
       productImage: "assets/mocks/products_bk.png",
       favorite: false,
       takeAway: true,
-      products: []
     },
     {
       id: 5,
@@ -80,36 +76,90 @@ export class RestaurantService {
       productImage: "assets/mocks/products_bk.png",
       favorite: false,
       takeAway: true,
-      products: []
     }
   ]
+  private readonly keyToken = 'jwt';
+
+  constructor(private http: HttpClient) {
+  }
+
+  getRestaurantsByType({idStoreType}: RestaurantTypeModel): Observable<Restaurant[]> {
+    const url = this.apiUrl + `/stores/type/${idStoreType}`;
+    const options = {headers: this.getHeader()};
+
+    return this.http.get<storeDto[]>(url, options).pipe(
+      map(apiResponse => apiResponse.map(storeDto => this.mapStoreDtoToRestaurant(storeDto)))
+    );
+  }
 
 
-  getAll(): Observable<Restaurant[]> {
-    //return this.http.get<T>(_urlBase + path);
+  setFavoriteRestaurant(id: number, isFavorite: boolean): Observable<any> {
+    const options = {headers: this.getHeader()};
+    const body = {};
 
-    //TODO: REFACTOR? MAPEO A CLASE
-    let restaurants = this.restaurantsAPI.map(apiRestaurant =>
-      new Restaurant(
-        apiRestaurant.id,
-        apiRestaurant.name,
-        apiRestaurant.minTime,
-        apiRestaurant.maxTime,
-        apiRestaurant.rating,
-        apiRestaurant.deliveryCost,
-        apiRestaurant.minToOrder,
-        apiRestaurant.brandImage,
-        apiRestaurant.productImage,
-        apiRestaurant.favorite,
-        apiRestaurant.takeAway,
-        apiRestaurant.products
-      )
-    )
+    let url = this.apiUrl;
 
-    //return throwError('Error al cargar los restaurantes desde la API');
-    return of(restaurants).pipe(delay(1000));
+    if (isFavorite) {
+      url += `/favourites-stores/add/${id}`;
+    } else {
+      url += `/favourites-stores/remove/${id}`;
+    }
+
+    return this.http.post(url, body, options).pipe();
+  }
+
+
+  private getHeader() {
+    const token = localStorage.getItem(this.keyToken);
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+  }
+
+  private mapStoreDtoToRestaurant(storeDto: storeDto): Restaurant {
+    return new Restaurant(
+      storeDto.idStore,
+      storeDto.title,
+      storeDto.timeFrom,
+      storeDto.timeTo,
+      4, //TODO-> Review
+      storeDto.shippingCost,
+      storeDto.minPurchase,
+      storeDto.logoPath,
+      storeDto.imagePath,
+      storeDto.isFavourite,
+      storeDto.takeAway,
+    );
   }
 
 }
 
 
+export interface storeDto {
+  "idStore": number,
+  "title": string,
+  "phone": string,
+  "storeType": {
+    "idStoreType": 0,
+    "title": "string",
+    "image_path": "string"
+  },
+  "active": true,
+  "imagePath": string,
+  "logoPath": string,
+  "address": {
+    "idAddress": 0,
+    "description": "string",
+    "latitude": 0,
+    "longitude": 0,
+    "idCity": 0
+  },
+  "idUser": number,
+  "shippingCost": number,
+  "minPurchase": number,
+  "timeFrom": number,
+  "timeTo": number,
+  "isFavourite": boolean,
+  "takeAway": boolean
+}

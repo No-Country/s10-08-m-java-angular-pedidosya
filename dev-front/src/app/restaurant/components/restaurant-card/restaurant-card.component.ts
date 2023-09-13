@@ -6,9 +6,10 @@ import {
   DeliveryDetailsCostTimeComponent
 } from "@root/restaurant/components/delivery-details-cost-time/delivery-details-cost-time.component";
 import {ButtonFavoriteComponent} from "@shared/components/button-favorite/button-favorite.component";
-import {RestaurantModel} from "@models/restaurant.model";
+import {Restaurant} from "@models/restaurant.model";
 import {Component, Input} from "@angular/core";
 import {RatingComponent} from "@shared/components/rating/rating.component";
+import {RestaurantFacade} from "@root/restaurant/store/facades/restaurant.facade";
 
 @Component({
   selector: 'app-restaurant-card',
@@ -18,7 +19,14 @@ import {RatingComponent} from "@shared/components/rating/rating.component";
   imports: [MatCardModule, MatButtonModule, MatIconModule, RatingComponent, CurrencyPipe, DeliveryDetailsCostTimeComponent, ButtonFavoriteComponent],
 })
 export class RestaurantCardComponent {
-  @Input() restaurant!: RestaurantModel;
+  @Input() restaurant!: Restaurant;
 
+  constructor(private _restaurantFacade: RestaurantFacade) {
+  }
+
+  setSelectedFavorite(event:Event) {
+    event.stopPropagation();
+    this._restaurantFacade.toogleFavorite(this.restaurant)
+  }
 
 }

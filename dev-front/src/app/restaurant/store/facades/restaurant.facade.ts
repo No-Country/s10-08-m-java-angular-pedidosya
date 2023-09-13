@@ -6,18 +6,19 @@ import {RestaurantsActions} from "@root/restaurant/store/actions/restaurants.act
 import {
   selectIsLoading,
   selectRestaurants,
-
+  selectRestaurantsType,
 } from "@root/restaurant/store/selectors/restaurants.selector";
 import {RestaurantFilterService} from "@services/restaurant-filter.service";
 import {RestaurantSorterService} from "@services/restaurant-sorter.service";
+import {RestaurantTypeModel} from "@models/restaurant-type.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestaurantFacade {
 
+  restaurantsType$: Observable<RestaurantTypeModel> = this._store.select(selectRestaurantsType)
   restaurants$: Observable<Restaurant[]> = this._store.select(selectRestaurants)
-
   isLoading$: Observable<boolean> = this._store.select(selectIsLoading)
 
 
@@ -27,6 +28,10 @@ export class RestaurantFacade {
   );
 
   constructor(private _store: Store, private _restaurantFilterService: RestaurantFilterService, private _restaurantSorterService: RestaurantSorterService) {
+  }
+
+  setRestaurantsType(restaurantType: RestaurantTypeModel) {
+    this._store.dispatch(RestaurantsActions.setRestaurantType({restaurantsType: restaurantType}));
   }
 
   loadRestaurants(): void {
@@ -48,5 +53,11 @@ export class RestaurantFacade {
     );
   }
 
+  toogleFavorite(restaurant: Restaurant) {
+    this._store.dispatch(RestaurantsActions.loadSelectFavoriteRestaurant({
+      isFavorite: !restaurant.favorite,
+      restaurant: restaurant
+    }));
+  }
 
 }

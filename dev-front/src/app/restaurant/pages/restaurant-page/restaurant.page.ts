@@ -7,6 +7,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {RestaurantMainComponent} from "@root/restaurant/layout/restaurant-main/restaurant-main.component";
 import {RestaurantHeaderComponent} from "@root/restaurant/layout/restaurant-header/restaurant-header.component";
 import {RestaurantFacade} from "@root/restaurant/store/facades/restaurant.facade";
+import {RestaurantTypeModel} from "@models/restaurant-type.model";
 
 
 @Component({
@@ -23,12 +24,14 @@ import {RestaurantFacade} from "@root/restaurant/store/facades/restaurant.facade
   ]
 })
 export class RestaurantPage implements OnInit {
-  title: string = 'Hamburguesa';
+
+  restaurantsType$: Observable<RestaurantTypeModel>
   restaurants$: Observable<Restaurant[]>;
   loading$: Observable<boolean>
 
   constructor(private router: Router, private _restaurantFacade: RestaurantFacade) {
     this.restaurants$ = _restaurantFacade.filteredAndSortedRestaurants$;
+    this.restaurantsType$ = _restaurantFacade.restaurantsType$;
     this.loading$ = _restaurantFacade.isLoading$;
   }
 

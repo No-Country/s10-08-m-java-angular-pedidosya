@@ -6,7 +6,7 @@ import {
   handleNewCart,
   handleRemoveItem
 } from "@root/restaurant/store/reducers/handler/cart.handlers";
-import {OrderActions} from "@root/restaurant/store/actions/orderActions";
+import {OrderActions} from "@root/restaurant/store/actions/order.actions";
 
 
 export const orderReducer = createReducer(

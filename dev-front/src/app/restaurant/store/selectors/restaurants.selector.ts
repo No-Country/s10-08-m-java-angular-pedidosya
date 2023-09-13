@@ -4,6 +4,11 @@ import {RestaurantState} from "@root/restaurant/store/restaurant.state";
 
 export const selectRestaurantsState = createFeatureSelector<RestaurantState>('restaurants');
 
+export const selectRestaurantsType = createSelector(
+  selectRestaurantsState,
+  (state: RestaurantState) => state.restaurantsType
+);
+
 export const selectRestaurants = createSelector(
   selectRestaurantsState,
   (state: RestaurantState) => state.restaurants

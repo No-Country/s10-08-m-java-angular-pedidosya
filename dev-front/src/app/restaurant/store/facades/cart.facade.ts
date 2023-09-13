@@ -3,11 +3,11 @@ import {map, Observable, take} from "rxjs";
 import {Store} from "@ngrx/store";
 import {Cart} from "@models/cart.model";
 import {selectCart, selectError, selectLoading} from "@root/restaurant/store/selectors/cart.selector";
-import {OrderActions} from "@root/restaurant/store/actions/orderActions";
 import {ProductModel} from "@models/product.model";
 import {MenuFacade} from "@root/restaurant/store/facades/menu.facade";
 import {Restaurant} from "@models/restaurant.model";
 import {ItemModel} from "@models/item.model";
+import {OrderActions} from "@root/restaurant/store/actions/order.actions";
 
 @Injectable({
   providedIn: 'root'

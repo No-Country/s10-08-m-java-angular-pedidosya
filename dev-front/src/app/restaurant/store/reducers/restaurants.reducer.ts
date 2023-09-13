@@ -4,11 +4,17 @@ import {RestaurantsActions} from "@root/restaurant/store/actions/restaurants.act
 import {
   handleLoadRestaurants,
   handleLoadRestaurantsFailure,
-  handleLoadRestaurantsSuccess
+  handleLoadRestaurantsSuccess,
+  handleLoadSelectFavoriteRestaurant,
+  handleSelectFavoriteRestaurantError,
+  handleSelectFavoriteRestaurantSuccess,
+  handleSetRestaurantsType
 } from "@root/restaurant/store/reducers/handler/restaurant.handler";
 import {
-  handleResetRestaurantFilter, handleUpdateRestaurantCustomFilter,
-  handleUpdateRestaurantFilter, handleUpdateRestaurantSortedBy
+  handleResetRestaurantFilter,
+  handleUpdateRestaurantCustomFilter,
+  handleUpdateRestaurantFilter,
+  handleUpdateRestaurantSortedBy
 } from "@root/restaurant/store/reducers/handler/filter-restaurant.handler";
 import {INITIAL_STATE} from "@root/restaurant/store/restaurant.state";
 
@@ -19,12 +25,19 @@ import {INITIAL_STATE} from "@root/restaurant/store/restaurant.state";
 * */
 
 export const restaurantsReducer = createReducer(
-  INITIAL_STATE,//ESTE INITIAL STATE DEBE SER DEL STORE
+  INITIAL_STATE,
+  on(RestaurantsActions.setRestaurantType, handleSetRestaurantsType),
+  //Load
   on(RestaurantsActions.loadRestaurants, handleLoadRestaurants),
   on(RestaurantsActions.restaurantsLoadedSuccess, handleLoadRestaurantsSuccess),
   on(RestaurantsActions.resturantsLoadedError, handleLoadRestaurantsFailure),
+  //Filters
   on(RestaurantsActions.updateRestaurantFilter, handleUpdateRestaurantFilter),
   on(RestaurantsActions.updateRestaurantCustomFilter, handleUpdateRestaurantCustomFilter),
   on(RestaurantsActions.updateRestaurantSortedBy, handleUpdateRestaurantSortedBy),
   on(RestaurantsActions.resetRestaurantFilter, handleResetRestaurantFilter),
+  //Favorite
+  on(RestaurantsActions.loadSelectFavoriteRestaurant, handleLoadSelectFavoriteRestaurant),
+  on(RestaurantsActions.selectFavoriteRestaurantSuccess, handleSelectFavoriteRestaurantSuccess),
+  on(RestaurantsActions.selectFavoriteRestaurantError, handleSelectFavoriteRestaurantError),
 );

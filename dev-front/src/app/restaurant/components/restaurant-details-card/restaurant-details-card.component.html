@@ -13,7 +13,7 @@
   </div>
   <div class="col-3">
     <div class="d-flex justify-content-space-between">
-      <app-button-favorite [favorite]="restaurant.favorite"/>
+      <app-button-favorite [favorite]="restaurant.favorite" (click)="setSelectedFavorite($event)"/>
       <button class="ms-1 shadow-none" color="link" mat-mini-fab>
         <mat-icon class="material-icons-outlined " fontIcon="shared"/>
       </button>

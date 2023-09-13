@@ -1,5 +1,6 @@
 <mat-card class="card">
-  <app-button-favorite [favorite]="restaurant.favorite" class="btn-restaurant-favorite"/>
+  <app-button-favorite (click)="setSelectedFavorite($event)" [favorite]="restaurant.favorite"
+                       class="btn-restaurant-favorite"/>
   <div class="image-container">
     <div [style.background-image]="'url(' + restaurant.productImage + ')'" class="rounded"></div>
   </div>

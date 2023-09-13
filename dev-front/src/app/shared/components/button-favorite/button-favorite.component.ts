@@ -19,11 +19,7 @@ import {CommonModule} from "@angular/common";
 export class ButtonFavoriteComponent {
   @Input() favorite: boolean = false;
 
-  toggleFavorite(event: Event): void {
-    event.stopPropagation();
-    this.favorite = !this.favorite;
-    console.log("Favorite: " + this.favorite);
-  }
+
 
 
 }

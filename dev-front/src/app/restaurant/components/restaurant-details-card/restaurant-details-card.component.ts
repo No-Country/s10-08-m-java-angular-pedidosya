@@ -4,7 +4,8 @@ import {ButtonFavoriteComponent} from "@shared/components/button-favorite/button
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {RatingComponent} from "@shared/components/rating/rating.component";
-import {RestaurantModel} from "@models/restaurant.model";
+import {Restaurant} from "@models/restaurant.model";
+import {RestaurantFacade} from "@root/restaurant/store/facades/restaurant.facade";
 
 @Component({
   selector: 'app-restaurant-details-card',
@@ -14,6 +15,13 @@ import {RestaurantModel} from "@models/restaurant.model";
   styleUrls: ['./restaurant-details-card.component.scss']
 })
 export class RestaurantDetailsCardComponent {
-  @Input() restaurant!: RestaurantModel;
+  @Input() restaurant!: Restaurant;
 
+  constructor(private _restaurantFacade: RestaurantFacade) {
+  }
+
+  setSelectedFavorite(event: Event) {
+    event.stopPropagation();
+    this._restaurantFacade.toogleFavorite(this.restaurant)
+  }
 }

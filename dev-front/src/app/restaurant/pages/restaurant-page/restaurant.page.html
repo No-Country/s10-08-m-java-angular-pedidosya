@@ -7,7 +7,7 @@
   <app-restaurant-main
     *ngIf="!(loading$ | async)"
     [restaurants]="(restaurants$ | async)"
-    [title]="title"/>
+    [restaurantType]="restaurantsType$|async"/>
 
 
 </main>

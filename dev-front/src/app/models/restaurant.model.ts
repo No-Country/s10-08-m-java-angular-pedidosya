@@ -1,5 +1,3 @@
-import {ProductModel} from "@models/product.model";
-
 export interface RestaurantModel {
   id: number;
   name: string;
@@ -12,7 +10,6 @@ export interface RestaurantModel {
   productImage: string;
   favorite: boolean;
   takeAway: boolean;
-  products: ProductModel[];
 }
 
 export class Restaurant implements RestaurantModel {
@@ -28,7 +25,6 @@ export class Restaurant implements RestaurantModel {
     public productImage: string,
     public favorite: boolean,
     public takeAway: boolean,
-    public products: ProductModel[]
   ) {
   }
 
