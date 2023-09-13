@@ -56,7 +56,7 @@ public class AddressClientController {
         return  ResponseEntity.ok(convertToDto( addressClientImpl.updateAddress(convertToEntity(addressClient))));
     }
 
-    @Operation(summary="Lista las direcciones del cliente.")
+    @Operation(summary="Lista las direcciones del cliente autenticado.")
     @GetMapping(value="/list", headers = "Accept=application/json")
     public ResponseEntity<List<AddressClientDTO>> listAddressClient()
     {
