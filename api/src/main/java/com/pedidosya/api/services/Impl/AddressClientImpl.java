@@ -39,6 +39,7 @@ public class AddressClientImpl extends CRUDImpl<AddressClient, Integer> implemen
     @Override
     public Void setDefault(AddressClient addressClient)
     {
+        repo.removeDefault(addressClient.getClient().getIdClient());
         repo.setDefault(addressClient.getClient().getIdClient(), addressClient.getAddress().getIdAddress(), addressClient.isSet());
         return null;
     }

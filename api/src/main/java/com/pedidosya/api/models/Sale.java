@@ -36,8 +36,8 @@ public class Sale {
 
 
     @ManyToOne
-    @JoinColumn(name = "id_client", nullable = false, foreignKey = @ForeignKey(name= "FK_Sale_Client"))
-    private Client client;
+    @JoinColumn(name = "id_user", nullable = false, foreignKey = @ForeignKey(name= "FK_Sale_User"))
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "id_delivery", nullable = false, foreignKey = @ForeignKey(name= "FK_Sale_Delivery"))
