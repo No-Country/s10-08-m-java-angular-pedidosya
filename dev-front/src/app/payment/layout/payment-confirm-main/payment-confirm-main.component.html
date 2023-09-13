@@ -9,7 +9,7 @@
       </div>
       <mat-icon>chevron_right</mat-icon>
     </div>
-    <div (click)="goTo('satting-delivery')" class="d-flex align-items-center justify-content-space-between my-2">
+    <div (click)="goTo('setting-delivery')" class="d-flex align-items-center justify-content-space-between my-2">
       <mat-icon>two_wheeler</mat-icon>
       <div class="description-container">
         <h3>Delivery 25-30 min</h3>
@@ -19,7 +19,7 @@
   </section>
 
   <h2>Pago</h2>
-  <section (click)="goTo('satting-payment')" class="border rounded py-2 px-2 shadow-container">
+  <section (click)="goTo('setting-payment')" class="border rounded py-2 px-2 shadow-container">
     <div class="d-flex align-items-center justify-content-space-between ">
       <mat-icon class="material-icons-outlined">payments</mat-icon>
       <div class="description-container">
@@ -48,3 +48,4 @@
   <app-order-summary/>
 
 </main>
+<app-payment-footer/>

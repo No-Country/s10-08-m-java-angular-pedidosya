@@ -1,1 +1,15 @@
-<p>setting-delivery-main works!</p>
+<main>
+  <form [formGroup]="timeForm" class="container my-2">
+    <mat-radio-group class="radio-group-container" formControlName="selectedTime">
+      <mat-radio-button [value]="-1">
+        Entrega inmediata
+      </mat-radio-button>
+      <mat-radio-button *ngFor="let option of timeOptions" [value]="option.id">
+        {{ option.label }}
+      </mat-radio-button>
+    </mat-radio-group>
+  </form>
+</main>
+<footer>
+  <button (click)="saveOptions()" class="btn btn-lg btn-primary" mat-button>Guardar</button>
+</footer>

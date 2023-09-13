@@ -4,6 +4,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {FormsModule} from "@angular/forms";
 import {OrderSummaryComponent} from "@root/payment/components/order-summary/order-summary.component";
 import {Router} from "@angular/router";
+import {PaymentFooterComponent} from "@root/payment/layout/payment-footer/payment-footer.component";
 
 @Component({
   selector: 'app-payment-confirm-main',
@@ -14,7 +15,8 @@ import {Router} from "@angular/router";
     MatButtonToggleModule,
     MatIconModule,
     FormsModule,
-    OrderSummaryComponent
+    OrderSummaryComponent,
+    PaymentFooterComponent
   ]
 })
 export class PaymentConfirmMainComponent {

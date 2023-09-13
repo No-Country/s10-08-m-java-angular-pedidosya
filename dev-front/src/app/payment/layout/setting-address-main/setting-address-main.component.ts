@@ -4,6 +4,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NgFor, NgForOf, NgIf} from "@angular/common";
+import {MatButtonModule} from "@angular/material/button";
 
 @Component({
   selector: 'app-setting-address-main',
@@ -12,7 +13,7 @@ import {NgFor, NgForOf, NgIf} from "@angular/common";
   standalone: true,
   imports: [
     MatFormFieldModule, MatSelectModule, NgFor, MatInputModule, FormsModule, NgForOf, NgIf,
-    ReactiveFormsModule
+    ReactiveFormsModule, MatButtonModule
   ]
 })
 export class SettingAddressMainComponent {
@@ -69,6 +70,11 @@ export class SettingAddressMainComponent {
 
     this.countryFlag = country.abbr
 
+  }
+
+  saveOptions() {
+    console.log("Se debe guardar informacion")
+    return;
   }
 
 }

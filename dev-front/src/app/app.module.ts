@@ -23,7 +23,7 @@ import { RestaurantTypesCardComponent } from './components/restaurant-types-card
 import { menuReducer } from "@root/restaurant/store/reducers/menu.reducers";
 import { MenuEffects } from "@root/restaurant/store/effects/menu.effects";
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from "@abacritt/angularx-social-login";
-import { cartReducer } from "@root/restaurant/store/reducers/cart.reducers";
+import { orderReducer} from "@root/restaurant/store/reducers/cart.reducers";
 import { NoPageFoundComponent } from "@root/components/nopagefound/nopagefound.component";
 import { PersonalInfoComponent } from './account/personal-info/personal-info.component';
 import { SharedModule } from "@shared/shared.module";
@@ -59,7 +59,7 @@ import { ModaladdressesComponent } from './components/modaladdresses/modaladdres
     StoreModule.forRoot({
       restaurants: restaurantsReducer,
       menus: menuReducer,
-      cart: cartReducer
+      order: orderReducer
     }, {}),
     EffectsModule.forRoot([RestaurantEffects, MenuEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),

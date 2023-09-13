@@ -28,7 +28,8 @@
       [src]="'https://flagcdn.com/w40/' + countryFlag + '.png'"
       alt="flag"
       class="px-1" width="40">
-    <mat-select formControlName="selectedCountry" appearance="outline" name="selectedCountry" placeholder="Seleccionar país">
+    <mat-select appearance="outline" formControlName="selectedCountry" name="selectedCountry"
+                placeholder="Seleccionar país">
       <ng-container *ngFor="let country of countries">
         <mat-option (click)="updateFlag(country)" [value]="country.value">
           <img
@@ -50,3 +51,7 @@
 
   </form>
 </main>
+
+<footer>
+  <button (click)="saveOptions()" class="btn btn-lg btn-primary" mat-button>Guardar</button>
+</footer>
