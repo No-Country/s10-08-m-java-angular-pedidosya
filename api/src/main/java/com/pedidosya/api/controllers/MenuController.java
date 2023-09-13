@@ -62,6 +62,7 @@ public class MenuController {
                     productDTO.setImagePath(product.getImagePath());
                     productDTO.setProductType(product.getProductType());
                     productDTO.setActive(product.isActive());
+                    productDTO.setProductDiscount(product.getProductDiscount());
                     return productDTO;
                 })
                 .collect(Collectors.toList());
