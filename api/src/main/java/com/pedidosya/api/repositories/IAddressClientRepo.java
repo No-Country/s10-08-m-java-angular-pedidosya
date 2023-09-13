@@ -24,6 +24,11 @@ public interface IAddressClientRepo extends IGenericRepo<AddressClient, Integer>
     @Query(value = "UPDATE address_client SET set = :set where id_client=:idClient and  id_address= :idAddress" , nativeQuery = true)
     Integer updateAddressClient(@Param("idClient") Integer idClient, @Param("idAddress") Integer idAddress, @Param("set") Boolean set);
 
+    @Modifying
+    @Query(value = "UPDATE address_client SET set = false where id_client=:idClient" , nativeQuery = true)
+    Integer removeDefault(@Param("idClient") Integer idClient);
+
+
     @Query("FROM AddressClient m " +
             "WHERE m.client.idClient = ?1 "
     )
