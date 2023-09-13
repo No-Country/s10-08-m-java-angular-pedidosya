@@ -40,4 +40,10 @@
     font-weight: 600;
     line-height: normal;
 }
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 

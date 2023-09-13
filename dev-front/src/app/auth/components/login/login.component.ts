@@ -3,6 +3,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
+
 import { Sesion } from 'src/app/models/sesion';
 import { userCredentials } from '@models/dtos.model';
 
@@ -17,7 +19,7 @@ import { AuthState } from '../../state/auth.reducer';
   templateUrl: './login.component.html',
   styleUrls: ['../shared-auth-styles.scss']
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent implements OnInit /*,OnDestroy */{
 
   suscripcion!: Subscription;
 
@@ -30,7 +32,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private authStore: Store<AuthState> ,
+    private authStore: Store<AuthState>,
+    private toastrService: ToastrService
     // private socialAuthService: SocialAuthService
   ){}
 
@@ -48,7 +51,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.suscripcion.unsubscribe();
+     if (this.suscripcion)
+        this.suscripcion.unsubscribe();
   } 
   
   loginWithGoogle(): void {
@@ -65,12 +69,18 @@ export class LoginComponent implements OnInit, OnDestroy {
         email: this.loginForm.value.email,
         password: this.loginForm.value.password,
       };
-      this.suscripcion = this.authService.login(data)
-      .subscribe(respuesta => {
-        console.log('jwt', respuesta.jwt);
-        this.authService.setToken(respuesta);
-        this.router.navigate(['home']);
-      }, errores => console.log('LOGIN FAILED', errores.error.detail));
+      this.suscripcion = this.authService.login(data).subscribe(
+        (response: any) => {
+        //  
+            console.log('jwt', response.jwt);
+            this.authService.setToken(response);
+            this.router.navigate(['home']);
+      }, // errores => console.log('LOGIN FAILED', errores.error.detail));
+			  (error: any) => {
+				    this.toastrService.error('Login Failed', error.detail);
+            console.log('LOGIN FAILED', error)
+			  }
+      );      
 
   }
 

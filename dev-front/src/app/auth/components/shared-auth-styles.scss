@@ -145,8 +145,16 @@
 }
 
 .buttonselected {
-  background-color: black;
+  background-color: rgb(0, 0, 0);
   color: white;
+}
+
+.heroes {
+  padding: 0px;
+}
+
+.option-button-selected{
+  background: #D5DEE7;
 }
 
 /*

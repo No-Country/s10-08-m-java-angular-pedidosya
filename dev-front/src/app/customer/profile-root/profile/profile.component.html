@@ -1,0 +1,73 @@
+<ng-template #svgTemplate>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M4.64645 1.64645C4.84171 1.45118 5.15829 1.45118 5.35355 1.64645L11.3536 7.64645C11.5488 7.84171 11.5488 8.15829 11.3536 8.35355L5.35355 14.3536C5.15829 14.5488 4.84171 14.5488 4.64645 14.3536C4.45118 14.1583 4.45118 13.8417 4.64645 13.6464L10.2929 8L4.64645 2.35355C4.45118 2.15829 4.45118 1.84171 4.64645 1.64645Z" fill="#151719"/>
+    </svg>
+</ng-template>
+
+<section class="container-perfil-img">
+    <div class="mask-of-profile">
+        <img  width="70" height="70" src="https://www.figma.com/file/im0s2KdLgmSYozqesJn4cN/image/45cab6f1c6e732109a3a88876b3f2d11f70ae16b?fuid=1090983083232704318" alt="">
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" class="position-change-profile-picture" width="15" height="15" viewBox="0 0 15 15" fill="none">
+        <circle cx="7.5" cy="7.5" r="7.5" fill="#D9D9D9"/>
+        <path d="M11.4375 9.92563C11.4375 10.2569 11.1857 10.5254 10.875 10.5254H4.125C3.81434 10.5254 3.5625 10.2569 3.5625 9.92563V6.32704C3.5625 5.9958 3.81434 5.72728 4.125 5.72728H4.78401C5.23156 5.72728 5.66078 5.53771 5.97725 5.20027L6.44324 4.70341C6.54873 4.59093 6.69181 4.52774 6.84099 4.52774H8.15901C8.30819 4.52774 8.45127 4.59093 8.55676 4.70341L9.02275 5.20027C9.33922 5.53771 9.76844 5.72728 10.216 5.72728H10.875C11.1857 5.72728 11.4375 5.9958 11.4375 6.32704V9.92563ZM4.125 5.12751C3.50368 5.12751 3 5.66456 3 6.32704V9.92563C3 10.5881 3.50368 11.1252 4.125 11.1252H10.875C11.4963 11.1252 12 10.5881 12 9.92563V6.32704C12 5.66456 11.4963 5.12751 10.875 5.12751H10.216C9.91762 5.12751 9.63147 5.00113 9.4205 4.77618L8.9545 4.27931C8.74353 4.05436 8.45738 3.92798 8.15901 3.92798H6.84099C6.54262 3.92798 6.25647 4.05436 6.0455 4.27931L5.5795 4.77618C5.36853 5.00113 5.08238 5.12751 4.78401 5.12751H4.125Z" fill="#263238"/>
+        <path d="M7.5 9.32587C6.72335 9.32587 6.09375 8.65456 6.09375 7.82645C6.09375 6.99835 6.72335 6.32704 7.5 6.32704C8.27665 6.32704 8.90625 6.99835 8.90625 7.82645C8.90625 8.65456 8.27665 9.32587 7.5 9.32587ZM7.5 9.92563C8.58731 9.92563 9.46875 8.9858 9.46875 7.82645C9.46875 6.66711 8.58731 5.72728 7.5 5.72728C6.41269 5.72728 5.53125 6.66711 5.53125 7.82645C5.53125 8.9858 6.41269 9.92563 7.5 9.92563Z" fill="#263238"/>
+        <path d="M4.6875 6.62692C4.6875 6.79254 4.56158 6.92681 4.40625 6.92681C4.25092 6.92681 4.125 6.79254 4.125 6.62692C4.125 6.4613 4.25092 6.32704 4.40625 6.32704C4.56158 6.32704 4.6875 6.4613 4.6875 6.62692Z" fill="#263238"/>
+    </svg>
+    <h1>{{this.fullname}}</h1>
+    <p>{{this.email}}</p>
+</section>
+
+<section class="container-perfil">
+    <h1 class="title-sección-perfil">Perfil</h1>
+    <div class="container-p-perfil" routerLink="/customer/PersonalInformation">
+        <p>Información personal</p>
+        <ng-container *ngTemplateOutlet="svgTemplate"></ng-container>
+    </div>
+    <div class="container-p-perfil" routerLink="/customer/FoodPreferences">
+        <p>Preferencias de comidas</p>
+        <ng-container *ngTemplateOutlet="svgTemplate"></ng-container>
+    </div>
+    <div class="container-p-perfil" routerLink="/customer/MyAddresses">
+        <p>Direcciones</p>
+        <ng-container *ngTemplateOutlet="svgTemplate"></ng-container>
+    </div>
+    <div class="container-p-perfil">
+        <p>Favoritos</p>
+        <ng-container *ngTemplateOutlet="svgTemplate"></ng-container>
+    </div>
+</section>
+
+<section class="container-perfil">
+    <h1 class="title-sección-perfil">Actividad</h1>
+    <div class="container-p-perfil" routerLink="/customer/MostSeen">
+        <p>Mas vistos</p>
+        <ng-container *ngTemplateOutlet="svgTemplate"></ng-container>
+    </div>
+</section>
+
+<section class="container-perfil">
+    <h1 class="title-sección-perfil">Configuración</h1>
+    <div class="container-p-perfil" routerLink="/customer/NotificationPreferences">
+        <p>Notificaciones</p>
+        <ng-container *ngTemplateOutlet="svgTemplate"></ng-container>
+    </div>
+    <div class="container-p-perfil">
+        <p>Información legal</p>
+        <ng-container *ngTemplateOutlet="svgTemplate"></ng-container>
+    </div>
+    <div class="container-p-perfil">
+        <p>Registrar mi negocio</p>
+        <ng-container *ngTemplateOutlet="svgTemplate"></ng-container>
+    </div>
+    <button class="button-close-session">
+        <svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 15px;" width="11" height="12" viewBox="0 0 11 12" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M10 10.5C10 10.7761 9.77614 11 9.5 11L1.5 11C1.22386 11 1 10.7761 1 10.5L1 1.5C1 1.22386 1.22386 1 1.5 1L9.5 1C9.77614 1 10 1.22386 10 1.5L10 3.5C10 3.77614 10.2239 4 10.5 4C10.7761 4 11 3.77614 11 3.5L11 1.5C11 0.671573 10.3284 -2.93554e-08 9.5 -6.55671e-08L1.5 -4.15258e-07C0.671574 -4.5147e-07 4.95181e-07 0.671572 4.5897e-07 1.5L6.55671e-08 10.5C2.93554e-08 11.3284 0.671573 12 1.5 12L9.5 12C10.3284 12 11 11.3284 11 10.5L11 8.5C11 8.22386 10.7761 8 10.5 8C10.2239 8 10 8.22386 10 8.5L10 10.5Z" fill="#151719"/>
+          </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="arrow-of-button" width="11" height="8" viewBox="0 0 11 8" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.8536 4.35355C11.0488 4.15829 11.0488 3.84171 10.8536 3.64645L7.85355 0.646447C7.65829 0.451184 7.34171 0.451184 7.14645 0.646447C6.95118 0.841708 6.95118 1.15829 7.14645 1.35355L9.29289 3.5L0.5 3.5C0.223858 3.5 1.6506e-07 3.72386 1.5299e-07 4C1.40919e-07 4.27614 0.223858 4.5 0.5 4.5L9.29289 4.5L7.14645 6.64645C6.95118 6.84171 6.95118 7.15829 7.14645 7.35355C7.34171 7.54882 7.65829 7.54882 7.85355 7.35355L10.8536 4.35355Z" fill="#151719"/>
+        </svg>
+        Cerrar sesión
+    </button>
+</section>
+

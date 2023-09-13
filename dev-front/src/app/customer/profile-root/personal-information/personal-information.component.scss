@@ -1,0 +1,27 @@
+.fields {
+    color: var(--text-texto-secundario, #6A798A);
+    font-family: Poppins;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 23px;
+    margin: 0px;
+}
+
+.container-personal-data {
+    width: 328px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    margin-right: 0px;
+}
+
+a {
+    color: var(--texto-sec, #404547);
+    font-family: Poppins;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 23px;
+    text-decoration-line: underline;
+}

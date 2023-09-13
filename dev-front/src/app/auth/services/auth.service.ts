@@ -40,17 +40,45 @@ export class AuthService {
 
   isLogued(): boolean{
     return this.getToken() ? true : false;
-
-    // const token = localStorage.getItem(this.keyToken);
-    // if (!token){
-    //   return false;
-    // }
-    // return true;
   }  
 
   setToken(responseAut: responseAuthentication){
     localStorage.setItem(this.keyToken, responseAut.jwt)
   }
+
+  getClientInfo(): Observable<any>{
+    const urlClient = this.apiUrl + '/clients/user';
+    let auth_token = this.getToken();
+  
+    const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${auth_token}`
+      });
+  
+    const requestOptions = { headers: headers };
+
+    return this.httpClient
+      .get(urlClient, requestOptions)
+ 
+
+  }
+
+  clientUpdate(data: any): Observable<any> {
+    const url = this.apiUrl + '/clients/update';
+    console.log('url:', url);
+		// return this.httpClient.put(url, data).pipe(catchError(this.handleError));
+    let auth_token = this.getToken();
+  
+    const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${auth_token}`
+      });
+  
+    const requestOptions = { headers: headers };
+
+    return this.httpClient
+      .put(url, data, requestOptions)    
+	}
 
   getToken(){
     return localStorage.getItem(this.keyToken);

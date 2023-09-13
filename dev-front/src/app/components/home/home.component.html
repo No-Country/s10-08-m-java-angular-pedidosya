@@ -1,13 +1,15 @@
-<app-layout></app-layout>
+<app-modaladdresses></app-modaladdresses>
+<app-seeker-of-home></app-seeker-of-home>
+<app-navbar></app-navbar>
 
 <div class="home">
     <div class="title-cards">
         <section class="restaurants">
             <h2>Restaurantes</h2>
-            <button class="btn-see-more">Ver más</button>
+            <button class="btn-see-more" (click)="redirectTo('foodTypes')">Ver más</button>
         </section>
         <section class="restaurants-cards">
-            <div class="burger">
+            <div class="burger" routerLink="/restaurant">
                 <p>Hamburguesas</p>
                 <img src="../../assets/images/burger.png" alt="Hamburguesa">
             </div>

@@ -8,6 +8,7 @@ import { SignUpDTO } from '@models/dtos.model';
 import { AuthService } from '../../services/auth.service';
 import { cargarSesion } from '../../state/auth.actions';
 import { AuthState } from '../../state/auth.reducer';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -23,7 +24,7 @@ export class RegisterComponent {
 		private fb: FormBuilder,
 		// private authService: AuthService,
     	private authService: AuthService,
-		// private toastrService: ToastrService
+		private toastrService: ToastrService
 	) {
 		this.myForm = this.fb.group({
 			email: ['', [Validators.required, Validators.email]],
@@ -42,23 +43,35 @@ export class RegisterComponent {
     // todo: validate password
     const pass = this.myForm.value.password;
     const passconf = this.myForm.value.passwordConfirm;
-    
-	const data: SignUpDTO = {
-		firstName: this.myForm.value.firstName,
-		lastName: this.myForm.value.lastName,		
-      	active: true,
-	  	user: {
-			email: this.myForm.value.email,
-			password: this.myForm.value.password,
-			role: 'C'			
-		}
-    };
-	
-	console.log('Pre-Register', data);
-			
-	localStorage.setItem('user', JSON.stringify(data))
-	this.router.navigate(['auth/selectUserType']);
+
+	if (pass === passconf) {
+		const data: SignUpDTO = {
+			firstName: this.myForm.value.firstName,
+			lastName: this.myForm.value.lastName,		
+			  active: true,
+			  user: {
+				email: this.myForm.value.email,
+				password: this.myForm.value.password,
+				role: 'C',
+				}
+		};
+		
+		console.log('Pre-Register', data);
+				
+		localStorage.setItem('user', JSON.stringify(data))
+		this.router.navigate(['auth/selectUserType']);
+	}
+	else {
+		this.toastrService.error('Register Failed', 'Verificar confirmacion declave');
 
 	}
+    
+
+
+	}
+
+	ClientType(): void {
+		// this.socialAuthService.signOut();
+	  }  
 
 }

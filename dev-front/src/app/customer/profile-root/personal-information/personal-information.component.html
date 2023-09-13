@@ -1,0 +1,35 @@
+<div style="margin-left: 16px;">
+    <div class="back-profile">
+        <svg xmlns="http://www.w3.org/2000/svg" routerLink="/customer/perfil" style="margin: 5px;" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <mask id="mask0_722_9975" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+              <rect width="24" height="24" fill="#D9D9D9"/>
+            </mask>
+            <g mask="url(#mask0_722_9975)">
+              <path d="M7.825 13L13.425 18.6L12 20L4 12L12 4L13.425 5.4L7.825 11H20V13H7.825Z" fill="#151719"/>
+            </g>
+          </svg>
+        <h1>Perfil</h1>
+    </div>
+    
+    <h1 class="tittle-section" style="margin-right: 0px;">Información personal</h1>
+    
+    <div class="container-personal-data" routerLink="/customer/PersonalData">
+        <div style="margin-right: auto;">
+            <h1 class=tittle-field>Datos personales</h1>
+            <p class="fields">Nombre, fecha de nacimiento y género</p>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M4.64645 1.64645C4.84171 1.45118 5.15829 1.45118 5.35355 1.64645L11.3536 7.64645C11.5488 7.84171 11.5488 8.15829 11.3536 8.35355L5.35355 14.3536C5.15829 14.5488 4.84171 14.5488 4.64645 14.3536C4.45118 14.1583 4.45118 13.8417 4.64645 13.6464L10.2929 8L4.64645 2.35355C4.45118 2.15829 4.45118 1.84171 4.64645 1.64645Z" fill="#151719"/>
+        </svg>
+    </div>
+    
+    <div class="container-personal-data">
+        <h1 class=tittle-field style="margin-right: auto;">Número de celular</h1>
+        <a routerLink="/customer/ValidateCell">Agregar</a>
+    </div>
+    
+    <div class="container-personal-data">
+        <h1 class=tittle-field style="margin-right: auto;">E-mail</h1>
+        <a routerLink="/customer/ValidateMail">Validar</a>
+    </div>
+</div>

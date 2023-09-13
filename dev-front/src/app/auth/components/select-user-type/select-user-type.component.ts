@@ -20,7 +20,7 @@ export class SelectUserTypeComponent {
   constructor(
     private router: Router,
     private authService: AuthService,
-    // private toastrService: ToastrService
+    private toastrService: ToastrService
   ) {
 
         
@@ -33,7 +33,7 @@ export class SelectUserTypeComponent {
           };
         });
         
-       console.log(this.options);          
+      console.log(this.options); 
 
   }  
 
@@ -45,37 +45,22 @@ export class SelectUserTypeComponent {
 
   register(): void {
 
-    // const dataUser: DTOUser = {
-    //   email: localStorage.getItem('email'),
-    //   password: localStorage.getItem('password'),
-    //   role: localStorage.getItem('active')
-    // };    
-
-    // const data: DTOSignUp = {
-    //   firstName: localStorage.getItem('firstname'),
-    //   lastName: localStorage.getItem('lastname'),		
-    //   active: localStorage.getItem('active')=== 'true',
-    //   user: dataUser
-    // };
-
     let dataSignUp: SignUpDTO = JSON.parse(localStorage.getItem('user') || '');
-    dataSignUp.user.role = this.selectedUserType.id; //UserTypes.CLIENT;
-    
-    console.log ('dataSignUp', dataSignUp)
+    if (this.selectedUserType === undefined)
+      dataSignUp.user.role = 'C'
+    else {
+      dataSignUp.user.role = this.selectedUserType.id; 
+    }
 
 		this.authService.userRegistration(dataSignUp).subscribe(
 			(response: any) => {
-				//this.toastrService.success('Usuario registrado', dataSignUp.firstName + ', vienvenido');
-        	console.log('Register  ok', dataSignUp);
-          // localStorage.removeItem('email');
-          // localStorage.removeItem('password');
-          // localStorage.removeItem('firstname');
-          // localStorage.removeItem('lastname');				
+				this.toastrService.success('Usuario registrado', dataSignUp.firstName + ', vienvenido');
+        console.log('Register  ok', dataSignUp);
 				this.router.navigate(['auth/login']);
 			},
 			(error: any) => {
         console.log('failed', error.message);
-				//this.toastrService.error('Process fallo', error.message);
+				this.toastrService.error('Process fallo', error.message);
 			}
 		);    
 
