@@ -25,4 +25,8 @@ public interface IStoreRepo extends IGenericRepo<Store, Integer>{
     )
     List<Store> findByStoreFavourite(Integer idUser);
 
+    @Query("SELECT round(avg(m.storeRating),2) FROM Sale m " +
+            "WHERE m.storeRating != null AND m.store.idStore = ?1 "
+    )
+    Float calculateRating(Integer idStore);
 }

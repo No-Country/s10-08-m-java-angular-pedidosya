@@ -32,6 +32,7 @@ public class StoreController {
     @GetMapping("/{id}")
     public ResponseEntity<StoreDTO> findById(@PathVariable("id") Integer id){
         StoreDTO dto = convertToDto(storeImpl.readById(id));
+        this.calculateRating(dto);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = (User) authentication.getPrincipal();
         Integer userId = user.getIdUser();
@@ -49,7 +50,9 @@ public class StoreController {
         //List<StoreDTO> list = storeImpl.findByStoreType(id).stream().map(this::convertToDto).toList();
         List<StoreDTO> list = storeImpl.findByStoreType(id).stream()
                 .map(this::convertToDto)
-                .map(m -> this.isFavourite(m, userId))
+                .map(m ->
+                    this.isFavourite(m, userId))
+                .map(this::calculateRating)
                 .collect(Collectors.toList());
 
         return new ResponseEntity<>(list, HttpStatus.OK);
@@ -61,6 +64,11 @@ public class StoreController {
         return store;
     }
 
+    private StoreDTO calculateRating(StoreDTO store){
+        Float resp = storeImpl.calculateRating(store.getIdStore());
+        store.setRating(resp);
+        return store;
+    }
 
     @Operation(summary="Lista los restaurants favoritos del usuario")
     @GetMapping("/favourites")
@@ -71,6 +79,7 @@ public class StoreController {
         List<StoreDTO> list = storeImpl.findByStoreFavourite(userId).stream()
                 .map(this::convertToDto)
                 .peek(m -> m.setIsFavourite(true))
+                .map(this::calculateRating)
                 .collect(Collectors.toList());
 
         return new ResponseEntity<>(list, HttpStatus.OK);

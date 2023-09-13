@@ -15,4 +15,6 @@ public interface IStoreService extends ICRUD<Store, Integer>{
 
     public  List<Store> findByStoreFavourite(Integer idUser);
 
+    public Float calculateRating( Integer idStore);
+
 }
