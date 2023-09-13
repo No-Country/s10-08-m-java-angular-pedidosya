@@ -1,0 +1,38 @@
+.order-tracker-container {
+    width: 300px;
+    display: flex;
+    padding: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    border-radius: 16px;
+    background: #EFF2F5;
+    box-shadow: 0px 4px 4px 0px rgba(21, 23, 25, 0.25);
+}
+
+p,
+h2 {
+    margin: 0;
+}
+
+.order-status {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.order-stage {
+    display: flex;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    background: var(--fondo-fondo-mprimario, #048221);
+    font-size: 14px;
+    color: #F5F5F5;
+    font-weight: 600;
+}
