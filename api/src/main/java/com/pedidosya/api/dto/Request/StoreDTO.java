@@ -63,7 +63,7 @@ public class StoreDTO {
     @OneToMany(mappedBy = "store", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<MenuDTO> menus;
 */
-
+    private Float rating;
     private Boolean isFavourite;
 
     private Boolean takeAway;

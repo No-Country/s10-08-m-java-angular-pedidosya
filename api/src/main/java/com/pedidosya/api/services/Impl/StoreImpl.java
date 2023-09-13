@@ -43,4 +43,9 @@ public class StoreImpl extends CRUDImpl<Store, Integer> implements IStoreService
         return repo.findByStoreFavourite(idUser);
     }
 
+    @Override
+    public Float calculateRating( Integer idStore){
+        return repo.calculateRating(idStore);
+    }
+
 }
