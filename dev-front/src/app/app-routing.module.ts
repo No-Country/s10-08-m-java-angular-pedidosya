@@ -32,16 +32,16 @@ const routes: Routes = [
     path: 'restaurant',
     loadChildren: () => import('./restaurant/restaurant.module').then(mod => mod.RestaurantModule)
   },
-  {path: 'choose-role', component: LoginUserComponent},
-  {path: 'activate-ubication', component: UbiUserComponent},
-  {path: 'onboarding', component: OnboardingStepsComponent},
-  {path: '', redirectTo: 'auth/loading', pathMatch: 'full'},
-  {path: '**', component: NoPageFoundComponent},
-  {path: 'profile', component: ProfileComponent},
-  {path: 'personalInfo', component: PersonalInfoComponent},
-  {path: 'setPersonalInfo', component: SetPersonalInfoComponent},
-  {path: '', redirectTo: 'auth/loading', pathMatch: 'full'},
-  {path: '**', component: NoPageFoundComponent}
+  { path: 'choose-role', component: LoginUserComponent },
+  { path: 'activate-ubication', component: UbiUserComponent },
+  { path: 'onboarding', component: OnboardingStepsComponent },
+  { path: '', redirectTo: 'auth/loading', pathMatch: 'full' },
+  { path: '**', component: NoPageFoundComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'personalInfo', component: PersonalInfoComponent },
+  { path: 'setPersonalInfo', component: SetPersonalInfoComponent },
+  { path: '', redirectTo: 'auth/loading', pathMatch: 'full' },
+  { path: '**', component: NoPageFoundComponent }
 ];
 
 @NgModule({
