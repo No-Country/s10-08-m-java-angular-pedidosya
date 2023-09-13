@@ -1,9 +1,6 @@
 package com.pedidosya.api.services.Impl;
 
-import com.pedidosya.api.models.Product;
-import com.pedidosya.api.models.Sale;
-import com.pedidosya.api.models.SaleDetail;
-import com.pedidosya.api.models.Store;
+import com.pedidosya.api.models.*;
 import com.pedidosya.api.repositories.IGenericRepo;
 import com.pedidosya.api.repositories.IProductRepo;
 import com.pedidosya.api.repositories.ISaleRepo;
@@ -28,5 +25,18 @@ public class SaleImpl extends CRUDImpl<Sale, Integer> implements ISaleService {
     @Override
     public Sale save(Sale sale, List<SaleDetail> details) {
         return repo.save(sale);
+    }
+    @Transactional
+    @Override
+    public Void changeStatus(Integer idSale, Integer idStatus){
+        repo.changeStatus(idSale, idStatus );
+        return null;
+    }
+
+    @Override
+    public List<Sale> readByIdUser(Integer idUser)
+    {
+        return repo.findAllByIdUser(idUser);
+
     }
 }

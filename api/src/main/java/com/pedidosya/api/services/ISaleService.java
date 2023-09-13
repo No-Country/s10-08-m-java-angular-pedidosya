@@ -10,4 +10,8 @@ public interface ISaleService extends ICRUD<Sale, Integer>{
 
     Sale save(Sale sale, List<SaleDetail> details);
 
+    Void changeStatus(Integer idSale, Integer idStatus);
+
+    List<Sale> readByIdUser(Integer idUser);
+
 }

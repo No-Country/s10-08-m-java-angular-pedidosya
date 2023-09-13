@@ -7,6 +7,7 @@ import com.pedidosya.api.services.Impl.ClientImpl;
 import com.pedidosya.api.services.Impl.ProductImpl;
 import com.pedidosya.api.services.Impl.SaleImpl;
 import com.pedidosya.api.utils.mappers.*;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -14,10 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +44,31 @@ public class SaleController {
 
         return new ResponseEntity<>(convertToSaleResponseDTO(obj), HttpStatus.CREATED);
     }
+
+    @Operation(summary="Cambia el estado de un pedido.")
+    @PostMapping(value="/status", headers = "Accept=application/json")
+    public ResponseEntity<Void> adAddressClient(@RequestBody SaleStatusDTO saleStatus)
+    {
+        saleImpl.changeStatus(saleStatus.getIdSale(), saleStatus.getIdStatus());
+        return  ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<SaleResponseDTO> findById(@PathVariable("id") Integer id){
+        SaleResponseDTO dto = this.convertToSaleResponseDTO(saleImpl.readById(id));
+        return new ResponseEntity<>(dto, HttpStatus.OK);
+    }
+
+    @GetMapping("/sales-user")
+    public ResponseEntity<List<SaleResponseDTO>> findByIdUser(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = (User) authentication.getPrincipal();
+        Integer userId = user.getIdUser();
+        List<SaleResponseDTO> list = saleImpl.readByIdUser(userId).stream().map(this::convertToSaleResponseDTO).toList();
+        return ResponseEntity.ok(list);
+    }
+
+
     private SaleDTO convertToDto(Sale sale){
         return saleMapper.toSaleDto(sale);
     }
