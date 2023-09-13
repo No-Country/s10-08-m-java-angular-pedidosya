@@ -7,6 +7,7 @@ import {
   handleLoadMenusFailure,
   handleLoadMenusSuccess,
   handleLoadTopMenuSuccess,
+  handleSelectFavoriteProductSuccess,
   handleSetProductSelectedId,
   handleSetSelectedRestaurant,
   handleUpdateSearchTerm
@@ -31,4 +32,8 @@ export const menuReducer = createReducer(
   //load menus
   on(MenuActions.updateSearchTerm, handleUpdateSearchTerm),
   on(MenuActions.setProductSelectedId, handleSetProductSelectedId),
+  //Favorite
+  on(MenuActions.loadSelectFavoriteProduct, handleLoadMenus),
+  on(MenuActions.selectFavoriteProductSuccess, handleSelectFavoriteProductSuccess),
+  on(MenuActions.selectFavoriteProductError, handleLoadMenusFailure),
 );

@@ -60,5 +60,12 @@ export class MenuFacade {
     this._store.dispatch(MenuActions.setProductSelectedId({productSelectedId: id}));
   }
 
+  toogleFavorite(product: ProductModel) {
+    this._store.dispatch(MenuActions.loadSelectFavoriteProduct({
+      isFavorite: !product.favorite,
+      product: product
+    }));
+  }
+
 
 }

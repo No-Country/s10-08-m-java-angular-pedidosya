@@ -5,7 +5,8 @@
       <h3 class="subtotal">${{totalPrice$|async}}</h3>
     </div>
     <div>
-      <a class="btn btn-lg btn-primary mb-1" color="primary" mat-flat-button routerLink=""> Ir a pagar </a>
+      <a class="btn btn-lg btn-primary mb-1" color="primary" mat-flat-button (click)="redirectToPayment()"> Ir a
+        pagar </a>
       <a class="btn btn-lg btn-secondary" color="primary" mat-flat-button routerLink="/restaurant/details"> Explorar
         más opciones </a>
     </div>

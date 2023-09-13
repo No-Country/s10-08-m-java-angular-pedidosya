@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {Store} from "@ngrx/store";
-import {catchError, concatMap, map, of, withLatestFrom} from "rxjs";
+import {catchError, concatMap, exhaustMap, map, of, withLatestFrom} from "rxjs";
 import {MenuService} from "@services/menu.service";
 import {MenuActions} from "@root/restaurant/store/actions/menu.actions";
 import {selectRestaurantSelectedId} from "@root/restaurant/store/selectors/menus.selector";
+import {RestaurantsActions} from "@root/restaurant/store/actions/restaurants.actions";
 
 @Injectable({
   providedIn: "root"
@@ -68,6 +69,17 @@ export class MenuEffects {
           catchError(error => of(MenuActions.loadTopMenuError({error})))
         );
       })
+    )
+  );
+  // noinspection TypeScriptValidateTypes
+  selectFavoriteProduct$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(MenuActions.loadSelectFavoriteProduct),
+      exhaustMap(({product, isFavorite}) => this.menuService.setFavoriteProduct(product.id, isFavorite)
+        .pipe(
+          map((_) => (MenuActions.selectFavoriteProductSuccess())),
+          catchError(error => of(RestaurantsActions.selectFavoriteRestaurantError({error: error})))
+        ))
     )
   );
 

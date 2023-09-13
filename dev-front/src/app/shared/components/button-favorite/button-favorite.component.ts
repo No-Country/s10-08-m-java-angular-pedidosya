@@ -17,9 +17,7 @@ import {CommonModule} from "@angular/common";
   ]
 })
 export class ButtonFavoriteComponent {
-  @Input() favorite: boolean = false;
-
-
+  @Input() favorite!: boolean;
 
 
 }

@@ -244,6 +244,20 @@ export class MenuService {
     );
   }
 
+  setFavoriteProduct(id: number, isFavorite: boolean): Observable<any> {
+    const options = {headers: this.getHeader()};
+    const body = {};
+
+    let url = this.apiUrl;
+
+    if (isFavorite) {
+      url += `/favourites-products/add/${id}`;
+    } else {
+      url += `/favourites-products/remove/${id}`;
+    }
+
+    return this.http.post(url, body, options).pipe();
+  }
 
   private getHeader() {
     const token = localStorage.getItem(this.keyToken);
@@ -260,7 +274,7 @@ export class MenuService {
       description: productDto.description,
       imageUrl: this.imageFolders + productDto.imagePath,
       price: productDto.price,
-      favorite: productDto.isFavourite ?? false,
+      favorite: productDto.isFavourite ? productDto.isFavourite : false,
     };
   }
 
@@ -279,7 +293,7 @@ export interface ProductDto {
   imagePath: string,
   productType: ProductType,
   active: true,
-  isFavourite: boolean | null,
+  isFavourite: boolean ,
   productDiscount: DiscountDto | null
 }
 

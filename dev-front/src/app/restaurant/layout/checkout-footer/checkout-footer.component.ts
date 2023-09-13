@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {Observable} from "rxjs";
 import {CartFacade} from "@root/restaurant/store/facades/cart.facade";
 import {MatButtonModule} from "@angular/material/button";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-checkout-footer',
@@ -16,8 +16,11 @@ export class CheckoutFooterComponent {
   totalPrice$: Observable<number>
 
 
-
-  constructor(private _cartFacade: CartFacade) {
+  constructor(private _cartFacade: CartFacade, private _router: Router) {
     this.totalPrice$ = _cartFacade.getTotal()
+  }
+
+  redirectToPayment() {
+    this._router.navigate(['payment'])
   }
 }

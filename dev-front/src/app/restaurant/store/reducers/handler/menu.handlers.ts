@@ -73,13 +73,6 @@ export const handleLoadDiscountsSuccess = (state: MenuState, {discounts}: { disc
   }
 }
 
-
-
-
-
-
-
-
 export const handleLoadMenusFailure = (state: MenuState, {error}: { error: string }): MenuState => {
   return {
     ...state,
@@ -88,6 +81,12 @@ export const handleLoadMenusFailure = (state: MenuState, {error}: { error: strin
   }
 }
 
+export const handleSelectFavoriteProductSuccess = (state: MenuState): MenuState => {
+  return {
+    ...state,
+    isLoading: false,
+  }
+}
 export const handleUpdateSearchTerm = (state: MenuState, {searchTerm}: { searchTerm: string }): MenuState => {
   return {
     ...state,

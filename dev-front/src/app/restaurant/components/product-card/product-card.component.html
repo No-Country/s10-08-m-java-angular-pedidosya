@@ -15,7 +15,7 @@
     <h3 class="product-title">{{product.name}}</h3>
     <div class="d-flex justify-content-space-between align-items-center">
       <p class="product-price">${{product.price}}</p>
-      <app-button-favorite/>
+      <app-button-favorite (click)="setSelectedFavorite($event)" [favorite]="product.favorite"/>
     </div>
   </mat-card-content>
 </mat-card>

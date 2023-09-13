@@ -1,5 +1,6 @@
 import {createActionGroup, emptyProps, props} from "@ngrx/store";
 import {Menu} from "@models/menu.model";
+import {ProductModel} from "@models/product.model";
 
 
 export const MenuActions = createActionGroup({
@@ -18,6 +19,10 @@ export const MenuActions = createActionGroup({
     'Load Discounts Menus': emptyProps(),
     'Load Discounts Menu Error': props<{ error: string }>(),
     'Load Discounts Success': props<{ discounts: Menu | null }>(),
+    //Favorites
+    'Load Select Favorite Product': props<{ product: ProductModel, isFavorite: boolean }>(),
+    'Select Favorite Product Success': emptyProps(),
+    'Select Favorite Product Error': props<{ error: string }>(),
     //
     'Update Search Term': props<{ searchTerm: string }>(),
     'Set Product Selected Id': props<{ productSelectedId: number | null }>(),
