@@ -15,6 +15,11 @@ export class SelectUserTypeComponent {
  
   selectedUserType?: any;
 
+  defaultOption: any = { 
+    id: "C",
+    name: "Customer"
+  };
+
   options: Array<{id: string, name: string}> = [];
 
   constructor(
@@ -22,7 +27,6 @@ export class SelectUserTypeComponent {
     private authService: AuthService,
     private toastrService: ToastrService
   ) {
-
         
     this.options = Object.keys(UserTypes)
         .filter((v) => isNaN(Number(v)))
@@ -33,33 +37,34 @@ export class SelectUserTypeComponent {
           };
         });
         
-      console.log(this.options); 
+      console.log(this.options);
+      this.selectedUserType = this.defaultOption;
 
   }  
 
   onSelect(userType: any): void {
     this.selectedUserType = userType;
     console.log ('onSelect', userType);    
-    console.log ('onSelect', this.selectedUserType.id);
   }
 
   register(): void {
 
     let dataSignUp: SignUpDTO = JSON.parse(localStorage.getItem('user') || '');
-    if (this.selectedUserType === undefined)
-      dataSignUp.user.role = 'C'
-    else {
-      dataSignUp.user.role = this.selectedUserType.id; 
-    }
+    dataSignUp.user.role = this.selectedUserType === undefined ? 'C' : dataSignUp.user.role = this.selectedUserType.id;
+    // if (this.selectedUserType === undefined)
+    //   dataSignUp.user.role = 'C'
+    // else {
+    //   dataSignUp.user.role = this.selectedUserType.id; 
+    // }
 
 		this.authService.userRegistration(dataSignUp).subscribe(
 			(response: any) => {
-				this.toastrService.success('Usuario registrado', dataSignUp.firstName + ', vienvenido');
-        console.log('Register  ok', dataSignUp);
+				this.toastrService.success('Usuario registrado', dataSignUp.firstName + ', Bienvenido');
 				this.router.navigate(['auth/login']);
 			},
 			(error: any) => {
-        console.log('failed', error.message);
+        console.log('Register failed', dataSignUp);
+        console.log('Error:', error.message);
 				this.toastrService.error('Process fallo', error.message);
 			}
 		);    

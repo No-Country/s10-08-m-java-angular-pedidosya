@@ -5,20 +5,17 @@ export interface userCredentials{
 
 export interface responseAuthentication {
     jwt: string;
-    // expiracion: Date;
 }
 
 export interface SignUpDTO {
 	firstName: string,
 	lastName: string,
 	active: boolean,
-	user: userTMP 
-}
-
-export interface userTMP {
-	email: string,
-	password: string,
-	role: string
+	user: {
+		email: string,
+		password: string,
+		role: string
+	} 
 }
 
 export interface ClientUpdateDTO {
@@ -29,12 +26,12 @@ export interface ClientUpdateDTO {
 	user: userDTO
 }
 
-
-
 export interface userDTO {
 	idUser: number,
 	email: string,
 	password: string,
 	role: string
 }  
+
+ 
 

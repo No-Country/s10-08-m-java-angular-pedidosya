@@ -122,13 +122,9 @@
 
     <p class="subtitle-login-or-register">Elige una opción</p>
 
-    <!-- <button class="option-button">Local</button>
-    <button class="option-button">Delivery</button>
-    <button class="option-button">Cliente</button> -->
-
     <ul class="heroes">
       <li style="list-style-type: none;" *ngFor="let userType of options">
-        <button class="option-button" [class.buttomselected]="userType.id=== 'C'" 
+        <button class="option-button {{this.selectedUserType.id == userType.id ? 'option-button-selected' : ''}}"  
           type="button" (click)="onSelect(userType)">
           <span>{{userType.name}}</span>
         </button>
