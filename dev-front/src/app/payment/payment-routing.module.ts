@@ -1,9 +1,10 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {SettingDeliveryMainComponent} from "@root/payment/layout/setting-delivery-main/setting-delivery-main.component";
-import {SettingPaymentMainComponent} from "@root/payment/layout/setting-payment-main/setting-payment-main.component";
-import {PaymentConfirmMainComponent} from "@root/payment/layout/payment-confirm-main/payment-confirm-main.component";
-import {SettingAddressMainComponent} from "@root/payment/layout/setting-address-main/setting-address-main.component";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { SettingDeliveryMainComponent } from "@root/payment/layout/setting-delivery-main/setting-delivery-main.component";
+import { SettingPaymentMainComponent } from "@root/payment/layout/setting-payment-main/setting-payment-main.component";
+import { PaymentConfirmMainComponent } from "@root/payment/layout/payment-confirm-main/payment-confirm-main.component";
+import { SettingAddressMainComponent } from "@root/payment/layout/setting-address-main/setting-address-main.component";
+import { OrderStateComponent } from './components/order-state/order-state.component';
 
 
 const routes: Routes = [
@@ -31,9 +32,13 @@ const routes: Routes = [
       {
         path: 'setting-payment',
         component: SettingPaymentMainComponent, // Componente para la configuración de pago
+      },
+      {
+        path: 'order-status',
+        component: OrderStateComponent
       }
     ]
-  },
+  }
 ];
 
 

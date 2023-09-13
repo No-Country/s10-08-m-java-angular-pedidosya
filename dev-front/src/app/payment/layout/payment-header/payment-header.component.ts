@@ -36,6 +36,9 @@ export class PaymentHeaderComponent implements OnInit {
       case 'setting-payment':
         this.pageTitle = 'Pago en efectivo';
         break;
+      case 'order-status':
+        this.pageTitle = 'Mi pedido';
+        break;
       default:
         this.pageTitle = '';
         break;
