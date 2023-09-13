@@ -5,10 +5,10 @@
 
 
 <main>
-  <app-checkout-product-list/>
+  <app-checkout-products-list/>
 
   <section class="container">
-    <app-product-list [isScrolling]="true" [products]="(products$|async)?.products || []" [title]="title"/>
+    <app-products-list [isScrolling]="true" [products]="(products$|async)?.products || []" [title]="title"/>
   </section>
 
   <app-checkout-summary/>

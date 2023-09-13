@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Restaurant, RestaurantModel} from "@models/restaurant.model";
-import {catchError, map, Observable, of} from "rxjs";
+import {map, Observable} from "rxjs";
 import {env} from "../../environment/environment";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {RestaurantTypeModel} from "@models/restaurant-type.model";
@@ -11,6 +11,7 @@ import {RestaurantTypeModel} from "@models/restaurant-type.model";
 })
 export class RestaurantService {
   apiUrl: string = env.apiURL;
+  imageFolders: string = 'assets/stores/'
   restaurantsAPI: RestaurantModel[] = [
     {
       id: 1,
@@ -20,8 +21,8 @@ export class RestaurantService {
       rating: 4.1,
       deliveryCost: 1000,
       minToOrder: 2999,
-      brandImage: "assets/mocks/brand_bk.png",
-      productImage: "assets/mocks/products_bk.png",
+      brandImage: "assets/mocks/logo.png",
+      productImage: "assets/mocks/image.png",
       favorite: true,
       takeAway: false,
     },
@@ -33,8 +34,8 @@ export class RestaurantService {
       rating: 4.1,
       deliveryCost: 0,
       minToOrder: 1199,
-      brandImage: "assets/mocks/brand_mc.png",
-      productImage: "assets/mocks/products_mc.png",
+      brandImage: "assets/mocks/logo.png",
+      productImage: "assets/mocks/image.png",
       favorite: true,
       takeAway: false,
     }
@@ -59,8 +60,8 @@ export class RestaurantService {
       rating: 4.1,
       deliveryCost: 600,
       minToOrder: 0,
-      brandImage: "assets/mocks/brand_bk.png",
-      productImage: "assets/mocks/products_bk.png",
+      brandImage: "assets/mocks/logo.png",
+      productImage: "assets/mocks/image.png",
       favorite: false,
       takeAway: true,
     },
@@ -72,8 +73,8 @@ export class RestaurantService {
       rating: 2,
       deliveryCost: 600,
       minToOrder: 999,
-      brandImage: "assets/mocks/brand_bk.png",
-      productImage: "assets/mocks/products_bk.png",
+      brandImage: "assets/mocks/logo.png",
+      productImage: "assets/mocks/image.png",
       favorite: false,
       takeAway: true,
     }
@@ -87,7 +88,7 @@ export class RestaurantService {
     const url = this.apiUrl + `/stores/type/${idStoreType}`;
     const options = {headers: this.getHeader()};
 
-    return this.http.get<storeDto[]>(url, options).pipe(
+    return this.http.get<StoreDto[]>(url, options).pipe(
       map(apiResponse => apiResponse.map(storeDto => this.mapStoreDtoToRestaurant(storeDto)))
     );
   }
@@ -117,7 +118,8 @@ export class RestaurantService {
     });
   }
 
-  private mapStoreDtoToRestaurant(storeDto: storeDto): Restaurant {
+  private mapStoreDtoToRestaurant(storeDto: StoreDto): Restaurant {
+    console.log(`${this.imageFolders}${storeDto.logoPath}`)
     return new Restaurant(
       storeDto.idStore,
       storeDto.title,
@@ -126,8 +128,8 @@ export class RestaurantService {
       4, //TODO-> Review
       storeDto.shippingCost,
       storeDto.minPurchase,
-      storeDto.logoPath,
-      storeDto.imagePath,
+      `${this.imageFolders}${storeDto.logoPath}`,
+      `${this.imageFolders}${storeDto.imagePath}`,
       storeDto.isFavourite,
       storeDto.takeAway,
     );
@@ -136,7 +138,7 @@ export class RestaurantService {
 }
 
 
-export interface storeDto {
+export interface StoreDto {
   "idStore": number,
   "title": string,
   "phone": string,

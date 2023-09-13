@@ -57,7 +57,7 @@ export class Cart implements CartModel {
   }
 
   getQuantityBy(product: ProductModel): number {
-    let item = this.items.find(item => item.product === product);
+    let item = this.items.find(item => item.product.id === product.id);
 
     return item ? item.quantity : 0;
   }

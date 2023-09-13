@@ -10,7 +10,7 @@ import {Router, RouterLink} from "@angular/router";
 import {MatButtonModule} from "@angular/material/button";
 
 @Component({
-  selector: 'app-checkout-product-list',
+  selector: 'app-checkout-products-list',
   standalone: true,
   imports: [CommonModule, ItemCardComponent, RouterLink, MatButtonModule],
   templateUrl: './checkout-product-list.component.html',
@@ -34,7 +34,7 @@ export class CheckoutProductListComponent {
 
   editItem(item: ItemModel) {
     this._menuFacade.setProductId(item.product.id)
-    this._router.navigate(['/restaurant/product'])
+    this._router.navigate(['/restaurant/products'])
   }
 
 

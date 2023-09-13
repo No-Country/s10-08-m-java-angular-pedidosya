@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Menu, MenuModel} from "@models/menu.model";
-import {forkJoin, map, Observable} from "rxjs";
+import {map, Observable} from "rxjs";
 import {env} from "../../environment/environment";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {ProductModel} from "@models/product.model";
@@ -11,6 +11,7 @@ import {ProductModel} from "@models/product.model";
 })
 export class MenuService {
   apiUrl: string = env.apiURL;
+  imageFolders: string = 'assets/stores/'
   menusTopSelling: MenuModel = {
     id: 0,
     name: 'Mas vendidos',
@@ -201,31 +202,48 @@ export class MenuService {
   }
 
 
-  getMenus(idRestaurant: number | null): Observable<{ topSelling: Menu, discounts: Menu, others: Menu[] }> {
+  getMenus(idRestaurant: number | null): Observable<{ others: Menu[] }> {
     const options = {headers: this.getHeader()};
-    const body = {};
     const urlAllMenus = this.apiUrl + `/menus/store-list/${idRestaurant}`;
-    const urlTopMenu = this.apiUrl + `/products/top/${idRestaurant}`;
-    const urlDiscounts = this.apiUrl + `/menus/discount-list/${idRestaurant}`;
 
-    // Observables para las tres solicitudes HTTP
-    const topMenu$ = this.http.get<productDto[]>(urlTopMenu, options);
-    const discounts$ = this.http.get<menuDto>(urlDiscounts, options);
-    const allMenus$ = this.http.get<menuDto[]>(urlAllMenus, options);
-
-    // Combinar todas las observables usando forkJoin
-    //return forkJoin([topMenu$, discounts$, allMenus$]).pipe(
-    return forkJoin([allMenus$]).pipe(
-      map(([allMenusResponse]) => {
-        const allMenus = {
-          topSelling: new Menu(1, 'Mas vendidos', []),
-          discounts: new Menu(1, 'Descuentos', []),
-          others: allMenusResponse.map(menuDto => this.mapMenuDtoToMenu(menuDto)),
-        };
-        return allMenus;
-      }),
+    return this.http.get<MenuDto[]>(urlAllMenus, options).pipe(
+      map(allMenusResponse => ({
+        others: allMenusResponse.map(menuDto => this.mapMenuDtoToMenu(menuDto)),
+      }))
     );
   }
+
+  getDiscounts(idRestaurant: number | null): Observable<{ discounts: Menu | null }> {
+    const options = {headers: this.getHeader()};
+    const urlAllMenus = this.apiUrl + `/menus/discount-list/${idRestaurant}`;
+
+    return this.http.get<MenuDto[]>(urlAllMenus, options).pipe(
+      map(allMenusResponse => {
+          let products: ProductModel[] = allMenusResponse.flatMap(a => a.products).map(products => this.mapProductDtoToProduct(products))
+          return {
+            discounts: new Menu(0, 'Descuentos', products)
+          }
+        }
+      )
+    );
+  }
+
+  getTopSelling(idRestaurant: number | null): Observable<{ topSelling: Menu | null }> {
+    const options = {headers: this.getHeader()};
+    const urlAllMenus = this.apiUrl + `/products/top/{idStore}?idStore=${idRestaurant}`;
+
+    return this.http.get<ProductDto[]>(urlAllMenus, options).pipe(
+      map(productsResponse => {
+
+          const products = productsResponse.map(products => this.mapProductDtoToProduct(products))
+          return {
+            topSelling: new Menu(0, 'Más vendidos', products)
+          }
+        }
+      )
+    );
+  }
+
 
   private getHeader() {
     const token = localStorage.getItem(this.keyToken);
@@ -235,42 +253,51 @@ export class MenuService {
     });
   }
 
-  private mapProductDtoToProduct(productDto: productDto): ProductModel {
+  private mapProductDtoToProduct(productDto: ProductDto): ProductModel {
     return {
       id: productDto.idProduct,
       name: productDto.title,
       description: productDto.description,
-      imageUrl: productDto.imagePath,
+      imageUrl: this.imageFolders + productDto.imagePath,
       price: productDto.price,
       favorite: productDto.isFavourite ?? false,
     };
   }
 
-  private mapMenuDtoToMenu(menuDto: menuDto): Menu {
+  private mapMenuDtoToMenu(menuDto: MenuDto): Menu {
     const products: ProductModel[] = menuDto.products.map(productDto => this.mapProductDtoToProduct(productDto));
     return new Menu(menuDto.idMenu, menuDto.title, products);
   }
 
 }
 
-export interface productDto {
+export interface ProductDto {
   idProduct: number,
   title: string,
   description: string,
   price: number,
   imagePath: string,
-  productType: {
-    idProductType: number,
-    title: string
-  },
+  productType: ProductType,
   active: true,
   isFavourite: boolean | null,
-  productDiscount: boolean | null
+  productDiscount: DiscountDto | null
 }
 
-export interface menuDto {
+export interface ProductType {
+  idProductType: number,
+  title: string
+}
+
+export interface DiscountDto {
+  idProductDiscount: number,
+  percentage: number
+}
+
+export interface MenuDto {
   idMenu: number,
   title: string,
   idStore: number,
-  products: productDto[]
+  products: ProductDto[]
 }
+
+

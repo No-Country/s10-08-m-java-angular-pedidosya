@@ -2,14 +2,14 @@
 
 
   <!-- Mas vendidos -->
-  <app-product-list #masVendidosList
+  <app-products-list #masVendidosList
                     *ngIf="menusTopSelling"
                     [id]="-2"
                     [products]="menusTopSelling.products |productFilter:searchText"
                     [title]="'Mas vendidos'"/>
 
   <!-- Descuentos -->
-  <app-product-list
+  <app-products-list
     *ngIf="menusDiscount"
     [id]="-1"
     [isScrolling]="false"
@@ -19,12 +19,12 @@
   <!-- Mas vendidos -->
   <ng-container *ngIf="menus">
     <ng-container *ngFor="let menu of menus">
-      <app-product-list
+      <app-products-list
 
         [id]="menu.id"
         [isScrolling]="false"
 
-        [products]="menu.products|productFilter:searchText"
+        [products]="menu.products | productFilter:searchText"
         [title]="menu.name"
       />
     </ng-container>

@@ -11,7 +11,7 @@ import {Router, RouterOutlet} from "@angular/router";
 import {ItemModel} from "@models/item.model";
 
 @Component({
-  selector: 'app-product-pages',
+  selector: 'app-products-pages',
   templateUrl: './product.page.html',
   styleUrls: ['./product.page.scss'],
   standalone: true,
@@ -69,6 +69,7 @@ export class ProductPage implements OnInit {
 
 
   ngOnInit(): void {
+
     this.product$.pipe(take(1)).subscribe((product) => {
       if (product === null) {
         this._router.navigate(['/restaurant'])

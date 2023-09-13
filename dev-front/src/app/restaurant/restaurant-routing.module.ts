@@ -13,7 +13,7 @@ const routes: Routes = [
     loadComponent: () => import('./pages/restaurant-details/restaurant-details.page').then(mod => mod.RestaurantDetailsPage),
   },
   {
-    path: 'product',
+    path: 'products',
     loadComponent: () => import('./pages/product-page/product.page').then(mod => mod.ProductPage),
   },
   {

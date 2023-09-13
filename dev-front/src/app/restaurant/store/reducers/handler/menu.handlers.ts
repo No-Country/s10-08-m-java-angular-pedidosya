@@ -18,32 +18,17 @@ export const handleLoadMenus = (state: MenuState): MenuState => {
   }
 }
 
-export const handleLoadMenusSuccess = (state: MenuState, {
-  discounts,
-  topSelling,
-  others
-}: { discounts: Menu | null, topSelling: Menu | null, others: Menu[] | null }): MenuState => {
+export const handleLoadMenusSuccess = (state: MenuState, {others}: { others: Menu[] | null }): MenuState => {
   let allProductsOthers: ProductModel[] = [];
   let allProducts: ProductModel[] = [];
 
   if (others) {
     allProductsOthers = others.flatMap(value => value.products);
   }
-
-  if (discounts?.products) {
-    allProducts = allProducts.concat(discounts.products);
-  }
-
-  if (topSelling?.products) {
-    allProducts = allProducts.concat(topSelling.products);
-  }
-
   allProducts = allProducts.concat(allProductsOthers);
 
   return {
     ...state,
-    discounts,
-    topSelling,
     products: allProducts,
     others,
     isLoading: false,
@@ -51,13 +36,53 @@ export const handleLoadMenusSuccess = (state: MenuState, {
   };
 }
 
+export const handleLoadTopMenuSuccess = (state: MenuState, {topSelling}: { topSelling: Menu | null }): MenuState => {
+  if (topSelling) {
+    return {
+      ...state,
+      topSelling,
+      isLoading: false,
+      error: null
+    }
+  }
+
+  return {
+    ...state,
+    topSelling: new Menu(0, 'Más vendidos', []),
+    isLoading: false,
+    error: null
+  }
+}
+
+export const handleLoadDiscountsSuccess = (state: MenuState, {discounts}: { discounts: Menu | null }): MenuState => {
+
+  if (discounts) {
+    return {
+      ...state,
+      discounts,
+      isLoading: false,
+      error: null
+    }
+  }
+
+  return {
+    ...state,
+    discounts: new Menu(0, 'Descuentos', []),
+    isLoading: false,
+    error: null
+  }
+}
+
+
+
+
+
+
+
 
 export const handleLoadMenusFailure = (state: MenuState, {error}: { error: string }): MenuState => {
   return {
     ...state,
-    others: [],
-    discounts: null,
-    topSelling: null,
     isLoading: false,
     error: error
   }

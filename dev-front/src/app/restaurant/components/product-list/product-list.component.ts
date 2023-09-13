@@ -9,7 +9,7 @@ import {CartFacade} from "@root/restaurant/store/facades/cart.facade";
 import {Observable} from "rxjs";
 
 @Component({
-  selector: 'app-product-list',
+  selector: 'app-products-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
   standalone: true,
@@ -26,7 +26,7 @@ export class ProductListComponent {
 
   toProductPage(id: number): void {
     this._menuFacade.setProductId(id)
-    this._router.navigate(['restaurant/product']);
+    this._router.navigate(['restaurant/products']);
   }
 
   getQuantityBy(product: ProductModel): Observable<number> {
