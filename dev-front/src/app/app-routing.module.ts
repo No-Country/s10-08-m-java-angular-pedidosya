@@ -1,17 +1,17 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {HomeComponent} from "@root/components/home/home.component";
-import {LoginUserComponent} from './login-user/login-user.component';
-import {UbiUserComponent} from './ubi-user/ubi-user.component';
-import {OnboardingStepsComponent} from './onboarding-steps/onboarding-steps.component';
-import {NoPageFoundComponent} from '@root/components/nopagefound/nopagefound.component';
-import {ProfileComponent} from './account/profile/profile.component';
-import {PersonalInfoComponent} from './account/personal-info/personal-info.component';
-import {SetPersonalInfoComponent} from './account/set-personal-info/set-personal-info.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from "@root/components/home/home.component";
+import { LoginUserComponent } from './login-user/login-user.component';
+import { UbiUserComponent } from './ubi-user/ubi-user.component';
+import { OnboardingStepsComponent } from './onboarding-steps/onboarding-steps.component';
+import { NoPageFoundComponent } from '@root/components/nopagefound/nopagefound.component';
+import { ProfileComponent } from './account/profile/profile.component';
+import { PersonalInfoComponent } from './account/personal-info/personal-info.component';
+import { SetPersonalInfoComponent } from './account/set-personal-info/set-personal-info.component';
 
 const routes: Routes = [
   // {path: 'inicio', component: InicioComponent, canActivate: [SesionGuard]},
-  {path: 'home', component: HomeComponent},
+  { path: 'home', component: HomeComponent },
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then((modulo) => modulo.AuthModule)
