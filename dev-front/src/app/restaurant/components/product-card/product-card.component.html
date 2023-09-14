@@ -1,6 +1,6 @@
 <mat-card class="product-card">
-  <div *ngIf="discount>0" class="badge-discount">
-    <p>{{discount}}</p>
+  <div *ngIf="product.discount>0" class="badge-discount">
+    <p>-%{{product.discount}}</p>
   </div>
 
   <button *ngIf="quantity===0" class="btn-add" color="link" mat-mini-fab>
@@ -15,6 +15,7 @@
     <h3 class="product-title">{{product.name}}</h3>
     <div class="d-flex justify-content-space-between align-items-center">
       <p class="product-price">${{product.price}}</p>
+      <p *ngIf="product.discount>0"><s>${{getWhitoutDiscount()}}</s></p>
       <app-button-favorite (click)="setSelectedFavorite($event)" [favorite]="product.favorite"/>
     </div>
   </mat-card-content>

@@ -2,7 +2,8 @@ import {Restaurant} from "@models/restaurant.model";
 import {Cart} from "@models/cart.model";
 import {OrderStatus} from "@models/AllTypes.enum";
 import {ItemModel} from "@models/item.model";
-import {OrderState} from "@root/restaurant/store/order.state";
+import {INITIAL_STATE, OrderState} from "@root/restaurant/store/order.state";
+import {OrderModel} from "@models/order.model";
 
 
 export const handleNewCart = (state: OrderState, {restaurant}: { restaurant: Restaurant }): OrderState => {
@@ -85,6 +86,42 @@ export const handleSetOrderStatus = (state: OrderState, {status}: { status: Orde
   return {
     ...state,
     status
+  };
+
+};
+
+export const handleClearErrorMsg = (state: OrderState): OrderState => {
+  return {
+    ...state,
+    error: null
+  };
+
+};
+
+
+export const handleSendOrder = (state: OrderState): OrderState => {
+  return {
+    ...state,
+    isLoading: true
+  };
+
+};
+
+export const handleSendSuccess = (state: OrderState): OrderState => {
+  return {...state, status: OrderStatus.IS_PREPARING};
+
+};
+
+export const handleResetState = (state: OrderState): OrderState => {
+  return INITIAL_STATE
+
+};
+
+export const handleSendOrderError = (state: OrderState, {error}: { error: string }): OrderState => {
+  return {
+    ...state,
+    isLoading: false,
+    error
   };
 
 };

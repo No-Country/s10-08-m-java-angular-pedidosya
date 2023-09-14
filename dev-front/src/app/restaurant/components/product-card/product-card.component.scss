@@ -96,6 +96,7 @@ $button-padding: 5px;
   background: #048221;
   border-radius: 8px;
   padding: 0 5px;
+  z-index: 1;
 
 
   p {
@@ -110,3 +111,11 @@ $button-padding: 5px;
 }
 
 
+s {
+  color: #6A798A;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  text-decoration-line: strikethrough;
+}

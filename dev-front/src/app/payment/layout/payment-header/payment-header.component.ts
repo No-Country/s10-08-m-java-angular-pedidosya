@@ -12,18 +12,19 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class PaymentHeaderComponent implements OnInit {
   pageTitle: string = '';
+  path: string = ''
 
   constructor(private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    let path = this.route.snapshot.firstChild?.url[0].path ?? ''
-    this.updatePageTitle(path)
+    this.path = this.route.snapshot.firstChild?.url[0].path ?? ''
+    this.updatePageTitle()
   }
 
-  updatePageTitle(subRoute: string) {
+  updatePageTitle() {
     // Define lógica para asignar títulos según la subruta
-    switch (subRoute) {
+    switch (this.path) {
       case 'confirm':
         this.pageTitle = 'Confirmar Pedido';
         break;

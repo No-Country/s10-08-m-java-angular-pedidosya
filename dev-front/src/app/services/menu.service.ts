@@ -11,191 +11,7 @@ import {ProductModel} from "@models/product.model";
 })
 export class MenuService {
   apiUrl: string = env.apiURL;
-  imageFolders: string = 'assets/stores/'
-  menusTopSelling: MenuModel = {
-    id: 0,
-    name: 'Mas vendidos',
-    products: [
-      {
-        id: 1,
-        name: 'Doble bacon chedar mcMelt mediano',
-        price: 1000,
-        description: 'Un medallón 100% carne vacuna.Abundante queso cheddar.Dos tiras de bacon enteras.Cebolla rillada.Pan con semillas de sésamo.',
-        imageUrl: 'assets/mocks/product_example.png',
-        favorite: true
-      }, {
-        id: 2,
-        name: 'hamburguesa',
-        price: 1000,
-        description: 'Boil squid ultimately, then mix with buttermilk and serve roughly in soup pot.',
-        imageUrl: 'assets/mocks/product_example.png',
-        favorite: true
-      }, {
-        id: 3,
-        name: 'hamburguesa',
-        price: 1000,
-        description: 'Boil squid ultimately, then mix with buttermilk and serve roughly in soup pot.',
-        imageUrl: 'assets/mocks/product_example.png',
-        favorite: true
-      }, {
-        id: 4,
-        name: 'hamburguesa',
-        price: 1000,
-        description: 'Boil squid ultimately, then mix with buttermilk and serve roughly in soup pot.',
-        imageUrl: 'assets/mocks/product_example.png',
-        favorite: true
-      }, {
-        id: 5,
-        name: 'hamburguesa',
-        price: 1000,
-        description: 'Boil squid ultimately, then mix with buttermilk and serve roughly in soup pot.',
-        imageUrl: 'assets/mocks/product_example.png',
-        favorite: true
-      }, {
-        id: 6,
-        name: 'hamburguesa',
-        price: 1000,
-        description: 'Boil squid ultimately, then mix with buttermilk and serve roughly in soup pot.',
-        imageUrl: 'assets/mocks/product_example.png',
-        favorite: true
-      }, {
-        id: 7,
-        name: 'hamburguesa',
-        price: 1000,
-        description: 'Boil squid ultimately, then mix with buttermilk and serve roughly in soup pot.',
-        imageUrl: 'assets/mocks/product_example.png',
-        favorite: true
-      }, {
-        id: 8,
-        name: 'hamburguesa',
-        price: 1000,
-        description: 'Boil squid ultimately, then mix with buttermilk and serve roughly in soup pot.',
-        imageUrl: 'assets/mocks/product_example.png',
-        favorite: true
-      }, {
-        id: 9,
-        name: 'hamburguesa',
-        price: 1000,
-        description: 'Boil squid ultimately, then mix with buttermilk and serve roughly in soup pot.',
-        imageUrl: 'assets/mocks/product_example.png',
-        favorite: true
-      },
-    ]
-  }
-  menusDiscount: MenuModel = {
-    id: 1,
-    name: 'Descuento',
-    products: [
-      {
-        id: 10,
-        name: 'hamburguesa',
-        price: 1000,
-        description: 'Boil squid ultimately, then mix with buttermilk and serve roughly in soup pot.',
-        imageUrl: 'assets/mocks/product_example.png',
-        favorite: true
-      }, {
-        id: 11,
-        name: 'quinoa combines greatly with cold popcorn.  ',
-        price: 1000,
-        description: 'Boil squid ultimately, then mix with buttermilk and serve roughly in soup pot.',
-        imageUrl: 'assets/mocks/product_example.png',
-        favorite: true
-      }, {
-        id: 12,
-        name: 'hamburguesa',
-        price: 1000,
-        description: 'Boil squid ultimately, then mix with buttermilk and serve roughly in soup pot.',
-        imageUrl: 'assets/mocks/product_example.png',
-        favorite: true
-      }, {
-        id: 13,
-        name: 'hamburguesa',
-        price: 1000,
-        description: 'Boil squid ultimately, then mix with buttermilk and serve roughly in soup pot.',
-        imageUrl: 'assets/mocks/product_example.png',
-        favorite: true
-      }, {
-        id: 14,
-        name: 'hamburguesa',
-        price: 1000,
-        description: 'Boil squid ultimately, then mix with buttermilk and serve roughly in soup pot.',
-        imageUrl: 'assets/mocks/product_example.png',
-        favorite: true
-      }, {
-        id: 15,
-        name: 'hamburguesa',
-        price: 1000,
-        description: 'Boil squid ultimately, then mix with buttermilk and serve roughly in soup pot.',
-        imageUrl: 'assets/mocks/product_example.png',
-        favorite: true
-      },
-    ]
-  }
-  menus: MenuModel[] = [
-    {
-      id: 2,
-      name: 'Hamburguesas',
-      products: [
-        {
-          id: 16,
-          name: 'hamburguesa',
-          price: 1000,
-          description: 'Boil squid ultimately, then mix with buttermilk and serve roughly in soup pot.',
-          imageUrl: 'assets/mocks/product_example.png',
-          favorite: true
-        },
-      ]
-    },
-    {
-      id: 3,
-      name: 'Meriendas',
-      products: [
-        {
-          id: 17,
-          name: 'hamburguesa',
-          price: 1000,
-          description: 'Boil squid ultimately, then mix with buttermilk and serve roughly in soup pot.',
-          imageUrl: 'assets/mocks/product_example.png',
-          favorite: true
-        }, {
-          id: 18,
-          name: 'quinoa combines greatly with cold popcorn.  ',
-          price: 1000,
-          description: 'Boil squid ultimately, then mix with buttermilk and serve roughly in soup pot.',
-          imageUrl: 'assets/mocks/product_example.png',
-          favorite: true
-        }, {
-          id: 19,
-          name: 'hamburguesa',
-          price: 1000,
-          description: 'Boil squid ultimately, then mix with buttermilk and serve roughly in soup pot.',
-          imageUrl: 'assets/mocks/product_example.png',
-          favorite: true
-        }, {
-          id: 20,
-          name: 'hamburguesa',
-          price: 1000,
-          description: 'Boil squid ultimately, then mix with buttermilk and serve roughly in soup pot.',
-          imageUrl: 'assets/mocks/product_example.png',
-          favorite: true
-        }, {
-          id: 21,
-          name: 'hamburguesa',
-          price: 1000,
-          description: 'Boil squid ultimately, then mix with buttermilk and serve roughly in soup pot.',
-          imageUrl: 'assets/mocks/product_example.png',
-          favorite: true
-        }, {
-          id: 22,
-          name: 'hamburguesa',
-          price: 1000,
-          description: 'Boil squid ultimately, then mix with buttermilk and serve roughly in soup pot.',
-          imageUrl: 'assets/mocks/product_example.png',
-          favorite: true
-        },
-      ]
-    },
-  ]
+
   private readonly keyToken = 'jwt';
 
   constructor(private http: HttpClient) {
@@ -272,9 +88,10 @@ export class MenuService {
       id: productDto.idProduct,
       name: productDto.title,
       description: productDto.description,
-      imageUrl: this.imageFolders + productDto.imagePath,
+      imageUrl: productDto.imagePath,
       price: productDto.price,
       favorite: productDto.isFavourite ? productDto.isFavourite : false,
+      discount: productDto.productDiscount ? productDto.productDiscount.percentage:0
     };
   }
 
@@ -292,8 +109,8 @@ export interface ProductDto {
   price: number,
   imagePath: string,
   productType: ProductType,
-  active: true,
-  isFavourite: boolean ,
+  active: boolean,
+  isFavourite: boolean,
   productDiscount: DiscountDto | null
 }
 
