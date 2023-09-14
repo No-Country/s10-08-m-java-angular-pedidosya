@@ -2,7 +2,6 @@ import {createFeatureSelector, createSelector} from "@ngrx/store";
 import {OrderState} from "@root/restaurant/store/order.state";
 
 
-
 export const selectOrderState = createFeatureSelector<OrderState>('order');
 
 
@@ -23,4 +22,9 @@ export const selectLoading = createSelector(
 export const selectError = createSelector(
   selectOrderState,
   (state: OrderState) => state.error
+);
+
+export const selectAddress = createSelector(
+  selectOrderState,
+  (state: OrderState) => state.address
 );

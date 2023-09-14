@@ -1,4 +1,3 @@
-
 import {Restaurant} from "@models/restaurant.model";
 import {Cart} from "@models/cart.model";
 import {OrderStatus} from "@models/AllTypes.enum";
@@ -79,5 +78,13 @@ export const handleRemoveItem = (state: OrderState, {item}: { item: ItemModel })
 
 
   return {...state};
+
+};
+
+export const handleSetOrderStatus = (state: OrderState, {status}: { status: OrderStatus }): OrderState => {
+  return {
+    ...state,
+    status
+  };
 
 };

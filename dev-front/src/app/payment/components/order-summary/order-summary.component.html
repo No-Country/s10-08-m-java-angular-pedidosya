@@ -1,24 +1,24 @@
 <section class="container border rounded">
   <div class="d-flex justify-content-space-between">
     <p>Producto</p>
-    <p>$6560</p>
+    <p>{{totalProducts$|async}}</p>
   </div>
   <div class="d-flex justify-content-space-between">
     <p>Envío</p>
-    <p>$6560</p>
+    <p>${{deliveryCost$|async}}</p>
   </div>
   <div class="d-flex justify-content-space-between">
     <p>Tarifa de servicio</p>
-    <p>$6560</p>
+    <p>${{serviceCost$|async}}</p>
   </div>
   <div class="d-flex justify-content-space-between">
     <p>Propina</p>
-    <p>$6560</p>
+    <p>$0</p>
   </div>
   <hr>
   <div class="d-flex justify-content-space-between">
     <p>Total</p>
-    <p>$6560</p>
+    <p>${{total$|async}}</p>
   </div>
 
 </section>

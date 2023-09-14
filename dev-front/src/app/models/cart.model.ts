@@ -45,7 +45,12 @@ export class Cart implements CartModel {
 
 
   getTotal(): number {
-    return this.getTotalProductPrice() + this.restaurant.deliveryCost;
+    return this.getTotalProductPrice() + this.restaurant.deliveryCost + this.getServicePrice();
+  }
+
+  getServicePrice(): number {
+    const comision = 0.01;
+    return (this.getTotalProductPrice() + this.restaurant.deliveryCost) * comision;
   }
 
   getTotalProductPrice(): number {

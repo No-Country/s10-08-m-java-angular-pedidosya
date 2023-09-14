@@ -1,3 +1,7 @@
 <footer class="container">
-  <button (click)="confirmOrder()" (click)="goTo('order-status')" class="btn btn-lg btn-primary" mat-button>Realizar pedido($2000)</button>
+  <button (click)="confirmOrder()" (click)="goTo('order-status')" class="btn btn-lg btn-primary" mat-button>
+    Realizar pedido(${{total}})
+  </button>
 </footer>
+
+<app-modal-confirm *ngIf="showModal"/>
