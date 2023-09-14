@@ -110,6 +110,21 @@ export class RestaurantService {
   }
 
 
+  getRestaurantFavorites(): Observable<any[]> {
+    const url = this.apiUrl + `/stores/favourites`;
+    const options = {headers: this.getHeader()};
+
+    // return this.http.get<StoreDto[]>(url, options).pipe(
+    //   map(apiResponse => apiResponse.map(storeDto => this.mapStoreDtoToRestaurant(storeDto)))
+    // );
+
+    return this.http
+    .get<StoreDto[]>(url, options);
+
+    // return this.http.get<StoreDto[]>(url, options).pipe(
+    //   map(apiResponse => apiResponse.map(storeDto => this.mapStoreDtoToRestaurant(storeDto)))
+    // );    
+  }
 
 
   private getHeader() {
@@ -138,7 +153,6 @@ export class RestaurantService {
   }
 
 }
-
 
 export interface StoreDto {
   "idStore": number,
