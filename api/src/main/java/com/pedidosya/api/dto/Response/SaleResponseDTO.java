@@ -2,6 +2,7 @@ package com.pedidosya.api.dto.Response;
 
 import com.pedidosya.api.dto.Request.SaleDetailDTO;
 import com.pedidosya.api.models.Address;
+import com.pedidosya.api.models.Store;
 import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -38,9 +39,12 @@ public class SaleResponseDTO {
 
     private Integer idDelivery;
 
-    private Integer idAddress;
+    //private Integer idAddress;
 
-    private Integer idStore;
+    //private Integer idStore;
+    private Address address;
+
+    private Store store;
 
     private List<SaleDetailDTO> details;
 }

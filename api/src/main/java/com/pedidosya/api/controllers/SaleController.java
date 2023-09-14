@@ -98,7 +98,9 @@ public class SaleController {
 
     private SaleResponseDTO convertToSaleResponseDTO(Sale sale){
         SaleResponseDTO salemap = saleResponseMapper.toSaleDto(sale);
-
+        //salemap.setDeliveryReview(sale.getStore().getImagePath());
+salemap.setAddress(sale.getAddress());
+salemap.setStore(sale.getStore());
         if (sale.getDetails() != null) {
             List<SaleDetailDTO> saleDetails = new ArrayList<>();
             for (SaleDetail detailDTO : sale.getDetails()) {
