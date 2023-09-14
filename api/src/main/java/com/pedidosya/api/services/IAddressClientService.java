@@ -17,4 +17,7 @@ public interface IAddressClientService  extends ICRUD<AddressClient, Integer>{
     AddressClient updateAddress(AddressClient addressClient);
 
     List<AddressClient> listAddressClient(Integer idClient);
+
+    AddressClient listAddressClientDefault(Integer idClient);
+
 }

@@ -33,4 +33,9 @@ public interface IAddressClientRepo extends IGenericRepo<AddressClient, Integer>
             "WHERE m.client.idClient = ?1 "
     )
     List<AddressClient> findAllByIdClient(Integer idClient);
+
+    @Query("SELECT m FROM AddressClient m " +
+            "WHERE m.set = true AND m.client.idClient = ?1 ")
+    AddressClient findAllByIdClientDefault(Integer idClient);
+
 }
