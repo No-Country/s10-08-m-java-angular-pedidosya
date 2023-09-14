@@ -19,7 +19,7 @@ export class TrackOrderComponent implements OnInit {
     const actualTime = new Date();
 
     this.startTime = new Date(actualTime);
-    this.startTime.setMinutes(this.startTime.getMinutes() + 15);
+    this.startTime.setSeconds(this.startTime.getSeconds() + 10);
     setInterval(() => {
       const tiempoActual = new Date();
       if (tiempoActual < this.startTime) {
@@ -41,13 +41,13 @@ export class TrackOrderComponent implements OnInit {
 
   getEstimatedEndTime(): Date {
     const endTime = new Date(this.startTime);
-    endTime.setMinutes(endTime.getMinutes() + 15);
+    endTime.setSeconds(endTime.getSeconds() + 15);
     return endTime;
   }
 
   getSendingTime(): Date { //Simula que el repartidor ya esta yendo con el pedido, 7 minutos antes de que llegue a el final del tiempo estimado
     const sendTime = new Date(this.getEstimatedEndTime());
-    sendTime.setMinutes(sendTime.getMinutes() - 7);
+    sendTime.setSeconds(sendTime.getSeconds() - 10);
     return sendTime;
   }
 

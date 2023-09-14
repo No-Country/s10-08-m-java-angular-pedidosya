@@ -7,6 +7,7 @@
     align-items: flex-start;
     gap: 32px;
     flex-shrink: 0;
+    margin-bottom: 65px;
 }
 
 .title-cards {
@@ -182,4 +183,12 @@ h2 {
     font-weight: 600;
     line-height: 18px;
     margin-top: 0;
+}
+
+.carousel-container {
+    display: flex;
+    width: 344px;
+    padding-left: 0px;
+    align-items: flex-start;
+    gap: 8px;
 }
