@@ -9,12 +9,23 @@ import java.util.List;
 
 public interface IProductRepo extends IGenericRepo<Product, Integer> {
 
-    @Query("SELECT p.title, SUM(sd.quantity) AS totalSales " +
-            "FROM SaleDetail sd " +
-            "JOIN Product p ON sd.product.idProduct = p.idProduct " +
+   /* @Query(" FROM Product p " +
+            "JOIN SaleDetail p ON sd.product.idProduct = p.idProduct " +
             "JOIN Sale s ON sd.sale = s.store " +
-            "WHERE s.store.idStore = :idStore " +
             "GROUP BY p.idProduct " +
+            "HAVING s.store.idStore = :idStore " +
             "ORDER BY totalSales DESC")
     List<Product> findTopProductsByStoreOrderByTotalSalesDesc(@Param("idStore") Integer idStore);
+*/
+   @Query("SELECT p " +
+           "FROM Product p " +
+           "JOIN SaleDetail sd ON p.idProduct = sd.product.idProduct " +
+           "JOIN Sale s ON sd.sale.idSale = s.idSale " +
+           "WHERE s.store.idStore = :idStore " +
+           "GROUP BY p.idProduct " +
+           "ORDER BY SUM(sd.quantity) DESC")
+   List<Product> findTopProductsByStoreOrderByTotalSalesDesc(@Param("idStore") Integer idStore);
+
 }
+
+
