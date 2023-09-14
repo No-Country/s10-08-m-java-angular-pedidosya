@@ -67,6 +67,20 @@ public class AddressClientController {
         List<AddressClientDTO> list = addressClientImpl.listAddressClient(client.getIdClient()).stream().map(this::convertToDto).toList();
         return ResponseEntity.ok(list);
     }
+
+    @Operation(summary="Lista las direccion default del cliente autenticado.")
+    @GetMapping(value="/address-default", headers = "Accept=application/json")
+    public ResponseEntity<AddressClientDTO> listAddressDefaultClient()
+    {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = (User) authentication.getPrincipal();
+        Integer userId = user.getIdUser();
+        Client client = clientImpl.readByIdUser(userId);
+
+        AddressClientDTO list = convertToDto(addressClientImpl.listAddressClientDefault(client.getIdClient()));
+        return ResponseEntity.ok(list);
+    }
+
     private AddressClientDTO convertToDto(AddressClient addressClient){
         return iAddressClientMapper.toAddressClientDto(addressClient);
     }

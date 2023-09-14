@@ -59,4 +59,11 @@ public class AddressClientImpl extends CRUDImpl<AddressClient, Integer> implemen
         return repo.findAllByIdClient(idClient);
 
     }
+    @Override
+    public AddressClient listAddressClientDefault(Integer idClient)
+    {
+        return repo.findAllByIdClientDefault(idClient);
+
+    }
+
 }
