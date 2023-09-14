@@ -17,7 +17,7 @@ import {MenuFacade} from "@root/restaurant/store/facades/menu.facade";
 export class ProductCardComponent {
   @Input() product!: ProductModel
   @Input() quantity!: number
-  @Input() discount: number = 0;
+
 
   constructor(private _menuFacade: MenuFacade) {
   }
@@ -28,5 +28,9 @@ export class ProductCardComponent {
     this._menuFacade.toogleFavorite(this.product)
   }
 
+  getWhitoutDiscount() {
+    return (this.product.price * (1 + this.product.discount / 100)).toFixed(0);
+
+  }
 
 }

@@ -9,7 +9,7 @@
   </div>
   <div class="card-title-container">
     <div class="card-img-container">
-      <div [style.background-image]="'url('+'/'+item.product.imageUrl+')'" class="img-product"></div>
+      <div [style.background-image]="'url('+item.product.imageUrl+')'" class="img-product"></div>
       <p class="subtotal">${{item.product.price * item.quantity}}</p>
       <app-counter (countChange)="emitChangeQuantity($event)"
                    (deleteChange)="emitDeleteItem()"

@@ -3,17 +3,17 @@
 
   <!-- Mas vendidos -->
   <app-products-list #masVendidosList
-                    *ngIf="menusTopSelling"
-                    [id]="-2"
-                    [products]="menusTopSelling.products |productFilter:searchText"
-                    [title]="'Mas vendidos'"/>
+                     *ngIf="menusTopSelling"
+                     [id]="-2"
+                     [products]="menusTopSelling.products |productFilter:searchText"
+                     [title]="'Mas vendidos'"/>
 
   <!-- Descuentos -->
   <app-products-list
     *ngIf="menusDiscount"
     [id]="-1"
     [isScrolling]="false"
-    [products]="menusDiscount.products |productFilter:searchText"
+    [products]="getProductsWhitDiscouts(menusDiscount.products) |productFilter:searchText"
     [title]="'Descuentos'"/>
 
   <!-- Mas vendidos -->

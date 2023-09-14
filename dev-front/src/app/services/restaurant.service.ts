@@ -11,7 +11,7 @@ import {RestaurantTypeModel} from "@models/restaurant-type.model";
 })
 export class RestaurantService {
   apiUrl: string = env.apiURL;
-  imageFolders: string = 'assets/stores/'
+
   restaurantsAPI: RestaurantModel[] = [
     {
       id: 1,
@@ -123,7 +123,7 @@ export class RestaurantService {
 
     // return this.http.get<StoreDto[]>(url, options).pipe(
     //   map(apiResponse => apiResponse.map(storeDto => this.mapStoreDtoToRestaurant(storeDto)))
-    // );    
+    // );
   }
 
 
@@ -136,23 +136,24 @@ export class RestaurantService {
   }
 
   private mapStoreDtoToRestaurant(storeDto: StoreDto): Restaurant {
-    console.log(`${this.imageFolders}${storeDto.logoPath}`)
+
     return new Restaurant(
       storeDto.idStore,
       storeDto.title,
       storeDto.timeFrom,
       storeDto.timeTo,
-      4, //TODO-> Review
+      storeDto.rating,
       storeDto.shippingCost,
       storeDto.minPurchase,
-      `${this.imageFolders}${storeDto.logoPath}`,
-      `${this.imageFolders}${storeDto.imagePath}`,
+      storeDto.logoPath,
+      storeDto.imagePath,
       storeDto.isFavourite,
       storeDto.takeAway,
     );
   }
 
 }
+
 
 export interface StoreDto {
   "idStore": number,
@@ -163,6 +164,7 @@ export interface StoreDto {
     "title": "string",
     "image_path": "string"
   },
+  "rating": number,
   "active": true,
   "imagePath": string,
   "logoPath": string,

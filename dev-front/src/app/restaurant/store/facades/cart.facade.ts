@@ -41,6 +41,14 @@ export class CartFacade {
     this._store.dispatch(OrderActions.newCart({restaurant: restaurant}));
   }
 
+  resetCart() {
+    this._store.dispatch(OrderActions.resetCart());
+  }
+
+  clearErrorMsg() {
+    this._store.dispatch(OrderActions.clearErrorMsg())
+  }
+
   setOrderStatus(orderStatus: OrderStatus) {
     this._store.dispatch(OrderActions.setOrderStatus({status: orderStatus}))
   }
@@ -106,33 +114,35 @@ export class CartFacade {
     );
   }
 
-  createOrder() {
-    combineLatest([
+  createOrder(): Observable<OrderModel | null> {
+    return combineLatest([
       this.cart$,
       this.address$,
       this.getTotal(),
       this.status$
     ]).pipe(
-      take(1) // Toma un solo valor y completa el observable.
-    ).subscribe(([cart, address, total, status]) => {
-      const orderStatusValue: number = status ? OrderStatusNumeric[status] : -1;
-      if (cart !== null && address !== null) {
-        const order: OrderModel = {
-          orderId: 0,
-          items: cart.items,
-          total: total,
-          status: orderStatusValue,
-          address: address,
-          restaurant: cart.restaurant
-        };
-        console.log(order);
-      }
-    });
+      take(1),
+      map(([cart, address, total, status]) => {
+        const orderStatusValue: number = status ? OrderStatusNumeric[status] : -1;
+        if (cart !== null && address !== null) {
+          const order: OrderModel = {
+            orderId: 0,
+            items: cart.items,
+            total: total,
+            status: orderStatusValue,
+            address: address,
+            restaurant: cart.restaurant
+          };
+          return order;
+        }
+        return null;
+      })
+    );
   }
 
 
   sendOrder() {
-    //TODO:YA!
+    this._store.dispatch(OrderActions.sendOrder())
   }
 
 

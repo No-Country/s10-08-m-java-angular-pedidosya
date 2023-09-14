@@ -96,5 +96,17 @@ export class RestaurantDetailsPage implements OnInit {
 
   }
 
+  onViewOrder() {
+
+  }
+
+  onNewOrder() {
+    this.restaurant$.pipe(take(1)).subscribe((restaurant) => {
+      if (restaurant)
+        this._cartFacade.resetCart();
+    });
+
+  }
+
 
 }

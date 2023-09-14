@@ -26,8 +26,7 @@ export class PaymentFooterComponent {
 
 
   confirmOrder() {
-    this._cartFacade.createOrder()
-    return;
+    this._cartFacade.sendOrder();
   }
 
   goTo(path: string) {

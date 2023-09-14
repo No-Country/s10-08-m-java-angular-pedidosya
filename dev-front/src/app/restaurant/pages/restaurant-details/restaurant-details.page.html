@@ -9,7 +9,9 @@
   <ng-container *ngIf="(errorMessage$ | async) as message">
     <main class="error-message">
       <h1>{{ message }}</h1>
-      <a class="my-3" color="warn" mat-flat-button routerLink="/restaurant/checkout">Ver pedido</a>
+      <a (click)="onViewOrder()" class="my-3 btn btn-md btn-primary" mat-flat-button routerLink="/restaurant/checkout">Ver
+        pedido</a>
+      <a (click)="onNewOrder()" class="my-3 btn btn-md btn-tertiary" mat-flat-button>Nuevo pedido</a>
     </main>
   </ng-container>
   <ng-container *ngIf="(restaurant$ | async) as restaurant">

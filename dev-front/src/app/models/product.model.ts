@@ -5,5 +5,6 @@ export interface ProductModel {
   imageUrl: string;
   price: number;
   favorite: boolean;
+  discount: number;
 
 }

@@ -11,6 +11,7 @@ import {ButtonNavBackComponent} from "@shared/components/button-nav-back/button-
 import {ProductListComponent} from "@root/restaurant/components/product-list/product-list.component";
 import {MenuFacade} from "@root/restaurant/store/facades/menu.facade";
 import {SharedModule} from "@shared/shared.module";
+import {ProductModel} from "@models/product.model";
 
 
 @Component({
@@ -36,6 +37,10 @@ export class RestaurantDetailsMainComponent {
     this._facadeMenu.searchTerm$.subscribe(searchTerm => {
       this.searchText = searchTerm;
     })
+  }
+
+  getProductsWhitDiscouts(products:ProductModel[]){
+    return products.filter(product => product.discount>0);
   }
 
 

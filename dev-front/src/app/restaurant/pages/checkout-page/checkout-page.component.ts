@@ -43,7 +43,11 @@ export class CheckoutPageComponent implements OnInit {
     this._cartFacade.cart$.pipe(take(1)).subscribe((cart) => {
       if (cart === null) {
         this._router.navigate(['/restaurant'])
+      } else {
+        this._menuFacade.restaurantSelected(cart.restaurant.id)
+        this._cartFacade.clearErrorMsg()
       }
+
     })
 
   }
