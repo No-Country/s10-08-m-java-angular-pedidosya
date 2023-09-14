@@ -60,6 +60,7 @@ export class SelectUserTypeComponent {
 		this.authService.userRegistration(dataSignUp).subscribe(
 			(response: any) => {
 				this.toastrService.success('Usuario registrado', dataSignUp.firstName + ', Bienvenido');
+        console.log('Register  ok', dataSignUp);
 				this.router.navigate(['auth/login']);
 			},
 			(error: any) => {

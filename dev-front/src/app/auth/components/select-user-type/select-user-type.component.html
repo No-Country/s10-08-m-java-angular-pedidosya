@@ -124,6 +124,7 @@
 
     <ul class="heroes">
       <li style="list-style-type: none;" *ngFor="let userType of options">
+        <!--[class.buttomselected]="userType.id === selectedUserType" [ngClass]="{'option-button-selected':selectedUserType.id==userType.id}"-->
         <button class="option-button {{this.selectedUserType.id == userType.id ? 'option-button-selected' : ''}}"  
           type="button" (click)="onSelect(userType)">
           <span>{{userType.name}}</span>
