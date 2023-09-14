@@ -4,7 +4,8 @@ import {INITIAL_STATE} from "@root/restaurant/store/order.state";
 import {
   handleAddItem,
   handleNewCart,
-  handleRemoveItem
+  handleRemoveItem,
+  handleSetOrderStatus
 } from "@root/restaurant/store/reducers/handler/cart.handlers";
 import {OrderActions} from "@root/restaurant/store/actions/order.actions";
 
@@ -14,4 +15,5 @@ export const orderReducer = createReducer(
   on(OrderActions.newCart, handleNewCart),
   on(OrderActions.addItem, handleAddItem),
   on(OrderActions.deleteItem, handleRemoveItem),
+  on(OrderActions.setOrderStatus, handleSetOrderStatus),
 );

@@ -20,3 +20,11 @@ export enum OrderStatus {
   FINISH = 'Finalizado',
 }
 
+export const OrderStatusNumeric: Record<OrderStatus, number> = {
+  [OrderStatus.NEW]: 0,
+  [OrderStatus.READY_TO_PAY]: 1,
+  [OrderStatus.IS_ORDERING]: 2,
+  [OrderStatus.IS_PREPARING]: 3,
+  [OrderStatus.IS_DELIVERING]: 4,
+  [OrderStatus.FINISH]: 5,
+};
