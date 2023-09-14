@@ -46,7 +46,7 @@ export class MenuService {
 
   getTopSelling(idRestaurant: number | null): Observable<{ topSelling: Menu | null }> {
     const options = {headers: this.getHeader()};
-    const urlAllMenus = this.apiUrl + `/products/top/${idRestaurant}`;
+    const urlAllMenus = this.apiUrl + `/products/top/{idStore}?idStore=${idRestaurant}`;
 
     return this.http.get<ProductDto[]>(urlAllMenus, options).pipe(
       map(productsResponse => {
@@ -109,7 +109,7 @@ export interface ProductDto {
   price: number,
   imagePath: string,
   productType: ProductType,
-  active: true,
+  active: boolean,
   isFavourite: boolean,
   productDiscount: DiscountDto | null
 }
