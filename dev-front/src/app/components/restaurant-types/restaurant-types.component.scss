@@ -36,3 +36,13 @@
     display: flex;
     justify-content: center;
 }
+
+.titulo-back {
+    color: var(--text-texto-primario, #151719);
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px;
+    /* 90% */
+}
