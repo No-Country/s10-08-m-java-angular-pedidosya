@@ -10,4 +10,6 @@ public interface IClientService extends ICRUD<Client, Integer>{
     public Client updatePerfil(Client client);
 
     public Client readByIdUser(Integer idUser);
+
+    public Boolean verifyEmail(String email);
     }

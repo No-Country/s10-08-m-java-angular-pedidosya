@@ -2,6 +2,7 @@ package com.pedidosya.api.repositories;
 
 import com.pedidosya.api.models.AddressClient;
 import com.pedidosya.api.models.Client;
+import com.pedidosya.api.models.User;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -20,5 +21,11 @@ public interface IClientRepo extends IGenericRepo<Client, Integer>{
             "WHERE u.idUser = ?1 "
     )
     Client readByIdUser(Integer idUser);
+
+    @Query("FROM User c " +
+            "WHERE c.email = ?1 "
+    )
+    User readByIdUserEmail(String email);
+
 
 }

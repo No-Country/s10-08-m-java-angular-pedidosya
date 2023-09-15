@@ -38,4 +38,11 @@ public class ClientImpl extends CRUDImpl<Client, Integer> implements IClientServ
         repo.updatePerfil(client.getIdClient(), client.getFirstName(), client.getLastName());
         return repo.findById(client.getIdClient()).orElse(client);
     }
+
+    @Override
+    public Boolean verifyEmail(String email) {
+        return repo.readByIdUserEmail(email) != null;
+    }
+
+
 }
