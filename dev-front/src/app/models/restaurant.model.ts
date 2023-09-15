@@ -1,3 +1,17 @@
+export interface RestaurantModelLogoPath {
+  id: number;
+  title: string;
+  minTime: number;
+  maxTime: number;
+  rating: number;
+  deliveryCost: number;
+  minToOrder: number;
+  brandImage: string;
+  logoPath: string;
+  favorite: boolean;
+  takeAway: boolean;
+}
+
 export interface RestaurantModel {
   id: number;
   name: string;
