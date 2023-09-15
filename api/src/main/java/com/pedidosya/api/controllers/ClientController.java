@@ -1,10 +1,13 @@
 package com.pedidosya.api.controllers;
 
+import com.pedidosya.api.dto.Request.AddressClientDTO;
 import com.pedidosya.api.dto.Request.ClientDTO;
+import com.pedidosya.api.dto.Request.EmailDTO;
 import com.pedidosya.api.models.Client;
 import com.pedidosya.api.models.User;
 import com.pedidosya.api.services.Impl.ClientImpl;
 import com.pedidosya.api.utils.mappers.IClientMapper;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +31,7 @@ import java.util.Optional;
 public class ClientController {
 
     private final ClientImpl clientImpl;
+
     private final IClientMapper iClientMapper;
 
     @GetMapping
@@ -132,6 +136,13 @@ public class ClientController {
 
     }
 
+
+    @Operation(summary="Verifica si ya existe ese correo registrado.")
+    @PostMapping(value="/verify", headers = "Accept=application/json")
+    public ResponseEntity<Boolean> verifyEmail(@RequestBody EmailDTO maildto)
+    {
+        return new ResponseEntity<>(clientImpl.verifyEmail(maildto.getEmail()), HttpStatus.OK);
+    }
 
     private ClientDTO convertToDto(Client client){
         return iClientMapper.toClientDto(client);
