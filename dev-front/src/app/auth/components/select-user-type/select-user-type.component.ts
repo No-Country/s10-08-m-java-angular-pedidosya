@@ -66,7 +66,7 @@ export class SelectUserTypeComponent {
 			(error: any) => {
         console.log('Register failed', dataSignUp);
         console.log('Error:', error.message);
-				this.toastrService.error('Process fallo', error.message);
+				this.toastrService.error('Process fallo. Error:', error);
 			}
 		);    
 
