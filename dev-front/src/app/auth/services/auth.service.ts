@@ -8,6 +8,7 @@ import { Sesion } from '@models/sesion';
 import { UserModel } from '@models/user.model';
 import { env } from 'src/environment/environment';
 import { responseAuthentication } from '@models/dtos.model';
+import { ClientDTO } from '@models/dtos.model';
 
 
 @Injectable({
@@ -83,6 +84,31 @@ export class AuthService {
   getToken(){
     return localStorage.getItem(this.keyToken);
   }
+
+  getClients(){
+    const url = this.apiUrl + '/clients';
+    console.log('url:', url);    
+  }
+
+  isUserRegisted(email: any): Observable<any> {
+		let url = this.apiUrl + '/auth/verify/' + email;
+    return this.httpClient.get(url) ;   
+	}
+
+  isUserRegisted_searching(email: any): Observable<any> {
+    // Return Client info after searching
+		let url = this.apiUrl + '/auth/verify/' + email;
+
+    return this.httpClient.get<ClientDTO[]>(url).pipe(
+      map((usuarios: ClientDTO[]) => {
+        let usuarioValidado = usuarios.find((u: ClientDTO) => u.user.email === email);
+        console.log('usuarioValidado', usuarioValidado)
+
+      }));
+	}
+
+
+
 
 	// Handle API errors
 	handleError(error: HttpErrorResponse) {

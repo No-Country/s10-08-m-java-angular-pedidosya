@@ -17,6 +17,17 @@ export interface SignUpDTO {
 		role: string
 	} 
 }
+export interface ClientDTO {
+	idClient: number,
+	firstName: string,
+	lastName: string,
+	active: boolean,
+	user: {
+		idUser: number,
+		email: string,
+		role: string
+	}  
+}
 
 export interface ClientUpdateDTO {
 	idClient: number,
