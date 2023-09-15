@@ -28,7 +28,7 @@ public class UserDTO {
     @NotNull
     @NotEmpty
     @Column(nullable = false )
-    @Size(min = 6, message = "Contraseña min 6 caracteres.")
+    @Size(min = 1, message = "Contraseña min 6 caracteres.")
     //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 

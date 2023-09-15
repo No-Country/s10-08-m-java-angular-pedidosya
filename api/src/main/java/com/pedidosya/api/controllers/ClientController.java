@@ -39,22 +39,6 @@ public class ClientController {
         return ResponseEntity.ok(convertToListDto(clientImpl.readAll()));
     }
 
-//    @PostMapping(value = "/register", headers = "Accept=application/json")
-//    public ResponseEntity<ClientDTO> registerClient(@RequestBody ClientDTO newClient){
-//
-//        Client client = convertToEntity(newClient);
-//
-//        int strength = 10;
-//        BCryptPasswordEncoder bCryptPasswordEncoder =
-//                new BCryptPasswordEncoder(strength, new SecureRandom());
-//        String encodedPassword = bCryptPasswordEncoder.encode(newClient.getUser().getPassword());
-//        client.getUser().setPassword(encodedPassword);
-//
-//
-//        return  ResponseEntity.ok(
-//                convertToDto(clientImpl.save(client)));
-//    }
-
     @PutMapping(value = "/update", headers = "Accept=application/json")
     public ResponseEntity<ClientDTO> updateClient(@Valid @RequestBody ClientDTO newClient){
 
@@ -62,12 +46,6 @@ public class ClientController {
 
         Client client = convertToEntity(newClient);
         Client existingClient = clientImpl.readById(newClient.getIdClient());
-       /* int strength = 10;
-        BCryptPasswordEncoder bCryptPasswordEncoder =
-                new BCryptPasswordEncoder(strength, new SecureRandom());
-        String encodedPassword = bCryptPasswordEncoder.encode(newClient.getUser().getPassword());
-        client.getUser().setPassword(encodedPassword);
-*/
         if(existingClient==null){
             return ResponseEntity.notFound().build();
         }
