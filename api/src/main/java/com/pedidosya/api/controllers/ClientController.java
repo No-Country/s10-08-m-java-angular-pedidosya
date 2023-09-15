@@ -6,6 +6,7 @@ import com.pedidosya.api.models.User;
 import com.pedidosya.api.services.Impl.ClientImpl;
 import com.pedidosya.api.utils.mappers.IClientMapper;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -51,7 +52,7 @@ public class ClientController {
 //    }
 
     @PutMapping(value = "/update", headers = "Accept=application/json")
-    public ResponseEntity<ClientDTO> updateClient(@RequestBody ClientDTO newClient){
+    public ResponseEntity<ClientDTO> updateClient(@Valid @RequestBody ClientDTO newClient){
 
     try {
 

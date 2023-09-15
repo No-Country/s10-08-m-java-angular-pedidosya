@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,17 +22,19 @@ public class UserDTO {
     @NotNull
     @Email
     @NotEmpty
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String email;
 
     @NotNull
     @NotEmpty
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @Column(nullable = false )
+    @Size(min = 6, message = "Contraseña min 6 caracteres.")
+    //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     @NotNull
     @NotEmpty
-    @Column(length = 1)
+    @Column(length = 1,nullable = false)
     private String role;
 
     @Override

@@ -8,6 +8,7 @@ import com.pedidosya.api.services.IAuthService;
 import com.pedidosya.api.services.Impl.ClientImpl;
 import com.pedidosya.api.utils.mappers.IClientMapper;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +30,7 @@ public class AuthController {
 
 
     @PostMapping(value = "/registerClient", headers = "Accept=application/json")
-    public ResponseEntity<ClientDTO> registerClient(@RequestBody ClientDTO newClient){
+    public ResponseEntity<ClientDTO> registerClient(@Valid @RequestBody ClientDTO newClient){
 
         Client client = convertToEntity(newClient);
 
