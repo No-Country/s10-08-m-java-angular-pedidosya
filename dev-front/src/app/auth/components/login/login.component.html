@@ -50,9 +50,9 @@
             formControlName="email" type="email">
         </div> 
         <div>
-            <label class="label-auth" for="">Contraseña</label>
-            <input class="input-auth" placeholder="Ingresá tu Contraseña"
-                formControlName="password" type="email">
+            <label for="password" class="label-auth" for="">Contraseña</label>
+            <input type="password" id="password" name="password" class="input-auth" placeholder="Ingresá tu Contraseña"
+                formControlName="password">
         </div>   
         
         <button class="green-button" style="color: white;" mat-button id="register" (click)="login()" type="button">Iniciar Sesión</button>

@@ -48,8 +48,8 @@
     </div>
 
     <div>
-        <label class="label-auth" for="">Contraseña</label>
-        <input class="input-auth" placeholder="Ingresá tu contraseña" formControlName="password" type="email"
+        <label class="label-auth" for="password">Contraseña</label>
+        <input class="input-auth" placeholder="Ingresá tu contraseña" formControlName="password" type="password" id="password" name="password"
           [class.is-invalid]="(myForm.controls['password'].touched || myForm.controls['password'].dirty) && myForm.controls['password'].invalid">
         <div style="color: red;"
           *ngIf="(myForm.controls['password'].touched || myForm.controls['password'].dirty) && myForm.controls['password'].invalid"
@@ -58,8 +58,8 @@
     </div>
 
     <div>
-        <label class="label-auth" for="">Confirme contraseña</label>
-        <input class="input-auth" placeholder="Confirma tu contraseña" formControlName="passwordConfirm"
+        <label class="label-auth" for="confirmPassword">Confirme contraseña</label>
+        <input class="input-auth" placeholder="Confirma tu contraseña" formControlName="passwordConfirm" type="password" id="confirmPassword" name="confirmPassword"
           [class.is-invalid]="(myForm.controls['passwordConfirm'].touched || myForm.controls['passwordConfirm'].dirty) && myForm.controls['passwordConfirm'].invalid">
         <div style="color: red;"
           *ngIf="(myForm.controls['passwordConfirm'].touched || myForm.controls['passwordConfirm'].dirty) && myForm.controls['passwordConfirm'].invalid"
