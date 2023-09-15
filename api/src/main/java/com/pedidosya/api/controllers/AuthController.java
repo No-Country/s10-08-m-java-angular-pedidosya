@@ -7,10 +7,12 @@ import com.pedidosya.api.models.Client;
 import com.pedidosya.api.services.IAuthService;
 import com.pedidosya.api.services.Impl.ClientImpl;
 import com.pedidosya.api.utils.mappers.IClientMapper;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -53,6 +55,14 @@ public class AuthController {
     @PostMapping(path = "/sign-out")
     public ResponseEntity<JwtResponseDto> signOut(@RequestHeader(name = HttpHeaders.AUTHORIZATION) String jwt) {
         return ResponseEntity.ok(iAuthService.signOut(jwt));
+    }
+
+    @Operation(summary="Verifica si ya existe ese correo registrado.")
+    @GetMapping(value="/verify/{email}", headers = "Accept=application/json")
+    public ResponseEntity<Boolean> verifyEmail(@Valid @PathVariable String email)
+    {
+        //        return new ResponseEntity<>(clientImpl.verifyEmail(maildto.getEmail()), HttpStatus.OK);
+        return new ResponseEntity<>(clientImpl.verifyEmail(email.trim()), HttpStatus.OK);
     }
 
 
