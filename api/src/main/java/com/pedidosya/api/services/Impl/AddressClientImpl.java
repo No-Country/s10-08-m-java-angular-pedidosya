@@ -31,6 +31,7 @@ public class AddressClientImpl extends CRUDImpl<AddressClient, Integer> implemen
     @Override
     public Void saveAddress(AddressClient addressClient)
     {
+      repo.removeDefault(addressClient.getClient().getIdClient());
       Address adress =  repoAddress.save(addressClient.getAddress());
       repo.saveAddressClient(addressClient.getClient().getIdClient(), adress.getIdAddress(), addressClient.isSet());
       return null;
