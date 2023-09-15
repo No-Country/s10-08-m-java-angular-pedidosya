@@ -136,15 +136,7 @@ public class ClientController {
 
     }
 
-
-    @Operation(summary="Verifica si ya existe ese correo registrado.")
-    @PostMapping(value="/verify", headers = "Accept=application/json")
-    public ResponseEntity<Boolean> verifyEmail(@RequestBody EmailDTO maildto)
-    {
-        return new ResponseEntity<>(clientImpl.verifyEmail(maildto.getEmail()), HttpStatus.OK);
-    }
-
-    private ClientDTO convertToDto(Client client){
+     private ClientDTO convertToDto(Client client){
         return iClientMapper.toClientDto(client);
     }
 
