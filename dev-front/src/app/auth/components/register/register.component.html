@@ -4,38 +4,76 @@
     <h2 class="title-auth">Bienvenido</h2>
     <p class="subtitle-login-or-register">Registro</p>
 
+    <!-- <div class="form-group">
+      <label>Full Name</label>
+      <input
+        type="text"
+        formControlName="firstName"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
+      />
+      <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+        <div *ngIf="f.firstName.errors.required">Fullname is required</div>
+      </div>
+    </div> -->
+
+
     <div>
       <label class="label-auth" for="">Nombre</label>
-      <input class="input-auth" placeholder="Ingrese su nombre"
-          formControlName="firstName">
-  </div>
+      <input class="input-auth" placeholder="Ingrese su nombre" required type="text" formControlName="firstName"
+        [class.is-invalid]="(myForm.controls['firstName'].touched || myForm.controls['firstName'].dirty) && myForm.controls['firstName'].invalid">
+      <div style="color: red;"
+        *ngIf="(myForm.controls['firstName'].touched || myForm.controls['firstName'].dirty) && myForm.controls['firstName'].invalid"
+        >&nbsp;&nbsp;Nombre es requerido
+      </div> 
+    </div>    
 
-  <div>
+    <div>
       <label class="label-auth" for="">Apellido</label>
-      <input class="input-auth" placeholder="Ingrese su apellido"
-          formControlName="lastName">
-  </div>    
+      <input class="input-auth" placeholder="Ingrese su apellido" required formControlName="lastName"
+        [class.is-invalid]="(myForm.controls['lastName'].touched || myForm.controls['lastName'].dirty) && myForm.controls['lastName'].invalid">
+      <div style="color: red;"
+        *ngIf="(myForm.controls['lastName'].touched || myForm.controls['lastName'].dirty) && myForm.controls['lastName'].invalid"
+        >&nbsp;&nbsp;Apellido es requerido
+      </div>      
+   </div>    
 
     <div>
         <label class="label-auth" for="">Correo electrónico</label>
-        <input class="input-auth" placeholder="Ingresá tu correo"
-            formControlName="email" type="email">
+        <input class="input-auth" placeholder="Ingresá tu correo" formControlName="email" type="email"
+          [class.is-invalid]="(myForm.controls['email'].touched || myForm.controls['email'].dirty) && myForm.controls['email'].invalid">
+        <div style="color: red;"
+          *ngIf="(myForm.controls['email'].touched || myForm.controls['email'].dirty) && myForm.controls['email'].invalid"
+          >&nbsp;&nbsp;Email es requerido
+        </div>           
     </div>
 
     <div>
         <label class="label-auth" for="">Contraseña</label>
-        <input class="input-auth" placeholder="Ingresá tu contraseña"
-            formControlName="password" type="email">
+        <input class="input-auth" placeholder="Ingresá tu contraseña" formControlName="password" type="email"
+          [class.is-invalid]="(myForm.controls['password'].touched || myForm.controls['password'].dirty) && myForm.controls['password'].invalid">
+        <div style="color: red;"
+          *ngIf="(myForm.controls['password'].touched || myForm.controls['password'].dirty) && myForm.controls['password'].invalid"
+          >&nbsp;&nbsp;Password es requerido
+        </div>             
     </div>
 
     <div>
         <label class="label-auth" for="">Confirme contraseña</label>
-        <input class="input-auth" placeholder="Confirma tu contraseña"
-            formControlName="passwordConfirm">
+        <input class="input-auth" placeholder="Confirma tu contraseña" formControlName="passwordConfirm"
+          [class.is-invalid]="(myForm.controls['passwordConfirm'].touched || myForm.controls['passwordConfirm'].dirty) && myForm.controls['passwordConfirm'].invalid">
+        <div style="color: red;"
+          *ngIf="(myForm.controls['passwordConfirm'].touched || myForm.controls['passwordConfirm'].dirty) && myForm.controls['passwordConfirm'].invalid"
+          >&nbsp;&nbsp;Password para confirmar es requerido
+        </div> 
+
     </div>
 
-    <!-- <button class="green-button">Registrarse</button> -->
-    <button class="green-button" mat-button id="register" (click)="register()" type="button">Registrarse</button>
+    <!-- <button class="green-button" mat-button id="register" (click)="register()" type="button">Registrarse</button> -->
+    <button class="green-button" mat-button id="register" [disabled]="myForm.pristine || myForm.invalid" (click)="register()" type="button">Registrarse</button>
+    <!-- <button class="green-button" type="submit" [disabled]="myForm.pristine || myForm.invalid" class="btn btn-success">
+    Registrarse1
+</button>     -->
 
     <!-- <button class="google-button">
         <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">

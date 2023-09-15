@@ -158,3 +158,17 @@
   background: #D5DEE7;
 }
 
+input:required:invalid,
+input:focus:invalid {
+//   background-image: url(/images/invalid.png);
+//   background-position: right top;
+  background-repeat: no-repeat;
+  border-color: red($color: #000000);
+}
+input:required:valid {
+//   background-image: url(/images/valid.png);
+//   background-position: right top;
+  background-repeat: no-repeat;
+  border-color: white;
+}
+

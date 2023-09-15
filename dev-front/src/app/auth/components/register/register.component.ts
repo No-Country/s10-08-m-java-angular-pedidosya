@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
@@ -18,6 +18,7 @@ import { ToastrService } from 'ngx-toastr';
 
 export class RegisterComponent {
   myForm!: FormGroup;
+  submitted = false;
 
   constructor(
 		private router: Router,
@@ -27,11 +28,11 @@ export class RegisterComponent {
 		private toastrService: ToastrService
 	) {
 		this.myForm = this.fb.group({
+			firstName: ['', [Validators.required]],
+			lastName: ['', [Validators.required]],
 			email: ['', [Validators.required, Validators.email]],
 			password: ['', [Validators.required]],
-      		passwordConfirm: [''],
-			firstName: ['', [Validators.required]],
-			lastName: ['', [Validators.required]]
+      		passwordConfirm: ['', [Validators.required]]
 		});
 	}
 
@@ -73,5 +74,9 @@ export class RegisterComponent {
 	ClientType(): void {
 		// this.socialAuthService.signOut();
 	  }  
+
+	  get f(): { [key: string]: AbstractControl } {
+		return this.myForm.controls;
+	  }	  
 
 }
