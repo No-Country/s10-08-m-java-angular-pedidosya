@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+.container-sin-pedidos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 600px;
+}
+
+.tittle-sin-pedidos {
+    color: var(--text-texto-primario, #151719);
+    text-align: center;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 23px;
+    padding: 0px;
+}
+
+.sub-tittle-sin-pedidos {
+    color: var(--texto-sec, #404547);
+    text-align: center;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19px;
+}
+
+.linea-separacion-vertical {
+    width: 0.2px;
+    height: 18px;
+    background: #898A8D;
+}
+
+.button-filtros {
+    background-color: #FFF;
+    border-radius: 4px;
+    border: none;
+    margin-right: 10px;
+    margin-top: 10px;
+    height: 31px;
+
+    p {
+        color: var(--text-texto-primario, #151719);
+        font-family: Poppins;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+}
+
+.button-entregados-cancelados {
+    height: 31px;
+    border-radius: 4px;
+    border: 0.5px solid var(--lineas-stroke-lineas, #B3BFCB);
+    margin-right: 10px;
+    margin-top: 10px;
+
+    p {
+        color: #000;
+        font-family: Poppins;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+}
+
+.active {
+    background-color:#D5DEE7 ;
+}
+
+.card-pedidos-entregados {
+    width: 329px;
+    height: 113px;
+    border-radius: 8px;
+    border: 1px solid var(--lineas-stroke-lineas, #B3BFCB);
+    background: #FFF;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+    margin-top: 20px;
+}
+
+.container-filtros {
+    display: flex;
+    width: 328px;
+    align-items: center;
+}
+
+.body-card {
+    height: 73px;
+    display: flex;
+}
+
+.footer-card {
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-info {
+    margin: 0px;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+.estado {
+    color: var(--texto-sec, #404547);
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    margin: 0px;
+    /* 128.571% */
+}
+
+.fechaHora {
+    color: var(--text-texto-secundario, #6A798A);
+    font-family: Poppins;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    margin: 0px;
+    /* 180% */
+}
+
+.restaurant-direccion {
+    color: var(--text-texto-primario, #151719);
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    margin: 0px;
+    /* 128.571% */
+}
+
+.precio {
+    color: var(--text-texto-secundario, #6A798A);
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    margin: 0px;
+    /* 150% */
+}
+
+.cantidad {
+    color: var(--text-texto-secundario, #6A798A);
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    margin: 0px;
+    /* 150% */
+}
+
+.subrrallado {
+    color: var(--text-texto-primario, #151719);
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    /* 128.571% */
+    text-decoration-line: underline;
+    background-color: #FFF;
+    border: none;
+}
+
+.linea-separacion-horizontal {
+    width: 305.717px;
+    height: 0.2px;
+    background: #898A8D;
+    margin-bottom: 7px;
+    margin-left: 12.5px;
+}
