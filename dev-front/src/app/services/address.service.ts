@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { env } from 'src/environment/environment';
 import { UserService } from './user.service';
 import { map } from 'rxjs/operators';
-import { AddressDTO } from '@models/addressDto';
+import { AddressDTO, AddressPostDTO } from '@models/addressDto';
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +44,31 @@ export class AddressService {
           },
           set: item.set
         }));
+      })
+    );
+  }
+
+  postAddress(addressDto: AddressPostDTO): Observable<AddressDTO> {
+    let auth_token = this.getToken();
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${auth_token}`
+    });
+    //const idClient = this.userService.getUser(); // Llama a getUser como una función para obtener el valor
+
+    return this.httpClient.post<any>(`${this.apiUrl}/addresses-client/save`, addressDto , { headers }).pipe(
+      map((data: any) => {
+        // Aquí realizo la conversión de los datos a la estructura AddressDTO
+        return {
+          idClient: data.idClient,
+          address: {
+            idAddress: data.address.idAddress,
+            description: data.address.description,
+            latitude: data.address.latitude,
+            longitude: data.address.longitude,
+            idCity: data.address.idCity
+          },
+          set: data.set
+        };
       })
     );
   }

@@ -10,6 +10,17 @@ export interface AddressDTO {
     set: boolean
 }
 
+export interface AddressPostDTO {
+    idClient: number,
+    address: {
+        description: string,
+        latitude: number,
+        longitude: number,
+        idCity: number
+    },
+    set: boolean
+}
+
 export interface AddressGet {
     idClient: number
 }

@@ -27,7 +27,7 @@ export class UserService {
 		const headers = new HttpHeaders({
 			'Authorization': `Bearer ${auth_token}`
 		});
-		return this.httpClient.get(`${this.apiUrl}/address-client-controller/clients/user`, { headers });
+		return this.httpClient.get(`${this.apiUrl}/clients/user`, { headers });
 	}
 
 	addUser(user: UserModel) {
