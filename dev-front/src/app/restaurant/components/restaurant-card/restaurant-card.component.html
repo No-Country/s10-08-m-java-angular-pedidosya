@@ -1,0 +1,21 @@
+<mat-card class="card">
+  <app-button-favorite (click)="setSelectedFavorite($event)" [favorite]="restaurant.favorite"
+                       class="btn-restaurant-favorite"/>
+  <div class="image-container">
+    <div [style.background-image]="'url(' + restaurant.productImage + ')'" class="rounded"></div>
+  </div>
+
+  <mat-card-content class="card-content">
+    <img [alt]="'Brand image '+restaurant.name" [src]="restaurant.brandImage" class="brand-img">
+    <div class="card-content-description">
+      <div class="card-title-rating-container">
+        <h3 class="card-title">{{restaurant.name}}</h3>
+        <app-rating [rating]="restaurant.rating"/>
+      </div>
+      <app-delivery-details-cost-time
+        [cost]="restaurant.deliveryCost"
+        [maxTime]="restaurant.maxTime"
+        [minTime]="restaurant.minTime"/>
+    </div>
+  </mat-card-content>
+</mat-card>

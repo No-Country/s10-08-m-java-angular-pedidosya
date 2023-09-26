@@ -1,0 +1,48 @@
+.all-restaurants {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.all-restaurants img {
+    height: 104px;
+    align-self: stretch;
+    border-radius: 8px;
+}
+
+.all-restaurants h2 {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+}
+
+.food-type {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.food-list {
+    margin-top: 16px;
+    margin-bottom: 75px;
+    display: flex;
+    justify-content: center;
+}
+
+.titulo-back {
+    color: var(--text-texto-primario, #151719);
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px;
+    /* 90% */
+}

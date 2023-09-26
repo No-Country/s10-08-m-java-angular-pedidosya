@@ -1,0 +1,52 @@
+<main class="container my-2">
+  <h2>Entrega</h2>
+  <section class="border rounded py-2 px-2 shadow-container">
+    <div (click)="goTo('setting-address')" class="d-flex align-items-center justify-content-space-between my-2">
+      <mat-icon class="material-icons-outlined">location_on</mat-icon>
+      <div class="description-container">
+        <h3>Avenida Siempre viva 742</h3>
+        <p>La casita</p>
+      </div>
+      <mat-icon>chevron_right</mat-icon>
+    </div>
+    <div (click)="goTo('setting-delivery')" class="d-flex align-items-center justify-content-space-between my-2">
+      <mat-icon>two_wheeler</mat-icon>
+      <div class="description-container">
+        <h3>Delivery 25-30 min</h3>
+      </div>
+      <mat-icon>chevron_right</mat-icon>
+    </div>
+  </section>
+
+  <h2>Pago</h2>
+  <section (click)="goTo('setting-payment')" class="border rounded py-2 px-2 shadow-container">
+    <div class="d-flex align-items-center justify-content-space-between ">
+      <mat-icon class="material-icons-outlined">payments</mat-icon>
+      <div class="description-container">
+        <h3>Pago en efectivo</h3>
+        <p>Ingresa con cuanto vas a pagar</p>
+      </div>
+      <mat-icon>chevron_right</mat-icon>
+    </div>
+  </section>
+
+  <section class="my-2">
+    <h2>Propina para el repartidor</h2>
+
+    <div class="scrolleable">
+      <mat-button-toggle-group [(ngModel)]="propine" appearance="legacy" aria-label="Propine">
+        <mat-button-toggle value="0">Ahora no</mat-button-toggle>
+        <mat-button-toggle value="100">$100</mat-button-toggle>
+        <mat-button-toggle value="125">$125</mat-button-toggle>
+        <mat-button-toggle value="150">$150</mat-button-toggle>
+        <mat-button-toggle value="175">$175</mat-button-toggle>
+        <mat-button-toggle value="other">Otro</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+  </section>
+
+  <app-order-summary/>
+
+</main>
+
+<app-payment-footer [total]="total"/>

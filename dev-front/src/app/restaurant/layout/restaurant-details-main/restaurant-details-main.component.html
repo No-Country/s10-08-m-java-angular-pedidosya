@@ -1,0 +1,32 @@
+<main class="container">
+
+
+  <!-- Mas vendidos -->
+  <app-products-list #masVendidosList
+                     *ngIf="menusTopSelling"
+                     [id]="-2"
+                     [products]="menusTopSelling.products |productFilter:searchText"
+                     [title]="'Mas vendidos'"/>
+
+  <!-- Descuentos -->
+  <app-products-list
+    *ngIf="menusDiscount"
+    [id]="-1"
+    [isScrolling]="false"
+    [products]="getProductsWhitDiscouts(menusDiscount.products) |productFilter:searchText"
+    [title]="'Descuentos'"/>
+
+  <!-- Mas vendidos -->
+  <ng-container *ngIf="menus">
+    <ng-container *ngFor="let menu of menus">
+      <app-products-list
+
+        [id]="menu.id"
+        [isScrolling]="false"
+
+        [products]="menu.products | productFilter:searchText"
+        [title]="menu.name"
+      />
+    </ng-container>
+  </ng-container>
+</main>

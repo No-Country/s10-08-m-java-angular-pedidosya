@@ -1,0 +1,21 @@
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  .star-rating {
+    color: #FFC42E;
+    font-size: 12px;
+    height: 12px;
+    width: 12px;
+  }
+
+  p {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px; /* 150% */
+    margin: 0;
+  }
+}
+

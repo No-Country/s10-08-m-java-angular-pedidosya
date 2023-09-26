@@ -1,0 +1,236 @@
+.app-header {
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
+  }
+  
+  .login-wrapper {
+    height: 100%;
+  }
+  
+  .positronx {
+    text-decoration: none;
+    color: #ffffff;
+  }
+  
+  .box {
+    position: relative;
+    top: 0;
+    opacity: 1;
+    float: left;
+    padding: 60px 50px 40px 50px;
+    width: 100%;
+    background: #fff;
+    border-radius: 10px;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    z-index: 5;
+    max-width: 330px;
+  }
+  
+  .box.back {
+    transform: scale(.95);
+    -webkit-transform: scale(.95);
+    -ms-transform: scale(.95);
+    top: -20px;
+    opacity: .8;
+    z-index: -1;
+  }
+  
+  .box:before {
+    content: "";
+    width: 100%;
+    height: 30px;
+    border-radius: 10px;
+    position: absolute;
+    top: -10px;
+    background: rgba(255, 255, 255, .6);
+    left: 0;
+    transform: scale(.95);
+    -webkit-transform: scale(.95);
+    -ms-transform: scale(.95);
+    z-index: -1;
+  }
+  
+  .login-wrapper .example-form {
+    min-width: 100%;
+    max-width: 300px;
+    width: 100%;
+  }
+  
+  .login-wrapper .example-full-width,
+  .login-wrapper .btn-block {
+    width: 100%;
+  }
+  
+  .login-wrapper mat-card-header {
+    text-align: center;
+    width: 100%;
+    display: block;
+    font-weight: 700;
+  }
+  
+  .login-wrapper mat-card-header mat-card-title {
+    font-size: 30px;
+    margin: 0;
+  }
+  
+  .login-wrapper .mat-card {
+    padding: 40px 70px 50px;
+  }
+  
+  .login-wrapper .mat-stroked-button {
+    border: 1px solid currentColor;
+    line-height: 54px;
+    background: #FFF7FA;
+  }
+  
+  .login-wrapper .mat-form-field-appearance-legacy .mat-form-field-infix {
+    padding: 0.8375em 0;
+  }
+
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.auth-container {
+  max-width: 360px;
+  width: 95%;
+  background: #f5f5f5;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.auth-title {
+  color: #151719;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.auth-subtitle {
+  color: #151719;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.auth-form {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.auth-label {
+  color: #333;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 2px;
+}
+.auth-label::placeholder {
+  color: #6a798a;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.auth-input {
+  display: block;
+  border-radius: 16px;
+  width: 100%;
+  border: 0.1px solid rgba(0, 0, 0, 0.15);
+  background: #fff;
+  padding: 13px 14px;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.09);
+}
+
+.auth-buttons {
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
+}
+
+.auth-buttons :nth-child(1) {
+  border-radius: 16px;
+  border: none;
+  background: #048221;
+  font-weight: 900;
+  color: #fff;
+  padding: 13px;
+  margin-bottom: 14px;
+}
+
+.auth-buttons :nth-child(2) {
+  border: 2px solid #048221;
+  border-radius: 16px;
+  padding: 10px 0;
+}
+
+$height: 30px;
+$font-size: 13px;
+::ng-deep {
+    .mat-mdc-text-field-wrapper.mdc-text-field {
+        height: $height !important;
+    }
+    mat-label {
+        font-size: $font-size;
+    }
+    .mat-mdc-text-field-wrapper
+        .mat-mdc-form-field-flex
+        .mat-mdc-floating-label {
+        top: 13px;
+    }
+    .mat-mdc-text-field-wrapper.mdc-text-field--outlined
+        .mat-mdc-form-field-infix {
+        padding-top: 0;
+        padding-bottom: 0;
+        height: $height;
+        font-size: $font-size;
+    }
+    .mat-mdc-form-field-flex {
+        height: $height;
+    }
+    .wrapper .table-title .filter .search-placeholder-icon {
+        font-size: 18px;
+        padding-top: 8px;
+    }
+    .mdc-floating-label--float-above {
+        font-size: $font-size !important;
+    }
+    .mat-datepicker-input {
+        padding-top: 3px !important;
+        font-size: $font-size !important;
+    }
+}
+
+.container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .login-container {
+    // height: 80vh;
+    height: 648px;
+    // weight: 329;
+  }

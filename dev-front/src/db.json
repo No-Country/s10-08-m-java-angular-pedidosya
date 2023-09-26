@@ -1,0 +1,42 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstname": "Gary",
+      "lastname": "Santos",
+      "email": "gary@gmail.com",
+      "password": "adm",
+      "isAdmin": true,
+      "isClient": true
+    },
+    {
+      "id": 2,
+      "firstname": "Agustin",
+      "lastname": "Perez",
+      "email": "agustin@gmail.com",
+      "password": "user",
+      "isAdmin": false,
+      "isClient": true
+    }
+  ],
+  "menu": [
+    {
+      "id": 1,
+      "name": "sandwitch"
+    },
+    {
+      "id": 2,
+      "name": "popcorn"
+    }
+  ],
+  "tiendas": [
+    {
+      "id": 1,
+      "name": "Mc Donals"
+    },
+    {
+      "id": 2,
+      "name": "Rest El Boludo"
+    }
+  ]  
+}

@@ -1,0 +1,22 @@
+<div class="principal-container">
+    <div class="onboarding-container">
+        <div class="question-user-role-container">
+            <img src="assets/SVGs/onboarding-user.svg" alt="User-on-boarding">
+            <section class="question-user-role">
+                <p>Elige una opción</p>
+                <section>
+                    <div class="toggle-button" [class.selected]="selectedButton === 'local'"
+                        (click)="selectButton('local')">Local <img *ngIf="selectedButton === 'local'"
+                            src="assets/SVGs/check.svg"></div>
+                    <div class="toggle-button" [class.selected]="selectedButton === 'delivery'"
+                        (click)="selectButton('delivery')">Delivery <img *ngIf="selectedButton === 'delivery'"
+                            src="assets/SVGs/check.svg"></div>
+                    <div class="toggle-button" [class.selected]="selectedButton === 'cliente'"
+                        (click)="selectButton('cliente')">Cliente <img *ngIf="selectedButton === 'cliente'"
+                            src="assets/SVGs/check.svg"></div>
+                </section>
+            </section>
+        </div>
+        <button class="btn-continue">Continuar</button>
+    </div>
+</div>

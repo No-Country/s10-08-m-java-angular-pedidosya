@@ -1,0 +1,19 @@
+.container-food-preferences{
+    width: 360px;
+    text-align: center;
+    margin-right: 0px;
+}
+
+.preference-button {
+    height: 25px;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+    border: 1.5px solid var(--lineas-stroke-lineas, #c8cfd6);
+    margin-right: 6px;
+    margin-top: 8px;
+}
+
+.food-selected {
+    background-color: #D5DEE7 ;
+}
+

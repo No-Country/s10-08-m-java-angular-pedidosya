@@ -1,0 +1,36 @@
+<section class="filter-sheet-container">
+  <app-button-line/>
+
+  <main class="filter-group-container ">
+    <h1 class="my-2">Ordenar por</h1>
+    <mat-button-toggle-group [(ngModel)]="sortedBy" appearance="legacy" aria-label="Sorted by"
+                             class="filter-button-group-content">
+      <mat-button-toggle *ngFor="let buttonSort of buttonToggleInfo"
+                         [value]="buttonSort.value"
+                         class="btn-filter">
+        <mat-icon [fontIcon]="buttonSort.icon"></mat-icon>
+        {{ buttonSort.label }}
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+    <!--Filtrar Por-->
+    <div class="mt-3">
+      <h2>Filtrar Por</h2>
+      <div class="px-2">
+        <app-filter-checkbox-form
+          [benefits]="benefitsForm"
+          [other]="otherForm"
+          [payment]="paymentForm"/>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <button (click)="handleApplyFilter()" class="my-2 btn btn-lg btn-primary" color="primary" mat-raised-button>
+      Aplicar filtros
+    </button>
+    <button (click)="handleDeleteFilter()" *ngIf="filtersApplied" class="btn btn-lg btn-tertiary" mat-stroked-button>
+      Eliminar filtros
+    </button>
+  </footer>
+</section>
+

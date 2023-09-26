@@ -1,0 +1,14 @@
+<app-restaurant-header/>
+
+
+<main class="deck-container">
+  <mat-spinner *ngIf="loading$ | async" class="m-auto"/>
+
+  <app-restaurant-main
+    *ngIf="!(loading$ | async)"
+    [restaurants]="(restaurants$ | async)"
+    [restaurantType]="restaurantsType$|async"/>
+
+
+</main>
+

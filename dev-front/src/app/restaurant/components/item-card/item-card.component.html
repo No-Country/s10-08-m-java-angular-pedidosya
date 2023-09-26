@@ -1,0 +1,21 @@
+<article class="item-card">
+
+  <div class="pb-1 card-title-container">
+    <div class="card-title-content">
+      <h3 class="card-text">{{item.product.name}}</h3>
+      <p class="card-description">{{item.product.description}}</p>
+    </div>
+    <a (click)="emitUpdateItem()" class="btn-edit" routerLink="#">Modificar</a>
+  </div>
+  <div class="card-title-container">
+    <div class="card-img-container">
+      <div [style.background-image]="'url('+item.product.imageUrl+')'" class="img-product"></div>
+      <p class="subtotal">${{item.product.price * item.quantity}}</p>
+      <app-counter (countChange)="emitChangeQuantity($event)"
+                   (deleteChange)="emitDeleteItem()"
+                   [(count)]="initialQuantity"
+                   [activeProductDelete]="true"/>
+    </div>
+  </div>
+
+</article>

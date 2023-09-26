@@ -1,0 +1,90 @@
+<div style="margin-left: 16px">
+    <div class="back-profile" style="margin: 0px">
+        <svg xmlns="http://www.w3.org/2000/svg" routerLink="/customer/perfil" style="margin: 5px" width="24" height="24"
+            viewBox="0 0 24 24" fill="none">
+            <mask id="mask0_722_9975" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+                height="24">
+                <rect width="24" height="24" fill="#D9D9D9" />
+            </mask>
+            <g mask="url(#mask0_722_9975)">
+                <path d="M7.825 13L13.425 18.6L12 20L4 12L12 4L13.425 5.4L7.825 11H20V13H7.825Z" fill="#151719" />
+            </g>
+        </svg>
+        <h1>Promos</h1>
+    </div>
+
+    <div class="container-card-promo">
+        <h1 class="tittle-promos">¡Ahorrá hoy!</h1>
+        <h2 class="sub-tittle-promos">Aprovechá las oportunidades del dia</h2>
+
+        <div *ngFor="let promo of promotions">
+            <div class="card-promo">
+
+                <img [src]="promo.imagenBanco" alt="imagen del banco" style="margin-top: 7px;margin-left: 20px;margin-bottom: 40.5px; margin-right: 10px;">
+    
+                <div class="card-promo-info">
+    
+                    <p class="area-descuento">{{promo.area}}</p>
+    
+                    <p class="descuento">{{promo.descuento}}</p>
+    
+                    <div class="card-promo-info-banco-tarjeta-tipo">
+    
+                        <p class="banco">{{promo.banco}}</p>
+    
+                        <div *ngFor="let tarjeta of promo.listaDeImagenesDeTarjetas">
+                            <img [src]="tarjeta" alt="imagen tarjeta" style="display: inline;">
+                        </div>
+    
+                        <p class="tipo-tarjeta">{{promo.tipoTarjeta}}</p>
+    
+                    </div>
+    
+                    <p class="dias">{{promo.dias}}</p>
+    
+                </div>
+            </div>
+
+            <div class="line"> </div>
+        </div>
+    </div>
+
+    <div class="container-card-promo" style="margin-bottom: 80px;">
+        <h1 class="tittle-promos">Oportunidades increíbles</h1>
+        <h2 class="sub-tittle-promos">Únicamente para vos</h2>
+
+        <div *ngFor="let promo of promotionsOportunities">
+            <div class="card-promo">
+
+                <img [src]="promo.imagenBanco" alt="imagen del banco" style="margin-top: 7px;margin-left: 20px;margin-bottom: 40.5px; margin-right: 10px;">
+    
+                <div class="card-promo-info">
+    
+                    <p class="area-descuento">{{promo.area}}</p>
+    
+                    <p class="descuento">{{promo.descuento}}</p>
+    
+                    <div class="card-promo-info-banco-tarjeta-tipo">
+    
+                        <p class="banco">{{promo.banco}}</p>
+    
+                        <div *ngFor="let tarjeta of promo.listaDeImagenesDeTarjetas">
+                            <img [src]="tarjeta" alt="imagen tarjeta" style="display: inline;">
+                        </div>
+    
+                        <p class="tipo-tarjeta">{{promo.tipoTarjeta}}</p>
+    
+                    </div>
+    
+                    <p class="dias">{{promo.dias}}</p>
+    
+                </div>
+            </div>
+
+            <div class="line"> </div>
+        </div>
+
+
+    </div>
+
+</div>

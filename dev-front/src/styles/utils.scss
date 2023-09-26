@@ -1,0 +1,33 @@
+
+.w-100 {
+  width: 100%;
+}
+
+.w-75 {
+  width: 75%;
+}
+
+.w-50 {
+  width: 50%;
+}
+
+.container {
+  display: block;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+
+.shadow-container {
+  box-shadow: 0px 1px 3px 0px rgba(41, 45, 50, 0.25);
+}
+
+
+.fixed-top {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+
+

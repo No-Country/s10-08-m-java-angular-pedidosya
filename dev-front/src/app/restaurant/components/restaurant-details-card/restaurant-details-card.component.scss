@@ -1,0 +1,23 @@
+.card {
+  max-width: 328px;
+  margin: 16px auto 24px auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.shadow-none {
+  box-shadow: none;
+}
+
+a {
+  color: #114260;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px; /* 128.571% */
+}
+
+.brand-img {
+  max-width: 38px
+}

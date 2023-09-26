@@ -1,0 +1,170 @@
+<div style="margin-left: 16px">
+
+    <div class="back-profile" style="margin: 0px">
+        <svg xmlns="http://www.w3.org/2000/svg" routerLink="/customer/perfil" style="margin: 5px" width="24" height="24"
+            viewBox="0 0 24 24" fill="none">
+            <mask id="mask0_722_9975" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+                height="24">
+                <rect width="24" height="24" fill="#D9D9D9" />
+            </mask>
+            <g mask="url(#mask0_722_9975)">
+                <path d="M7.825 13L13.425 18.6L12 20L4 12L12 4L13.425 5.4L7.825 11H20V13H7.825Z" fill="#151719" />
+            </g>
+        </svg>
+        <h1>Pedidos</h1>
+    </div>
+
+    <!-- <div class="container-sin-pedidos">
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="143" height="110" viewBox="0 0 143 110" fill="none">
+            <path d="M105.453 52.5957C105.453 52.5957 94.7425 32.2737 100.585 27.2437C106.427 22.2137 110.159 33.1697 110.159 33.1697C110.159 33.1697 109.835 24.4767 118.597 24.5617C127.359 24.6467 121.719 35.3567 121.719 35.3567C121.719 35.3567 126.873 29.5617 132.066 30.7557C137.257 31.9487 131.74 68.5367 105.453 52.5957Z" fill="#63C49D"/>
+            <path d="M74.8701 109.244V44.3456L78.9021 49.3456L84.5941 44.3456L91.7781 49.3456L98.8251 44.3456L105.196 49.3456L112.921 44.3456L118.072 49.3456L125.288 44.3456L130.733 49.3456L134.963 44.3456L139.012 49.5696L142.739 44.3456V109.244H74.8701Z" fill="#D4EEE3"/>
+            <path d="M136.837 54.5616V104.987" stroke="#048221" stroke-miterlimit="10" stroke-linecap="round"/>
+            <path d="M9.34998 28.0356C9.34998 28.0356 -1.36002 7.71363 4.48198 2.68263C10.324 -2.34737 14.056 8.60862 14.056 8.60862C14.056 8.60862 13.731 -0.0843807 22.494 0.000619308C31.256 0.0856193 25.616 10.7956 25.616 10.7956C25.616 10.7956 30.77 5.00062 35.963 6.19462C41.154 7.38862 35.637 43.9766 9.34998 28.0356Z" fill="#63C49D"/>
+            <path d="M0 109.203V17.3046L4.032 22.3046L9.724 17.3046L16.908 22.3046L23.956 17.3046L30.326 22.3046L38.052 17.3046L43.202 22.3046L50.418 17.3046L55.863 22.3046L60.093 17.3046L64.143 22.5286L67.87 17.3046V109.203H0Z" fill="#D4EEE3"/>
+            <path d="M63.2041 28.0356V99.0096" stroke="#048221" stroke-miterlimit="10" stroke-linecap="round"/>
+        </svg>
+
+        <h1 class="tittle-sin-pedidos">Aún no has realizado pedidos</h1>
+        <h2 class="sub-tittle-sin-pedidos">Buscá entre todas nuestras opciones y disfrutá de tu primer pedido</h2>
+
+        <button class="green-button" style="width: 170px; margin-top: 20px;">Hacer pedido</button>
+
+    </div> -->
+
+    <div class="container-pedidos">
+        <div class="container-filtros">
+
+            <button class="button-filtros">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <mask id="mask0_895_8503" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+                      <rect y="24" width="24" height="24" transform="rotate(-90 0 24)" fill="#D9D9D9"/>
+                    </mask>
+                    <g mask="url(#mask0_895_8503)">
+                      <path d="M20 19H13V21H11V15H13V17H20V19ZM9 19H4V17H9V19ZM9 15H7V13H4V11H7L7 9H9V15ZM20 13H11V11L20 11V13ZM20 7L17 7V9H15L15 3H17V5L20 5V7ZM13 7H4V5H13L13 7Z" fill="#151719"/>
+                    </g>
+                </svg>
+                Filtros
+            </button>
+            <button class="button-entregados-cancelados" [ngClass]="{'active':entregados}" (click)="changeEntregadosACancelados()">Entregados</button>
+            <button class="button-entregados-cancelados" [ngClass]="{'active':!entregados}" (click)="changeEntregadosACancelados()">Cancelados</button>
+
+        </div>
+
+        <div class="container-cards-pedidos" *ngFor="let pedido of pedidos" >
+            <div *ngIf="entregados">
+                <div class="card-pedidos-entregados" *ngIf="pedido.status === 6">
+                    <body class="body-card">
+    
+                        <img [src]="pedido.store.logoPath" height="33px" width="37px" alt="" style="margin: 12px;">
+    
+                        <div class="card-info">
+                            <div class="flex" style="align-content: center; margin-top: 5px;">
+                                <p class="estado">{{ pedido.status === 6 ? 'Entregado' : (pedido.status === 5 ? 'Cancelado' : 'Estado desconocido') }}</p>
+                                <span style="margin: 3px;">·</span>
+                                <p class="fechaHora">{{pedido.saleDate}}</p>
+                            </div>
+                            <div class="flex">
+                                <p class="restaurant-direccion">{{pedido.store.title}}</p>
+                                <span style="margin: 3px;">·</span>
+                                <p class="restaurant-direccion">{{pedido.address.description}}</p>
+                            </div>
+                            <div class="flex">
+                                <p class="precio">${{pedido.amount}}</p>
+                                <span style="margin: 3px;">·</span>
+                                <p class="cantidad">{{pedido.details[0].quantity}} productos</p>
+                            </div>
+                        </div>
+                        
+                    </body>
+    
+                    <footer class="footer-card">
+                        <div class="linea-separacion-horizontal"></div>
+                        <div style="display: flex; justify-content: center; align-items: center; ">
+                            <button class="subrrallado" style="margin-right: 10px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                                    <path d="M3.41936 14.8508C3.3406 15.2942 3.78355 15.6413 4.17475 15.4427L8.61799 13.1868L13.0612 15.4427C13.4524 15.6413 13.8954 15.2942 13.8166 14.8508L12.9767 10.1213L16.5424 6.76462C16.8756 6.45092 16.7031 5.87737 16.2567 5.81472L11.2979 5.11885L9.08693 0.792305C8.88776 0.402565 8.34823 0.402565 8.14906 0.792305L5.93806 5.11885L0.979293 5.81472C0.532876 5.87737 0.360379 6.45092 0.693611 6.76462L4.25929 10.1213L3.41936 14.8508ZM8.38432 12.0826L4.65321 13.977L5.35601 10.0197C5.38914 9.83316 5.32684 9.64214 5.19126 9.5145L2.24864 6.7444L6.35082 6.16873C6.5204 6.14494 6.66847 6.03795 6.74847 5.88141L8.61799 2.22308L10.4875 5.88141C10.5675 6.03795 10.7156 6.14494 10.8852 6.16873L14.9873 6.7444L12.0447 9.5145C11.9091 9.64214 11.8468 9.83316 11.88 10.0197L12.5828 13.977L8.85166 12.0826C8.70428 12.0078 8.53171 12.0078 8.38432 12.0826Z" fill="#151719"/>
+                                </svg>
+                                Opinar
+                            </button>
+                            <div class="linea-separacion-vertical"></div>
+                            <button class="subrrallado" style="margin-left: 10px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.64611 3.00004C11.4415 3.00004 13.7077 5.23862 13.7077 8.00004C13.7077 10.7615 11.4415 13 8.64611 13C5.8507 13 3.58457 10.7615 3.58457 8.00004C3.58457 7.25461 3.74938 6.54857 4.04447 5.91438C4.16122 5.66347 4.04996 5.36658 3.79597 5.25125C3.54197 5.13592 3.24143 5.24583 3.12468 5.49674C2.76986 6.25927 2.57227 7.10755 2.57227 8.00004C2.57227 11.3138 5.29162 14 8.64611 14C12.0006 14 14.72 11.3138 14.72 8.00004C14.72 4.68633 12.0006 2.00004 8.64611 2.00004V3.00004Z" fill="#151719"/>
+                                    <path d="M8.64611 4.46628V0.533803C8.64611 0.321844 8.39586 0.206054 8.23102 0.341748L5.84249 2.30799C5.72108 2.40794 5.72108 2.59215 5.84249 2.6921L8.23102 4.65834C8.39585 4.79403 8.64611 4.67824 8.64611 4.46628Z" fill="#151719"/>
+                                </svg>
+                                Repetir
+                            </button>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container-cards-pedidos" *ngFor="let pedido of pedidos" >
+            <div *ngIf="!entregados">
+                <div class="card-pedidos-entregados" *ngIf="pedido.status === 5">
+                    <body class="body-card">
+    
+                        <img [src]="pedido.store.logoPath" height="33px" width="37px" alt="" style="margin: 12px;">
+    
+                        <div class="card-info">
+                            <div class="flex" style="align-content: center; margin-top: 5px;">
+                                <p class="estado">{{(pedido.status === 5 ? 'Cancelado' : 'Estado desconocido') }}</p>
+                                <span style="margin: 3px;">·</span>
+                                <p class="fechaHora">{{pedido.saleDate}}</p>
+                            </div>
+                            <div class="flex">
+                                <p class="restaurant-direccion">{{pedido.store.title}}</p>
+                                <span style="margin: 3px;">·</span>
+                                <p class="restaurant-direccion">{{pedido.address.description}}</p>
+                            </div>
+                            <div class="flex">
+                                <p class="precio">${{pedido.amount}}</p>
+                                <span style="margin: 3px;">·</span>
+                                <p class="cantidad">{{pedido.details[0].quantity}} productos</p>
+                            </div>
+                        </div>
+                        
+                    </body>
+    
+                    <footer class="footer-card">
+                        <div class="linea-separacion-horizontal"></div>
+                        <div style="display: flex; justify-content: center; align-items: center; ">
+                            <button class="subrrallado" style="margin-right: 10px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                                    <path d="M3.41936 14.8508C3.3406 15.2942 3.78355 15.6413 4.17475 15.4427L8.61799 13.1868L13.0612 15.4427C13.4524 15.6413 13.8954 15.2942 13.8166 14.8508L12.9767 10.1213L16.5424 6.76462C16.8756 6.45092 16.7031 5.87737 16.2567 5.81472L11.2979 5.11885L9.08693 0.792305C8.88776 0.402565 8.34823 0.402565 8.14906 0.792305L5.93806 5.11885L0.979293 5.81472C0.532876 5.87737 0.360379 6.45092 0.693611 6.76462L4.25929 10.1213L3.41936 14.8508ZM8.38432 12.0826L4.65321 13.977L5.35601 10.0197C5.38914 9.83316 5.32684 9.64214 5.19126 9.5145L2.24864 6.7444L6.35082 6.16873C6.5204 6.14494 6.66847 6.03795 6.74847 5.88141L8.61799 2.22308L10.4875 5.88141C10.5675 6.03795 10.7156 6.14494 10.8852 6.16873L14.9873 6.7444L12.0447 9.5145C11.9091 9.64214 11.8468 9.83316 11.88 10.0197L12.5828 13.977L8.85166 12.0826C8.70428 12.0078 8.53171 12.0078 8.38432 12.0826Z" fill="#151719"/>
+                                </svg>
+                                Opinar
+                            </button>
+                            <div class="linea-separacion-vertical"></div>
+                            <button class="subrrallado" style="margin-left: 10px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.64611 3.00004C11.4415 3.00004 13.7077 5.23862 13.7077 8.00004C13.7077 10.7615 11.4415 13 8.64611 13C5.8507 13 3.58457 10.7615 3.58457 8.00004C3.58457 7.25461 3.74938 6.54857 4.04447 5.91438C4.16122 5.66347 4.04996 5.36658 3.79597 5.25125C3.54197 5.13592 3.24143 5.24583 3.12468 5.49674C2.76986 6.25927 2.57227 7.10755 2.57227 8.00004C2.57227 11.3138 5.29162 14 8.64611 14C12.0006 14 14.72 11.3138 14.72 8.00004C14.72 4.68633 12.0006 2.00004 8.64611 2.00004V3.00004Z" fill="#151719"/>
+                                    <path d="M8.64611 4.46628V0.533803C8.64611 0.321844 8.39586 0.206054 8.23102 0.341748L5.84249 2.30799C5.72108 2.40794 5.72108 2.59215 5.84249 2.6921L8.23102 4.65834C8.39585 4.79403 8.64611 4.67824 8.64611 4.46628Z" fill="#151719"/>
+                                </svg>
+                                Repetir
+                            </button>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

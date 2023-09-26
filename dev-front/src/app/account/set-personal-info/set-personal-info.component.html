@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="header">
+        <!--HAY QUE PONER LA FLECHA PARA VOLVER-->
+        <h2>Perfil</h2>
+    </div>
+    <h3>Mis datos personales</h3>
+    <section class="name">
+        <h4>¿Cómo te llamas?</h4>
+        <div class="input-name">
+            <label>Nombre</label>
+            <input type="text" max="50" placeholder="Ariana">
+            <!--Cambiar el placeholder por el nombre que venga del back-->
+        </div>
+        <div class="input-surname">
+            <label>Apellido</label>
+            <input type="text" max="50" placeholder="Ruiz">
+        </div>
+    </section>
+    <section class="age">
+        <h4>¿Cuándo naciste?</h4>
+        <div class="input-age">
+            <input type="date" placeholder="31/12/1999">
+        </div>
+    </section>
+    <section class="genre">
+        <h4>¿Con qué genero te identificas?</h4>
+        <div class="options">
+            <label class="radio-label">
+                <input type="radio" name="genre" value="femenino">
+                Femenino
+            </label>
+            <label class="radio-label">
+                <input type="radio" name="genre" value="masculino">
+                Masculino
+            </label>
+            <label class="radio-label">
+                <input type="radio" name="genre" value="no-binario">
+                No binario
+            </label>
+            <label class="radio-label">
+                <input type="radio" name="genre" value="no-decirlo">
+                Prefiero no decirlo
+            </label>
+        </div>
+    </section>
+    <button class="save-changes">Guardar cambios</button>
+</div>

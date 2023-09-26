@@ -1,0 +1,24 @@
+main.container {
+  background: #F5F5F5;
+}
+
+#topSelling {
+  max-width: 329px;
+}
+
+#topSelling .products-container {
+  display: flex;
+
+  align-items: flex-start;
+  gap: 16px;
+  overflow: scroll;
+}
+
+.menu-title {
+  color: #151719;
+  margin: 0 0 16px 0;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 18px; /* 90% */
+}

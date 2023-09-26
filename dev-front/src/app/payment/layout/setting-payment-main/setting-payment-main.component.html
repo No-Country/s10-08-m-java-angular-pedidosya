@@ -1,0 +1,22 @@
+<main class="container">
+  <h2>¿Con cuanto vas a pagar?</h2>
+  <p>Recuerda que el valor del pedido es de <span>valor</span></p>
+
+
+  <h3>Ingresa el monto</h3>
+
+  <form [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Amount</mat-label>
+      <span matPrefix><div class="px-2">$</div></span>
+      <input formControlName="amount" matInput required type="text">
+    </mat-form-field>
+    <mat-error *ngIf="form.get('amount')?.invalid">Debe ingresar una cantidad</mat-error>
+  </form>
+</main>
+
+<footer>
+  <button (click)="saveOptions()" class="btn btn-lg btn-primary" mat-button>Guardar</button>
+</footer>
+
+

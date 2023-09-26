@@ -1,0 +1,70 @@
+
+header {
+  width: 100%;
+  padding: 24px 0 4px 0;
+  overflow: hidden;
+  background: #F5F5F5;
+}
+
+.filter-container {
+  display: flex;
+  align-items: center;
+  margin: 24px 10px 4px 16px;
+}
+
+.filters-nav-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  .filters-scroll {
+    display: flex;
+    flex-grow: 1;
+    padding: 2px 0;
+    gap: 16px;
+    min-width: max-content;
+
+    button {
+      box-shadow: none;
+      font-weight: 400;
+      padding: 5px !important;
+      letter-spacing: 0.1px;
+      border-radius: 4px !important;
+      border: 0.5px solid #B3BFCB;
+
+    }
+
+  }
+}
+
+.nav-search-container {
+  display: flex;
+  width: calc(100% - 30px);
+  height: 49px;
+  padding-left: 0px;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.btn-filter {
+  border-radius: 4px;
+  padding: 6px 0px;
+  border: 0.5px solid #D5DEE7;
+  margin: 0 8px 0 0;
+  color: #000;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+}
+
+
+
+
+
+
+
+
+
+

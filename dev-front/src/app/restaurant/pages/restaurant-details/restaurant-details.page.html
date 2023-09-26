@@ -1,0 +1,69 @@
+<ng-container *ngIf="(isLoading$ | async) as isLoading; else restaurantContent">
+  <div class="spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-container>
+
+
+<ng-template #restaurantContent>
+  <ng-container *ngIf="(errorMessage$ | async) as message">
+    <main class="error-message">
+      <h1>{{ message }}</h1>
+      <a (click)="onViewOrder()" class="my-3 btn btn-md btn-primary" mat-flat-button routerLink="/restaurant/checkout">Ver
+        pedido</a>
+      <a (click)="onNewOrder()" class="my-3 btn btn-md btn-tertiary" mat-flat-button>Nuevo pedido</a>
+    </main>
+  </ng-container>
+  <ng-container *ngIf="(restaurant$ | async) as restaurant">
+    <div class="page">
+      <!-- Héroe -->
+      <app-restaurant-details-header [restaurant]="restaurant"/>
+
+      <section class="sticky-header pt-1 pb-1">
+        <div class="fixed-top">
+          <app-button-nav-back [url]="'/restaurant'"/>
+        </div>
+        <!-- Búsqueda de input -->
+        <section class="mx-2 mt-4 mb-3">
+          <app-search-input
+            (searchTermChange)="onSearchTermChange($event)"
+            [label]="'Buscar en ' + restaurant.name"
+            [placeholder]="'Buscar...'"
+          />
+        </section>
+
+        <!-- Pestañas -->
+        <section class="nav-tabs-container">
+          <app-menu-button/>
+          <div class="nav-tabs-scroll">
+            <div class="nav-tabs px-1 py-1">
+              <mat-button-toggle-group
+                #group="matButtonToggleGroup"
+                [(ngModel)]="selectedNavigation"
+                appearance="legacy"
+              >
+                <mat-button-toggle class="btn-nav" value="-2">Más vendidos</mat-button-toggle>
+                <mat-button-toggle class="btn-nav" value="-1">Descuentos</mat-button-toggle>
+                <ng-container *ngIf="(menuOthers$ | async) as menuOthers">
+                  <mat-button-toggle *ngFor="let menu of menuOthers" [value]="menu.id" class="btn-nav">
+                    {{ menu.name }}
+                  </mat-button-toggle>
+                </ng-container>
+              </mat-button-toggle-group>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <app-restaurant-details-main
+        [menusDiscount]="menuDiscounts$ | async"
+        [menusTopSelling]="menuTopSelling$ | async"
+        [menus]="menuOthers$ | async"
+      />
+
+      <ng-container *ngIf="!(errorMessage$ | async) && subtotal>0">
+        <app-restaurant-details-footer [subtotal]="subtotal"/>
+      </ng-container>
+    </div>
+  </ng-container>
+</ng-template>

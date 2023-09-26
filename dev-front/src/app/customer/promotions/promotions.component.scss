@@ -1,0 +1,95 @@
+.tittle-promos {
+    color: var(--text-texto-primario, #151719);
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px;
+}
+
+.sub-tittle-promos {
+    color: rgba(21, 23, 25, 0.75);
+    font-family: Poppins;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+}
+
+.area-descuento {
+    color: #000;
+    font-family: Poppins;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    margin: 0px;
+}
+
+.descuento {
+    color: #000;
+    font-family: Poppins;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    margin: 0px;
+    border-radius: 2px;
+    background: rgba(239, 232, 70, 0.80);
+    display: inline;
+}
+
+.banco {
+    color: #4D4F50;
+    font-family: Poppins;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    margin: 0px;
+}
+
+.tipo-tarjeta {
+    color: #4D4F50;
+    font-family: Poppins;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    margin: 0px;
+}
+
+.dias {
+    color: rgba(82, 84, 85, 0.75);
+    font-family: Poppins;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    margin: 0px;
+}
+
+.container-card-promo {}
+
+.card-promo {
+    display: flex;
+    height: 97.5px;
+
+}
+
+.card-promo-info {}
+
+.card-promo-info-banco-tarjeta-tipo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-promo-info-banco-tarjeta-tipo {}
+
+.line {
+    width: 328px;
+    height: 1px;
+    background: var(--lineas-stroke-lineas, #B3BFCB);
+    margin-bottom: 10px;
+}
